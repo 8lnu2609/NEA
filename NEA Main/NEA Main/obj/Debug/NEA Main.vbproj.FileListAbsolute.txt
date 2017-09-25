@@ -1,0 +1,13 @@
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe.config
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.pdb
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.xml
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.Resources.resources
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.GenerateResource.Cache
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.CoreCompileInputs.cache
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.exe
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.xml
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.pdb
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.physicsForm.resources
+\\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.VelocityInput.resources
