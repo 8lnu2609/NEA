@@ -22,5 +22,22 @@ NEA Main
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:NEA_Main.Maths.Pythag(System.Single,System.Single)">
+ <summary>
+ Find hypotenuse given both sides
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <returns></returns>
+</member>
+<member name="M:NEA_Main.Maths.QuadraticSolve(System.Single,System.Single,System.Single)">
+ <summary>
+ Solves a quadratic given as ax^2+bx+c
+ </summary>
+ <param name="a"></param>
+ <param name="b"></param>
+ <param name="c"></param>
+ <returns></returns>
+</member>
 </members>
 </doc>

@@ -11,3 +11,15 @@
 \\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.pdb
 \\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.physicsForm.resources
 \\moriarty\home\18\8LNU2609\Computer Science\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.VelocityInput.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe.config
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.exe
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.xml
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.pdb
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.pdb
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.xml
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.Resources.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.physicsForm.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.VelocityInput.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.GenerateResource.Cache

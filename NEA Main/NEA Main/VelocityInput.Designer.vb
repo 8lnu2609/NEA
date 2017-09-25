@@ -25,19 +25,23 @@ Partial Class VelocityInput
         Me.components = New System.ComponentModel.Container()
         Me.MainPicBox = New System.Windows.Forms.PictureBox()
         Me.InputSelectGB = New System.Windows.Forms.GroupBox()
-        Me.HorzTextIn = New System.Windows.Forms.MaskedTextBox()
-        Me.VertTextIn = New System.Windows.Forms.MaskedTextBox()
+        Me.AngleIn = New System.Windows.Forms.NumericUpDown()
+        Me.SpeedIn = New System.Windows.Forms.NumericUpDown()
+        Me.HorzIn = New System.Windows.Forms.NumericUpDown()
+        Me.VertIn = New System.Windows.Forms.NumericUpDown()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SpeedRadio = New System.Windows.Forms.RadioButton()
         Me.ComponetsRadio = New System.Windows.Forms.RadioButton()
         Me.DrawTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AngleTextIn = New System.Windows.Forms.MaskedTextBox()
-        Me.SpeedTextIn = New System.Windows.Forms.MaskedTextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
         CType(Me.MainPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.InputSelectGB.SuspendLayout()
+        CType(Me.AngleIn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SpeedIn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.HorzIn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.VertIn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MainPicBox
@@ -51,12 +55,12 @@ Partial Class VelocityInput
         '
         'InputSelectGB
         '
-        Me.InputSelectGB.Controls.Add(Me.AngleTextIn)
-        Me.InputSelectGB.Controls.Add(Me.SpeedTextIn)
+        Me.InputSelectGB.Controls.Add(Me.AngleIn)
+        Me.InputSelectGB.Controls.Add(Me.SpeedIn)
+        Me.InputSelectGB.Controls.Add(Me.HorzIn)
+        Me.InputSelectGB.Controls.Add(Me.VertIn)
         Me.InputSelectGB.Controls.Add(Me.Label3)
         Me.InputSelectGB.Controls.Add(Me.Label4)
-        Me.InputSelectGB.Controls.Add(Me.HorzTextIn)
-        Me.InputSelectGB.Controls.Add(Me.VertTextIn)
         Me.InputSelectGB.Controls.Add(Me.Label2)
         Me.InputSelectGB.Controls.Add(Me.Label1)
         Me.InputSelectGB.Controls.Add(Me.SpeedRadio)
@@ -69,19 +73,65 @@ Partial Class VelocityInput
         Me.InputSelectGB.TabStop = False
         Me.InputSelectGB.Text = "Input"
         '
-        'HorzTextIn
+        'AngleIn
         '
-        Me.HorzTextIn.Location = New System.Drawing.Point(124, 125)
-        Me.HorzTextIn.Name = "HorzTextIn"
-        Me.HorzTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.HorzTextIn.TabIndex = 6
+        Me.AngleIn.DecimalPlaces = 2
+        Me.AngleIn.Enabled = False
+        Me.AngleIn.Location = New System.Drawing.Point(123, 186)
+        Me.AngleIn.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
+        Me.AngleIn.Name = "AngleIn"
+        Me.AngleIn.Size = New System.Drawing.Size(83, 20)
+        Me.AngleIn.TabIndex = 12
+        Me.AngleIn.Value = New Decimal(New Integer() {45, 0, 0, 0})
         '
-        'VertTextIn
+        'SpeedIn
         '
-        Me.VertTextIn.Location = New System.Drawing.Point(124, 94)
-        Me.VertTextIn.Name = "VertTextIn"
-        Me.VertTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.VertTextIn.TabIndex = 5
+        Me.SpeedIn.DecimalPlaces = 2
+        Me.SpeedIn.Enabled = False
+        Me.SpeedIn.Location = New System.Drawing.Point(123, 155)
+        Me.SpeedIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.SpeedIn.Name = "SpeedIn"
+        Me.SpeedIn.Size = New System.Drawing.Size(83, 20)
+        Me.SpeedIn.TabIndex = 11
+        Me.SpeedIn.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'HorzIn
+        '
+        Me.HorzIn.DecimalPlaces = 2
+        Me.HorzIn.Location = New System.Drawing.Point(123, 126)
+        Me.HorzIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.HorzIn.Name = "HorzIn"
+        Me.HorzIn.Size = New System.Drawing.Size(83, 20)
+        Me.HorzIn.TabIndex = 10
+        Me.HorzIn.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'VertIn
+        '
+        Me.VertIn.DecimalPlaces = 2
+        Me.VertIn.Location = New System.Drawing.Point(123, 95)
+        Me.VertIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.VertIn.Name = "VertIn"
+        Me.VertIn.Size = New System.Drawing.Size(83, 20)
+        Me.VertIn.TabIndex = 9
+        Me.VertIn.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 188)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(34, 13)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "Angle"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(6, 157)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(38, 13)
+        Me.Label4.TabIndex = 7
+        Me.Label4.Text = "Speed"
         '
         'Label2
         '
@@ -125,39 +175,8 @@ Partial Class VelocityInput
         '
         'DrawTimer
         '
+        Me.DrawTimer.Enabled = True
         Me.DrawTimer.Interval = 1
-        '
-        'AngleTextIn
-        '
-        Me.AngleTextIn.Location = New System.Drawing.Point(124, 185)
-        Me.AngleTextIn.Name = "AngleTextIn"
-        Me.AngleTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.AngleTextIn.TabIndex = 10
-        '
-        'SpeedTextIn
-        '
-        Me.SpeedTextIn.Location = New System.Drawing.Point(124, 155)
-        Me.SpeedTextIn.Name = "SpeedTextIn"
-        Me.SpeedTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.SpeedTextIn.TabIndex = 9
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 188)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 13)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Angle"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 157)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(38, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Speed"
         '
         'VelocityInput
         '
@@ -172,6 +191,10 @@ Partial Class VelocityInput
         CType(Me.MainPicBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.InputSelectGB.ResumeLayout(False)
         Me.InputSelectGB.PerformLayout()
+        CType(Me.AngleIn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SpeedIn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.HorzIn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.VertIn, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -181,12 +204,12 @@ Partial Class VelocityInput
     Friend WithEvents SpeedRadio As RadioButton
     Friend WithEvents ComponetsRadio As RadioButton
     Friend WithEvents DrawTimer As Timer
-    Friend WithEvents HorzTextIn As MaskedTextBox
-    Friend WithEvents VertTextIn As MaskedTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents AngleTextIn As MaskedTextBox
-    Friend WithEvents SpeedTextIn As MaskedTextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents AngleIn As NumericUpDown
+    Friend WithEvents SpeedIn As NumericUpDown
+    Friend WithEvents HorzIn As NumericUpDown
+    Friend WithEvents VertIn As NumericUpDown
 End Class
