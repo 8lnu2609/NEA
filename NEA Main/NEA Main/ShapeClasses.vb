@@ -1,4 +1,6 @@
-﻿Public MustInherit Class Shape
+﻿Imports System.Drawing.Drawing2D
+
+Public MustInherit Class Shape
     Public posX, posY As Single
     Public Const WIDTH As Integer = 20
     Public MustOverride Sub Draw(e As PaintEventArgs)
@@ -20,6 +22,29 @@ Public Class Line : Inherits Shape
     End Sub
 End Class
 
+Public Class Triangle : Inherits Shape
+    Public up As Boolean
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
+        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
+        If up Then
+            e.Graphics.FillPolygon(Brushes.Black, triangleUp)
+        Else
+            e.Graphics.FillPolygon(Brushes.Black, triangleRight)
+        End If
+
+    End Sub
+
+End Class
+
+Public Class LabelText
+
+    Public Shared Sub Draw(e As PaintEventArgs, labelText As String, posX As Single, posY As Single)
+        Dim drawFont As New Font("Arial", 10)
+        e.Graphics.DrawString(labelText, drawFont, Brushes.Black, posX, posY)
+    End Sub
+End Class
 
 #Region "Impelement"
 'Public Class Square : Inherits FallingShapes

@@ -75,7 +75,7 @@ Partial Class VelocityInput
         '
         'AngleIn
         '
-        Me.AngleIn.DecimalPlaces = 2
+        Me.AngleIn.DecimalPlaces = 3
         Me.AngleIn.Enabled = False
         Me.AngleIn.Location = New System.Drawing.Point(123, 186)
         Me.AngleIn.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
@@ -86,7 +86,7 @@ Partial Class VelocityInput
         '
         'SpeedIn
         '
-        Me.SpeedIn.DecimalPlaces = 2
+        Me.SpeedIn.DecimalPlaces = 3
         Me.SpeedIn.Enabled = False
         Me.SpeedIn.Location = New System.Drawing.Point(123, 155)
         Me.SpeedIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
@@ -97,7 +97,7 @@ Partial Class VelocityInput
         '
         'HorzIn
         '
-        Me.HorzIn.DecimalPlaces = 2
+        Me.HorzIn.DecimalPlaces = 3
         Me.HorzIn.Location = New System.Drawing.Point(123, 126)
         Me.HorzIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.HorzIn.Name = "HorzIn"
@@ -107,7 +107,7 @@ Partial Class VelocityInput
         '
         'VertIn
         '
-        Me.VertIn.DecimalPlaces = 2
+        Me.VertIn.DecimalPlaces = 3
         Me.VertIn.Location = New System.Drawing.Point(123, 95)
         Me.VertIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.VertIn.Name = "VertIn"

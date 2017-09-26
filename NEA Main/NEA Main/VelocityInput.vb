@@ -18,6 +18,14 @@
         .LineWidth = 2
     }
 
+    Dim upTriangle As Triangle = New Triangle With {
+            .up = True
+        }
+
+    Dim rightTriangle As Triangle = New Triangle With {
+            .up = False
+        }
+
     Private Sub MainPicBox_MouseMove(sender As Object, e As MouseEventArgs) Handles MainPicBox.MouseMove
 
         If MouseIsDown Then
@@ -70,14 +78,26 @@
     End Sub
 
     Private Sub MainPicBox_Paint(sender As Object, e As PaintEventArgs) Handles MainPicBox.Paint
+        rightTriangle.posX = 20 + xVelocity
+        rightTriangle.posY = 300 - Shape.WIDTH / 2
         If ComponetsRadio.Checked Then
             XLine.posXe = 20 + xVelocity
             YLine.posYe = 300 - yVelocity
+            YLine.posXe = 20
+            upTriangle.posX = Shape.WIDTH / 2
+            upTriangle.posY = 300 - (Shape.WIDTH) - yVelocity
+            rightTriangle.Draw(e)
+            upTriangle.Draw(e)
+            LabelText.Draw(e, xVelocity & "m/s", 30 + xVelocity, 300)
+            LabelText.Draw(e, yVelocity & "m/s", 30, 300 - yVelocity)
         ElseIf SpeedRadio.Checked Then
-            XLine.posXe = 200
             YLine.posYe = 300 - yVelocity
             YLine.posXe = 20 + xVelocity
+            LabelText.Draw(e, SpeedIn.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
+            LabelText.Draw(e, AngleIn.Value & "°", 25, 300)
         End If
+
+
         XLine.Draw(e)
         YLine.Draw(e)
     End Sub
