@@ -38,6 +38,21 @@ Public Class Triangle : Inherits Shape
 
 End Class
 
+Public Class Parabolic : Inherits Shape
+    Public ArcPoints(500) As Point
+    Public Overrides Sub Draw(e As PaintEventArgs)
+
+        e.Graphics.DrawCurve(Pens.Black, ArcPoints)
+    End Sub
+End Class
+
+Public Class Arc : Inherits Shape
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        e.Graphics.DrawArc(Pens.Black, posX, posY, 50, 50, 0, -angle)
+    End Sub
+End Class
+
 Public Class LabelText
 
     Public Shared Sub Draw(e As PaintEventArgs, labelText As String, posX As Single, posY As Single)

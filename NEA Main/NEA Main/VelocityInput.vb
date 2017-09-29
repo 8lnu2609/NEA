@@ -1,6 +1,7 @@
 ﻿Public Class VelocityInput
     Dim MouseIsDown As Boolean = False
-    Dim xVelocity, yVelocity As Single
+    Public xVelocity As Single = 100
+    Public yVelocity As Single = 100
 
     Dim XLine As Line = New Line With {
         .posX = 20,
@@ -19,12 +20,18 @@
     }
 
     Dim upTriangle As Triangle = New Triangle With {
-            .up = True
+        .up = True
         }
 
     Dim rightTriangle As Triangle = New Triangle With {
-            .up = False
+        .up = False
         }
+
+    Dim angleArc As Arc = New Arc With {
+    .posX = -5,
+    .posY = 275
+    }
+
 
     Private Sub MainPicBox_MouseMove(sender As Object, e As MouseEventArgs) Handles MainPicBox.MouseMove
 
@@ -54,6 +61,8 @@
             VertIn.Value = yVelocity
             HorzIn.Value = xVelocity
         End If
+        SharedVariables.xVelocity = xVelocity
+        SharedVariables.yVelocity = yVelocity
         MainPicBox.Refresh()
     End Sub
 
@@ -71,9 +80,11 @@
         If SpeedRadio.Checked Then
             SpeedIn.Enabled = True
             AngleIn.Enabled = True
+            SpeedIn.Maximum = 1000
         Else
             SpeedIn.Enabled = False
             AngleIn.Enabled = False
+            SpeedIn.Maximum = 1414.214
         End If
     End Sub
 
@@ -93,8 +104,11 @@
         ElseIf SpeedRadio.Checked Then
             YLine.posYe = 300 - yVelocity
             YLine.posXe = 20 + xVelocity
+            XLine.posXe = 50
             LabelText.Draw(e, SpeedIn.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
             LabelText.Draw(e, AngleIn.Value & "°", 25, 300)
+            angleArc.angle = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
+            angleArc.Draw(e)
         End If
 
 

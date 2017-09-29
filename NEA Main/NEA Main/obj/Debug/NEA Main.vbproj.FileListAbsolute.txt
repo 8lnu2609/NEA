@@ -29,10 +29,10 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.pdb
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.xml
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.Resources.resources
-C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.physicsForm.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.VelocityInput.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.GenerateResource.Cache
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.CoreCompileInputs.cache
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.exe
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.xml
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.pdb
+C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.ProjectileForm.resources

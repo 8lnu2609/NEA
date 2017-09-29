@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.NEA_Main.VelocityInput
+            Me.MainForm = Global.NEA_Main.MenuForm
         End Sub
     End Class
 End Namespace

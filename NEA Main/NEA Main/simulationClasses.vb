@@ -51,6 +51,7 @@ Public MustInherit Class Simulation
         mouseIsDown = False
     End Sub
     MustOverride Sub Paint(e As PaintEventArgs)
+    MustOverride Sub Start(velocityIn As VelocityInput)
     Protected mouseLocation As New Point
     Protected mouseIsDown As Boolean = False
 
@@ -60,9 +61,10 @@ Public Class Projectiles
     Inherits Simulation
     Protected projectle As Circle
     Protected bounds As Size
+    Protected arc As Parabolic = New Parabolic
     Protected startTime As DateTime
-    Protected startSpeed As Single
-    Protected startAngle As Single
+    Protected xVelocity As Single
+    Protected yVelocity As Single
 
     Public Sub New(boxSize As Size)
         bounds = boxSize
@@ -76,15 +78,26 @@ Public Class Projectiles
     Public Overrides Sub mouseMove(e As MouseEventArgs)
         MyBase.MouseMove(e)
     End Sub
+    Dim temp As Boolean = False
 
     Public Overrides Sub paint(e As PaintEventArgs)
-        e.Graphics.DrawLine(Pens.Black, CInt(Shape.WIDTH / 2), CInt(bounds.Height - (Shape.WIDTH / 2)), bounds.Width, CInt(bounds.Height - (Shape.WIDTH / 2)))
-        projectle.draw(e)
+        'e.Graphics.DrawLine(Pens.Black, CInt(Shape.WIDTH / 2), CInt(bounds.Height - (Shape.WIDTH / 2)), bounds.Width, CInt(bounds.Height - (Shape.WIDTH / 2)))
+        projectle.Draw(e)
+        If temp = True Then
+            For i = 0 To 500
+                arc.ArcPoints(i) = New Point(i + Shape.WIDTH, bounds.Height - Shape.WIDTH - GetYPosition(i, SharedVariables.xVelocity, SharedVariables.yVelocity))
+            Next
 
+        End If
     End Sub
 
-    Public Sub Move()
+    Function GetYPosition(xPos As Single, xVel As Single, yVel As Single)
+        Return yVel * (xPos / xVel) + 0.5 * -9.81 * (xPos / xVel) ^ 2
+    End Function
 
+    Public Overrides Sub Start(velocityIn As VelocityInput)
+        xVelocity = velocityIn.xVelocity
+        yVelocity = velocityIn.yVelocity
     End Sub
 
 End Class

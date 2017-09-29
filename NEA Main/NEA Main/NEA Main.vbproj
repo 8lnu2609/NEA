@@ -97,13 +97,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PhysicsForm.Designer.vb">
-      <DependentUpon>PhysicsForm.vb</DependentUpon>
+    <Compile Include="ProjectileForm.Designer.vb">
+      <DependentUpon>ProjectileForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="PhysicsForm.vb">
+    <Compile Include="ProjectileForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShapeClasses.vb" />
+    <Compile Include="SharedVariables.vb" />
     <Compile Include="SimulationClasses.vb" />
     <Compile Include="VelocityInput.Designer.vb">
       <DependentUpon>VelocityInput.vb</DependentUpon>
@@ -119,8 +120,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="PhysicsForm.resx">
-      <DependentUpon>PhysicsForm.vb</DependentUpon>
+    <EmbeddedResource Include="ProjectileForm.resx">
+      <DependentUpon>ProjectileForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VelocityInput.resx">
       <DependentUpon>VelocityInput.vb</DependentUpon>

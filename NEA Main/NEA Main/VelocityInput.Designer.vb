@@ -89,7 +89,7 @@ Partial Class VelocityInput
         Me.SpeedIn.DecimalPlaces = 3
         Me.SpeedIn.Enabled = False
         Me.SpeedIn.Location = New System.Drawing.Point(123, 155)
-        Me.SpeedIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.SpeedIn.Maximum = New Decimal(New Integer() {1414214, 0, 0, 196608})
         Me.SpeedIn.Name = "SpeedIn"
         Me.SpeedIn.Size = New System.Drawing.Size(83, 20)
         Me.SpeedIn.TabIndex = 11
@@ -188,6 +188,7 @@ Partial Class VelocityInput
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "VelocityInput"
         Me.Text = "Velocity Input"
+        Me.TopMost = True
         CType(Me.MainPicBox, System.ComponentModel.ISupportInitialize).EndInit()
         Me.InputSelectGB.ResumeLayout(False)
         Me.InputSelectGB.PerformLayout()
