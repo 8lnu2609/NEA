@@ -26,9 +26,9 @@ Partial Class ProjectileForm
         Me.picBoxMain = New System.Windows.Forms.PictureBox()
         Me.drawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.dataGroupBox = New System.Windows.Forms.GroupBox()
-        Me.HorzTextIn = New System.Windows.Forms.MaskedTextBox()
+        Me.xVelIn = New System.Windows.Forms.MaskedTextBox()
         Me.startButton = New System.Windows.Forms.Button()
-        Me.VertTextIn = New System.Windows.Forms.MaskedTextBox()
+        Me.yVelIn = New System.Windows.Forms.MaskedTextBox()
         Me.closeButton = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -57,9 +57,9 @@ Partial Class ProjectileForm
         Me.dataGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dataGroupBox.BackColor = System.Drawing.SystemColors.Control
-        Me.dataGroupBox.Controls.Add(Me.HorzTextIn)
+        Me.dataGroupBox.Controls.Add(Me.xVelIn)
         Me.dataGroupBox.Controls.Add(Me.startButton)
-        Me.dataGroupBox.Controls.Add(Me.VertTextIn)
+        Me.dataGroupBox.Controls.Add(Me.yVelIn)
         Me.dataGroupBox.Controls.Add(Me.closeButton)
         Me.dataGroupBox.Controls.Add(Me.Label2)
         Me.dataGroupBox.Controls.Add(Me.Label1)
@@ -72,10 +72,11 @@ Partial Class ProjectileForm
         '
         'HorzTextIn
         '
-        Me.HorzTextIn.Location = New System.Drawing.Point(124, 75)
-        Me.HorzTextIn.Name = "HorzTextIn"
-        Me.HorzTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.HorzTextIn.TabIndex = 18
+        Me.xVelIn.Location = New System.Drawing.Point(124, 75)
+        Me.xVelIn.Name = "HorzTextIn"
+        Me.xVelIn.ReadOnly = True
+        Me.xVelIn.Size = New System.Drawing.Size(76, 20)
+        Me.xVelIn.TabIndex = 18
         '
         'startButton
         '
@@ -89,10 +90,11 @@ Partial Class ProjectileForm
         '
         'VertTextIn
         '
-        Me.VertTextIn.Location = New System.Drawing.Point(124, 44)
-        Me.VertTextIn.Name = "VertTextIn"
-        Me.VertTextIn.Size = New System.Drawing.Size(76, 20)
-        Me.VertTextIn.TabIndex = 17
+        Me.yVelIn.Location = New System.Drawing.Point(124, 44)
+        Me.yVelIn.Name = "VertTextIn"
+        Me.yVelIn.ReadOnly = True
+        Me.yVelIn.Size = New System.Drawing.Size(76, 20)
+        Me.yVelIn.TabIndex = 17
         '
         'closeButton
         '
@@ -122,6 +124,9 @@ Partial Class ProjectileForm
         Me.Label1.Size = New System.Drawing.Size(99, 13)
         Me.Label1.TabIndex = 15
         Me.Label1.Text = "Vertical Component"
+        '
+        'dropTimer
+        '
         '
         'ProjectileForm
         '
@@ -153,8 +158,8 @@ Partial Class ProjectileForm
     Friend WithEvents dropTimer As System.Windows.Forms.Timer
     Friend WithEvents closeButton As Button
     Friend WithEvents startButton As Button
-    Friend WithEvents HorzTextIn As MaskedTextBox
-    Friend WithEvents VertTextIn As MaskedTextBox
+    Friend WithEvents xVelIn As MaskedTextBox
+    Friend WithEvents yVelIn As MaskedTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
 End Class

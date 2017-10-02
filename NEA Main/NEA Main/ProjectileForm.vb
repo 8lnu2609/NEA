@@ -57,4 +57,9 @@
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles startButton.Click
 
     End Sub
+
+    Private Sub dropTimer_Tick(sender As Object, e As EventArgs) Handles dropTimer.Tick
+        yVelIn.Text = SharedVariables.yVelocity
+        xVelIn.Text = SharedVariables.xVelocity
+    End Sub
 End Class
