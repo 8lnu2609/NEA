@@ -183,10 +183,12 @@ Partial Class VelocityInput
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(550, 344)
+        Me.ControlBox = False
         Me.Controls.Add(Me.InputSelectGB)
         Me.Controls.Add(Me.MainPicBox)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "VelocityInput"
+        Me.ShowInTaskbar = False
         Me.Text = "Velocity Input"
         Me.TopMost = True
         CType(Me.MainPicBox, System.ComponentModel.ISupportInitialize).EndInit()

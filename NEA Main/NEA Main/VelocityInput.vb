@@ -50,14 +50,11 @@
 
     Private Sub DrawTimer_Tick(sender As Object, e As EventArgs) Handles DrawTimer.Tick
         If ComponetsRadio.Checked Then
-            xVelocity = HorzIn.Value
-            yVelocity = VertIn.Value
             SpeedIn.Value = Maths.Pythag(xVelocity, yVelocity)
             AngleIn.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
 
         Else
-            xVelocity = SpeedIn.Value * Math.Cos(AngleIn.Value * Math.PI / 180)
-            yVelocity = SpeedIn.Value * Math.Sin(AngleIn.Value * Math.PI / 180)
+
             VertIn.Value = yVelocity
             HorzIn.Value = xVelocity
         End If
@@ -116,4 +113,21 @@
         YLine.Draw(e)
     End Sub
 
+    Private Sub VertIn_ValueChanged(sender As Object, e As EventArgs) Handles VertIn.ValueChanged
+        yVelocity = VertIn.Value
+    End Sub
+
+    Private Sub HorzIn_ValueChanged(sender As Object, e As EventArgs) Handles HorzIn.ValueChanged
+        xVelocity = HorzIn.Value
+    End Sub
+
+    Private Sub AngleIn_Leave(sender As Object, e As EventArgs) Handles AngleIn.Leave
+        xVelocity = SpeedIn.Value * Math.Cos(AngleIn.Value * Math.PI / 180)
+        yVelocity = SpeedIn.Value * Math.Sin(AngleIn.Value * Math.PI / 180)
+    End Sub
+
+    Private Sub SpeedIn_Leave(sender As Object, e As EventArgs) Handles SpeedIn.Leave
+        xVelocity = SpeedIn.Value * Math.Cos(AngleIn.Value * Math.PI / 180)
+        yVelocity = SpeedIn.Value * Math.Sin(AngleIn.Value * Math.PI / 180)
+    End Sub
 End Class

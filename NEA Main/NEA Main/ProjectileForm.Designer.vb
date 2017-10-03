@@ -33,6 +33,8 @@ Partial Class ProjectileForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dropTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.AccelerationCombo = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.picBoxMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dataGroupBox.SuspendLayout()
         Me.SuspendLayout()
@@ -45,7 +47,7 @@ Partial Class ProjectileForm
         Me.picBoxMain.BackColor = System.Drawing.Color.White
         Me.picBoxMain.Location = New System.Drawing.Point(12, 12)
         Me.picBoxMain.Name = "picBoxMain"
-        Me.picBoxMain.Size = New System.Drawing.Size(1100, 700)
+        Me.picBoxMain.Size = New System.Drawing.Size(1670, 1020)
         Me.picBoxMain.TabIndex = 0
         Me.picBoxMain.TabStop = False
         '
@@ -57,23 +59,25 @@ Partial Class ProjectileForm
         Me.dataGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dataGroupBox.BackColor = System.Drawing.SystemColors.Control
+        Me.dataGroupBox.Controls.Add(Me.Label3)
+        Me.dataGroupBox.Controls.Add(Me.AccelerationCombo)
         Me.dataGroupBox.Controls.Add(Me.xVelIn)
         Me.dataGroupBox.Controls.Add(Me.startButton)
         Me.dataGroupBox.Controls.Add(Me.yVelIn)
         Me.dataGroupBox.Controls.Add(Me.closeButton)
         Me.dataGroupBox.Controls.Add(Me.Label2)
         Me.dataGroupBox.Controls.Add(Me.Label1)
-        Me.dataGroupBox.Location = New System.Drawing.Point(1117, 12)
+        Me.dataGroupBox.Location = New System.Drawing.Point(1688, 12)
         Me.dataGroupBox.Name = "dataGroupBox"
-        Me.dataGroupBox.Size = New System.Drawing.Size(205, 699)
+        Me.dataGroupBox.Size = New System.Drawing.Size(205, 1021)
         Me.dataGroupBox.TabIndex = 14
         Me.dataGroupBox.TabStop = False
         Me.dataGroupBox.Text = "Data"
         '
-        'HorzTextIn
+        'xVelIn
         '
         Me.xVelIn.Location = New System.Drawing.Point(124, 75)
-        Me.xVelIn.Name = "HorzTextIn"
+        Me.xVelIn.Name = "xVelIn"
         Me.xVelIn.ReadOnly = True
         Me.xVelIn.Size = New System.Drawing.Size(76, 20)
         Me.xVelIn.TabIndex = 18
@@ -81,17 +85,17 @@ Partial Class ProjectileForm
         'startButton
         '
         Me.startButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.startButton.Location = New System.Drawing.Point(123, 641)
+        Me.startButton.Location = New System.Drawing.Point(123, 963)
         Me.startButton.Name = "startButton"
         Me.startButton.Size = New System.Drawing.Size(75, 23)
         Me.startButton.TabIndex = 16
         Me.startButton.Text = "Start"
         Me.startButton.UseVisualStyleBackColor = True
         '
-        'VertTextIn
+        'yVelIn
         '
         Me.yVelIn.Location = New System.Drawing.Point(124, 44)
-        Me.yVelIn.Name = "VertTextIn"
+        Me.yVelIn.Name = "yVelIn"
         Me.yVelIn.ReadOnly = True
         Me.yVelIn.Size = New System.Drawing.Size(76, 20)
         Me.yVelIn.TabIndex = 17
@@ -100,7 +104,7 @@ Partial Class ProjectileForm
         '
         Me.closeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.closeButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.closeButton.Location = New System.Drawing.Point(124, 670)
+        Me.closeButton.Location = New System.Drawing.Point(124, 992)
         Me.closeButton.Name = "closeButton"
         Me.closeButton.Size = New System.Drawing.Size(75, 23)
         Me.closeButton.TabIndex = 15
@@ -128,13 +132,29 @@ Partial Class ProjectileForm
         'dropTimer
         '
         '
+        'AccelerationCombo
+        '
+        Me.AccelerationCombo.FormattingEnabled = True
+        Me.AccelerationCombo.Location = New System.Drawing.Point(84, 121)
+        Me.AccelerationCombo.Name = "AccelerationCombo"
+        Me.AccelerationCombo.Size = New System.Drawing.Size(114, 21)
+        Me.AccelerationCombo.TabIndex = 19
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 116)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 26)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Acceleration" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "due to gravity"
+        '
         'ProjectileForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.closeButton
-        Me.ClientSize = New System.Drawing.Size(1327, 719)
-        Me.ControlBox = False
+        Me.ClientSize = New System.Drawing.Size(1904, 1041)
         Me.Controls.Add(Me.dataGroupBox)
         Me.Controls.Add(Me.picBoxMain)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -162,4 +182,6 @@ Partial Class ProjectileForm
     Friend WithEvents yVelIn As MaskedTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents AccelerationCombo As ComboBox
 End Class
