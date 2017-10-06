@@ -89,7 +89,7 @@ Partial Class VelocityInput
         Me.SpeedIn.DecimalPlaces = 3
         Me.SpeedIn.Enabled = False
         Me.SpeedIn.Location = New System.Drawing.Point(123, 155)
-        Me.SpeedIn.Maximum = New Decimal(New Integer() {1414214, 0, 0, 196608})
+        Me.SpeedIn.Maximum = New Decimal(New Integer() {424264, 0, 0, 196608})
         Me.SpeedIn.Name = "SpeedIn"
         Me.SpeedIn.Size = New System.Drawing.Size(83, 20)
         Me.SpeedIn.TabIndex = 11
@@ -99,17 +99,17 @@ Partial Class VelocityInput
         '
         Me.HorzIn.DecimalPlaces = 3
         Me.HorzIn.Location = New System.Drawing.Point(123, 126)
-        Me.HorzIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.HorzIn.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
         Me.HorzIn.Name = "HorzIn"
         Me.HorzIn.Size = New System.Drawing.Size(83, 20)
         Me.HorzIn.TabIndex = 10
-        Me.HorzIn.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.HorzIn.Value = New Decimal(New Integer() {50, 0, 0, 0})
         '
         'VertIn
         '
         Me.VertIn.DecimalPlaces = 3
         Me.VertIn.Location = New System.Drawing.Point(123, 95)
-        Me.VertIn.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.VertIn.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
         Me.VertIn.Name = "VertIn"
         Me.VertIn.Size = New System.Drawing.Size(83, 20)
         Me.VertIn.TabIndex = 9

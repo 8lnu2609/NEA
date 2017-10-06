@@ -1,6 +1,4 @@
-﻿Imports System.Drawing.Drawing2D
-
-Public MustInherit Class Shape
+﻿Public MustInherit Class Shape
     Public posX, posY As Single
     Public Const WIDTH As Integer = 20
     Public MustOverride Sub Draw(e As PaintEventArgs)
@@ -41,8 +39,8 @@ End Class
 Public Class Parabolic : Inherits Shape
     Public ArcPoints(500) As Point
     Public Overrides Sub Draw(e As PaintEventArgs)
-
         e.Graphics.DrawCurve(Pens.Black, ArcPoints)
+
     End Sub
 End Class
 

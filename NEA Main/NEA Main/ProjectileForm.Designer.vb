@@ -26,6 +26,8 @@ Partial Class ProjectileForm
         Me.picBoxMain = New System.Windows.Forms.PictureBox()
         Me.drawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.dataGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.AccelerationCombo = New System.Windows.Forms.ComboBox()
         Me.xVelIn = New System.Windows.Forms.MaskedTextBox()
         Me.startButton = New System.Windows.Forms.Button()
         Me.yVelIn = New System.Windows.Forms.MaskedTextBox()
@@ -33,8 +35,6 @@ Partial Class ProjectileForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dropTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.AccelerationCombo = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
         CType(Me.picBoxMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dataGroupBox.SuspendLayout()
         Me.SuspendLayout()
@@ -73,6 +73,24 @@ Partial Class ProjectileForm
         Me.dataGroupBox.TabIndex = 14
         Me.dataGroupBox.TabStop = False
         Me.dataGroupBox.Text = "Data"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(6, 116)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 26)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Acceleration" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "due to gravity"
+        '
+        'AccelerationCombo
+        '
+        Me.AccelerationCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.AccelerationCombo.FormattingEnabled = True
+        Me.AccelerationCombo.Location = New System.Drawing.Point(84, 121)
+        Me.AccelerationCombo.Name = "AccelerationCombo"
+        Me.AccelerationCombo.Size = New System.Drawing.Size(114, 21)
+        Me.AccelerationCombo.TabIndex = 19
         '
         'xVelIn
         '
@@ -131,23 +149,6 @@ Partial Class ProjectileForm
         '
         'dropTimer
         '
-        '
-        'AccelerationCombo
-        '
-        Me.AccelerationCombo.FormattingEnabled = True
-        Me.AccelerationCombo.Location = New System.Drawing.Point(84, 121)
-        Me.AccelerationCombo.Name = "AccelerationCombo"
-        Me.AccelerationCombo.Size = New System.Drawing.Size(114, 21)
-        Me.AccelerationCombo.TabIndex = 19
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 116)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(71, 26)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "Acceleration" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "due to gravity"
         '
         'ProjectileForm
         '

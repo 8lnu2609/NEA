@@ -28,20 +28,32 @@
         }
 
     Dim angleArc As Arc = New Arc With {
-    .posX = -5,
-    .posY = 275
+        .posX = -5,
+        .posY = 275
     }
 
 
     Private Sub MainPicBox_MouseMove(sender As Object, e As MouseEventArgs) Handles MainPicBox.MouseMove
-
         If MouseIsDown Then
+            If ComponetsRadio.Checked Then
+                If 320 - e.Y > e.X And e.Y > 20 And e.Y < 320 Then
+                    VertIn.Value = 320 - e.Y
 
+                ElseIf e.X > 320 - e.Y And e.X > 20 And e.X < 320 Then
+                    HorzIn.Value = e.X - 20
+                End If
+            Else
+                If e.X > 20 And e.X < 320 And e.Y < 300 And e.Y > 0 Then
+                    SpeedIn.Value = Maths.Pythag(e.X - 20, 320 - e.Y)
+                    AngleIn.Value = Maths.RadToDeg(Math.Abs(Math.Atan((320 - e.Y) / (e.X - 30))))
+                End If
+            End If
         End If
     End Sub
 
     Private Sub MainPicBox_MouseDown(sender As Object, e As MouseEventArgs) Handles MainPicBox.MouseDown
         MouseIsDown = True
+
     End Sub
 
     Private Sub MainPicBox_MouseUp(sender As Object, e As MouseEventArgs) Handles MainPicBox.MouseUp
@@ -77,11 +89,9 @@
         If SpeedRadio.Checked Then
             SpeedIn.Enabled = True
             AngleIn.Enabled = True
-            SpeedIn.Maximum = 1000
         Else
             SpeedIn.Enabled = False
             AngleIn.Enabled = False
-            SpeedIn.Maximum = 1414.214
         End If
     End Sub
 
