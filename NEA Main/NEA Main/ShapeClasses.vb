@@ -20,6 +20,45 @@ Public Class Line : Inherits Shape
     End Sub
 End Class
 
+Public Class Triangle : Inherits Shape
+    Public up As Boolean
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
+        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
+        If up Then
+            e.Graphics.FillPolygon(Brushes.Black, triangleUp)
+        Else
+            e.Graphics.FillPolygon(Brushes.Black, triangleRight)
+        End If
+
+    End Sub
+
+End Class
+
+Public Class Parabolic : Inherits Shape
+    Public ArcPoints(500) As Point
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim myPen As New Pen(Color.Black, 1)
+        myPen.DashPattern = {3, 1}
+        e.Graphics.DrawCurve(Pens.Black, ArcPoints)
+    End Sub
+End Class
+
+Public Class Arc : Inherits Shape
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        e.Graphics.DrawArc(Pens.Black, posX, posY, 50, 50, 0, -angle)
+    End Sub
+End Class
+
+Public Class LabelText
+
+    Public Shared Sub Draw(e As PaintEventArgs, labelText As String, posX As Single, posY As Single)
+        Dim drawFont As New Font("Arial", 10)
+        e.Graphics.DrawString(labelText, drawFont, Brushes.Black, posX, posY)
+    End Sub
+End Class
 
 #Region "Impelement"
 'Public Class Square : Inherits FallingShapes
