@@ -47,7 +47,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>atom_clipart_1_qMa_icon.ico</ApplicationIcon>
+    <ApplicationIcon>AtomIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -75,11 +75,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuForm.vb">
-      <SubType>Form</SubType>
+    <Compile Include="frmMenu.Designer.vb">
+      <DependentUpon>frmMenu.vb</DependentUpon>
     </Compile>
-    <Compile Include="MenuForm.Designer.vb">
-      <DependentUpon>MenuForm.vb</DependentUpon>
+    <Compile Include="frmMenu.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -97,34 +96,37 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ProjectileForm.Designer.vb">
-      <DependentUpon>ProjectileForm.vb</DependentUpon>
+    <Compile Include="frmProjectile.Designer.vb">
+      <DependentUpon>frmProjectile.vb</DependentUpon>
     </Compile>
-    <Compile Include="ProjectileForm.vb">
+    <Compile Include="frmProjectile.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShapeClasses.vb" />
     <Compile Include="SharedVariables.vb" />
     <Compile Include="Maths.vb" />
-    <Compile Include="VelocityInput.Designer.vb">
-      <DependentUpon>VelocityInput.vb</DependentUpon>
+    <Compile Include="frmVelocityInput.Designer.vb">
+      <DependentUpon>frmVelocityInput.vb</DependentUpon>
     </Compile>
-    <Compile Include="VelocityInput.vb">
+    <Compile Include="frmVelocityInput.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectileForm.resx">
-      <DependentUpon>ProjectileForm.vb</DependentUpon>
+    <EmbeddedResource Include="frmProjectile.resx">
+      <DependentUpon>frmProjectile.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VelocityInput.resx">
-      <DependentUpon>VelocityInput.vb</DependentUpon>
+    <EmbeddedResource Include="frmVelocityInput.resx">
+      <DependentUpon>frmVelocityInput.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -140,7 +142,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="atom_clipart_1_qMa_icon.ico" />
+    <Content Include="AtomIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
