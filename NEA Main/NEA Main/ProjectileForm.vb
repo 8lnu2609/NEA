@@ -3,8 +3,8 @@
     Dim mouseLocation As New Point
     Dim velocityIn As VelocityInput = New VelocityInput
     Dim projectle As Circle = New Circle With {
-    .posX = Shape.WIDTH / 2,
-    .posY = 1020 - Shape.WIDTH / 2
+    .posX = 0,
+    .posY = BOXHEIGHT - Shape.WIDTH / 2
     }
     Dim arc As Parabolic = New Parabolic
     Dim startTime As DateTime
@@ -12,6 +12,10 @@
     Dim yVelocity As Single
     Const BOXWIDTH As Integer = 1670
     Const BOXHEIGHT As Integer = 1020
+    Dim totalTime As Single
+    Dim range As Single
+    Dim maxHeight
+    Dim scalar As Integer = 1
     Dim AccelerationDictionary As Dictionary(Of String, Single) = New Dictionary(Of String, Single) From {
         {"Sun", 274.13},
         {"Mercury", 3.59},
@@ -30,16 +34,18 @@
         drawTimer.Interval = 1
         drawTimer.Start()
         dropTimer.Interval = 1
-        velocityIn.Show()
 
         For Each pair As KeyValuePair(Of String, Single) In AccelerationDictionary
-            AccelerationCombo.Items.Add(pair.Key)
+            AccelerationCombo.Items.Add(String.Format("{0}, {1}ms^-2", pair.Key, pair.Value))
         Next
         AccelerationCombo.SelectedIndex = 3
+        velocityIn.ShowDialog()
+        UpdateValues()
+
     End Sub
 
     Function GetAcceleration() As Single
-        Return AccelerationDictionary.Item(AccelerationCombo.SelectedItem())
+        Return AccelerationDictionary.Item(AccelerationCombo.SelectedItem().ToString.Split(",")(0))
     End Function
 
     'Private Sub PicBoxMain_MouseDown(sender As Object, e As MouseEventArgs) Handles picBoxMain.MouseDown
@@ -61,21 +67,18 @@
     'End Sub
 
     Private Sub PicBoxMain_Paint(sender As Object, e As PaintEventArgs) Handles picBoxMain.Paint
-        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
-        e.Graphics.InterpolationMode = Drawing2D.InterpolationMode.HighQualityBilinear
         DrawGrid(e)
         yVelIn.Text = SharedVariables.yVelocity
         xVelIn.Text = SharedVariables.xVelocity
+        projectle.Draw(e)
         arc.Draw(e)
-
     End Sub
 
     Private Sub DrawTimer_Tick(sender As Object, e As EventArgs) Handles drawTimer.Tick
         picBoxMain.Refresh()
         If Not (SharedVariables.xVelocity = 0 Or SharedVariables.yVelocity = 0) Then
-
             For i = 0 To 500 Step 1
-                arc.ArcPoints(i) = New Point(i * 1670 / 500, BOXHEIGHT - GetYPos(i * 1670 / 500, GetAcceleration))
+                arc.ArcPoints(i) = New Point(i * BOXWIDTH / 500 + Shape.WIDTH / 2, BOXHEIGHT - GetYPos(i * BOXWIDTH / 500, GetAcceleration))
             Next
         End If
     End Sub
@@ -102,11 +105,47 @@
     End Sub
 
     Private Sub DropTimer_Tick(sender As Object, e As EventArgs) Handles dropTimer.Tick
-        If projectle.posY >= 0 Then
-            projectle.posX += xVelocity * (Now - startTime).TotalSeconds
-            projectle.posY += yVelocity * (Now - startTime).TotalSeconds
+        projectle.posX += SharedVariables.xVelocity * (Now - startTime).TotalSeconds
+        projectle.posY -= SharedVariables.yVelocity * (Now - startTime).TotalSeconds - 0.5 * GetAcceleration() * (Now - startTime).TotalSeconds ^ 2
+        startTime = Now
+    End Sub
+
+    Private Sub RealTimeRadio_CheckedChanged(sender As Object, e As EventArgs) Handles RealTimeRadio.CheckedChanged
+        If RealTimeRadio.Checked Then
+            TimeTrackBar.Hide()
+            startButton.Show()
         Else
-            dropTimer.Stop()
+            TimeTrackBar.Show()
+            startButton.Hide()
         End If
     End Sub
+
+    Private Sub ShowVelocity_Click(sender As Object, e As EventArgs) Handles ShowVelocity.Click
+        velocityIn.ShowDialog()
+        UpdateValues()
+
+    End Sub
+
+    Private Sub TimeTrackBar_Scroll(sender As Object, e As EventArgs) Handles TimeTrackBar.Scroll
+        If StepByStepRadio.Checked Then
+            ToolTips.SetToolTip(TimeTrackBar, "Time: " & TimeTrackBar.Value / 100)
+            projectle.posX = SharedVariables.xVelocity * (TimeTrackBar.Value / 100)
+            projectle.posY = BOXHEIGHT - Shape.WIDTH / 2 - (SharedVariables.yVelocity * (TimeTrackBar.Value / 100) + -0.5 * GetAcceleration() * (TimeTrackBar.Value / 100) ^ 2)
+        End If
+    End Sub
+
+    Sub UpdateValues()
+        totalTime = Maths.QuadraticSolve(-0.5 * GetAcceleration(), SharedVariables.yVelocity, 0)
+        range = SharedVariables.xVelocity * totalTime
+        maxHeight = (-SharedVariables.yVelocity) / (2 * -GetAcceleration())
+        TimeTrackBar.Maximum = totalTime * 100
+        TimeLabel.Text = "Total time of flight: " & totalTime
+        RangeLabel.Text = "Range: " & range
+        MaxHeightLabel.Text = "Max height: " & maxHeight
+    End Sub
+
+    Private Sub AccelerationCombo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AccelerationCombo.SelectedIndexChanged
+        UpdateValues()
+    End Sub
+
 End Class

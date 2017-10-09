@@ -37,15 +37,15 @@
         If MouseIsDown Then
             If ComponetsRadio.Checked Then
                 If 320 - e.Y > e.X And e.Y > 20 And e.Y < 320 Then
-                    VertIn.Value = 320 - e.Y
+                    VertIn.Value = Int((320 - e.Y) / 3)
 
                 ElseIf e.X > 320 - e.Y And e.X > 20 And e.X < 320 Then
-                    HorzIn.Value = e.X - 20
+                    HorzIn.Value = Int(((e.X - 20) / 3))
                 End If
             Else
                 If e.X > 20 And e.X < 320 And e.Y < 300 And e.Y > 0 Then
-                    SpeedIn.Value = Maths.Pythag(e.X - 20, 320 - e.Y)
-                    AngleIn.Value = Maths.RadToDeg(Math.Abs(Math.Atan((320 - e.Y) / (e.X - 30))))
+                    SpeedIn.Value = Maths.Pythag(Int((e.X - 20) / 3), Int((320 - e.Y) / 3))
+                    AngleIn.Value = Maths.RadToDeg(Math.Abs(Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 30) / 3)))))
                 End If
             End If
         End If
@@ -62,11 +62,17 @@
 
     Private Sub DrawTimer_Tick(sender As Object, e As EventArgs) Handles DrawTimer.Tick
         If ComponetsRadio.Checked Then
+            SpeedIn.Maximum = 142
             SpeedIn.Value = Maths.Pythag(xVelocity, yVelocity)
-            AngleIn.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
+            If yVelocity = 0 Then
+                AngleIn.Value = 0
+            Else
+                AngleIn.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
+            End If
+
 
         Else
-
+            SpeedIn.Maximum = 100
             VertIn.Value = yVelocity
             HorzIn.Value = xVelocity
         End If
@@ -96,21 +102,21 @@
     End Sub
 
     Private Sub MainPicBox_Paint(sender As Object, e As PaintEventArgs) Handles MainPicBox.Paint
-        rightTriangle.posX = 20 + xVelocity
+        rightTriangle.posX = 20 + xVelocity * 3
         rightTriangle.posY = 300 - Shape.WIDTH / 2
         If ComponetsRadio.Checked Then
-            XLine.posXe = 20 + xVelocity
-            YLine.posYe = 300 - yVelocity
+            XLine.posXe = 20 + xVelocity * 3
+            YLine.posYe = 300 - yVelocity * 3
             YLine.posXe = 20
             upTriangle.posX = Shape.WIDTH / 2
-            upTriangle.posY = 300 - (Shape.WIDTH) - yVelocity
+            upTriangle.posY = 300 - (Shape.WIDTH) - yVelocity * 3
             rightTriangle.Draw(e)
             upTriangle.Draw(e)
             LabelText.Draw(e, xVelocity & "m/s", 30 + xVelocity, 300)
             LabelText.Draw(e, yVelocity & "m/s", 30, 300 - yVelocity)
         ElseIf SpeedRadio.Checked Then
-            YLine.posYe = 300 - yVelocity
-            YLine.posXe = 20 + xVelocity
+            YLine.posYe = 0 - yVelocity * 3
+            YLine.posXe = (20 + xVelocity) * 3
             XLine.posXe = 50
             LabelText.Draw(e, SpeedIn.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
             LabelText.Draw(e, AngleIn.Value & "°", 25, 300)
@@ -139,5 +145,9 @@
     Private Sub SpeedIn_Leave(sender As Object, e As EventArgs) Handles SpeedIn.Leave
         xVelocity = SpeedIn.Value * Math.Cos(AngleIn.Value * Math.PI / 180)
         yVelocity = SpeedIn.Value * Math.Sin(AngleIn.Value * Math.PI / 180)
+    End Sub
+
+    Private Sub CloseButton_Click(sender As Object, e As EventArgs) Handles CloseButton.Click
+        Close()
     End Sub
 End Class

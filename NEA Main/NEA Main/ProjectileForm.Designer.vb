@@ -26,6 +26,14 @@ Partial Class ProjectileForm
         Me.picBoxMain = New System.Windows.Forms.PictureBox()
         Me.drawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.dataGroupBox = New System.Windows.Forms.GroupBox()
+        Me.MaxHeightLabel = New System.Windows.Forms.Label()
+        Me.RangeLabel = New System.Windows.Forms.Label()
+        Me.TimeLabel = New System.Windows.Forms.Label()
+        Me.ShowVelocity = New System.Windows.Forms.Button()
+        Me.TimePannel = New System.Windows.Forms.Panel()
+        Me.TimeTrackBar = New System.Windows.Forms.TrackBar()
+        Me.StepByStepRadio = New System.Windows.Forms.RadioButton()
+        Me.RealTimeRadio = New System.Windows.Forms.RadioButton()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.AccelerationCombo = New System.Windows.Forms.ComboBox()
         Me.xVelIn = New System.Windows.Forms.MaskedTextBox()
@@ -35,8 +43,11 @@ Partial Class ProjectileForm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.dropTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.picBoxMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.dataGroupBox.SuspendLayout()
+        Me.TimePannel.SuspendLayout()
+        CType(Me.TimeTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picBoxMain
@@ -59,6 +70,11 @@ Partial Class ProjectileForm
         Me.dataGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dataGroupBox.BackColor = System.Drawing.SystemColors.Control
+        Me.dataGroupBox.Controls.Add(Me.MaxHeightLabel)
+        Me.dataGroupBox.Controls.Add(Me.RangeLabel)
+        Me.dataGroupBox.Controls.Add(Me.TimeLabel)
+        Me.dataGroupBox.Controls.Add(Me.ShowVelocity)
+        Me.dataGroupBox.Controls.Add(Me.TimePannel)
         Me.dataGroupBox.Controls.Add(Me.Label3)
         Me.dataGroupBox.Controls.Add(Me.AccelerationCombo)
         Me.dataGroupBox.Controls.Add(Me.xVelIn)
@@ -73,6 +89,84 @@ Partial Class ProjectileForm
         Me.dataGroupBox.TabIndex = 14
         Me.dataGroupBox.TabStop = False
         Me.dataGroupBox.Text = "Data"
+        '
+        'MaxHeightLabel
+        '
+        Me.MaxHeightLabel.AutoSize = True
+        Me.MaxHeightLabel.Location = New System.Drawing.Point(6, 330)
+        Me.MaxHeightLabel.Name = "MaxHeightLabel"
+        Me.MaxHeightLabel.Size = New System.Drawing.Size(65, 13)
+        Me.MaxHeightLabel.TabIndex = 25
+        Me.MaxHeightLabel.Text = "Max height: "
+        '
+        'RangeLabel
+        '
+        Me.RangeLabel.AutoSize = True
+        Me.RangeLabel.Location = New System.Drawing.Point(6, 300)
+        Me.RangeLabel.Name = "RangeLabel"
+        Me.RangeLabel.Size = New System.Drawing.Size(45, 13)
+        Me.RangeLabel.TabIndex = 24
+        Me.RangeLabel.Text = "Range: "
+        '
+        'TimeLabel
+        '
+        Me.TimeLabel.AutoSize = True
+        Me.TimeLabel.Location = New System.Drawing.Point(6, 270)
+        Me.TimeLabel.Name = "TimeLabel"
+        Me.TimeLabel.Size = New System.Drawing.Size(96, 13)
+        Me.TimeLabel.TabIndex = 23
+        Me.TimeLabel.Text = "Total time of flight: "
+        '
+        'ShowVelocity
+        '
+        Me.ShowVelocity.Location = New System.Drawing.Point(6, 19)
+        Me.ShowVelocity.Name = "ShowVelocity"
+        Me.ShowVelocity.Size = New System.Drawing.Size(99, 23)
+        Me.ShowVelocity.TabIndex = 22
+        Me.ShowVelocity.Text = "Enter Velocity"
+        Me.ShowVelocity.UseVisualStyleBackColor = True
+        '
+        'TimePannel
+        '
+        Me.TimePannel.Controls.Add(Me.TimeTrackBar)
+        Me.TimePannel.Controls.Add(Me.StepByStepRadio)
+        Me.TimePannel.Controls.Add(Me.RealTimeRadio)
+        Me.TimePannel.Location = New System.Drawing.Point(6, 162)
+        Me.TimePannel.Name = "TimePannel"
+        Me.TimePannel.Size = New System.Drawing.Size(189, 105)
+        Me.TimePannel.TabIndex = 21
+        '
+        'TimeTrackBar
+        '
+        Me.TimeTrackBar.Location = New System.Drawing.Point(3, 49)
+        Me.TimeTrackBar.Name = "TimeTrackBar"
+        Me.TimeTrackBar.Size = New System.Drawing.Size(183, 45)
+        Me.TimeTrackBar.TabIndex = 17
+        Me.TimeTrackBar.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.ToolTips.SetToolTip(Me.TimeTrackBar, "Time: 0")
+        Me.TimeTrackBar.Visible = False
+        '
+        'StepByStepRadio
+        '
+        Me.StepByStepRadio.AutoSize = True
+        Me.StepByStepRadio.Location = New System.Drawing.Point(9, 26)
+        Me.StepByStepRadio.Name = "StepByStepRadio"
+        Me.StepByStepRadio.Size = New System.Drawing.Size(105, 17)
+        Me.StepByStepRadio.TabIndex = 16
+        Me.StepByStepRadio.Text = "Run step by step"
+        Me.StepByStepRadio.UseVisualStyleBackColor = True
+        '
+        'RealTimeRadio
+        '
+        Me.RealTimeRadio.AutoSize = True
+        Me.RealTimeRadio.Checked = True
+        Me.RealTimeRadio.Location = New System.Drawing.Point(9, 3)
+        Me.RealTimeRadio.Name = "RealTimeRadio"
+        Me.RealTimeRadio.Size = New System.Drawing.Size(98, 17)
+        Me.RealTimeRadio.TabIndex = 15
+        Me.RealTimeRadio.TabStop = True
+        Me.RealTimeRadio.Text = "Run in real time"
+        Me.RealTimeRadio.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -149,6 +243,13 @@ Partial Class ProjectileForm
         '
         'dropTimer
         '
+        Me.dropTimer.Interval = 1
+        '
+        'ToolTips
+        '
+        Me.ToolTips.AutoPopDelay = 5000
+        Me.ToolTips.InitialDelay = 1
+        Me.ToolTips.ReshowDelay = 100
         '
         'ProjectileForm
         '
@@ -170,6 +271,9 @@ Partial Class ProjectileForm
         CType(Me.picBoxMain, System.ComponentModel.ISupportInitialize).EndInit()
         Me.dataGroupBox.ResumeLayout(False)
         Me.dataGroupBox.PerformLayout()
+        Me.TimePannel.ResumeLayout(False)
+        Me.TimePannel.PerformLayout()
+        CType(Me.TimeTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -185,4 +289,13 @@ Partial Class ProjectileForm
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents AccelerationCombo As ComboBox
+    Friend WithEvents TimePannel As Panel
+    Friend WithEvents StepByStepRadio As RadioButton
+    Friend WithEvents RealTimeRadio As RadioButton
+    Friend WithEvents TimeTrackBar As TrackBar
+    Friend WithEvents ToolTips As ToolTip
+    Friend WithEvents ShowVelocity As Button
+    Friend WithEvents MaxHeightLabel As Label
+    Friend WithEvents RangeLabel As Label
+    Friend WithEvents TimeLabel As Label
 End Class

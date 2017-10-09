@@ -39,8 +39,9 @@ End Class
 Public Class Parabolic : Inherits Shape
     Public ArcPoints(500) As Point
     Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim myPen As New Pen(Color.Black, 1)
+        myPen.DashPattern = {3, 1}
         e.Graphics.DrawCurve(Pens.Black, ArcPoints)
-
     End Sub
 End Class
 

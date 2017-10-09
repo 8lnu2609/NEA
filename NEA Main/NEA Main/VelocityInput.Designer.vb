@@ -36,6 +36,7 @@ Partial Class VelocityInput
         Me.SpeedRadio = New System.Windows.Forms.RadioButton()
         Me.ComponetsRadio = New System.Windows.Forms.RadioButton()
         Me.DrawTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.CloseButton = New System.Windows.Forms.Button()
         CType(Me.MainPicBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.InputSelectGB.SuspendLayout()
         CType(Me.AngleIn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,6 +56,7 @@ Partial Class VelocityInput
         '
         'InputSelectGB
         '
+        Me.InputSelectGB.Controls.Add(Me.CloseButton)
         Me.InputSelectGB.Controls.Add(Me.AngleIn)
         Me.InputSelectGB.Controls.Add(Me.SpeedIn)
         Me.InputSelectGB.Controls.Add(Me.HorzIn)
@@ -89,7 +91,7 @@ Partial Class VelocityInput
         Me.SpeedIn.DecimalPlaces = 3
         Me.SpeedIn.Enabled = False
         Me.SpeedIn.Location = New System.Drawing.Point(123, 155)
-        Me.SpeedIn.Maximum = New Decimal(New Integer() {424264, 0, 0, 196608})
+        Me.SpeedIn.Maximum = New Decimal(New Integer() {141421356, 0, 0, 393216})
         Me.SpeedIn.Name = "SpeedIn"
         Me.SpeedIn.Size = New System.Drawing.Size(83, 20)
         Me.SpeedIn.TabIndex = 11
@@ -99,7 +101,6 @@ Partial Class VelocityInput
         '
         Me.HorzIn.DecimalPlaces = 3
         Me.HorzIn.Location = New System.Drawing.Point(123, 126)
-        Me.HorzIn.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
         Me.HorzIn.Name = "HorzIn"
         Me.HorzIn.Size = New System.Drawing.Size(83, 20)
         Me.HorzIn.TabIndex = 10
@@ -109,11 +110,10 @@ Partial Class VelocityInput
         '
         Me.VertIn.DecimalPlaces = 3
         Me.VertIn.Location = New System.Drawing.Point(123, 95)
-        Me.VertIn.Maximum = New Decimal(New Integer() {300, 0, 0, 0})
         Me.VertIn.Name = "VertIn"
         Me.VertIn.Size = New System.Drawing.Size(83, 20)
         Me.VertIn.TabIndex = 9
-        Me.VertIn.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.VertIn.Value = New Decimal(New Integer() {50, 0, 0, 0})
         '
         'Label3
         '
@@ -178,6 +178,15 @@ Partial Class VelocityInput
         Me.DrawTimer.Enabled = True
         Me.DrawTimer.Interval = 1
         '
+        'CloseButton
+        '
+        Me.CloseButton.Location = New System.Drawing.Point(131, 315)
+        Me.CloseButton.Name = "CloseButton"
+        Me.CloseButton.Size = New System.Drawing.Size(75, 23)
+        Me.CloseButton.TabIndex = 2
+        Me.CloseButton.Text = "Close"
+        Me.CloseButton.UseVisualStyleBackColor = True
+        '
         'VelocityInput
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -215,4 +224,5 @@ Partial Class VelocityInput
     Friend WithEvents SpeedIn As NumericUpDown
     Friend WithEvents HorzIn As NumericUpDown
     Friend WithEvents VertIn As NumericUpDown
+    Friend WithEvents CloseButton As Button
 End Class

@@ -23,14 +23,19 @@
     ''' <param name="b"></param>
     ''' <param name="c"></param>
     ''' <returns></returns>
-    Public Shared Function QuadraticSolve(a As Single, b As Single, c As Single) As Single()
+    Public Shared Function QuadraticSolve(a As Single, b As Single, c As Single) As Single
         Dim soultion(1) As Single
         If (b ^ 2 - 4 * a * c < 0) Then
             Return Nothing
         Else
             soultion(0) = (-b + Math.Sqrt(b ^ 2 - 4 * a * c)) / (2 * a)
             soultion(1) = (-b - Math.Sqrt(b ^ 2 - 4 * a * c)) / (2 * a)
-            Return soultion
+            If soultion(0) > soultion(1) Then
+                Return soultion(0)
+            Else
+                Return soultion(1)
+
+            End If
         End If
     End Function
 
