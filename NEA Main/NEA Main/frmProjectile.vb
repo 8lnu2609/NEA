@@ -1,6 +1,6 @@
 ﻿Public Class frmProjectile
-    Const BOXWIDTH As Integer = 1682
-    Const BOXHEIGHT As Integer = 1027
+    Const BOXWIDTH As Integer = 1686
+    Const BOXHEIGHT As Integer = 1024
     Dim MouseHeldDown As Boolean = False
     Dim StartTime As Date
     Dim TotalTime As Single
@@ -14,7 +14,6 @@
     .posX = 0,
     .posY = BOXHEIGHT - Shape.WIDTH / 2
     }
-
     Dim AccelerationDictionary As New Dictionary(Of String, Single) From {
         {"Sun", 274.13},
         {"Mercury", 3.59},
@@ -37,6 +36,36 @@
         Range = BOXWIDTH
         VelocityInput.ShowDialog()
         UpdateValues()
+        MessageBox.Show(Size.ToString)
+    End Sub
+
+    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+        Close()
+        VelocityInput.Close()
+    End Sub
+
+    Private Sub cmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
+        tmrCalculation.Start()
+        Projectile.posX = 0
+        Projectile.posY = BOXHEIGHT - Shape.WIDTH / 2
+        StartTime = Now
+    End Sub
+
+    Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
+        ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "ms^-2")
+        UpdateValues()
+    End Sub
+
+    Private Sub trbZoom_Scroll(sender As Object, e As EventArgs) Handles trbZoom.Scroll
+        If trbZoom.Value > 0 Then
+            Scalar = trbZoom.Value
+            lblZoomLevel.Text = String.Format("Zoom: {0}x", trbZoom.Value)
+        Else
+            Scalar = 1 / (Math.Abs(trbZoom.Value) + 1)
+            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 1)
+        End If
+        UpdateValues()
+
     End Sub
 
     Function GetAcceleration() As Single
@@ -79,15 +108,17 @@
     End Sub
 
     Sub GetArcPoints()
-        If Not (xVelocity = 0 Or yVelocity = 0) Then
-            For i = 0 To 500 Step 1
-                TracingArc.ArcPoints(i) = New Point(((i * Range / 500) * Scalar) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetAcceleration) * Scalar))
-            Next
-        End If
+        For i = 0 To 500 Step 1
+            TracingArc.ArcPoints(i) = New Point(((i * Range / 500) * Scalar) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetAcceleration) * Scalar))
+        Next
     End Sub
 
     Function GetYPosition(x As Integer, Acceleration As Single) As Single
-        Return yVelocity * (x / xVelocity) + 0.5 * -Acceleration * (x / xVelocity) ^ 2
+        If xVelocity <> 0 Then
+            Return yVelocity * (x / xVelocity) + 0.5 * -Acceleration * (x / xVelocity) ^ 2
+        Else
+            Return 0
+        End If
     End Function
 
     Private Sub DrawGrid(e As PaintEventArgs)
@@ -95,18 +126,6 @@
         For iCounter = 0 To picDisplay.Width Step Shape.WIDTH
             e.Graphics.DrawLine(MyPen, iCounter, 0, iCounter, picDisplay.Height)
         Next
-    End Sub
-
-    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
-        Close()
-        VelocityInput.Close()
-    End Sub
-
-    Private Sub cmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
-        tmrCalculation.Start()
-        Projectile.posX = 0
-        Projectile.posY = BOXHEIGHT - Shape.WIDTH / 2
-        StartTime = Now
     End Sub
 
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
@@ -148,29 +167,13 @@
         Range = xVelocity * TotalTime
         MaxHeight = (-yVelocity) / (2 * -GetAcceleration())
         trbTime.Maximum = TotalTime * 100
-        lblTotalTime.Text = "Total time of flight: " & TotalTime
-        lblRange.Text = "Range: " & Range
-        lblMaxHeightDisplay.Text = "Max height: " & MaxHeight
+        lblTotalTime.Text = "Total time of flight: " & TotalTime & "s"
+        lblRange.Text = "Range: " & Range & "m"
+        lblMaxHeightDisplay.Text = "Max height: " & MaxHeight & "m"
         tmrCalculation.Stop()
         Projectile.posX = 0
         Projectile.posY = BOXHEIGHT - Shape.WIDTH / 2
         GetArcPoints()
     End Sub
 
-    Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
-        ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "ms^-2")
-        UpdateValues()
-    End Sub
-
-    Private Sub trbZoom_Scroll(sender As Object, e As EventArgs) Handles trbZoom.Scroll
-        If trbZoom.Value > 0 Then
-            Scalar = trbZoom.Value
-            lblZoomLevel.Text = String.Format("Zoom: {0}x", trbZoom.Value)
-        Else
-            Scalar = 1 / (Math.Abs(trbZoom.Value) + 1)
-            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 1)
-        End If
-        UpdateValues()
-
-    End Sub
 End Class
