@@ -26,6 +26,9 @@ Partial Class frmMenu
         Me.Label1 = New System.Windows.Forms.Label()
         Me.cmdProjectileSim = New System.Windows.Forms.Button()
         Me.cmdClose = New System.Windows.Forms.Button()
+        Me.cmdProjectileCal = New System.Windows.Forms.Button()
+        Me.cmdForceCal = New System.Windows.Forms.Button()
+        Me.cmdForceSim = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -62,6 +65,36 @@ Partial Class frmMenu
         Me.cmdClose.Text = "Close"
         Me.cmdClose.UseVisualStyleBackColor = True
         '
+        'cmdProjectileCal
+        '
+        Me.cmdProjectileCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdProjectileCal.Location = New System.Drawing.Point(12, 143)
+        Me.cmdProjectileCal.Name = "cmdProjectileCal"
+        Me.cmdProjectileCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdProjectileCal.TabIndex = 3
+        Me.cmdProjectileCal.Text = "Projectile" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.cmdProjectileCal.UseVisualStyleBackColor = True
+        '
+        'cmdForceCal
+        '
+        Me.cmdForceCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdForceCal.Location = New System.Drawing.Point(93, 143)
+        Me.cmdForceCal.Name = "cmdForceCal"
+        Me.cmdForceCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdForceCal.TabIndex = 5
+        Me.cmdForceCal.Text = "Force" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdForceCal.UseVisualStyleBackColor = True
+        '
+        'cmdForceSim
+        '
+        Me.cmdForceSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdForceSim.Location = New System.Drawing.Point(93, 87)
+        Me.cmdForceSim.Name = "cmdForceSim"
+        Me.cmdForceSim.Size = New System.Drawing.Size(75, 50)
+        Me.cmdForceSim.TabIndex = 4
+        Me.cmdForceSim.Text = "Force" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdForceSim.UseVisualStyleBackColor = True
+        '
         'frmMenu
         '
         Me.AcceptButton = Me.cmdClose
@@ -70,6 +103,9 @@ Partial Class frmMenu
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(484, 362)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cmdForceCal)
+        Me.Controls.Add(Me.cmdForceSim)
+        Me.Controls.Add(Me.cmdProjectileCal)
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.cmdProjectileSim)
         Me.Controls.Add(Me.Label1)
@@ -88,4 +124,7 @@ Partial Class frmMenu
     Friend WithEvents Label1 As Label
     Friend WithEvents cmdProjectileSim As Button
     Friend WithEvents cmdClose As Button
+    Friend WithEvents cmdProjectileCal As Button
+    Friend WithEvents cmdForceCal As Button
+    Friend WithEvents cmdForceSim As Button
 End Class
