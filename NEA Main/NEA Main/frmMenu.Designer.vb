@@ -61,7 +61,7 @@ Partial Class frmMenu
         Me.cmdClose.Location = New System.Drawing.Point(209, 327)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 25)
-        Me.cmdClose.TabIndex = 2
+        Me.cmdClose.TabIndex = 20
         Me.cmdClose.Text = "Close"
         Me.cmdClose.UseVisualStyleBackColor = True
         '
@@ -71,7 +71,7 @@ Partial Class frmMenu
         Me.cmdProjectileCal.Location = New System.Drawing.Point(12, 143)
         Me.cmdProjectileCal.Name = "cmdProjectileCal"
         Me.cmdProjectileCal.Size = New System.Drawing.Size(75, 50)
-        Me.cmdProjectileCal.TabIndex = 3
+        Me.cmdProjectileCal.TabIndex = 2
         Me.cmdProjectileCal.Text = "Projectile" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.cmdProjectileCal.UseVisualStyleBackColor = True
         '
@@ -81,7 +81,7 @@ Partial Class frmMenu
         Me.cmdForceCal.Location = New System.Drawing.Point(93, 143)
         Me.cmdForceCal.Name = "cmdForceCal"
         Me.cmdForceCal.Size = New System.Drawing.Size(75, 50)
-        Me.cmdForceCal.TabIndex = 5
+        Me.cmdForceCal.TabIndex = 4
         Me.cmdForceCal.Text = "Force" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
         Me.cmdForceCal.UseVisualStyleBackColor = True
         '
@@ -91,7 +91,7 @@ Partial Class frmMenu
         Me.cmdForceSim.Location = New System.Drawing.Point(93, 87)
         Me.cmdForceSim.Name = "cmdForceSim"
         Me.cmdForceSim.Size = New System.Drawing.Size(75, 50)
-        Me.cmdForceSim.TabIndex = 4
+        Me.cmdForceSim.TabIndex = 3
         Me.cmdForceSim.Text = "Force" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
         Me.cmdForceSim.UseVisualStyleBackColor = True
         '

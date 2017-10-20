@@ -9,8 +9,10 @@
     End Sub
 
     Private Sub cmdProjectileCal_Click(sender As Object, e As EventArgs) Handles cmdProjectileCal.Click
-        Dim Cal As New frmProjectileCal
-        Cal.Show()
+        For i = 1 To 100
+            Dim Cal As New frmProjectileCal
+            Cal.Show()
+        Next
     End Sub
 
     Private Sub cmdForceSim_Click(sender As Object, e As EventArgs) Handles cmdForceSim.Click

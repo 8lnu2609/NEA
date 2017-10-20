@@ -36,7 +36,7 @@
         Range = BOXWIDTH
         VelocityInput.ShowDialog()
         UpdateValues()
-        MessageBox.Show(Size.ToString)
+        'MessageBox.Show(Size.ToString)
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
