@@ -30,13 +30,18 @@
     Private Sub cmdSolve_Click(sender As Object, e As EventArgs) Handles cmdSolve.Click
         Dim yEmpty As IEnumerable(Of TextBox) = grbComponentsY.Controls.OfType(Of TextBox)().Where(Function(txt) txt.Text.Length = 0)
         Dim xEmpty As IEnumerable(Of TextBox) = grbComponentsX.Controls.OfType(Of TextBox)().Where(Function(txt) txt.Text.Length = 0)
-
+        Dim messageString As String = ""
         If yEmpty.Count > 2 Then
-            MessageBox.Show("You need to fill in " & String.Join(", ", (yEmpty.Select(Function(y) y.Tag))))
+            messageString = String.Format("You need to fill in {0} of the remaining {1} vertical boxes: {2}. " & vbNewLine, yEmpty.Count - 2, yEmpty.Count, String.Join(", ", (yEmpty.Select(Function(y) y.Tag))))
         End If
         If xEmpty.Count > 2 Then
-            MessageBox.Show(String.Join(", ", (xEmpty.Select(Function(x) x.Tag))))
+            messageString = messageString & String.Format("You need to fill in {0} of the remaining {1} horizontal boxes: {2}. ", xEmpty.Count - 2, xEmpty.Count, (String.Join(", ", (xEmpty.Select(Function(x) x.Tag)))))
         End If
+        If messageString <> "" Then
+            MessageBox.Show(messageString, "Not enough inputs filled in")
+        End If
+
+
     End Sub
 
     Private Sub txtTimeY_In_TextChanged(sender As Object, e As EventArgs) Handles txtTimeY_In.TextChanged
