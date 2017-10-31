@@ -132,6 +132,9 @@
         If Projectile.posX < Range * Scalar Then
             Projectile.posX = (xVelocity * (Now - StartTime).TotalSeconds) * Scalar
             Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetAcceleration() * (Now - StartTime).TotalSeconds ^ 2) * Scalar)
+            lblDistanceDisplay.Text = "Distance: " & Math.Round((xVelocity * (Now - StartTime).TotalSeconds), 3) & "m"
+            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetAcceleration() * (Now - StartTime).TotalSeconds ^ 2), 3) & "m"
+
         Else
             tmrCalculation.Stop()
         End If
@@ -159,6 +162,8 @@
             ToolTips.SetToolTip(trbTime, "Time: " & trbTime.Value / 100)
             Projectile.posX = (xVelocity * (trbTime.Value / 100)) * Scalar
             Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (trbTime.Value / 100) + -0.5 * GetAcceleration() * (trbTime.Value / 100) ^ 2) / Scalar)
+            lblDistanceDisplay.Text = "Distance: " & Math.Round((xVelocity * (trbTime.Value / 100)), 3) & "m"
+            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (trbTime.Value / 100) + -0.5 * GetAcceleration() * (trbTime.Value / 100) ^ 2), 3) & "m"
         End If
     End Sub
 

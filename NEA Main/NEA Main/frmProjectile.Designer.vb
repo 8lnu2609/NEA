@@ -46,6 +46,8 @@ Partial Class frmProjectile
         Me.txtVelocityX_Out = New System.Windows.Forms.TextBox()
         Me.tmrCalculation = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
+        Me.lblHeightDisplay = New System.Windows.Forms.Label()
+        Me.lblDistanceDisplay = New System.Windows.Forms.Label()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         CType(Me.trbZoom, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,6 +77,8 @@ Partial Class frmProjectile
         Me.grpData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpData.BackColor = System.Drawing.SystemColors.Control
+        Me.grpData.Controls.Add(Me.lblHeightDisplay)
+        Me.grpData.Controls.Add(Me.lblDistanceDisplay)
         Me.grpData.Controls.Add(Me.lblZoomLevel)
         Me.grpData.Controls.Add(Me.trbZoom)
         Me.grpData.Controls.Add(Me.txtVelocityY_Out)
@@ -280,6 +284,24 @@ Partial Class frmProjectile
         Me.ToolTips.InitialDelay = 1
         Me.ToolTips.ReshowDelay = 100
         '
+        'lblHeightDisplay
+        '
+        Me.lblHeightDisplay.AutoSize = True
+        Me.lblHeightDisplay.Location = New System.Drawing.Point(6, 392)
+        Me.lblHeightDisplay.Name = "lblHeightDisplay"
+        Me.lblHeightDisplay.Size = New System.Drawing.Size(58, 13)
+        Me.lblHeightDisplay.TabIndex = 31
+        Me.lblHeightDisplay.Text = "Height: 0m"
+        '
+        'lblDistanceDisplay
+        '
+        Me.lblDistanceDisplay.AutoSize = True
+        Me.lblDistanceDisplay.Location = New System.Drawing.Point(6, 362)
+        Me.lblDistanceDisplay.Name = "lblDistanceDisplay"
+        Me.lblDistanceDisplay.Size = New System.Drawing.Size(69, 13)
+        Me.lblDistanceDisplay.TabIndex = 30
+        Me.lblDistanceDisplay.Text = "Distance: 0m"
+        '
         'frmProjectile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -330,4 +352,6 @@ Partial Class frmProjectile
     Friend WithEvents txtVelocityX_Out As TextBox
     Friend WithEvents lblZoomLevel As Label
     Friend WithEvents trbZoom As TrackBar
+    Friend WithEvents lblHeightDisplay As Label
+    Friend WithEvents lblDistanceDisplay As Label
 End Class
