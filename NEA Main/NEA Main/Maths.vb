@@ -38,9 +38,7 @@
             End If
         End If
     End Function
-End Class
-
-Public NotInheritable Class SUVAT
+#Region "SUVAT Solve"
     Public Shared Function Displacement(ByVal u As Double, ByVal v As Double, ByVal a As Double, ByVal t As Double) As Double
         If IsDBNull(u) Then
             Return v * t + 0.5 * a * t ^ 2
@@ -110,5 +108,5 @@ Public NotInheritable Class SUVAT
             Return vbNull
         End If
     End Function
-
+#End Region
 End Class

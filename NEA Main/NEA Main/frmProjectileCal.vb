@@ -20,14 +20,25 @@
     End Sub
 
     Structure SUVAT
-        Dim s As Single
-        Dim u As Single
-        Dim v As Single
-        Dim a As Single
-        Dim t As Single
+        Dim s As Single?
+        Dim u As Single?
+        Dim v As Single?
+        Dim a As Single?
+        Dim t As Single?
     End Structure
 
+    Enum SUVATName
+        s = 0
+        u = 1
+        v = 2
+        a = 3
+        t = 4
+    End Enum
+
     Private Sub cmdSolve_Click(sender As Object, e As EventArgs) Handles cmdSolve.Click
+        Dim yComp, xComp As SUVAT
+        'Dim yComponents(4), xComponents(4) As Single?
+
         Dim yEmpty As IEnumerable(Of TextBox) = grbComponentsY.Controls.OfType(Of TextBox)().Where(Function(txt) txt.Text.Length = 0)
         Dim xEmpty As IEnumerable(Of TextBox) = grbComponentsX.Controls.OfType(Of TextBox)().Where(Function(txt) txt.Text.Length = 0)
         Dim messageString As String = ""
@@ -39,10 +50,54 @@
         End If
         If messageString <> "" Then
             MessageBox.Show(messageString, "Not enough inputs filled in")
+        Else
+            GetInputs(xComp, yComp)
+            txtDisplacementY_In.Text = Maths.Displacement(yComp.u, yComp.v, yComp.a, yComp.t)
+            txtInitalVelocityY_In.Text = Maths.InitalVelocity(yComp.s, yComp.v, yComp.a, yComp.t)
+            txtFinalVelocityY_In.Text = Maths.FinalVelocity(yComp.s, yComp.u, yComp.a, yComp.t)
+            txtAccelerationY_In.Text = Maths.Acceleration(yComp.s, yComp.u, yComp.v, yComp.t)
+            txtTimeY_In.Text = Maths.Time(yComp.s, yComp.u, yComp.v, yComp.a)
+
         End If
 
 
     End Sub
+
+    Sub GetInputs(ByRef yComponents As SUVAT, ByRef xComponents As SUVAT)
+        yComponents.s = dataOrNull(txtAccelerationY_In)
+        yComponents.u = dataOrNull(txtInitalVelocityY_In)
+        yComponents.v = dataOrNull(txtFinalVelocityY_In)
+        yComponents.a = dataOrNull(txtAccelerationY_In)
+        yComponents.t = dataOrNull(txtTimeY_In)
+
+        xComponents.s = dataOrNull(txtDisplacementX_In)
+        xComponents.u = dataOrNull(txtInitalVelocityX_In)
+        xComponents.v = dataOrNull(txtFinalVelocityX_In)
+        xComponents.a = dataOrNull(txtAccelerationX_In)
+        xComponents.t = dataOrNull(txtTimeX_In)
+    End Sub
+
+    'Sub GetInputs(ByRef yComponents() As Single?, ByRef xComponents() As Single?)
+    '    yComponents(SUVATName.s =  dataOrNull(txtAccelerationY_In)
+    '    yComponents(SUVATName.u =  dataOrNull(txtInitalVelocityY_In)
+    '    yComponents(SUVATName.v =  dataOrNull(txtFinalVelocityY_In)
+    '    yComponents(SUVATName.a =  dataOrNull(txtAccelerationY_In)
+    '    yComponents(SUVATName.t =  dataOrNull(txtTimeY_In)
+
+    '    xComponents(SUVATName.s =  dataOrNull(txtDisplacementX_In)
+    '    xComponents(SUVATName.u =  dataOrNull(txtInitalVelocityX_In)
+    '    xComponents(SUVATName.v =  dataOrNull(txtFinalVelocityX_In)
+    '    xComponents(SUVATName.a =  dataOrNull(txtAccelerationX_In)
+    '    xComponents(SUVATName.t =  dataOrNull(txtTimeX_In)
+    'End Sub
+
+    Function dataOrNull(txtBox As TextBox) As Single?
+        If txtBox.Text <> "" And IsNumeric(txtBox.Text) Then
+            Return Convert.ToSingle(txtBox.Text)
+        Else
+            Return vbNull
+        End If
+    End Function
 
     Private Sub txtTimeY_In_TextChanged(sender As Object, e As EventArgs) Handles txtTimeY_In.TextChanged
         txtTimeX_In.Text = sender.text

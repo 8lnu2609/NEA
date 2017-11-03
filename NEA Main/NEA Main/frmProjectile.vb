@@ -109,7 +109,7 @@
 
     Sub GetArcPoints()
         For i = 0 To 500 Step 1
-            TracingArc.ArcPoints(i) = New Point(((i * Range / 500) * Scalar) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetAcceleration) * Scalar))
+            TracingArc.ArcPoints(i) = New Point(((i * Range / 500)) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetAcceleration) * Scalar))
         Next
     End Sub
 

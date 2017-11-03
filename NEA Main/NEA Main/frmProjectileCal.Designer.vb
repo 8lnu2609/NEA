@@ -29,7 +29,7 @@ Partial Class frmProjectileCal
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtAccelerationY_In = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtFinalVeloctityY_In = New System.Windows.Forms.TextBox()
+        Me.txtFinalVelocityY_In = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtTimeY_In = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -107,13 +107,13 @@ Partial Class frmProjectileCal
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Acceleration, a (ms^-2)"
         '
-        'txtFinalVeloctityY_In
+        'txtFinalVelocityY_In
         '
-        Me.txtFinalVeloctityY_In.Location = New System.Drawing.Point(6, 71)
-        Me.txtFinalVeloctityY_In.Name = "txtFinalVeloctityY_In"
-        Me.txtFinalVeloctityY_In.Size = New System.Drawing.Size(100, 20)
-        Me.txtFinalVeloctityY_In.TabIndex = 3
-        Me.txtFinalVeloctityY_In.Tag = "Final Velocity"
+        Me.txtFinalVelocityY_In.Location = New System.Drawing.Point(6, 71)
+        Me.txtFinalVelocityY_In.Name = "txtFinalVelocityY_In"
+        Me.txtFinalVelocityY_In.Size = New System.Drawing.Size(100, 20)
+        Me.txtFinalVelocityY_In.TabIndex = 3
+        Me.txtFinalVelocityY_In.Tag = "Final Velocity"
         '
         'Label4
         '
@@ -177,7 +177,7 @@ Partial Class frmProjectileCal
         '
         Me.grbComponentsY.Controls.Add(Me.txtDisplacementY_In)
         Me.grbComponentsY.Controls.Add(Me.txtInitalVelocityY_In)
-        Me.grbComponentsY.Controls.Add(Me.txtFinalVeloctityY_In)
+        Me.grbComponentsY.Controls.Add(Me.txtFinalVelocityY_In)
         Me.grbComponentsY.Controls.Add(Me.txtTimeY_In)
         Me.grbComponentsY.Controls.Add(Me.txtAccelerationY_In)
         Me.grbComponentsY.Location = New System.Drawing.Point(133, 5)
@@ -258,7 +258,7 @@ Partial Class frmProjectileCal
     Friend WithEvents Label2 As Label
     Friend WithEvents txtAccelerationY_In As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents txtFinalVeloctityY_In As TextBox
+    Friend WithEvents txtFinalVelocityY_In As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtTimeY_In As TextBox
     Friend WithEvents Label5 As Label
