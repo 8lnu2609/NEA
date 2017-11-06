@@ -116,7 +116,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShapeClasses.vb" />
-    <Compile Include="SharedVariables.vb" />
+    <Compile Include="Shared.vb" />
     <Compile Include="Maths.vb" />
     <Compile Include="frmVelocityInput.Designer.vb">
       <DependentUpon>frmVelocityInput.vb</DependentUpon>

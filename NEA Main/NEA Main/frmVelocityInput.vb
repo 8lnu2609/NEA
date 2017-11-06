@@ -44,9 +44,11 @@
                     updVelocityX_In.Value = Int(((e.X - 20) / 3))
                 End If
             Else
-                If e.X > 20 And e.X < 320 And e.Y < 300 And e.Y > 0 Then
+                If e.X >= 20 And e.X <= 320 And e.Y >= 0 And e.Y <= 300 Then
+                    YLine.posYe = e.Y
+                    YLine.posXe = e.X
                     updSpeed_In.Value = Maths.Pythag(Int((e.X - 20) / 3), Int((320 - e.Y) / 3))
-                    updAngle_In.Value = Maths.RadToDeg(Math.Abs(Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 30) / 3)))))
+                    updAngle_In.Value = Maths.RadToDeg(Math.Abs(Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 20) / 3)))))
                 End If
             End If
         End If
@@ -70,8 +72,6 @@
             Else
                 updAngle_In.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
             End If
-
-
         Else
             updSpeed_In.Maximum = 100
             updVelocityY_In.Value = yVelocity
@@ -116,8 +116,6 @@
             LabelText.Draw(e, xVelocity & "m/s", 30 + xVelocity, 300)
             LabelText.Draw(e, yVelocity & "m/s", 30, 300 - yVelocity)
         ElseIf optSpeed.Checked Then
-            YLine.posYe = 0 - yVelocity * 3
-            YLine.posXe = (20 + xVelocity) * 3
             XLine.posXe = 50
             LabelText.Draw(e, updSpeed_In.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
             LabelText.Draw(e, updAngle_In.Value & "°", 25, 300)

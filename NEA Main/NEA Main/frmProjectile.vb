@@ -1,7 +1,6 @@
 ﻿Public Class frmProjectile
     Const BOXWIDTH As Integer = 1686
     Const BOXHEIGHT As Integer = 1024
-    Dim MouseHeldDown As Boolean = False
     Dim StartTime As Date
     Dim TotalTime As Single
     Dim Range As Single
@@ -14,30 +13,17 @@
     .posX = 0,
     .posY = BOXHEIGHT - Shape.WIDTH / 2
     }
-    Dim AccelerationDictionary As New Dictionary(Of String, Single) From {
-        {"Sun", 274.13},
-        {"Mercury", 3.59},
-        {"Venus", 8.89},
-        {"Earth", 9.81},
-        {"Moon", 1.62},
-        {"Mars", 3.77},
-        {"Jupiter", 25.95},
-        {"Saturn", 11.08},
-        {"Uranus", 10.67},
-        {"Neptune", 14.07},
-        {"Pluto", 0.42}
-        }
+
 
     Private Sub PhysicsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        For Each pair As KeyValuePair(Of String, Single) In AccelerationDictionary
-            cboAcceleration.Items.Add(pair.Key)
-        Next
-        cboAcceleration.SelectedIndex = 3
+        PopulateAccelerationCbo(cboAcceleration)
         Range = BOXWIDTH
         VelocityInput.ShowDialog()
         UpdateValues()
         'MessageBox.Show(Size.ToString)
     End Sub
+
+
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
@@ -71,24 +57,6 @@
     Function GetAcceleration() As Single
         Return AccelerationDictionary.Item(cboAcceleration.SelectedItem())
     End Function
-
-    'Private Sub PicBoxMain_MouseDown(sender As Object, e As MouseEventArgs) Handles picBoxMain.MouseDown
-    '    'If e.Button = MouseButtons.Left Then
-    '    '    blnMouseHeldDown = True
-    '    'End If
-    'End Sub
-
-    'Private Sub PicBoxMain_MouseMove(sender As Object, e As MouseEventArgs) Handles picBoxMain.MouseMove
-    '    'If e.X > 0 And e.X < picBoxMain.Width And e.Y > 0 And e.Y < picBoxMain.Height Then
-    '    '    pntMouseLocation = New Point(e.X, e.Y)
-    '    'End If
-    'End Sub
-
-    'Private Sub PicBoxMain_MouseUp(sender As Object, e As MouseEventArgs) Handles picBoxMain.MouseUp
-    '    'If e.Button = MouseButtons.Left Then
-    '    '    blnMouseHeldDown = False
-    '    'End If
-    'End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         'e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
