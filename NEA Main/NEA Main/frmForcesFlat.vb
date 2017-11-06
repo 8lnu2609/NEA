@@ -40,14 +40,25 @@
 
     Private Sub updForce_ValueChanged(sender As Object, e As EventArgs) Handles updForce.ValueChanged
         Force = updForce.Value
-
+        trbForce.Value = Math.Log10(Force) * 10
     End Sub
 
     Private Sub updTotalTime_ValueChanged(sender As Object, e As EventArgs) Handles updTotalTime.ValueChanged
         trbTime.Maximum = updTotalTime.Value
     End Sub
 
-    Private Sub updForce_Leave(sender As Object, e As EventArgs) Handles updForce.Leave
-        trbForce.Value = Math.Log10(Force) * 10
+    Private Sub optRealTime_CheckedChanged(sender As Object, e As EventArgs) Handles optRealTime.CheckedChanged
+        If optRealTime.Checked Then
+            trbTime.Hide()
+            updTotalTime.Hide()
+            lblTotalTime.Hide()
+            cmdStart.Show()
+        Else
+            trbTime.Show()
+            updTotalTime.Show()
+            lblTotalTime.Show()
+            cmdStart.Hide()
+            tmrCalculation.Stop()
+        End If
     End Sub
 End Class

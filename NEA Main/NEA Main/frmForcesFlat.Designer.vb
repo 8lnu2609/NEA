@@ -30,13 +30,15 @@ Partial Class frmForcesFlat
         Me.tmrCalculation = New System.Windows.Forms.Timer(Me.components)
         Me.pnlTimeSelect = New System.Windows.Forms.Panel()
         Me.updTotalTime = New System.Windows.Forms.NumericUpDown()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblTotalTime = New System.Windows.Forms.Label()
         Me.optStepByStep = New System.Windows.Forms.RadioButton()
         Me.optRealTime = New System.Windows.Forms.RadioButton()
         Me.lblZoomLevel = New System.Windows.Forms.Label()
         Me.trbZoom = New System.Windows.Forms.TrackBar()
         Me.grpData = New System.Windows.Forms.GroupBox()
         Me.pnlFrictionSelect = New System.Windows.Forms.Panel()
+        Me.updForce = New System.Windows.Forms.NumericUpDown()
+        Me.trbForce = New System.Windows.Forms.TrackBar()
         Me.lblForce = New System.Windows.Forms.Label()
         Me.lblTotalFriction = New System.Windows.Forms.Label()
         Me.updFrictionCOE = New System.Windows.Forms.NumericUpDown()
@@ -47,19 +49,17 @@ Partial Class frmForcesFlat
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.picDisplay = New System.Windows.Forms.PictureBox()
-        Me.trbForce = New System.Windows.Forms.TrackBar()
-        Me.updForce = New System.Windows.Forms.NumericUpDown()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.updTotalTime, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.trbZoom, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         Me.pnlFrictionSelect.SuspendLayout()
+        CType(Me.updForce, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.trbForce, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updFrictionCOE, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.trbForce, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updForce, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolTips
@@ -106,7 +106,7 @@ Partial Class frmForcesFlat
         'pnlTimeSelect
         '
         Me.pnlTimeSelect.Controls.Add(Me.updTotalTime)
-        Me.pnlTimeSelect.Controls.Add(Me.Label5)
+        Me.pnlTimeSelect.Controls.Add(Me.lblTotalTime)
         Me.pnlTimeSelect.Controls.Add(Me.trbTime)
         Me.pnlTimeSelect.Controls.Add(Me.optStepByStep)
         Me.pnlTimeSelect.Controls.Add(Me.optRealTime)
@@ -127,14 +127,14 @@ Partial Class frmForcesFlat
         Me.updTotalTime.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
         Me.updTotalTime.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
-        'Label5
+        'lblTotalTime
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 97)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(53, 13)
-        Me.Label5.TabIndex = 18
-        Me.Label5.Text = "Total time"
+        Me.lblTotalTime.AutoSize = True
+        Me.lblTotalTime.Location = New System.Drawing.Point(6, 97)
+        Me.lblTotalTime.Name = "lblTotalTime"
+        Me.lblTotalTime.Size = New System.Drawing.Size(53, 13)
+        Me.lblTotalTime.TabIndex = 18
+        Me.lblTotalTime.Text = "Total time"
         '
         'optStepByStep
         '
@@ -214,6 +214,25 @@ Partial Class frmForcesFlat
         Me.pnlFrictionSelect.Name = "pnlFrictionSelect"
         Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 103)
         Me.pnlFrictionSelect.TabIndex = 20
+        '
+        'updForce
+        '
+        Me.updForce.Location = New System.Drawing.Point(78, 8)
+        Me.updForce.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
+        Me.updForce.Name = "updForce"
+        Me.updForce.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.updForce.Size = New System.Drawing.Size(108, 20)
+        Me.updForce.TabIndex = 38
+        Me.updForce.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        '
+        'trbForce
+        '
+        Me.trbForce.Location = New System.Drawing.Point(3, 36)
+        Me.trbForce.Maximum = 50
+        Me.trbForce.Name = "trbForce"
+        Me.trbForce.Size = New System.Drawing.Size(183, 45)
+        Me.trbForce.TabIndex = 37
+        Me.trbForce.TickStyle = System.Windows.Forms.TickStyle.Both
         '
         'lblForce
         '
@@ -310,25 +329,6 @@ Partial Class frmForcesFlat
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
-        'trbForce
-        '
-        Me.trbForce.Location = New System.Drawing.Point(3, 36)
-        Me.trbForce.Maximum = 50
-        Me.trbForce.Name = "trbForce"
-        Me.trbForce.Size = New System.Drawing.Size(183, 45)
-        Me.trbForce.TabIndex = 37
-        Me.trbForce.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'updForce
-        '
-        Me.updForce.Location = New System.Drawing.Point(78, 8)
-        Me.updForce.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
-        Me.updForce.Name = "updForce"
-        Me.updForce.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.updForce.Size = New System.Drawing.Size(108, 20)
-        Me.updForce.TabIndex = 38
-        Me.updForce.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
-        '
         'frmForcesFlat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -355,11 +355,11 @@ Partial Class frmForcesFlat
         Me.grpData.PerformLayout()
         Me.pnlFrictionSelect.ResumeLayout(False)
         Me.pnlFrictionSelect.PerformLayout()
+        CType(Me.updForce, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.trbForce, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updFrictionCOE, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.trbForce, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updForce, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -383,7 +383,7 @@ Partial Class frmForcesFlat
     Friend WithEvents Label3 As Label
     Friend WithEvents cboAcceleration As ComboBox
     Friend WithEvents updTotalTime As NumericUpDown
-    Friend WithEvents Label5 As Label
+    Friend WithEvents lblTotalTime As Label
     Friend WithEvents lblTotalFriction As Label
     Friend WithEvents updFrictionCOE As NumericUpDown
     Friend WithEvents pnlFrictionSelect As Panel
