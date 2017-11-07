@@ -77,19 +77,6 @@
         xComponents.t = dataOrNull(txtTimeX_In)
     End Sub
 
-    'Sub GetInputs(ByRef yComponents() As Single?, ByRef xComponents() As Single?)
-    '    yComponents(SUVATName.s =  dataOrNull(txtAccelerationY_In)
-    '    yComponents(SUVATName.u =  dataOrNull(txtInitalVelocityY_In)
-    '    yComponents(SUVATName.v =  dataOrNull(txtFinalVelocityY_In)
-    '    yComponents(SUVATName.a =  dataOrNull(txtAccelerationY_In)
-    '    yComponents(SUVATName.t =  dataOrNull(txtTimeY_In)
-
-    '    xComponents(SUVATName.s =  dataOrNull(txtDisplacementX_In)
-    '    xComponents(SUVATName.u =  dataOrNull(txtInitalVelocityX_In)
-    '    xComponents(SUVATName.v =  dataOrNull(txtFinalVelocityX_In)
-    '    xComponents(SUVATName.a =  dataOrNull(txtAccelerationX_In)
-    '    xComponents(SUVATName.t =  dataOrNull(txtTimeX_In)
-    'End Sub
 
     Function dataOrNull(txtBox As TextBox) As Single?
         If txtBox.Text <> "" And IsNumeric(txtBox.Text) Then

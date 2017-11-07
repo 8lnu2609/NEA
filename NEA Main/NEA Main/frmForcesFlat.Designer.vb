@@ -25,7 +25,7 @@ Partial Class frmForcesFlat
         Me.components = New System.ComponentModel.Container()
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.trbTime = New System.Windows.Forms.TrackBar()
-        Me.cmdStart = New System.Windows.Forms.Button()
+        Me.cmdStartStop = New System.Windows.Forms.Button()
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.tmrCalculation = New System.Windows.Forms.Timer(Me.components)
         Me.pnlTimeSelect = New System.Windows.Forms.Panel()
@@ -78,15 +78,15 @@ Partial Class frmForcesFlat
         Me.ToolTips.SetToolTip(Me.trbTime, "Time: 0")
         Me.trbTime.Visible = False
         '
-        'cmdStart
+        'cmdStartStop
         '
-        Me.cmdStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cmdStart.Location = New System.Drawing.Point(123, 963)
-        Me.cmdStart.Name = "cmdStart"
-        Me.cmdStart.Size = New System.Drawing.Size(75, 23)
-        Me.cmdStart.TabIndex = 16
-        Me.cmdStart.Text = "Start"
-        Me.cmdStart.UseVisualStyleBackColor = True
+        Me.cmdStartStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cmdStartStop.Location = New System.Drawing.Point(123, 963)
+        Me.cmdStartStop.Name = "cmdStartStop"
+        Me.cmdStartStop.Size = New System.Drawing.Size(75, 23)
+        Me.cmdStartStop.TabIndex = 16
+        Me.cmdStartStop.Text = "Start"
+        Me.cmdStartStop.UseVisualStyleBackColor = True
         '
         'cmdClose
         '
@@ -195,7 +195,7 @@ Partial Class frmForcesFlat
         Me.grpData.Controls.Add(Me.lblZoomLevel)
         Me.grpData.Controls.Add(Me.trbZoom)
         Me.grpData.Controls.Add(Me.pnlTimeSelect)
-        Me.grpData.Controls.Add(Me.cmdStart)
+        Me.grpData.Controls.Add(Me.cmdStartStop)
         Me.grpData.Controls.Add(Me.cmdClose)
         Me.grpData.Location = New System.Drawing.Point(1691, 10)
         Me.grpData.Name = "grpData"
@@ -262,7 +262,7 @@ Partial Class frmForcesFlat
         Me.updFrictionCOE.Size = New System.Drawing.Size(66, 20)
         Me.updFrictionCOE.TabIndex = 35
         Me.updFrictionCOE.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
-        Me.updFrictionCOE.Value = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.updFrictionCOE.Value = New Decimal(New Integer() {5, 0, 0, 65536})
         '
         'Label3
         '
@@ -301,7 +301,7 @@ Partial Class frmForcesFlat
         Me.updMass.Size = New System.Drawing.Size(75, 20)
         Me.updMass.TabIndex = 31
         Me.updMass.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
-        Me.updMass.Value = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.updMass.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label1
         '
@@ -366,7 +366,7 @@ Partial Class frmForcesFlat
 
     Friend WithEvents ToolTips As ToolTip
     Friend WithEvents trbTime As TrackBar
-    Friend WithEvents cmdStart As Button
+    Friend WithEvents cmdStartStop As Button
     Friend WithEvents cmdClose As Button
     Friend WithEvents tmrCalculation As Timer
     Friend WithEvents pnlTimeSelect As Panel

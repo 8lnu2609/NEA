@@ -14,7 +14,6 @@
     .posY = BOXHEIGHT - Shape.WIDTH / 2
     }
 
-
     Private Sub PhysicsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateAccelerationCbo(cboAcceleration)
         Range = BOXWIDTH
@@ -22,8 +21,6 @@
         UpdateValues()
         'MessageBox.Show(Size.ToString)
     End Sub
-
-
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
