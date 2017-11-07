@@ -86,7 +86,7 @@
 
     Function getAcceleration()
         If coeFriction * GetWeight() > force Then
-            force = 0
+            Return 0
         End If
         Return (force - (coeFriction * GetWeight())) / updMass.Value
     End Function
@@ -109,7 +109,11 @@
     End Sub
 
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
-        Particle.posX = 0.5 * getAcceleration() * (Now - timeStart).TotalSeconds
+        Dim velocity As Single
+        velocity = velocity + getAcceleration() * (Now - timeStart).TotalSeconds
+        Particle.posX += velocity
+        lblForce.Text = velocity
+        timeStart = Now
     End Sub
 
     Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged

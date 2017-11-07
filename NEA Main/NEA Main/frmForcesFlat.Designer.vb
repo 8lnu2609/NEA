@@ -256,7 +256,6 @@ Partial Class frmForcesFlat
         '
         Me.updFrictionCOE.DecimalPlaces = 3
         Me.updFrictionCOE.Location = New System.Drawing.Point(133, 48)
-        Me.updFrictionCOE.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.updFrictionCOE.Name = "updFrictionCOE"
         Me.updFrictionCOE.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.updFrictionCOE.Size = New System.Drawing.Size(66, 20)
