@@ -1,6 +1,10 @@
 ﻿Module SharedVariables
     Public xVelocity As Single = 50
     Public yVelocity As Single = 50
+
+    Public Const BOXWIDTH As Integer = 1686
+    Public Const BOXHEIGHT As Integer = 1024
+
     Public AccelerationDictionary As New Dictionary(Of String, Single) From {
     {"Sun", 274.13},
     {"Mercury", 3.59},
@@ -21,5 +25,9 @@
         Next
         combo.SelectedIndex = 3
     End Sub
+
+    Public Function GetGravityAcceleration(ByRef combo As ComboBox) As Single
+        Return AccelerationDictionary.Item(combo.SelectedItem())
+    End Function
 
 End Module

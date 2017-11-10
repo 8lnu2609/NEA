@@ -1,6 +1,4 @@
 ﻿Public Class frmForcesFlat
-    Const BOXWIDTH As Integer = 1686
-    Const BOXHEIGHT As Integer = 1024
     Dim baseLine As New Line With
     {
         .posY = BOXHEIGHT / 2 + 100,
@@ -19,6 +17,8 @@
     Dim coeFriction As Single
     Dim scalar As Single = 1
     Dim timeStart As DateTime
+    Dim weight As Single
+    Dim resultantForce As Single
 
     Private Sub frmForcesFlat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateAccelerationCbo(cboAcceleration)
@@ -38,13 +38,13 @@
     End Sub
 
     Private Sub trbForce_Scroll(sender As Object, e As EventArgs) Handles trbForce.Scroll
-        Force = 10 ^ (trbForce.Value / 10)
-        updForce.Value = Force
+        force = 10 ^ (trbForce.Value / 10)
+        updForce.Value = force
     End Sub
 
     Private Sub updForce_ValueChanged(sender As Object, e As EventArgs) Handles updForce.ValueChanged
-        Force = updForce.Value
-        trbForce.Value = Math.Log10(Force) * 10
+        force = updForce.Value
+        trbForce.Value = Math.Log10(force) * 10
     End Sub
 
     Private Sub updTotalTime_ValueChanged(sender As Object, e As EventArgs) Handles updTotalTime.ValueChanged
@@ -80,17 +80,6 @@
         ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "ms^-2")
     End Sub
 
-    Function GetWeight() As Single
-        Return AccelerationDictionary.Item(cboAcceleration.SelectedItem()) * updMass.Value
-    End Function
-
-    Function getAcceleration()
-        If coeFriction * GetWeight() > force Then
-            Return 0
-        End If
-        Return (force - (coeFriction * GetWeight())) / updMass.Value
-    End Function
-
     Private Sub cmdStartStop_Click(sender As Object, e As EventArgs) Handles cmdStartStop.Click
         If tmrCalculation.Enabled Then
             tmrCalculation.Stop()
@@ -116,11 +105,26 @@
         timeStart = Now
     End Sub
 
+    Function GetResultant() As Single
+
+    End Function
+
     Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged
-        mass = updMass.Value
+        updateValues()
     End Sub
 
     Private Sub updFrictionCOE_ValueChanged(sender As Object, e As EventArgs) Handles updFrictionCOE.ValueChanged
-        coeFriction = updFrictionCOE.Value
+        updateValues()
     End Sub
+
+    Public Sub updateValues()
+        coeFriction = updFrictionCOE.Value
+        mass = updMass.Value
+        weight = GetGravityAcceleration(cboAcceleration) * mass
+        lblForce.Text = String.Format("Force: {0}N", force)
+        lblMaxFriction.Text = String.Format("Max Friction: {0}N", coeFriction * weight)
+
+    End Sub
+
+
 End Class

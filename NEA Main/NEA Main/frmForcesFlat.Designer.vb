@@ -49,6 +49,8 @@ Partial Class frmForcesFlat
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.picDisplay = New System.Windows.Forms.PictureBox()
+        Me.lblMaxFriction = New System.Windows.Forms.Label()
+        Me.lblResultantForce = New System.Windows.Forms.Label()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.updTotalTime, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,7 +112,7 @@ Partial Class frmForcesFlat
         Me.pnlTimeSelect.Controls.Add(Me.trbTime)
         Me.pnlTimeSelect.Controls.Add(Me.optStepByStep)
         Me.pnlTimeSelect.Controls.Add(Me.optRealTime)
-        Me.pnlTimeSelect.Location = New System.Drawing.Point(6, 228)
+        Me.pnlTimeSelect.Location = New System.Drawing.Point(6, 271)
         Me.pnlTimeSelect.Name = "pnlTimeSelect"
         Me.pnlTimeSelect.Size = New System.Drawing.Size(189, 126)
         Me.pnlTimeSelect.TabIndex = 21
@@ -206,13 +208,15 @@ Partial Class frmForcesFlat
         '
         'pnlFrictionSelect
         '
+        Me.pnlFrictionSelect.Controls.Add(Me.lblResultantForce)
+        Me.pnlFrictionSelect.Controls.Add(Me.lblMaxFriction)
         Me.pnlFrictionSelect.Controls.Add(Me.updForce)
         Me.pnlFrictionSelect.Controls.Add(Me.trbForce)
         Me.pnlFrictionSelect.Controls.Add(Me.lblForce)
         Me.pnlFrictionSelect.Controls.Add(Me.lblTotalFriction)
         Me.pnlFrictionSelect.Location = New System.Drawing.Point(6, 119)
         Me.pnlFrictionSelect.Name = "pnlFrictionSelect"
-        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 103)
+        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 138)
         Me.pnlFrictionSelect.TabIndex = 20
         '
         'updForce
@@ -328,6 +332,24 @@ Partial Class frmForcesFlat
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
+        'lblMaxFriction
+        '
+        Me.lblMaxFriction.AutoSize = True
+        Me.lblMaxFriction.Location = New System.Drawing.Point(6, 103)
+        Me.lblMaxFriction.Name = "lblMaxFriction"
+        Me.lblMaxFriction.Size = New System.Drawing.Size(81, 13)
+        Me.lblMaxFriction.TabIndex = 39
+        Me.lblMaxFriction.Text = "Max friction: 0N"
+        '
+        'lblResultantForce
+        '
+        Me.lblResultantForce.AutoSize = True
+        Me.lblResultantForce.Location = New System.Drawing.Point(6, 119)
+        Me.lblResultantForce.Name = "lblResultantForce"
+        Me.lblResultantForce.Size = New System.Drawing.Size(102, 13)
+        Me.lblResultantForce.TabIndex = 40
+        Me.lblResultantForce.Text = "Resultant Force: 0N"
+        '
         'frmForcesFlat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -389,4 +411,6 @@ Partial Class frmForcesFlat
     Friend WithEvents lblForce As Label
     Friend WithEvents trbForce As TrackBar
     Friend WithEvents updForce As NumericUpDown
+    Friend WithEvents lblMaxFriction As Label
+    Friend WithEvents lblResultantForce As Label
 End Class
