@@ -27,7 +27,12 @@
     End Sub
 
     Public Function GetGravityAcceleration(ByRef combo As ComboBox) As Single
-        Return AccelerationDictionary.Item(combo.SelectedItem())
+        If combo.SelectedItem <> Nothing Then
+            Return AccelerationDictionary.Item(combo.SelectedItem())
+        Else
+            Return AccelerationDictionary.Item("Earth")
+        End If
+
     End Function
 
 End Module

@@ -44,8 +44,8 @@
             Scalar = trbZoom.Value
             lblZoomLevel.Text = String.Format("Zoom: {0}x", trbZoom.Value)
         Else
-            Scalar = 1 / (Math.Abs(trbZoom.Value) + 1)
-            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 1)
+            Scalar = 1 / (Math.Abs(trbZoom.Value) + 2)
+            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 2)
         End If
         UpdateValues()
 
@@ -70,7 +70,7 @@
 
     Sub GetArcPoints()
         For i = 0 To 500 Step 1
-            TracingArc.ArcPoints(i) = New Point(((i * Range / 500)) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetGravityAcceleration) * Scalar))
+            TracingArc.ArcPoints(i) = New Point(((i * Range / 500) * Scalar) + Shape.WIDTH / 2, BOXHEIGHT - (GetYPosition(i * Range / 500, GetGravityAcceleration(cboAcceleration)) * Scalar))
         Next
     End Sub
 
@@ -92,9 +92,9 @@
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
         If Projectile.posX < Range * Scalar Then
             Projectile.posX = (xVelocity * (Now - StartTime).TotalSeconds) * Scalar
-            Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetGravityAcceleration() * (Now - StartTime).TotalSeconds ^ 2) * Scalar)
+            Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetGravityAcceleration(cboAcceleration) * (Now - StartTime).TotalSeconds ^ 2) * Scalar)
             lblDistanceDisplay.Text = "Distance: " & Math.Round((xVelocity * (Now - StartTime).TotalSeconds), 3) & "m"
-            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetGravityAcceleration() * (Now - StartTime).TotalSeconds ^ 2), 3) & "m"
+            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (Now - StartTime).TotalSeconds - 0.5 * GetGravityAcceleration(cboAcceleration) * (Now - StartTime).TotalSeconds ^ 2), 3) & "m"
 
         Else
             tmrCalculation.Stop()
@@ -122,16 +122,16 @@
         If optStepByStep.Checked Then
             ToolTips.SetToolTip(trbTime, "Time: " & trbTime.Value / 100)
             Projectile.posX = (xVelocity * (trbTime.Value / 100)) * Scalar
-            Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (trbTime.Value / 100) + -0.5 * GetGravityAcceleration() * (trbTime.Value / 100) ^ 2) / Scalar)
+            Projectile.posY = (BOXHEIGHT - Shape.WIDTH / 2) - ((yVelocity * (trbTime.Value / 100) + -0.5 * GetGravityAcceleration(cboAcceleration) * (trbTime.Value / 100) ^ 2) * Scalar)
             lblDistanceDisplay.Text = "Distance: " & Math.Round((xVelocity * (trbTime.Value / 100)), 3) & "m"
-            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (trbTime.Value / 100) + -0.5 * GetGravityAcceleration() * (trbTime.Value / 100) ^ 2), 3) & "m"
+            lblHeightDisplay.Text = "Height: " & Math.Round((yVelocity * (trbTime.Value / 100) + -0.5 * GetGravityAcceleration(cboAcceleration) * (trbTime.Value / 100) ^ 2), 3) & "m"
         End If
     End Sub
 
     Sub UpdateValues()
-        TotalTime = Maths.QuadraticSolve(-0.5 * GetGravityAcceleration(), yVelocity, 0)
+        TotalTime = Maths.QuadraticSolve(-0.5 * GetGravityAcceleration(cboAcceleration), yVelocity, 0)
         Range = xVelocity * TotalTime
-        MaxHeight = (-yVelocity) / (2 * -GetGravityAcceleration())
+        MaxHeight = (-yVelocity) / (2 * -GetGravityAcceleration(cboAcceleration))
         trbTime.Maximum = TotalTime * 100
         lblTotalTime.Text = "Total time of flight: " & TotalTime & "s"
         lblRange.Text = "Range: " & Range & "m"

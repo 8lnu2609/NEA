@@ -37,6 +37,8 @@ Partial Class frmForcesFlat
         Me.trbZoom = New System.Windows.Forms.TrackBar()
         Me.grpData = New System.Windows.Forms.GroupBox()
         Me.pnlFrictionSelect = New System.Windows.Forms.Panel()
+        Me.lblResultantForce = New System.Windows.Forms.Label()
+        Me.lblMaxFriction = New System.Windows.Forms.Label()
         Me.updForce = New System.Windows.Forms.NumericUpDown()
         Me.trbForce = New System.Windows.Forms.TrackBar()
         Me.lblForce = New System.Windows.Forms.Label()
@@ -49,8 +51,6 @@ Partial Class frmForcesFlat
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.picDisplay = New System.Windows.Forms.PictureBox()
-        Me.lblMaxFriction = New System.Windows.Forms.Label()
-        Me.lblResultantForce = New System.Windows.Forms.Label()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.updTotalTime, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,7 +174,7 @@ Partial Class frmForcesFlat
         '
         Me.trbZoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.trbZoom.Location = New System.Drawing.Point(6, 911)
-        Me.trbZoom.Minimum = -9
+        Me.trbZoom.Minimum = -8
         Me.trbZoom.Name = "trbZoom"
         Me.trbZoom.Orientation = System.Windows.Forms.Orientation.Vertical
         Me.trbZoom.Size = New System.Drawing.Size(45, 104)
@@ -219,20 +219,39 @@ Partial Class frmForcesFlat
         Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 138)
         Me.pnlFrictionSelect.TabIndex = 20
         '
+        'lblResultantForce
+        '
+        Me.lblResultantForce.AutoSize = True
+        Me.lblResultantForce.Location = New System.Drawing.Point(6, 119)
+        Me.lblResultantForce.Name = "lblResultantForce"
+        Me.lblResultantForce.Size = New System.Drawing.Size(102, 13)
+        Me.lblResultantForce.TabIndex = 40
+        Me.lblResultantForce.Text = "Resultant Force: 0N"
+        '
+        'lblMaxFriction
+        '
+        Me.lblMaxFriction.AutoSize = True
+        Me.lblMaxFriction.Location = New System.Drawing.Point(6, 103)
+        Me.lblMaxFriction.Name = "lblMaxFriction"
+        Me.lblMaxFriction.Size = New System.Drawing.Size(81, 13)
+        Me.lblMaxFriction.TabIndex = 39
+        Me.lblMaxFriction.Text = "Max friction: 0N"
+        '
         'updForce
         '
         Me.updForce.Location = New System.Drawing.Point(78, 8)
-        Me.updForce.Maximum = New Decimal(New Integer() {100000, 0, 0, 0})
+        Me.updForce.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.updForce.Name = "updForce"
         Me.updForce.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.updForce.Size = New System.Drawing.Size(108, 20)
         Me.updForce.TabIndex = 38
         Me.updForce.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
+        Me.updForce.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'trbForce
         '
         Me.trbForce.Location = New System.Drawing.Point(3, 36)
-        Me.trbForce.Maximum = 50
+        Me.trbForce.Maximum = 40
         Me.trbForce.Name = "trbForce"
         Me.trbForce.Size = New System.Drawing.Size(183, 45)
         Me.trbForce.TabIndex = 37
@@ -332,24 +351,6 @@ Partial Class frmForcesFlat
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
-        'lblMaxFriction
-        '
-        Me.lblMaxFriction.AutoSize = True
-        Me.lblMaxFriction.Location = New System.Drawing.Point(6, 103)
-        Me.lblMaxFriction.Name = "lblMaxFriction"
-        Me.lblMaxFriction.Size = New System.Drawing.Size(81, 13)
-        Me.lblMaxFriction.TabIndex = 39
-        Me.lblMaxFriction.Text = "Max friction: 0N"
-        '
-        'lblResultantForce
-        '
-        Me.lblResultantForce.AutoSize = True
-        Me.lblResultantForce.Location = New System.Drawing.Point(6, 119)
-        Me.lblResultantForce.Name = "lblResultantForce"
-        Me.lblResultantForce.Size = New System.Drawing.Size(102, 13)
-        Me.lblResultantForce.TabIndex = 40
-        Me.lblResultantForce.Text = "Resultant Force: 0N"
-        '
         'frmForcesFlat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -365,7 +366,7 @@ Partial Class frmForcesFlat
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmForcesFlat"
         Me.ShowIcon = False
-        Me.Text = "frmForcesFlat"
+        Me.Text = "Forces"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTimeSelect.ResumeLayout(False)

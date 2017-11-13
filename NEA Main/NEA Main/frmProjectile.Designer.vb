@@ -133,7 +133,7 @@ Partial Class frmProjectile
         '
         Me.trbZoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.trbZoom.Location = New System.Drawing.Point(6, 911)
-        Me.trbZoom.Minimum = -9
+        Me.trbZoom.Minimum = -8
         Me.trbZoom.Name = "trbZoom"
         Me.trbZoom.Orientation = System.Windows.Forms.Orientation.Vertical
         Me.trbZoom.Size = New System.Drawing.Size(45, 104)

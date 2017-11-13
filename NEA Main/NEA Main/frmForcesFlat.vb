@@ -19,8 +19,10 @@
     Dim timeStart As DateTime
     Dim weight As Single
     Dim resultantForce As Single
+    Dim friction As Single
 
-    Private Sub frmForcesFlat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New()
+        InitializeComponent()
         PopulateAccelerationCbo(cboAcceleration)
     End Sub
 
@@ -40,11 +42,16 @@
     Private Sub trbForce_Scroll(sender As Object, e As EventArgs) Handles trbForce.Scroll
         force = 10 ^ (trbForce.Value / 10)
         updForce.Value = force
+        updateValues()
     End Sub
 
     Private Sub updForce_ValueChanged(sender As Object, e As EventArgs) Handles updForce.ValueChanged
         force = updForce.Value
-        trbForce.Value = Math.Log10(force) * 10
+        If force <> 0 Then
+            trbForce.Value = Math.Log10(force) * 10
+        End If
+
+        updateValues()
     End Sub
 
     Private Sub updTotalTime_ValueChanged(sender As Object, e As EventArgs) Handles updTotalTime.ValueChanged
@@ -71,13 +78,14 @@
             scalar = trbZoom.Value
             lblZoomLevel.Text = String.Format("Zoom: {0}x", trbZoom.Value)
         Else
-            scalar = 1 / (Math.Abs(trbZoom.Value) + 1)
-            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 1)
+            scalar = 1 / (Math.Abs(trbZoom.Value) + 2)
+            lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 2)
         End If
     End Sub
 
     Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
         ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "ms^-2")
+        updateValues()
     End Sub
 
     Private Sub cmdStartStop_Click(sender As Object, e As EventArgs) Handles cmdStartStop.Click
@@ -99,14 +107,17 @@
 
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
         Dim velocity As Single
-        velocity = velocity + getAcceleration() * (Now - timeStart).TotalSeconds
+        velocity = GetResultant() * (Now - timeStart).TotalSeconds
         Particle.posX += velocity
         lblForce.Text = velocity
-        timeStart = Now
     End Sub
 
     Function GetResultant() As Single
-
+        If force < coeFriction * weight Then
+            Return 0
+        Else
+            Return force - coeFriction * weight
+        End If
     End Function
 
     Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged
@@ -118,11 +129,17 @@
     End Sub
 
     Public Sub updateValues()
+
         coeFriction = updFrictionCOE.Value
         mass = updMass.Value
         weight = GetGravityAcceleration(cboAcceleration) * mass
         lblForce.Text = String.Format("Force: {0}N", force)
         lblMaxFriction.Text = String.Format("Max Friction: {0}N", coeFriction * weight)
+        If force < coeFriction * weight Then
+            lblTotalFriction.Text = String.Format("Friction: {0}N", force)
+        Else
+            lblTotalFriction.Text = String.Format("Friction: {0}N", coeFriction * weight)
+        End If
 
     End Sub
 
