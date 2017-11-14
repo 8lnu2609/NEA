@@ -1,6 +1,7 @@
 ﻿Public MustInherit Class Shape
     Public posX, posY As Single
     Public Const WIDTH As Integer = 20
+    Public Const LINEWIDTH As Integer = 20
     Public MustOverride Sub Draw(e As PaintEventArgs)
 End Class
 
@@ -8,6 +9,11 @@ Public Class Circle : Inherits Shape
     Public Overrides Sub Draw(e As PaintEventArgs)
         e.Graphics.FillEllipse(Brushes.Black, posX, posY, WIDTH, WIDTH)
     End Sub
+
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer)
+        e.Graphics.FillEllipse(Brushes.Black, posX, posY, width, width)
+    End Sub
+
 End Class
 
 Public Class Square : Inherits Shape
@@ -15,49 +21,62 @@ Public Class Square : Inherits Shape
     Public Overrides Sub Draw(e As PaintEventArgs)
         e.Graphics.DrawRectangle(Pens.Black, posX, posY, WIDTH, WIDTH)
     End Sub
+
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer)
+        e.Graphics.DrawRectangle(Pens.Black, posX, posY, width, width)
+    End Sub
+
 End Class
+
 Public Class Line : Inherits Shape
-        Public posXe, posYe As Single
-        Public LineWidth As Integer
+    Public posXe, posYe As Single
 
-        Public Overrides Sub Draw(e As PaintEventArgs)
-            Dim myPen As Pen = New Pen(Color.Black, LineWidth)
-            e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
-        End Sub
-    End Class
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim myPen As Pen = New Pen(Color.Black, LINEWIDTH)
+        e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
+    End Sub
 
-    Public Class Triangle : Inherits Shape
-        Public up As Boolean
-        Public angle As Single
-        Public Overrides Sub Draw(e As PaintEventArgs)
-            Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
-            Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
-            If up Then
-                e.Graphics.FillPolygon(Brushes.Black, triangleUp)
-            Else
-                e.Graphics.FillPolygon(Brushes.Black, triangleRight)
-            End If
+    Public Overloads Sub Draw(e As PaintEventArgs, lineWidth As Integer)
+        Dim myPen As Pen = New Pen(Color.Black, lineWidth)
+        e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
+    End Sub
 
-        End Sub
+End Class
 
-    End Class
+Public Class Triangle : Inherits Shape
+    Public up As Boolean
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
+        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
+        If up Then
+            e.Graphics.FillPolygon(Brushes.Black, triangleUp)
+        Else
+            e.Graphics.FillPolygon(Brushes.Black, triangleRight)
+        End If
 
-    Public Class ParabolicArc : Inherits Shape
-        Public ArcPoints(500) As Point
+    End Sub
 
-        Public Overrides Sub Draw(e As PaintEventArgs)
-            Dim myPen As New Pen(Color.Black, 1)
-            myPen.DashPattern = {10, 2}
-            e.Graphics.DrawCurve(myPen, ArcPoints)
-        End Sub
-    End Class
+End Class
 
-    Public Class Arc : Inherits Shape
-        Public angle As Single
-        Public Overrides Sub Draw(e As PaintEventArgs)
-            e.Graphics.DrawArc(Pens.Black, posX, posY, 50, 50, 0, -angle)
-        End Sub
-    End Class
+Public Class ParabolicArc : Inherits Shape
+    Public ArcPoints(500) As Point
+
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        Dim myPen As New Pen(Color.Black, 1)
+        myPen.DashPattern = {10, 2}
+        e.Graphics.DrawCurve(myPen, ArcPoints)
+    End Sub
+End Class
+
+
+Public Class Arc : Inherits Shape
+    Public angle As Single
+    Public Overrides Sub Draw(e As PaintEventArgs)
+        e.Graphics.DrawArc(Pens.Black, posX, posY, 50, 50, 0, -angle)
+    End Sub
+End Class
+
 
 Public Class LabelText
 

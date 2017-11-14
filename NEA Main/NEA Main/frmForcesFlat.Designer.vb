@@ -112,7 +112,7 @@ Partial Class frmForcesFlat
         Me.pnlTimeSelect.Controls.Add(Me.trbTime)
         Me.pnlTimeSelect.Controls.Add(Me.optStepByStep)
         Me.pnlTimeSelect.Controls.Add(Me.optRealTime)
-        Me.pnlTimeSelect.Location = New System.Drawing.Point(6, 271)
+        Me.pnlTimeSelect.Location = New System.Drawing.Point(6, 315)
         Me.pnlTimeSelect.Name = "pnlTimeSelect"
         Me.pnlTimeSelect.Size = New System.Drawing.Size(189, 126)
         Me.pnlTimeSelect.TabIndex = 21
@@ -216,13 +216,13 @@ Partial Class frmForcesFlat
         Me.pnlFrictionSelect.Controls.Add(Me.lblTotalFriction)
         Me.pnlFrictionSelect.Location = New System.Drawing.Point(6, 119)
         Me.pnlFrictionSelect.Name = "pnlFrictionSelect"
-        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 138)
+        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 176)
         Me.pnlFrictionSelect.TabIndex = 20
         '
         'lblResultantForce
         '
         Me.lblResultantForce.AutoSize = True
-        Me.lblResultantForce.Location = New System.Drawing.Point(6, 119)
+        Me.lblResultantForce.Location = New System.Drawing.Point(7, 133)
         Me.lblResultantForce.Name = "lblResultantForce"
         Me.lblResultantForce.Size = New System.Drawing.Size(102, 13)
         Me.lblResultantForce.TabIndex = 40
@@ -231,7 +231,7 @@ Partial Class frmForcesFlat
         'lblMaxFriction
         '
         Me.lblMaxFriction.AutoSize = True
-        Me.lblMaxFriction.Location = New System.Drawing.Point(6, 103)
+        Me.lblMaxFriction.Location = New System.Drawing.Point(6, 104)
         Me.lblMaxFriction.Name = "lblMaxFriction"
         Me.lblMaxFriction.Size = New System.Drawing.Size(81, 13)
         Me.lblMaxFriction.TabIndex = 39
@@ -239,11 +239,11 @@ Partial Class frmForcesFlat
         '
         'updForce
         '
-        Me.updForce.Location = New System.Drawing.Point(78, 8)
+        Me.updForce.Location = New System.Drawing.Point(114, 8)
         Me.updForce.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.updForce.Name = "updForce"
         Me.updForce.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.updForce.Size = New System.Drawing.Size(108, 20)
+        Me.updForce.Size = New System.Drawing.Size(72, 20)
         Me.updForce.TabIndex = 38
         Me.updForce.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
         Me.updForce.Value = New Decimal(New Integer() {1, 0, 0, 0})
@@ -260,7 +260,7 @@ Partial Class frmForcesFlat
         'lblForce
         '
         Me.lblForce.AutoSize = True
-        Me.lblForce.Location = New System.Drawing.Point(6, 10)
+        Me.lblForce.Location = New System.Drawing.Point(7, 120)
         Me.lblForce.Name = "lblForce"
         Me.lblForce.Size = New System.Drawing.Size(54, 13)
         Me.lblForce.TabIndex = 0
@@ -284,7 +284,7 @@ Partial Class frmForcesFlat
         Me.updFrictionCOE.Size = New System.Drawing.Size(66, 20)
         Me.updFrictionCOE.TabIndex = 35
         Me.updFrictionCOE.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
-        Me.updFrictionCOE.Value = New Decimal(New Integer() {5, 0, 0, 65536})
+        Me.updFrictionCOE.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label3
         '
@@ -323,7 +323,7 @@ Partial Class frmForcesFlat
         Me.updMass.Size = New System.Drawing.Size(75, 20)
         Me.updMass.TabIndex = 31
         Me.updMass.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left
-        Me.updMass.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.updMass.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'Label1
         '

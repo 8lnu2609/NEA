@@ -8,16 +8,14 @@
         .posX = 20,
         .posY = 300,
         .posXe = 120,
-        .posYe = 300,
-        .LineWidth = 2
+        .posYe = 300
     }
 
     Dim YLine As Line = New Line With {
         .posX = 20,
         .posY = 300,
         .posXe = 20,
-        .posYe = 200,
-        .LineWidth = 2
+        .posYe = 200
     }
 
     Dim upTriangle As Triangle = New Triangle With {
@@ -124,8 +122,8 @@
         End If
 
 
-        XLine.Draw(e)
-        YLine.Draw(e)
+        XLine.Draw(e, 2)
+        YLine.Draw(e, 2)
     End Sub
 
     Private Sub updVelocityY_In_ValueChanged(sender As Object, e As EventArgs) Handles updVelocityY_In.ValueChanged

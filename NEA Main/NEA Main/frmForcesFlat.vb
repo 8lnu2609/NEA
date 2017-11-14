@@ -1,16 +1,15 @@
 ﻿Public Class frmForcesFlat
-    Dim baseLine As New Line With
+    Dim BaseLine As New Line With
     {
-        .posY = BOXHEIGHT / 2 + 100,
-        .posYe = BOXHEIGHT / 2 + 100,
+        .posY = BOXHEIGHT / 2 + Shape.LINEWIDTH,
+        .posYe = .posY,
         .posX = 0,
-        .posXe = BOXWIDTH,
-        .LineWidth = 20
+        .posXe = BOXWIDTH
     }
     Dim Particle As New Square With
         {
         .posX = 0,
-        .posY = BOXHEIGHT / 2 + 89 - Shape.WIDTH
+        .posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2
         }
     Dim force As Single
     Dim mass As Single
@@ -27,8 +26,8 @@
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
-        baseLine.Draw(e)
-        Particle.Draw(e)
+        BaseLine.Draw(e, Shape.LINEWIDTH * scalar)
+        Particle.Draw(e, Shape.WIDTH * scalar)
     End Sub
 
     Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
@@ -81,6 +80,11 @@
             scalar = 1 / (Math.Abs(trbZoom.Value) + 2)
             lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 2)
         End If
+
+        BaseLine.posY = BOXHEIGHT / 2 + Shape.LINEWIDTH * scalar
+        BaseLine.posYe = BaseLine.posY
+        Particle.posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2 * scalar
+
     End Sub
 
     Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
@@ -94,7 +98,6 @@
             cmdStartStop.Text = "Start"
         Else
             Particle.posX = 0
-            Particle.posY = BOXHEIGHT / 2 + 89 - Shape.WIDTH
             tmrCalculation.Start()
             timeStart = Now
             cmdStartStop.Text = "Stop"
@@ -108,8 +111,8 @@
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
         Dim velocity As Single
         velocity = GetResultant() * (Now - timeStart).TotalSeconds
-        Particle.posX += velocity
-        lblForce.Text = velocity
+        Particle.posX += velocity * scalar
+
     End Sub
 
     Function GetResultant() As Single
@@ -133,12 +136,12 @@
         coeFriction = updFrictionCOE.Value
         mass = updMass.Value
         weight = GetGravityAcceleration(cboAcceleration) * mass
-        lblForce.Text = String.Format("Force: {0}N", force)
-        lblMaxFriction.Text = String.Format("Max Friction: {0}N", coeFriction * weight)
+        lblResultantForce.Text = String.Format("Resultant Force: {0}N", Math.Round(GetResultant, 3))
+        lblMaxFriction.Text = String.Format("Max Friction: {0}N", Math.Round(coeFriction * weight, 3))
         If force < coeFriction * weight Then
-            lblTotalFriction.Text = String.Format("Friction: {0}N", force)
+            lblTotalFriction.Text = String.Format("Friction: {0}N", Math.Round(force, 3))
         Else
-            lblTotalFriction.Text = String.Format("Friction: {0}N", coeFriction * weight)
+            lblTotalFriction.Text = String.Format("Friction: {0}N", Math.Round(coeFriction * weight, 3))
         End If
 
     End Sub
