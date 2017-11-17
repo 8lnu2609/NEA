@@ -41,12 +41,14 @@
                 ElseIf e.X > 320 - e.Y And e.X > 20 And e.X < 320 Then
                     updVelocityX_In.Value = Int(((e.X - 20) / 3))
                 End If
+
             Else
                 If e.X >= 20 And e.X <= 320 And e.Y >= 0 And e.Y <= 300 Then
                     YLine.posYe = e.Y
                     YLine.posXe = e.X
                     updSpeed_In.Value = Maths.Pythag(Int((e.X - 20) / 3), Int((320 - e.Y) / 3))
-                    updAngle_In.Value = Maths.RadToDeg(Math.Abs(Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 20) / 3)))))
+                    updAngle_In.Value = Maths.RadToDeg((Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 20) / 3)))))
+                    angleArc.angle = Maths.RadToDeg(Math.Atan((320 - e.Y) / e.X))
                 End If
             End If
         End If
@@ -63,7 +65,7 @@
 
     Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
         If optComponents.Checked Then
-            updSpeed_In.Maximum = 142
+            updSpeed_In.Maximum = Math.Round(Math.Sqrt(2 * 100 ^ 2), 4)
             updSpeed_In.Value = Maths.Pythag(xVelocity, yVelocity)
             If yVelocity = 0 Then
                 updAngle_In.Value = 0
@@ -71,7 +73,7 @@
                 updAngle_In.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
             End If
         Else
-            updSpeed_In.Maximum = 100
+            updSpeed_In.Maximum = 146
             updVelocityY_In.Value = yVelocity
             updVelocityX_In.Value = xVelocity
         End If
@@ -84,6 +86,7 @@
         If optComponents.Checked Then
             updVelocityX_In.Enabled = True
             updVelocityY_In.Enabled = True
+
         Else
             updVelocityX_In.Enabled = False
             updVelocityY_In.Enabled = False
@@ -97,6 +100,7 @@
         Else
             updSpeed_In.Enabled = False
             updAngle_In.Enabled = False
+
         End If
     End Sub
 
@@ -117,7 +121,7 @@
             XLine.posXe = 50
             LabelText.Draw(e, updSpeed_In.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
             LabelText.Draw(e, updAngle_In.Value & "°", 25, 300)
-            angleArc.angle = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
+
             angleArc.Draw(e)
         End If
 
@@ -155,4 +159,5 @@
     Private Sub frmVelocityInput_Closed(sender As Object, e As EventArgs) Handles Me.Closed
         IsShowing = False
     End Sub
+
 End Class

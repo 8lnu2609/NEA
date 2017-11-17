@@ -19,6 +19,8 @@
     Dim weight As Single
     Dim resultantForce As Single
     Dim friction As Single
+    Dim acceleration As Single
+
 
     Public Sub New()
         InitializeComponent()
@@ -54,7 +56,8 @@
     End Sub
 
     Private Sub updTotalTime_ValueChanged(sender As Object, e As EventArgs) Handles updTotalTime.ValueChanged
-        trbTime.Maximum = updTotalTime.Value
+        trbTime.Maximum = updTotalTime.Value * 100
+
     End Sub
 
     Private Sub optRealTime_CheckedChanged(sender As Object, e As EventArgs) Handles optRealTime.CheckedChanged
@@ -105,7 +108,10 @@
     End Sub
 
     Private Sub trbTime_Scroll(sender As Object, e As EventArgs) Handles trbTime.Scroll
-
+        If optStepByStep.Checked Then
+            ToolTips.SetToolTip(trbTime, "Time: " & trbTime.Value / 100)
+            Particle.posX = 0.5 * acceleration * (trbTime.Value / 100) ^ 2
+        End If
     End Sub
 
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
@@ -143,7 +149,8 @@
         Else
             lblTotalFriction.Text = String.Format("Friction: {0}N", Math.Round(coeFriction * weight, 3))
         End If
-
+        acceleration = GetResultant() / mass
+        lblAcceleration.Text = String.Format("Accleration: {0}ms^-2", Math.Round(acceleration, 3))
     End Sub
 
 

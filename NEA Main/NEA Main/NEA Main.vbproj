@@ -76,6 +76,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmForcesCal.Designer.vb">
+      <DependentUpon>frmForcesCal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmForcesCal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmForcesFlat.Designer.vb">
       <DependentUpon>frmForcesFlat.vb</DependentUpon>
     </Compile>
@@ -92,6 +98,12 @@
       <DependentUpon>frmProjectileCal.vb</DependentUpon>
     </Compile>
     <Compile Include="frmProjectileCal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTurningPoints.Designer.vb">
+      <DependentUpon>frmTurningPoints.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTurningPoints.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,6 +138,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmForcesCal.resx">
+      <DependentUpon>frmForcesCal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmForcesFlat.resx">
       <DependentUpon>frmForcesFlat.vb</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectileCal.resx">
       <DependentUpon>frmProjectileCal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTurningPoints.resx">
+      <DependentUpon>frmTurningPoints.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

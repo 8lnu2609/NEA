@@ -26,6 +26,12 @@ Public Class Square : Inherits Shape
         e.Graphics.DrawRectangle(Pens.Black, posX, posY, width, width)
     End Sub
 
+    Public Overloads Sub Draw(e As PaintEventArgs, colour As Color)
+        Dim myBrush As New SolidBrush(colour)
+        e.Graphics.FillRectangle(myBrush, posX, posY, WIDTH * 4, WIDTH * 4)
+    End Sub
+
+
 End Class
 
 Public Class Line : Inherits Shape
@@ -45,7 +51,7 @@ End Class
 
 Public Class Triangle : Inherits Shape
     Public up As Boolean
-    Public angle As Single
+
     Public Overrides Sub Draw(e As PaintEventArgs)
         Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
         Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
@@ -56,6 +62,18 @@ Public Class Triangle : Inherits Shape
         End If
 
     End Sub
+
+    Public Overloads Sub Draw(e As PaintEventArgs, WIDTH As Integer)
+        Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
+        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
+        If up Then
+            e.Graphics.FillPolygon(Brushes.Black, triangleUp)
+        Else
+            e.Graphics.FillPolygon(Brushes.Black, triangleRight)
+        End If
+
+    End Sub
+
 
 End Class
 

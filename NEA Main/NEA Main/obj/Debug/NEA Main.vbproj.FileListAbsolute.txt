@@ -86,3 +86,5 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmVeloc
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesFlat.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMenu.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmProjectileCal.resources
+C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesCal.resources
+C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPoints.resources

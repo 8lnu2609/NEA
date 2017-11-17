@@ -51,6 +51,7 @@ Partial Class frmForcesFlat
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.picDisplay = New System.Windows.Forms.PictureBox()
+        Me.lblAcceleration = New System.Windows.Forms.Label()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.updTotalTime, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -208,6 +209,7 @@ Partial Class frmForcesFlat
         '
         'pnlFrictionSelect
         '
+        Me.pnlFrictionSelect.Controls.Add(Me.lblAcceleration)
         Me.pnlFrictionSelect.Controls.Add(Me.lblResultantForce)
         Me.pnlFrictionSelect.Controls.Add(Me.lblMaxFriction)
         Me.pnlFrictionSelect.Controls.Add(Me.updForce)
@@ -216,13 +218,13 @@ Partial Class frmForcesFlat
         Me.pnlFrictionSelect.Controls.Add(Me.lblTotalFriction)
         Me.pnlFrictionSelect.Location = New System.Drawing.Point(6, 119)
         Me.pnlFrictionSelect.Name = "pnlFrictionSelect"
-        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 176)
+        Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 175)
         Me.pnlFrictionSelect.TabIndex = 20
         '
         'lblResultantForce
         '
         Me.lblResultantForce.AutoSize = True
-        Me.lblResultantForce.Location = New System.Drawing.Point(7, 133)
+        Me.lblResultantForce.Location = New System.Drawing.Point(7, 135)
         Me.lblResultantForce.Name = "lblResultantForce"
         Me.lblResultantForce.Size = New System.Drawing.Size(102, 13)
         Me.lblResultantForce.TabIndex = 40
@@ -351,6 +353,15 @@ Partial Class frmForcesFlat
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
+        'lblAcceleration
+        '
+        Me.lblAcceleration.AutoSize = True
+        Me.lblAcceleration.Location = New System.Drawing.Point(7, 150)
+        Me.lblAcceleration.Name = "lblAcceleration"
+        Me.lblAcceleration.Size = New System.Drawing.Size(100, 13)
+        Me.lblAcceleration.TabIndex = 36
+        Me.lblAcceleration.Text = "Accleration: 0ms^-2"
+        '
         'frmForcesFlat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -414,4 +425,5 @@ Partial Class frmForcesFlat
     Friend WithEvents updForce As NumericUpDown
     Friend WithEvents lblMaxFriction As Label
     Friend WithEvents lblResultantForce As Label
+    Friend WithEvents lblAcceleration As Label
 End Class
