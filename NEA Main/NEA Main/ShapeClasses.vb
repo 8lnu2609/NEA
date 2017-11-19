@@ -26,9 +26,11 @@ Public Class Square : Inherits Shape
         e.Graphics.DrawRectangle(Pens.Black, posX, posY, width, width)
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, colour As Color)
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer, colour As Color)
         Dim myBrush As New SolidBrush(colour)
-        e.Graphics.FillRectangle(myBrush, posX, posY, WIDTH * 4, WIDTH * 4)
+        Dim myPen As New Pen(Color.Black, 2)
+        e.Graphics.FillRectangle(myBrush, posX, posY, width, width)
+        e.Graphics.DrawRectangle(myPen, posX, posY, width, width)
     End Sub
 
 

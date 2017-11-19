@@ -29,6 +29,8 @@ Partial Class frmMenu
         Me.cmdProjectileCal = New System.Windows.Forms.Button()
         Me.cmdForceCal = New System.Windows.Forms.Button()
         Me.cmdForceSim = New System.Windows.Forms.Button()
+        Me.cmdTurningCal = New System.Windows.Forms.Button()
+        Me.cmdTurningSim = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -95,6 +97,26 @@ Partial Class frmMenu
         Me.cmdForceSim.Text = "Force" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
         Me.cmdForceSim.UseVisualStyleBackColor = True
         '
+        'cmdTurningCal
+        '
+        Me.cmdTurningCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdTurningCal.Location = New System.Drawing.Point(174, 143)
+        Me.cmdTurningCal.Name = "cmdTurningCal"
+        Me.cmdTurningCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdTurningCal.TabIndex = 22
+        Me.cmdTurningCal.Text = "Turning Points" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdTurningCal.UseVisualStyleBackColor = True
+        '
+        'cmdTurningSim
+        '
+        Me.cmdTurningSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdTurningSim.Location = New System.Drawing.Point(174, 87)
+        Me.cmdTurningSim.Name = "cmdTurningSim"
+        Me.cmdTurningSim.Size = New System.Drawing.Size(75, 50)
+        Me.cmdTurningSim.TabIndex = 21
+        Me.cmdTurningSim.Text = "Turning Points" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdTurningSim.UseVisualStyleBackColor = True
+        '
         'frmMenu
         '
         Me.AcceptButton = Me.cmdClose
@@ -103,6 +125,8 @@ Partial Class frmMenu
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(484, 362)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cmdTurningCal)
+        Me.Controls.Add(Me.cmdTurningSim)
         Me.Controls.Add(Me.cmdForceCal)
         Me.Controls.Add(Me.cmdForceSim)
         Me.Controls.Add(Me.cmdProjectileCal)
@@ -127,4 +151,6 @@ Partial Class frmMenu
     Friend WithEvents cmdProjectileCal As Button
     Friend WithEvents cmdForceCal As Button
     Friend WithEvents cmdForceSim As Button
+    Friend WithEvents cmdTurningCal As Button
+    Friend WithEvents cmdTurningSim As Button
 End Class

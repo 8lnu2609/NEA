@@ -1,6 +1,6 @@
 ﻿Public Class frmProjectile
-    Const BOXWIDTH As Integer = 1686
-    Const BOXHEIGHT As Integer = 1024
+    Dim BOXWIDTH As Integer
+    Dim BOXHEIGHT As Integer
     Dim StartTime As Date
     Dim TotalTime As Single
     Dim Range As Single
@@ -9,10 +9,18 @@
     Dim MouseLocation As New Point
     Dim VelocityInput As New frmVelocityInput
     Dim TracingArc As New ParabolicArc
-    Dim Projectile As New Circle With {
-    .posX = 0,
-    .posY = BOXHEIGHT - Shape.WIDTH / 2
-    }
+    Dim Projectile As Circle
+
+    Public Sub New()
+        InitializeComponent()
+        BOXWIDTH = picDisplay.Width
+        BOXHEIGHT = picDisplay.Height
+        Projectile = New Circle With {
+            .posX = 0,
+            .posY = BOXHEIGHT - Shape.WIDTH / 2
+            }
+    End Sub
+
 
     Private Sub PhysicsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateAccelerationCbo(cboAcceleration)

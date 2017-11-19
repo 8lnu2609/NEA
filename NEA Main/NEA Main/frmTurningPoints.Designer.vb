@@ -26,11 +26,13 @@ Partial Class frmTurningPoints
         Me.picDisplay = New System.Windows.Forms.PictureBox()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
-        Me.cmdAddBox = New System.Windows.Forms.Button()
         Me.grpBoxData = New System.Windows.Forms.GroupBox()
+        Me.updMass = New System.Windows.Forms.NumericUpDown()
+        Me.lblMass = New System.Windows.Forms.Label()
         Me.clbBoxes = New System.Windows.Forms.CheckedListBox()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBoxData.SuspendLayout()
+        CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picDisplay
@@ -60,21 +62,12 @@ Partial Class frmTurningPoints
         Me.cmdClose.Text = "Close"
         Me.cmdClose.UseVisualStyleBackColor = True
         '
-        'cmdAddBox
-        '
-        Me.cmdAddBox.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdAddBox.Location = New System.Drawing.Point(123, 224)
-        Me.cmdAddBox.Name = "cmdAddBox"
-        Me.cmdAddBox.Size = New System.Drawing.Size(75, 23)
-        Me.cmdAddBox.TabIndex = 17
-        Me.cmdAddBox.Text = "Add Box"
-        Me.cmdAddBox.UseVisualStyleBackColor = True
-        '
         'grpBoxData
         '
         Me.grpBoxData.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBoxData.Controls.Add(Me.updMass)
+        Me.grpBoxData.Controls.Add(Me.lblMass)
         Me.grpBoxData.Controls.Add(Me.clbBoxes)
-        Me.grpBoxData.Controls.Add(Me.cmdAddBox)
         Me.grpBoxData.Location = New System.Drawing.Point(1692, 9)
         Me.grpBoxData.Name = "grpBoxData"
         Me.grpBoxData.Size = New System.Drawing.Size(204, 253)
@@ -82,19 +75,40 @@ Partial Class frmTurningPoints
         Me.grpBoxData.TabStop = False
         Me.grpBoxData.Text = "Boxes"
         '
+        'updMass
+        '
+        Me.updMass.DecimalPlaces = 3
+        Me.updMass.Location = New System.Drawing.Point(95, 120)
+        Me.updMass.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updMass.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.updMass.Name = "updMass"
+        Me.updMass.Size = New System.Drawing.Size(103, 20)
+        Me.updMass.TabIndex = 19
+        Me.updMass.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lblMass
+        '
+        Me.lblMass.AutoSize = True
+        Me.lblMass.Location = New System.Drawing.Point(6, 127)
+        Me.lblMass.Name = "lblMass"
+        Me.lblMass.Size = New System.Drawing.Size(38, 13)
+        Me.lblMass.TabIndex = 22
+        Me.lblMass.Text = "Mass: "
+        '
         'clbBoxes
         '
         Me.clbBoxes.FormattingEnabled = True
+        Me.clbBoxes.Items.AddRange(New Object() {"Red", "Blue", "Green", "Orange", "Violet"})
         Me.clbBoxes.Location = New System.Drawing.Point(6, 19)
         Me.clbBoxes.Name = "clbBoxes"
-        Me.clbBoxes.Size = New System.Drawing.Size(120, 94)
-        Me.clbBoxes.TabIndex = 19
+        Me.clbBoxes.Size = New System.Drawing.Size(120, 79)
+        Me.clbBoxes.TabIndex = 21
         '
         'frmTurningPoints
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.CancelButton = Me.cmdAddBox
+        Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(1908, 1045)
         Me.Controls.Add(Me.grpBoxData)
         Me.Controls.Add(Me.cmdClose)
@@ -110,6 +124,8 @@ Partial Class frmTurningPoints
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpBoxData.ResumeLayout(False)
+        Me.grpBoxData.PerformLayout()
+        CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -117,7 +133,8 @@ Partial Class frmTurningPoints
     Friend WithEvents picDisplay As PictureBox
     Friend WithEvents tmrDraw As Timer
     Friend WithEvents cmdClose As Button
-    Friend WithEvents cmdAddBox As Button
     Friend WithEvents grpBoxData As GroupBox
     Friend WithEvents clbBoxes As CheckedListBox
+    Friend WithEvents lblMass As Label
+    Friend WithEvents updMass As NumericUpDown
 End Class
