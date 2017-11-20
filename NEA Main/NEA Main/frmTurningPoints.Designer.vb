@@ -30,9 +30,12 @@ Partial Class frmTurningPoints
         Me.updMass = New System.Windows.Forms.NumericUpDown()
         Me.lblMass = New System.Windows.Forms.Label()
         Me.clbBoxes = New System.Windows.Forms.CheckedListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.updDistance = New System.Windows.Forms.NumericUpDown()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBoxData.SuspendLayout()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.updDistance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picDisplay
@@ -65,6 +68,8 @@ Partial Class frmTurningPoints
         'grpBoxData
         '
         Me.grpBoxData.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBoxData.Controls.Add(Me.updDistance)
+        Me.grpBoxData.Controls.Add(Me.Label1)
         Me.grpBoxData.Controls.Add(Me.updMass)
         Me.grpBoxData.Controls.Add(Me.lblMass)
         Me.grpBoxData.Controls.Add(Me.clbBoxes)
@@ -104,6 +109,25 @@ Partial Class frmTurningPoints
         Me.clbBoxes.Size = New System.Drawing.Size(120, 79)
         Me.clbBoxes.TabIndex = 21
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 166)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(116, 13)
+        Me.Label1.TabIndex = 19
+        Me.Label1.Text = "Distance from balance:"
+        '
+        'updDistance
+        '
+        Me.updDistance.DecimalPlaces = 3
+        Me.updDistance.Location = New System.Drawing.Point(128, 164)
+        Me.updDistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updDistance.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
+        Me.updDistance.Name = "updDistance"
+        Me.updDistance.Size = New System.Drawing.Size(70, 20)
+        Me.updDistance.TabIndex = 23
+        '
         'frmTurningPoints
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -126,6 +150,7 @@ Partial Class frmTurningPoints
         Me.grpBoxData.ResumeLayout(False)
         Me.grpBoxData.PerformLayout()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.updDistance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -137,4 +162,6 @@ Partial Class frmTurningPoints
     Friend WithEvents clbBoxes As CheckedListBox
     Friend WithEvents lblMass As Label
     Friend WithEvents updMass As NumericUpDown
+    Friend WithEvents Label1 As Label
+    Friend WithEvents updDistance As NumericUpDown
 End Class

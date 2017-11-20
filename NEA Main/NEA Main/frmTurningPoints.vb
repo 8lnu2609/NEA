@@ -105,11 +105,19 @@
                     With Boxes(i)
                         If e.Y > 470 And e.Y < 500 + SHAPEWIDTH Then
                             .shape.posY = 488
+                            Dim temp As New BoxStruct
+                            temp = Boxes(i)
+                            temp.onLine = True
+                            Boxes(i) = temp
+
                         Else
                             .shape.posY = e.Y - MouseOffset.Y
+                            Dim temp As BoxStruct
+                            temp = Boxes(i)
+                            temp.onLine = False
+                            Boxes(i) = temp
 
                         End If
-
                         .shape.posX = e.X - MouseOffset.X
                     End With
                 End If
@@ -124,3 +132,26 @@
         End Try
     End Sub
 End Class
+
+Class BoxClass
+    Public colour As Color
+    Public shape As Square
+    Public mass As Single
+    Public showing As Boolean
+    Public onLine As Boolean
+
+    Public Sub ChangeMass(ByVal massIn As Single)
+        mass = massIn
+    End Sub
+
+    Public Sub ChangeShowing(ByVal boolIn As Boolean)
+
+    End Sub
+
+    Public Sub ChangeOnLine(ByVal boolIn As Boolean)
+
+    End Sub
+
+
+End Class
+
