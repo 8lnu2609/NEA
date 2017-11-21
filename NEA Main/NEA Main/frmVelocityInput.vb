@@ -1,4 +1,5 @@
-﻿Public Class frmVelocityInput
+﻿Imports System.Drawing.Drawing2D
+Public Class frmVelocityInput
     Dim MouseIsDown As Boolean = False
     Public xVelocity As Single = 100
     Public yVelocity As Single = 100
@@ -18,19 +19,18 @@
         .posYe = 200
     }
 
-    Dim upTriangle As Triangle = New Triangle With {
-        .up = True
-        }
-
-    Dim rightTriangle As Triangle = New Triangle With {
-        .up = False
-        }
-
     Dim angleArc As Arc = New Arc With {
         .posX = -5,
         .posY = 275
     }
 
+    Public Sub New()
+        InitializeComponent()
+        Using bigArrowCap As New AdjustableArrowCap(5, 5)
+            XLine.myPen.CustomEndCap = bigArrowCap
+            YLine.myPen.CustomEndCap = bigArrowCap
+        End Using
+    End Sub
 
     Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If MouseIsDown Then
@@ -105,26 +105,19 @@
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
-        rightTriangle.posX = 20 + xVelocity * 3
-        rightTriangle.posY = 300 - Shape.WIDTH / 2
         If optComponents.Checked Then
             XLine.posXe = 20 + xVelocity * 3
             YLine.posYe = 300 - yVelocity * 3
             YLine.posXe = 20
-            upTriangle.posX = Shape.WIDTH / 2
-            upTriangle.posY = 300 - (Shape.WIDTH) - yVelocity * 3
-            rightTriangle.Draw(e)
-            upTriangle.Draw(e)
-            LabelText.Draw(e, xVelocity & "m/s", 30 + xVelocity, 300)
-            LabelText.Draw(e, yVelocity & "m/s", 30, 300 - yVelocity)
+            LabelText.Draw(e, xVelocity & "m/s", 10, 30 + xVelocity, 300)
+            LabelText.Draw(e, yVelocity & "m/s", 10, 30, 300 - yVelocity)
         ElseIf optSpeed.Checked Then
             XLine.posXe = 50
-            LabelText.Draw(e, updSpeed_In.Value & "m/s", 20 + xVelocity, 300 - yVelocity)
-            LabelText.Draw(e, updAngle_In.Value & "°", 25, 300)
+            LabelText.Draw(e, updSpeed_In.Value & "m/s", 10, 20 + xVelocity, 300 - yVelocity)
+            LabelText.Draw(e, updAngle_In.Value & "°", 10, 25, 300)
 
             angleArc.Draw(e)
         End If
-
 
         XLine.Draw(e, 2)
         YLine.Draw(e, 2)

@@ -1,23 +1,13 @@
 ﻿Public Class frmTurningPoints
-    Dim BOXWIDTH As Integer
-    Dim BOXHEIGHT As Integer
-    Const SHAPEWIDTH As Integer = 40
+    Dim BOXWIDTH As Int32
+    Dim BOXHEIGHT As Int32
+    Const SHAPEWIDTH As Int32 = 40
     Dim isMouseDown As Boolean = False
     Dim MouseOffset As Point
-    Dim currentBox As Color = Color.Red
-    'Dim colours() As Color = {Color.FromName("Red"), Color.FromName("Blue"), Color.FromName("Green"), Color.FromName("Orange"), Color.FromName("Violet")}
-    Dim colours As New Dictionary(Of Color, Integer) From {{Color.FromName("Red"), 1}, {Color.FromName("Blue"), 2}, {Color.FromName("Green"), 3}, {Color.FromName("Orange"), 4}, {Color.FromName("Violet"), 4}}
-    Dim Boxes As New List(Of BoxStruct)
-
-    'New BoxStruct With {.colour = currentBox, .shape = Boxes(colours.item(color.FromName(clbBoxes.SelectedItem))).shape, .mass = Boxes(colours.item(color.FromName(clbBoxes.SelectedItem))).mass, .showing = Boxes(colours.item(color.FromName(clbBoxes.SelectedItem))).showing, .onLine = Boxes(colours.item(color.FromName(clbBoxes.SelectedItem))).onLine}
-
-    Structure BoxStruct
-        Dim colour As Color
-        Dim shape As Square
-        Dim mass As Single
-        Dim showing As Boolean
-        Dim onLine As Boolean
-    End Structure
+    Dim currentBox As Int32 = 0
+    Dim colours As New Dictionary(Of Color, Int32) From {{Color.FromName("Red"), 1}, {Color.FromName("Blue"), 2}, {Color.FromName("Green"), 3}, {Color.FromName("Orange"), 4}, {Color.FromName("Violet"), 4}}
+    Dim Boxes As New List(Of BoxClass)
+    Dim LineLength As Int32 = 10
 
     Public Sub New()
         InitializeComponent()
@@ -25,7 +15,7 @@
         BOXHEIGHT = picDisplay.Height
         tmrDraw.Start()
         For i = 0 To 4
-            Boxes.Add(New BoxStruct With {.colour = colours.Keys(i), .shape = New Square With {.posX = SHAPEWIDTH * i}, .mass = 1, .showing = False, .onLine = False})
+            Boxes.Add(New BoxClass With {.colour = colours.Keys(i), .shape = New Square With {.posX = SHAPEWIDTH * i}, .mass = 1, .showing = False, .onLine = False})
         Next
         clbBoxes.SelectedIndex = 0
 
@@ -33,7 +23,7 @@
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         DrawSeeSaw(e)
-        For Each box As BoxStruct In Boxes
+        For Each box As BoxClass In Boxes
             If box.showing = True Then
                 box.shape.Draw(e, SHAPEWIDTH, box.colour)
             End If
@@ -47,11 +37,19 @@
             .posX = BOXWIDTH / 2 - 50
         }
         Dim baseLine As New Line With {
-            .posX = 50,
-            .posXe = BOXWIDTH - 50,
+            .posX = BOXWIDTH / 2 - 500,
+            .posXe = .posX + 1000,
             .posY = baseTriangle.posY,
             .posYe = .posY
         }
+        Dim myPen As New Pen(Color.Gray, 3)
+        myPen.DashStyle = Drawing2D.DashStyle.Dash
+        e.Graphics.DrawLine(myPen, baseLine.posX + 1, baseLine.posY, baseLine.posX + 1, baseLine.posY + 200)
+        e.Graphics.DrawLine(myPen, baseLine.posXe - 2, baseLine.posY, baseLine.posXe - 2, baseLine.posY + 200)
+        myPen.CustomEndCap = New Drawing2D.AdjustableArrowCap(5, 5)
+        myPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5)
+        e.Graphics.DrawLine(myPen, baseLine.posX, baseLine.posY + 200, baseLine.posXe, baseLine.posY + 200)
+        LabelText.Draw(e, LineLength & "m", 20, BOXWIDTH / 2, baseLine.posY + 210)
         baseTriangle.Draw(e, 100)
         baseLine.Draw(e, 10)
 
@@ -60,11 +58,18 @@
     Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
         For i = 0 To 4
             If clbBoxes.CheckedItems.Contains(Boxes(i).colour.Name) Then
-                Boxes.Item(i) = New BoxStruct With {.colour = Boxes.Item(i).colour, .shape = Boxes.Item(i).shape, .mass = Boxes.Item(i).mass, .showing = True, .onLine = False}
+                Boxes(i).ChangeShowing(True)
             Else
-                Boxes.Item(i) = New BoxStruct With {.colour = Boxes.Item(i).colour, .shape = Boxes.Item(i).shape, .mass = Boxes.Item(i).mass, .showing = False, .onLine = False}
+                Boxes(i).ChangeShowing(False)
             End If
         Next
+        If Boxes(currentBox).onLine Then
+            lblDistanceFromTuring.Visible = True
+            lblDistanceFromTuring.Visible = True
+        Else
+            lblDistanceFromTuring.Visible = False
+            lblDistanceFromTuring.Visible = False
+        End If
         picDisplay.Refresh()
     End Sub
 
@@ -73,8 +78,16 @@
     End Sub
 
     Private Sub clbBoxes_SelectedValueChanged(sender As Object, e As EventArgs) Handles clbBoxes.SelectedIndexChanged
+        currentBox = colours.Item(Color.FromName(clbBoxes.SelectedItem))
         lblMass.Text = clbBoxes.SelectedItem & "'s Mass: "
-        updMass.Value = Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).mass
+        updMass.Value = Boxes(currentBox).mass
+        If Boxes(currentBox).onLine Then
+            lblDistanceFromTuring.Visible = True
+            lblDistanceFromTuring.Visible = True
+        Else
+            lblDistanceFromTuring.Visible = False
+            lblDistanceFromTuring.Visible = False
+        End If
     End Sub
 
     Private Sub picDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
@@ -98,25 +111,17 @@
         End If
     End Sub
 
-    Private Sub picDisplay_Move(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
+    Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If isMouseDown Then
             For i = 0 To 4
                 If Boxes(i).colour = Color.FromName(clbBoxes.SelectedItem) Then
                     With Boxes(i)
-                        If e.Y > 470 And e.Y < 500 + SHAPEWIDTH Then
+                        If .shape.posX + SHAPEWIDTH / 2 > (BOXWIDTH / 2 - 500) And .shape.posX + SHAPEWIDTH / 2 < (BOXWIDTH / 2 + 500) And e.Y > (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y < (BOXHEIGHT / 2 + Shape.WIDTH) Then
                             .shape.posY = 488
-                            Dim temp As New BoxStruct
-                            temp = Boxes(i)
-                            temp.onLine = True
-                            Boxes(i) = temp
-
+                            Boxes(i).ChangeOnLine(True)
                         Else
                             .shape.posY = e.Y - MouseOffset.Y
-                            Dim temp As BoxStruct
-                            temp = Boxes(i)
-                            temp.onLine = False
-                            Boxes(i) = temp
-
+                            Boxes(i).ChangeOnLine(False)
                         End If
                         .shape.posX = e.X - MouseOffset.X
                     End With
@@ -127,9 +132,13 @@
 
     Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged
         Try
-            Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))) = New BoxStruct With {.colour = Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).colour, .shape = Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).shape, .mass = updMass.Value, .showing = Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).showing, .onLine = Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).onLine}
+            Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).ChangeMass(updMass.Value)
         Catch
         End Try
+    End Sub
+
+    Private Sub updLength_ValueChanged(sender As Object, e As EventArgs) Handles updLength.ValueChanged
+        LineLength = updLength.Value
     End Sub
 End Class
 
@@ -139,19 +148,19 @@ Class BoxClass
     Public mass As Single
     Public showing As Boolean
     Public onLine As Boolean
+    Public distanceFromTurning As Int32
 
     Public Sub ChangeMass(ByVal massIn As Single)
         mass = massIn
     End Sub
 
     Public Sub ChangeShowing(ByVal boolIn As Boolean)
-
+        showing = boolIn
     End Sub
 
     Public Sub ChangeOnLine(ByVal boolIn As Boolean)
-
+        onLine = boolIn
     End Sub
 
 
 End Class
-

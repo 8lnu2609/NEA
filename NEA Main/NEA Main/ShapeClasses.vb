@@ -1,7 +1,8 @@
 ﻿Public MustInherit Class Shape
     Public posX, posY As Single
-    Public Const WIDTH As Integer = 20
-    Public Const LINEWIDTH As Integer = 20
+    Public Const WIDTH As Int32 = 20
+    Public Const LINEWIDTH As Int32 = 20
+    Public myPen As New Pen(Color.Black)
     Public MustOverride Sub Draw(e As PaintEventArgs)
 End Class
 
@@ -10,7 +11,7 @@ Public Class Circle : Inherits Shape
         e.Graphics.FillEllipse(Brushes.Black, posX, posY, WIDTH, WIDTH)
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer)
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Int32)
         e.Graphics.FillEllipse(Brushes.Black, posX, posY, width, width)
     End Sub
 
@@ -22,13 +23,15 @@ Public Class Square : Inherits Shape
         e.Graphics.DrawRectangle(Pens.Black, posX, posY, WIDTH, WIDTH)
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer)
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Int32)
         e.Graphics.DrawRectangle(Pens.Black, posX, posY, width, width)
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, width As Integer, colour As Color)
+    Public Overloads Sub Draw(e As PaintEventArgs, width As Int32, colour As Color)
         Dim myBrush As New SolidBrush(colour)
-        Dim myPen As New Pen(Color.Black, 2)
+        myPen.Color = Color.Black
+        myPen.Width = 2
+        myPen.Alignment = Drawing2D.PenAlignment.Inset
         e.Graphics.FillRectangle(myBrush, posX, posY, width, width)
         e.Graphics.DrawRectangle(myPen, posX, posY, width, width)
     End Sub
@@ -40,12 +43,13 @@ Public Class Line : Inherits Shape
     Public posXe, posYe As Single
 
     Public Overrides Sub Draw(e As PaintEventArgs)
-        Dim myPen As Pen = New Pen(Color.Black, LINEWIDTH)
+        myPen.Color = Color.Black
+        myPen.Width = LINEWIDTH
         e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, lineWidth As Integer)
-        Dim myPen As Pen = New Pen(Color.Black, lineWidth)
+    Public Overloads Sub Draw(e As PaintEventArgs, lineWidth As Int32)
+        myPen.Width = lineWidth
         e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
     End Sub
 
@@ -65,7 +69,7 @@ Public Class Triangle : Inherits Shape
 
     End Sub
 
-    Public Overloads Sub Draw(e As PaintEventArgs, WIDTH As Integer)
+    Public Overloads Sub Draw(e As PaintEventArgs, WIDTH As Int32)
         Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
         Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
         If up Then
@@ -83,12 +87,11 @@ Public Class ParabolicArc : Inherits Shape
     Public ArcPoints(500) As Point
 
     Public Overrides Sub Draw(e As PaintEventArgs)
-        Dim myPen As New Pen(Color.Black, 1)
+        myPen.Width = 1
         myPen.DashPattern = {10, 2}
         e.Graphics.DrawCurve(myPen, ArcPoints)
     End Sub
 End Class
-
 
 Public Class Arc : Inherits Shape
     Public angle As Single
@@ -97,13 +100,14 @@ Public Class Arc : Inherits Shape
     End Sub
 End Class
 
-
 Public Class LabelText
 
-    Public Shared Sub Draw(e As PaintEventArgs, labelText As String, posX As Single, posY As Single)
-        Dim drawFont As New Font("Arial", 10)
+    Public Shared Sub Draw(e As PaintEventArgs, labelText As String, fontSize As Int32, posX As Single, posY As Single)
+        Dim drawFont As New Font("Arial", fontSize)
         e.Graphics.DrawString(labelText, drawFont, Brushes.Black, posX, posY)
     End Sub
+
+
 End Class
 
 #Region "Impelement"

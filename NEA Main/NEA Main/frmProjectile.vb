@@ -1,6 +1,6 @@
 ﻿Public Class frmProjectile
-    Dim BOXWIDTH As Integer
-    Dim BOXHEIGHT As Integer
+    Dim BOXWIDTH As Int32
+    Dim BOXHEIGHT As Int32
     Dim StartTime As Date
     Dim TotalTime As Single
     Dim Range As Single
@@ -82,7 +82,7 @@
         Next
     End Sub
 
-    Function GetYPosition(x As Integer, Acceleration As Single) As Single
+    Function GetYPosition(x As Int32, Acceleration As Single) As Single
         If xVelocity <> 0 Then
             Return yVelocity * (x / xVelocity) + 0.5 * -Acceleration * (x / xVelocity) ^ 2
         Else

@@ -27,15 +27,18 @@ Partial Class frmTurningPoints
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpBoxData = New System.Windows.Forms.GroupBox()
+        Me.updDistance = New System.Windows.Forms.NumericUpDown()
+        Me.lblDistanceFromTuring = New System.Windows.Forms.Label()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
         Me.lblMass = New System.Windows.Forms.Label()
         Me.clbBoxes = New System.Windows.Forms.CheckedListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.updDistance = New System.Windows.Forms.NumericUpDown()
+        Me.updLength = New System.Windows.Forms.NumericUpDown()
+        Me.lblSeeSawLength = New System.Windows.Forms.Label()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBoxData.SuspendLayout()
-        CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updDistance, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.updLength, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picDisplay
@@ -69,7 +72,7 @@ Partial Class frmTurningPoints
         '
         Me.grpBoxData.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.grpBoxData.Controls.Add(Me.updDistance)
-        Me.grpBoxData.Controls.Add(Me.Label1)
+        Me.grpBoxData.Controls.Add(Me.lblDistanceFromTuring)
         Me.grpBoxData.Controls.Add(Me.updMass)
         Me.grpBoxData.Controls.Add(Me.lblMass)
         Me.grpBoxData.Controls.Add(Me.clbBoxes)
@@ -79,6 +82,27 @@ Partial Class frmTurningPoints
         Me.grpBoxData.TabIndex = 18
         Me.grpBoxData.TabStop = False
         Me.grpBoxData.Text = "Boxes"
+        '
+        'updDistance
+        '
+        Me.updDistance.DecimalPlaces = 3
+        Me.updDistance.Location = New System.Drawing.Point(128, 164)
+        Me.updDistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updDistance.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
+        Me.updDistance.Name = "updDistance"
+        Me.updDistance.Size = New System.Drawing.Size(70, 20)
+        Me.updDistance.TabIndex = 23
+        Me.updDistance.Visible = False
+        '
+        'lblDistanceFromTuring
+        '
+        Me.lblDistanceFromTuring.AutoSize = True
+        Me.lblDistanceFromTuring.Location = New System.Drawing.Point(6, 166)
+        Me.lblDistanceFromTuring.Name = "lblDistanceFromTuring"
+        Me.lblDistanceFromTuring.Size = New System.Drawing.Size(116, 13)
+        Me.lblDistanceFromTuring.TabIndex = 19
+        Me.lblDistanceFromTuring.Text = "Distance from balance:"
+        Me.lblDistanceFromTuring.Visible = False
         '
         'updMass
         '
@@ -109,24 +133,23 @@ Partial Class frmTurningPoints
         Me.clbBoxes.Size = New System.Drawing.Size(120, 79)
         Me.clbBoxes.TabIndex = 21
         '
-        'Label1
+        'updLength
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 166)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(116, 13)
-        Me.Label1.TabIndex = 19
-        Me.Label1.Text = "Distance from balance:"
+        Me.updLength.Location = New System.Drawing.Point(1812, 295)
+        Me.updLength.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updLength.Name = "updLength"
+        Me.updLength.Size = New System.Drawing.Size(84, 20)
+        Me.updLength.TabIndex = 19
+        Me.updLength.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
-        'updDistance
+        'lblSeeSawLength
         '
-        Me.updDistance.DecimalPlaces = 3
-        Me.updDistance.Location = New System.Drawing.Point(128, 164)
-        Me.updDistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updDistance.Minimum = New Decimal(New Integer() {1000, 0, 0, -2147483648})
-        Me.updDistance.Name = "updDistance"
-        Me.updDistance.Size = New System.Drawing.Size(70, 20)
-        Me.updDistance.TabIndex = 23
+        Me.lblSeeSawLength.AutoSize = True
+        Me.lblSeeSawLength.Location = New System.Drawing.Point(1698, 297)
+        Me.lblSeeSawLength.Name = "lblSeeSawLength"
+        Me.lblSeeSawLength.Size = New System.Drawing.Size(94, 13)
+        Me.lblSeeSawLength.TabIndex = 20
+        Me.lblSeeSawLength.Text = "Length of see saw"
         '
         'frmTurningPoints
         '
@@ -134,6 +157,8 @@ Partial Class frmTurningPoints
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(1908, 1045)
+        Me.Controls.Add(Me.lblSeeSawLength)
+        Me.Controls.Add(Me.updLength)
         Me.Controls.Add(Me.grpBoxData)
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.picDisplay)
@@ -149,9 +174,11 @@ Partial Class frmTurningPoints
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpBoxData.ResumeLayout(False)
         Me.grpBoxData.PerformLayout()
-        CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updDistance, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.updLength, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -162,6 +189,8 @@ Partial Class frmTurningPoints
     Friend WithEvents clbBoxes As CheckedListBox
     Friend WithEvents lblMass As Label
     Friend WithEvents updMass As NumericUpDown
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblDistanceFromTuring As Label
     Friend WithEvents updDistance As NumericUpDown
+    Friend WithEvents updLength As NumericUpDown
+    Friend WithEvents lblSeeSawLength As Label
 End Class
