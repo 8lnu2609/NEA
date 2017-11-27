@@ -19,6 +19,12 @@
     End Sub
 
     Private Sub cmdForceCal_Click(sender As Object, e As EventArgs) Handles cmdForceCal.Click
+        Dim Cal As New frmForcesCal
+        Cal.Show()
+    End Sub
 
+    Private Sub cmdTurningCal_Click(sender As Object, e As EventArgs) Handles cmdTurningCal.Click
+        Dim Cal As New frmTurningPointsCalculator
+        Cal.Show()
     End Sub
 End Class

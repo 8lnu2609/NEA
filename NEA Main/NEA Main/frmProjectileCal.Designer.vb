@@ -33,14 +33,14 @@ Partial Class frmProjectileCal
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtTimeY_In = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.grbComponentsY = New System.Windows.Forms.GroupBox()
+        Me.cmdSolve = New System.Windows.Forms.Button()
         Me.txtAccelerationX_In = New System.Windows.Forms.TextBox()
         Me.txtFinalVelocityX_In = New System.Windows.Forms.TextBox()
         Me.txtInitalVelocityX_In = New System.Windows.Forms.TextBox()
         Me.txtDisplacementX_In = New System.Windows.Forms.TextBox()
-        Me.grbComponentsY = New System.Windows.Forms.GroupBox()
-        Me.grbComponentsX = New System.Windows.Forms.GroupBox()
         Me.txtTimeX_In = New System.Windows.Forms.TextBox()
-        Me.cmdSolve = New System.Windows.Forms.Button()
+        Me.grbComponentsX = New System.Windows.Forms.GroupBox()
         Me.grbComponentsY.SuspendLayout()
         Me.grbComponentsX.SuspendLayout()
         Me.SuspendLayout()
@@ -141,6 +141,30 @@ Partial Class frmProjectileCal
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Time, t (s)"
         '
+        'grbComponentsY
+        '
+        Me.grbComponentsY.Controls.Add(Me.txtDisplacementY_In)
+        Me.grbComponentsY.Controls.Add(Me.txtInitalVelocityY_In)
+        Me.grbComponentsY.Controls.Add(Me.txtFinalVelocityY_In)
+        Me.grbComponentsY.Controls.Add(Me.txtTimeY_In)
+        Me.grbComponentsY.Controls.Add(Me.txtAccelerationY_In)
+        Me.grbComponentsY.Location = New System.Drawing.Point(133, 5)
+        Me.grbComponentsY.Name = "grbComponentsY"
+        Me.grbComponentsY.Size = New System.Drawing.Size(112, 152)
+        Me.grbComponentsY.TabIndex = 17
+        Me.grbComponentsY.TabStop = False
+        Me.grbComponentsY.Text = "Vertical"
+        '
+        'cmdSolve
+        '
+        Me.cmdSolve.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdSolve.Location = New System.Drawing.Point(207, 170)
+        Me.cmdSolve.Name = "cmdSolve"
+        Me.cmdSolve.Size = New System.Drawing.Size(75, 23)
+        Me.cmdSolve.TabIndex = 9
+        Me.cmdSolve.Text = "Solve"
+        Me.cmdSolve.UseVisualStyleBackColor = True
+        '
         'txtAccelerationX_In
         '
         Me.txtAccelerationX_In.Location = New System.Drawing.Point(6, 97)
@@ -173,19 +197,14 @@ Partial Class frmProjectileCal
         Me.txtDisplacementX_In.TabIndex = 6
         Me.txtDisplacementX_In.Tag = "Displacement"
         '
-        'grbComponentsY
+        'txtTimeX_In
         '
-        Me.grbComponentsY.Controls.Add(Me.txtDisplacementY_In)
-        Me.grbComponentsY.Controls.Add(Me.txtInitalVelocityY_In)
-        Me.grbComponentsY.Controls.Add(Me.txtFinalVelocityY_In)
-        Me.grbComponentsY.Controls.Add(Me.txtTimeY_In)
-        Me.grbComponentsY.Controls.Add(Me.txtAccelerationY_In)
-        Me.grbComponentsY.Location = New System.Drawing.Point(133, 5)
-        Me.grbComponentsY.Name = "grbComponentsY"
-        Me.grbComponentsY.Size = New System.Drawing.Size(112, 152)
-        Me.grbComponentsY.TabIndex = 17
-        Me.grbComponentsY.TabStop = False
-        Me.grbComponentsY.Text = "Vertical"
+        Me.txtTimeX_In.Location = New System.Drawing.Point(6, 123)
+        Me.txtTimeX_In.Name = "txtTimeX_In"
+        Me.txtTimeX_In.ReadOnly = True
+        Me.txtTimeX_In.Size = New System.Drawing.Size(100, 20)
+        Me.txtTimeX_In.TabIndex = 10
+        Me.txtTimeX_In.Tag = "Time"
         '
         'grbComponentsX
         '
@@ -200,25 +219,6 @@ Partial Class frmProjectileCal
         Me.grbComponentsX.TabIndex = 18
         Me.grbComponentsX.TabStop = False
         Me.grbComponentsX.Text = "Horizontal"
-        '
-        'txtTimeX_In
-        '
-        Me.txtTimeX_In.Location = New System.Drawing.Point(6, 123)
-        Me.txtTimeX_In.Name = "txtTimeX_In"
-        Me.txtTimeX_In.ReadOnly = True
-        Me.txtTimeX_In.Size = New System.Drawing.Size(100, 20)
-        Me.txtTimeX_In.TabIndex = 10
-        Me.txtTimeX_In.Tag = "Time"
-        '
-        'cmdSolve
-        '
-        Me.cmdSolve.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdSolve.Location = New System.Drawing.Point(207, 170)
-        Me.cmdSolve.Name = "cmdSolve"
-        Me.cmdSolve.Size = New System.Drawing.Size(75, 23)
-        Me.cmdSolve.TabIndex = 9
-        Me.cmdSolve.Text = "Solve"
-        Me.cmdSolve.UseVisualStyleBackColor = True
         '
         'frmProjectileCal
         '
@@ -262,12 +262,12 @@ Partial Class frmProjectileCal
     Friend WithEvents Label4 As Label
     Friend WithEvents txtTimeY_In As TextBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents grbComponentsY As GroupBox
+    Friend WithEvents cmdSolve As Button
     Friend WithEvents txtAccelerationX_In As TextBox
     Friend WithEvents txtFinalVelocityX_In As TextBox
     Friend WithEvents txtInitalVelocityX_In As TextBox
     Friend WithEvents txtDisplacementX_In As TextBox
-    Friend WithEvents grbComponentsY As GroupBox
-    Friend WithEvents grbComponentsX As GroupBox
-    Friend WithEvents cmdSolve As Button
     Friend WithEvents txtTimeX_In As TextBox
+    Friend WithEvents grbComponentsX As GroupBox
 End Class

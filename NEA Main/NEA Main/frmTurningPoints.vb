@@ -1,14 +1,15 @@
 ﻿Public Class frmTurningPoints
     Dim BOXWIDTH As Int32
     Dim BOXHEIGHT As Int32
-    Const LINEWIDTH As Int32 = 10
-    Const SHAPEWIDTH As Int32 = 40
+    Const LINEWIDTH As Single = 10
+    Const SHAPEWIDTH As Single = 40
     Dim isMouseDown As Boolean = False
     Dim MouseOffset As Point
     Dim currentBox As Int32 = 0
     Dim colours As New Dictionary(Of Color, Int32) From {{Color.FromName("Red"), 0}, {Color.FromName("Blue"), 1}, {Color.FromName("Green"), 2}, {Color.FromName("Orange"), 3}, {Color.FromName("Violet"), 4}}
     Dim Boxes As New List(Of BoxClass)
     Dim LineLength As Int32 = 10
+    Dim BalanceBoxDistance As Single
 
     Public Sub New()
         InitializeComponent()
@@ -17,6 +18,7 @@
         tmrDraw.Start()
         For i = 0 To 4
             Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.posX = SHAPEWIDTH * i}, 1, False, False, 0))
+            clbBoxes.Items.Add(colours.Keys(i).Name)
         Next
         clbBoxes.SelectedIndex = 0
     End Sub
@@ -24,13 +26,27 @@
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         DrawSeeSaw(e)
         For Each box As BoxClass In Boxes
-            If box.GetShowing = True Then
-                box.shape.Draw(e, SHAPEWIDTH, box.GetColour)
+            If box.Showing = True Then
+                box.Shape.Draw(e, SHAPEWIDTH, box.Colour)
             End If
         Next
+        If chbBalance.Checked Then
+            DrawBalanceBox(e)
+        End If
     End Sub
 
-    Sub DrawSeeSaw(ByRef e As PaintEventArgs)
+    Sub DrawBalanceBox(ByVal e As PaintEventArgs)
+        Dim myPen As New Pen(Color.Black)
+        myPen.Width = 2
+        myPen.Alignment = Drawing2D.PenAlignment.Inset
+        Dim posX As Single = BalanceBoxDistance / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
+        Dim posY As Single = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
+        e.Graphics.FillRectangle(Brushes.Chocolate, posX, posY, SHAPEWIDTH, SHAPEWIDTH)
+        e.Graphics.DrawRectangle(myPen, posX, posY, SHAPEWIDTH, SHAPEWIDTH)
+        LabelText.Draw(e, "?", 25, posX + 4, posY)
+    End Sub
+
+    Sub DrawSeeSaw(ByVal e As PaintEventArgs)
         Dim baseTriangle As New Triangle With {
             .up = True,
             .posY = BOXHEIGHT / 2 + Shape.WIDTH,
@@ -57,13 +73,13 @@
 
     Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
         With Boxes(currentBox)
-            If clbBoxes.CheckedItems.Contains(.GetColour.Name) Then
-                .SetShowing(True)
+            If clbBoxes.CheckedItems.Contains(.Colour.Name) Then
+                .Showing = True
             Else
-                .SetShowing(False)
+                .Showing = False
             End If
 
-            If .GetOnLine Then
+            If .OnLine Then
                 lblDistanceFromTuring.Visible = True
                 updDistance.Visible = True
             Else
@@ -81,16 +97,16 @@
     Private Sub clbBoxes_SelectedValueChanged(sender As Object, e As EventArgs) Handles clbBoxes.SelectedIndexChanged
         currentBox = colours.Item(Color.FromName(clbBoxes.SelectedItem))
         lblMass.Text = clbBoxes.SelectedItem & "'s Mass: "
-        updMass.Value = Boxes(currentBox).GetMass
+        updMass.Value = Boxes(currentBox).Mass
     End Sub
 
     Private Sub picDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
         If e.Button = MouseButtons.Left Then
             With Boxes(currentBox)
-                If e.X > .shape.posX And e.X < .shape.posX + SHAPEWIDTH And e.Y > .shape.posY And e.Y < .shape.posY + SHAPEWIDTH And .GetShowing = True Then
+                If e.X > .Shape.posX And e.X < .Shape.posX + SHAPEWIDTH And e.Y > .Shape.posY And e.Y < .Shape.posY + SHAPEWIDTH And .Showing = True Then
                     isMouseDown = True
-                    clbBoxes.SelectedItem = .GetColour.Name
-                    MouseOffset = e.Location - New Point(.shape.posX, .shape.posY)
+                    clbBoxes.SelectedItem = .Colour.Name
+                    MouseOffset = e.Location - New Point(.Shape.posX, .Shape.posY)
                 End If
             End With
         End If
@@ -105,23 +121,25 @@
     Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If isMouseDown Then
             With Boxes(currentBox)
-                If .shape.posX + SHAPEWIDTH / 2 > (BOXWIDTH / 2 - 500) And .shape.posX + SHAPEWIDTH / 2 < (BOXWIDTH / 2 + 500) And e.Y > (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y < (BOXHEIGHT / 2 + Shape.WIDTH) Then
-                    .shape.posY = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
-                    .SetOnLine(True)
-                    .SetDistanceFromTurning(((.shape.posX + Shape.WIDTH) - (BOXWIDTH / 2)) / 500 * LineLength)
-                    updDistance.Value = .GetDistanceFromTurning
+                If .Shape.posX + SHAPEWIDTH / 2 > (BOXWIDTH / 2 - 500) And .Shape.posX + SHAPEWIDTH / 2 < (BOXWIDTH / 2 + 500) And e.Y > (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y < (BOXHEIGHT / 2 + Shape.WIDTH) Then
+                    .Shape.posY = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
+                    .OnLine = True
+                    .DistanceFromTurning = ((.Shape.posX + Shape.WIDTH) - (BOXWIDTH / 2)) / 500 * LineLength
+                    updDistance.Value = .DistanceFromTurning
                 Else
-                    .shape.posY = e.Y - MouseOffset.Y
-                    .SetOnLine(False)
+                    .Shape.posY = e.Y - MouseOffset.Y
+                    .OnLine = False
                 End If
-                .shape.posX = e.X - MouseOffset.X
+                .Shape.posX = e.X - MouseOffset.X
+                chbBalance.Visible = False
+                chbBalance.Checked = False
             End With
         End If
     End Sub
 
     Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged
         Try
-            Boxes(colours.Item(Color.FromName(clbBoxes.SelectedItem))).SetMass(updMass.Value)
+            Boxes(currentBox).Mass = updMass.Value
         Catch
         End Try
     End Sub
@@ -131,91 +149,135 @@
         updDistance.Maximum = updLength.Value
         updDistance.Minimum = -updLength.Value
         For Each Box As BoxClass In Boxes
-            If Box.GetOnLine Then
-                Box.shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
+            If Box.OnLine Then
+                Box.Shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
             End If
         Next
     End Sub
 
     Private Sub updDistance_ValueChanged(sender As Object, e As EventArgs) Handles updDistance.ValueChanged
-        Boxes(currentBox).shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
+        Boxes(currentBox).Shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
     End Sub
 
     Private Sub cmdBalanceMass_Click(sender As Object, e As EventArgs) Handles cmdBalanceMass.Click
         Dim NewMass As Single = 0
-        Dim newButton As Button
-
-
-        Dim InputForma As Form = New Form With {
-            .ShowIcon = False,
-            .Text = "Input Mass"
-
-        }
-        InputForma.Show()
-
+        Dim numberIn As New NumberInput
+        If numberIn.ShowDialog("Enter the mass of the known box") = DialogResult.OK Then
+            NewMass = numberIn.Result
+            BalanceBoxDistance = CalculateMoment(NewMass)
+            If Math.Abs(BalanceBoxDistance) <= LineLength Then
+                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0}kg, it needs to be places {1}m from the turning point", NewMass, BalanceBoxDistance))
+                chbBalance.Show()
+            Else
+                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0}kg, it needs to be places {1}m from the turning point. This is a greater than the length of the see saw", NewMass, BalanceBoxDistance))
+                chbBalance.Hide()
+                chbBalance.Checked = False
+            End If
+        End If
     End Sub
 
-    Private Sub cmdBalanceDistance_Click(sender As Object, e As EventArgs) Handles cmdBalanceDistance.Click
+    ''' <summary>
+    ''' Calculate the clockwise moment of the boxes about a point and returns either the mass or distance a box is away
+    ''' from the turning point
+    ''' </summary>
+    Function CalculateMoment(ByVal unknownIn As Single) As Single
+        Dim moment As Single = 0
+        For Each box As BoxClass In Boxes
+            If box.OnLine Then
+                moment += (box.Mass) * box.DistanceFromTurning
+            End If
+        Next
+        Return -moment / unknownIn
+    End Function
 
+    Private Sub cmdBalanceDistance_Click(sender As Object, e As EventArgs) Handles cmdBalanceDistance.Click
+        Dim NewDistance As Single = 0
+        Dim numberIn As New NumberInput
+        numberIn.updNumber.Minimum = -1000
+        If numberIn.ShowDialog("Enter the distance from the turning point of the known box") = DialogResult.OK Then
+            NewDistance = numberIn.Result
+            BalanceBoxDistance = NewDistance
+            Dim NewMass As Single = CalculateMoment(NewDistance)
+            If NewMass >= 0 Then
+                MessageBox.Show(String.Format("To balance the see saw with a box {0}m from the turning point, it needs to have a mass of {1}kg", NewDistance, NewMass))
+                chbBalance.Show()
+            Else
+                MessageBox.Show(String.Format("To balance the see saw with a box {0}m from the turning point, it needs to provide a {1}N force underneath to support it", NewDistance, Math.Abs(NewMass * 9.81)))
+                chbBalance.Hide()
+                chbBalance.Checked = False
+            End If
+        End If
     End Sub
 End Class
 
 Class BoxClass
-    Private colour As Color
-    Public shape As Square
-    Private mass As Single
-    Private showing As Boolean
-    Private onLine As Boolean
-    Private distanceFromTurning As Single
+    Private _colour As Color
+    Private _shape As Square
+    Private _mass As Single
+    Private _showing As Boolean
+    Private _onLine As Boolean
+    Private _distanceFromTurning As Single
+
+    Public Property Colour As Color
+        Get
+            Return _colour
+        End Get
+        Set(value As Color)
+            _colour = value
+        End Set
+    End Property
+
+    Public Property Shape As Square
+        Get
+            Return _shape
+        End Get
+        Set(value As Square)
+            _shape = value
+        End Set
+    End Property
+
+    Public Property Mass As Single
+        Get
+            Return _mass
+        End Get
+        Set(value As Single)
+            _mass = value
+        End Set
+    End Property
+
+    Public Property Showing As Boolean
+        Get
+            Return _showing
+        End Get
+        Set(value As Boolean)
+            _showing = value
+        End Set
+    End Property
+
+    Public Property OnLine As Boolean
+        Get
+            Return _onLine
+        End Get
+        Set(value As Boolean)
+            _onLine = value
+        End Set
+    End Property
+
+    Public Property DistanceFromTurning As Single
+        Get
+            Return _distanceFromTurning
+        End Get
+        Set(value As Single)
+            _distanceFromTurning = value
+        End Set
+    End Property
 
     Public Sub New(ByVal colourIn As Color, ByVal shapeIn As Square, ByVal massIn As Single, ByVal showingIn As Boolean, ByVal onLineIn As Boolean, ByVal distanceFromTurningIn As Single)
-        colour = colourIn
-        shape = shapeIn
-        mass = massIn
-        showing = showingIn
-        onLine = onLineIn
-        distanceFromTurning = distanceFromTurningIn
+        _colour = colourIn
+        _shape = shapeIn
+        _mass = massIn
+        _showing = showingIn
+        _onLine = onLineIn
+        _distanceFromTurning = distanceFromTurningIn
     End Sub
-
-    Public Sub SetColour(ByVal colourIn As Color)
-        colour = colourIn
-    End Sub
-
-    Public Sub SetMass(ByVal intIn As Single)
-        mass = intIn
-    End Sub
-
-    Public Sub SetShowing(ByVal boolIn As Boolean)
-        showing = boolIn
-    End Sub
-
-    Public Sub SetOnLine(ByVal boolIn As Boolean)
-        onLine = boolIn
-    End Sub
-
-    Public Sub SetDistanceFromTurning(ByVal intIn As Single)
-        distanceFromTurning = intIn
-    End Sub
-
-    Public Function GetColour() As Color
-        Return colour
-    End Function
-
-    Public Function GetMass() As Single
-        Return mass
-    End Function
-
-    Public Function GetShowing() As Boolean
-        Return showing
-    End Function
-
-    Public Function GetOnLine() As Boolean
-        Return onLine
-    End Function
-
-    Public Function GetDistanceFromTurning() As Single
-        Return distanceFromTurning
-    End Function
-
-
 End Class

@@ -22,6 +22,12 @@ NEA Main
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:NEA_Main.frmTurningPoints.CalculateMoment(System.Single)">
+ <summary>
+ Calculate the clockwise moment of the boxes about a point and returns either the mass or distance a box is away
+ from the turning point
+ </summary>
+</member>
 <member name="M:NEA_Main.Maths.Pythag(System.Single,System.Single)">
  <summary>
  Find hypotenuse given both sides

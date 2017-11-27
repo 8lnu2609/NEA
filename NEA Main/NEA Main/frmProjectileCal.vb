@@ -10,13 +10,6 @@
                 AddHandler TextBox.Leave, AddressOf TextBoxLeave_Handler
             End If
         Next
-
-        For Each Control As Control In grbComponentsX.Controls
-            If Control.GetType = GetType(TextBox) Then
-                Dim TextBox As TextBox = DirectCast(Control, TextBox)
-                AddHandler TextBox.Leave, AddressOf TextBoxLeave_Handler
-            End If
-        Next
     End Sub
 
     Structure SUVAT
@@ -45,13 +38,13 @@
         If yEmpty.Count > 2 Then
             messageString = String.Format("You need to fill in {0} of the remaining {1} vertical boxes: {2}. " & vbNewLine, yEmpty.Count - 2, yEmpty.Count, String.Join(", ", (yEmpty.Select(Function(y) y.Tag))))
         End If
-        If xEmpty.Count > 2 Then
-            messageString = messageString & String.Format("You need to fill in {0} of the remaining {1} horizontal boxes: {2}. ", xEmpty.Count - 2, xEmpty.Count, (String.Join(", ", (xEmpty.Select(Function(x) x.Tag)))))
-        End If
+        'If xEmpty.Count > 2 Then
+        '    messageString = messageString & String.Format("You need to fill in {0} of the remaining {1} horizontal boxes: {2}. ", xEmpty.Count - 2, xEmpty.Count, (String.Join(", ", (xEmpty.Select(Function(x) x.Tag)))))
+        'End If
         If messageString <> "" Then
             MessageBox.Show(messageString, "Not enough inputs filled in")
         Else
-            GetInputs(xComp, yComp)
+            GetInputs(yComp, xComp)
             txtDisplacementY_In.Text = Maths.Displacement(yComp.u, yComp.v, yComp.a, yComp.t)
             txtInitalVelocityY_In.Text = Maths.InitalVelocity(yComp.s, yComp.v, yComp.a, yComp.t)
             txtFinalVelocityY_In.Text = Maths.FinalVelocity(yComp.s, yComp.u, yComp.a, yComp.t)
@@ -64,7 +57,7 @@
     End Sub
 
     Sub GetInputs(ByRef yComponents As SUVAT, ByRef xComponents As SUVAT)
-        yComponents.s = dataOrNull(txtAccelerationY_In)
+        yComponents.s = dataOrNull(txtDisplacementY_In)
         yComponents.u = dataOrNull(txtInitalVelocityY_In)
         yComponents.v = dataOrNull(txtFinalVelocityY_In)
         yComponents.a = dataOrNull(txtAccelerationY_In)
@@ -82,13 +75,9 @@
         If txtBox.Text <> "" And IsNumeric(txtBox.Text) Then
             Return Convert.ToSingle(txtBox.Text)
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
-
-    Private Sub txtTimeY_In_TextChanged(sender As Object, e As EventArgs) Handles txtTimeY_In.TextChanged
-        txtTimeX_In.Text = sender.text
-    End Sub
 
     Sub TextBoxLeave_Handler(ByVal sender As TextBox, ByVal e As EventArgs)
         If sender.Text <> "" And Not IsNumeric(sender.Text) Then

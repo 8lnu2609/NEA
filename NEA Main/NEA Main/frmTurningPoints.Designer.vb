@@ -37,6 +37,7 @@ Partial Class frmTurningPoints
         Me.cmdBalanceMass = New System.Windows.Forms.Button()
         Me.cmdBalanceDistance = New System.Windows.Forms.Button()
         Me.grpBalance = New System.Windows.Forms.GroupBox()
+        Me.chbBalance = New System.Windows.Forms.CheckBox()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBoxData.SuspendLayout()
         CType(Me.updDistance, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,7 +54,7 @@ Partial Class frmTurningPoints
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 9)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1674, 1024)
+        Me.picDisplay.Size = New System.Drawing.Size(1120, 711)
         Me.picDisplay.TabIndex = 1
         Me.picDisplay.TabStop = False
         '
@@ -63,9 +64,9 @@ Partial Class frmTurningPoints
         '
         'cmdClose
         '
-        Me.cmdClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(1821, 1010)
+        Me.cmdClose.Location = New System.Drawing.Point(1267, 697)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 16
@@ -80,9 +81,9 @@ Partial Class frmTurningPoints
         Me.grpBoxData.Controls.Add(Me.updMass)
         Me.grpBoxData.Controls.Add(Me.lblMass)
         Me.grpBoxData.Controls.Add(Me.clbBoxes)
-        Me.grpBoxData.Location = New System.Drawing.Point(1692, 9)
+        Me.grpBoxData.Location = New System.Drawing.Point(1138, 12)
         Me.grpBoxData.Name = "grpBoxData"
-        Me.grpBoxData.Size = New System.Drawing.Size(204, 253)
+        Me.grpBoxData.Size = New System.Drawing.Size(204, 202)
         Me.grpBoxData.TabIndex = 18
         Me.grpBoxData.TabStop = False
         Me.grpBoxData.Text = "Boxes"
@@ -131,7 +132,6 @@ Partial Class frmTurningPoints
         'clbBoxes
         '
         Me.clbBoxes.FormattingEnabled = True
-        Me.clbBoxes.Items.AddRange(New Object() {"Red", "Blue", "Green", "Orange", "Violet"})
         Me.clbBoxes.Location = New System.Drawing.Point(6, 19)
         Me.clbBoxes.Name = "clbBoxes"
         Me.clbBoxes.Size = New System.Drawing.Size(120, 79)
@@ -139,7 +139,8 @@ Partial Class frmTurningPoints
         '
         'updLength
         '
-        Me.updLength.Location = New System.Drawing.Point(1812, 295)
+        Me.updLength.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.updLength.Location = New System.Drawing.Point(1258, 220)
         Me.updLength.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.updLength.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.updLength.Name = "updLength"
@@ -151,7 +152,7 @@ Partial Class frmTurningPoints
         '
         Me.lblSeeSawLength.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblSeeSawLength.AutoSize = True
-        Me.lblSeeSawLength.Location = New System.Drawing.Point(1698, 297)
+        Me.lblSeeSawLength.Location = New System.Drawing.Point(1141, 222)
         Me.lblSeeSawLength.Name = "lblSeeSawLength"
         Me.lblSeeSawLength.Size = New System.Drawing.Size(94, 13)
         Me.lblSeeSawLength.TabIndex = 20
@@ -178,21 +179,33 @@ Partial Class frmTurningPoints
         'grpBalance
         '
         Me.grpBalance.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBalance.Controls.Add(Me.chbBalance)
         Me.grpBalance.Controls.Add(Me.cmdBalanceMass)
         Me.grpBalance.Controls.Add(Me.cmdBalanceDistance)
-        Me.grpBalance.Location = New System.Drawing.Point(1692, 321)
+        Me.grpBalance.Location = New System.Drawing.Point(1138, 271)
         Me.grpBalance.Name = "grpBalance"
-        Me.grpBalance.Size = New System.Drawing.Size(204, 50)
+        Me.grpBalance.Size = New System.Drawing.Size(204, 70)
         Me.grpBalance.TabIndex = 26
         Me.grpBalance.TabStop = False
         Me.grpBalance.Text = "Balance"
+        '
+        'chbBalance
+        '
+        Me.chbBalance.AutoSize = True
+        Me.chbBalance.Location = New System.Drawing.Point(6, 47)
+        Me.chbBalance.Name = "chbBalance"
+        Me.chbBalance.Size = New System.Drawing.Size(121, 17)
+        Me.chbBalance.TabIndex = 26
+        Me.chbBalance.Text = "Show BalancingBox"
+        Me.chbBalance.UseVisualStyleBackColor = True
+        Me.chbBalance.Visible = False
         '
         'frmTurningPoints
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1908, 1045)
+        Me.ClientSize = New System.Drawing.Size(1354, 732)
         Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
         Me.Controls.Add(Me.updLength)
@@ -215,6 +228,7 @@ Partial Class frmTurningPoints
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updLength, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpBalance.ResumeLayout(False)
+        Me.grpBalance.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,4 +248,5 @@ Partial Class frmTurningPoints
     Friend WithEvents cmdBalanceMass As Button
     Friend WithEvents cmdBalanceDistance As Button
     Friend WithEvents grpBalance As GroupBox
+    Friend WithEvents chbBalance As CheckBox
 End Class

@@ -90,3 +90,5 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForce
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPoints.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesCal.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPoints.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.NumberInput.resources
+C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsCalculator.resources

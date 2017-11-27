@@ -28,16 +28,14 @@ Partial Class frmForcesCal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(417, 340)
-        Me.Name = "frmForcesCal"
-        Me.Text = "Calculator"
-        Me.ResumeLayout(False)
-
+        Me.ClientSize = New System.Drawing.Size(351, 185)
         Me.ControlBox = False
-
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
+        Me.Name = "frmForcesCal"
+        Me.Text = "Calculator"
+        Me.ResumeLayout(False)
 
     End Sub
 End Class
