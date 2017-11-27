@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmTurningPoints
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmTurningPoints
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.picDisplay = New System.Windows.Forms.PictureBox()
@@ -34,11 +34,15 @@ Partial Class frmTurningPoints
         Me.clbBoxes = New System.Windows.Forms.CheckedListBox()
         Me.updLength = New System.Windows.Forms.NumericUpDown()
         Me.lblSeeSawLength = New System.Windows.Forms.Label()
+        Me.cmdBalanceMass = New System.Windows.Forms.Button()
+        Me.cmdBalanceDistance = New System.Windows.Forms.Button()
+        Me.grpBalance = New System.Windows.Forms.GroupBox()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBoxData.SuspendLayout()
         CType(Me.updDistance, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updLength, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpBalance.SuspendLayout()
         Me.SuspendLayout()
         '
         'picDisplay
@@ -99,9 +103,9 @@ Partial Class frmTurningPoints
         Me.lblDistanceFromTuring.AutoSize = True
         Me.lblDistanceFromTuring.Location = New System.Drawing.Point(6, 166)
         Me.lblDistanceFromTuring.Name = "lblDistanceFromTuring"
-        Me.lblDistanceFromTuring.Size = New System.Drawing.Size(116, 13)
+        Me.lblDistanceFromTuring.Size = New System.Drawing.Size(116, 26)
         Me.lblDistanceFromTuring.TabIndex = 19
-        Me.lblDistanceFromTuring.Text = "Distance from balance:"
+        Me.lblDistanceFromTuring.Text = "Distance from balance:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(Right is positive)"
         Me.lblDistanceFromTuring.Visible = False
         '
         'updMass
@@ -137,6 +141,7 @@ Partial Class frmTurningPoints
         '
         Me.updLength.Location = New System.Drawing.Point(1812, 295)
         Me.updLength.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updLength.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.updLength.Name = "updLength"
         Me.updLength.Size = New System.Drawing.Size(84, 20)
         Me.updLength.TabIndex = 19
@@ -144,6 +149,7 @@ Partial Class frmTurningPoints
         '
         'lblSeeSawLength
         '
+        Me.lblSeeSawLength.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.lblSeeSawLength.AutoSize = True
         Me.lblSeeSawLength.Location = New System.Drawing.Point(1698, 297)
         Me.lblSeeSawLength.Name = "lblSeeSawLength"
@@ -151,12 +157,43 @@ Partial Class frmTurningPoints
         Me.lblSeeSawLength.TabIndex = 20
         Me.lblSeeSawLength.Text = "Length of see saw"
         '
+        'cmdBalanceMass
+        '
+        Me.cmdBalanceMass.Location = New System.Drawing.Point(6, 19)
+        Me.cmdBalanceMass.Name = "cmdBalanceMass"
+        Me.cmdBalanceMass.Size = New System.Drawing.Size(78, 23)
+        Me.cmdBalanceMass.TabIndex = 24
+        Me.cmdBalanceMass.Text = "Known Mass"
+        Me.cmdBalanceMass.UseVisualStyleBackColor = True
+        '
+        'cmdBalanceDistance
+        '
+        Me.cmdBalanceDistance.Location = New System.Drawing.Point(105, 19)
+        Me.cmdBalanceDistance.Name = "cmdBalanceDistance"
+        Me.cmdBalanceDistance.Size = New System.Drawing.Size(93, 23)
+        Me.cmdBalanceDistance.TabIndex = 25
+        Me.cmdBalanceDistance.Text = "Known Distance"
+        Me.cmdBalanceDistance.UseVisualStyleBackColor = True
+        '
+        'grpBalance
+        '
+        Me.grpBalance.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBalance.Controls.Add(Me.cmdBalanceMass)
+        Me.grpBalance.Controls.Add(Me.cmdBalanceDistance)
+        Me.grpBalance.Location = New System.Drawing.Point(1692, 321)
+        Me.grpBalance.Name = "grpBalance"
+        Me.grpBalance.Size = New System.Drawing.Size(204, 50)
+        Me.grpBalance.TabIndex = 26
+        Me.grpBalance.TabStop = False
+        Me.grpBalance.Text = "Balance"
+        '
         'frmTurningPoints
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(1908, 1045)
+        Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
         Me.Controls.Add(Me.updLength)
         Me.Controls.Add(Me.grpBoxData)
@@ -177,6 +214,7 @@ Partial Class frmTurningPoints
         CType(Me.updDistance, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updLength, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpBalance.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -193,4 +231,7 @@ Partial Class frmTurningPoints
     Friend WithEvents updDistance As NumericUpDown
     Friend WithEvents updLength As NumericUpDown
     Friend WithEvents lblSeeSawLength As Label
+    Friend WithEvents cmdBalanceMass As Button
+    Friend WithEvents cmdBalanceDistance As Button
+    Friend WithEvents grpBalance As GroupBox
 End Class
