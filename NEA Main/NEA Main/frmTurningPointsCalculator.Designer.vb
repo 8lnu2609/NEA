@@ -23,6 +23,7 @@ Partial Class frmTurningPointsCalculator
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTurningPointsCalculator))
         Me.cboGravity = New System.Windows.Forms.ComboBox()
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.lstObjects = New System.Windows.Forms.ListBox()
@@ -62,7 +63,7 @@ Partial Class frmTurningPointsCalculator
         'cmdClose
         '
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(12, 113)
+        Me.cmdClose.Location = New System.Drawing.Point(243, 143)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 4
@@ -94,7 +95,7 @@ Partial Class frmTurningPointsCalculator
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(330, 147)
+        Me.ClientSize = New System.Drawing.Size(330, 178)
         Me.ControlBox = False
         Me.Controls.Add(Me.cmdCalculate)
         Me.Controls.Add(Me.cmdRemove)
@@ -103,7 +104,9 @@ Partial Class frmTurningPointsCalculator
         Me.Controls.Add(Me.lstObjects)
         Me.Controls.Add(Me.cboGravity)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmTurningPointsCalculator"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Turning Points Calculator"
         Me.ResumeLayout(False)
 

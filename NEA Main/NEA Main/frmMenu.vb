@@ -27,4 +27,9 @@
         Dim Cal As New frmTurningPointsCalculator
         Cal.Show()
     End Sub
+
+    Private Sub cmdTurningSim_Click(sender As Object, e As EventArgs) Handles cmdTurningSim.Click
+        Dim Turning As New frmTurningPoints
+        Turning.Show()
+    End Sub
 End Class

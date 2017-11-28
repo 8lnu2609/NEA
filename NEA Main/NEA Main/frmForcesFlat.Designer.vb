@@ -23,6 +23,7 @@ Partial Class frmForcesFlat
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmForcesFlat))
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.trbTime = New System.Windows.Forms.TrackBar()
         Me.cmdStartStop = New System.Windows.Forms.Button()
@@ -37,6 +38,7 @@ Partial Class frmForcesFlat
         Me.trbZoom = New System.Windows.Forms.TrackBar()
         Me.grpData = New System.Windows.Forms.GroupBox()
         Me.pnlFrictionSelect = New System.Windows.Forms.Panel()
+        Me.lblAcceleration = New System.Windows.Forms.Label()
         Me.lblResultantForce = New System.Windows.Forms.Label()
         Me.lblMaxFriction = New System.Windows.Forms.Label()
         Me.updForce = New System.Windows.Forms.NumericUpDown()
@@ -51,7 +53,6 @@ Partial Class frmForcesFlat
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.picDisplay = New System.Windows.Forms.PictureBox()
-        Me.lblAcceleration = New System.Windows.Forms.Label()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.updTotalTime, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -221,6 +222,15 @@ Partial Class frmForcesFlat
         Me.pnlFrictionSelect.Size = New System.Drawing.Size(189, 175)
         Me.pnlFrictionSelect.TabIndex = 20
         '
+        'lblAcceleration
+        '
+        Me.lblAcceleration.AutoSize = True
+        Me.lblAcceleration.Location = New System.Drawing.Point(7, 150)
+        Me.lblAcceleration.Name = "lblAcceleration"
+        Me.lblAcceleration.Size = New System.Drawing.Size(100, 13)
+        Me.lblAcceleration.TabIndex = 36
+        Me.lblAcceleration.Text = "Accleration: 0ms^-2"
+        '
         'lblResultantForce
         '
         Me.lblResultantForce.AutoSize = True
@@ -353,15 +363,6 @@ Partial Class frmForcesFlat
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
-        'lblAcceleration
-        '
-        Me.lblAcceleration.AutoSize = True
-        Me.lblAcceleration.Location = New System.Drawing.Point(7, 150)
-        Me.lblAcceleration.Name = "lblAcceleration"
-        Me.lblAcceleration.Size = New System.Drawing.Size(100, 13)
-        Me.lblAcceleration.TabIndex = 36
-        Me.lblAcceleration.Text = "Accleration: 0ms^-2"
-        '
         'frmForcesFlat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -371,12 +372,14 @@ Partial Class frmForcesFlat
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmForcesFlat"
         Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Forces"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).EndInit()

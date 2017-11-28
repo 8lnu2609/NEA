@@ -22,6 +22,7 @@ Partial Class frmProjectileCal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProjectileCal))
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDisplacementY_In = New System.Windows.Forms.TextBox()
@@ -34,13 +35,14 @@ Partial Class frmProjectileCal
         Me.txtTimeY_In = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.grbComponentsY = New System.Windows.Forms.GroupBox()
-        Me.cmdSolve = New System.Windows.Forms.Button()
+        Me.cmdSolveY = New System.Windows.Forms.Button()
         Me.txtAccelerationX_In = New System.Windows.Forms.TextBox()
         Me.txtFinalVelocityX_In = New System.Windows.Forms.TextBox()
         Me.txtInitalVelocityX_In = New System.Windows.Forms.TextBox()
         Me.txtDisplacementX_In = New System.Windows.Forms.TextBox()
         Me.txtTimeX_In = New System.Windows.Forms.TextBox()
         Me.grbComponentsX = New System.Windows.Forms.GroupBox()
+        Me.cmdSolveX = New System.Windows.Forms.Button()
         Me.grbComponentsY.SuspendLayout()
         Me.grbComponentsX.SuspendLayout()
         Me.SuspendLayout()
@@ -49,7 +51,7 @@ Partial Class frmProjectileCal
         '
         Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(288, 170)
+        Me.cmdClose.Location = New System.Drawing.Point(288, 206)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 0
@@ -155,15 +157,15 @@ Partial Class frmProjectileCal
         Me.grbComponentsY.TabStop = False
         Me.grbComponentsY.Text = "Vertical"
         '
-        'cmdSolve
+        'cmdSolveY
         '
-        Me.cmdSolve.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdSolve.Location = New System.Drawing.Point(207, 170)
-        Me.cmdSolve.Name = "cmdSolve"
-        Me.cmdSolve.Size = New System.Drawing.Size(75, 23)
-        Me.cmdSolve.TabIndex = 9
-        Me.cmdSolve.Text = "Solve"
-        Me.cmdSolve.UseVisualStyleBackColor = True
+        Me.cmdSolveY.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdSolveY.Location = New System.Drawing.Point(150, 163)
+        Me.cmdSolveY.Name = "cmdSolveY"
+        Me.cmdSolveY.Size = New System.Drawing.Size(75, 23)
+        Me.cmdSolveY.TabIndex = 9
+        Me.cmdSolveY.Text = "Solve Y"
+        Me.cmdSolveY.UseVisualStyleBackColor = True
         '
         'txtAccelerationX_In
         '
@@ -220,15 +222,25 @@ Partial Class frmProjectileCal
         Me.grbComponentsX.TabStop = False
         Me.grbComponentsX.Text = "Horizontal"
         '
+        'cmdSolveX
+        '
+        Me.cmdSolveX.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdSolveX.Location = New System.Drawing.Point(268, 163)
+        Me.cmdSolveX.Name = "cmdSolveX"
+        Me.cmdSolveX.Size = New System.Drawing.Size(75, 23)
+        Me.cmdSolveX.TabIndex = 19
+        Me.cmdSolveX.Text = "Solve X"
+        Me.cmdSolveX.UseVisualStyleBackColor = True
+        '
         'frmProjectileCal
         '
-        Me.AcceptButton = Me.cmdSolve
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(375, 205)
+        Me.ClientSize = New System.Drawing.Size(375, 241)
         Me.ControlBox = False
-        Me.Controls.Add(Me.cmdSolve)
+        Me.Controls.Add(Me.cmdSolveX)
+        Me.Controls.Add(Me.cmdSolveY)
         Me.Controls.Add(Me.grbComponentsX)
         Me.Controls.Add(Me.grbComponentsY)
         Me.Controls.Add(Me.Label5)
@@ -238,9 +250,11 @@ Partial Class frmProjectileCal
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cmdClose)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProjectileCal"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Calculator"
         Me.grbComponentsY.ResumeLayout(False)
         Me.grbComponentsY.PerformLayout()
@@ -263,11 +277,12 @@ Partial Class frmProjectileCal
     Friend WithEvents txtTimeY_In As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents grbComponentsY As GroupBox
-    Friend WithEvents cmdSolve As Button
+    Friend WithEvents cmdSolveY As Button
     Friend WithEvents txtAccelerationX_In As TextBox
     Friend WithEvents txtFinalVelocityX_In As TextBox
     Friend WithEvents txtInitalVelocityX_In As TextBox
     Friend WithEvents txtDisplacementX_In As TextBox
     Friend WithEvents txtTimeX_In As TextBox
     Friend WithEvents grbComponentsX As GroupBox
+    Friend WithEvents cmdSolveX As Button
 End Class

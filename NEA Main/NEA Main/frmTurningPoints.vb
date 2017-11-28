@@ -24,6 +24,8 @@
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
+        BOXWIDTH = picDisplay.Width
+        BOXHEIGHT = picDisplay.Height
         DrawSeeSaw(e)
         For Each box As BoxClass In Boxes
             If box.Showing = True Then
@@ -102,13 +104,15 @@
 
     Private Sub picDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
         If e.Button = MouseButtons.Left Then
-            With Boxes(currentBox)
-                If e.X > .Shape.posX And e.X < .Shape.posX + SHAPEWIDTH And e.Y > .Shape.posY And e.Y < .Shape.posY + SHAPEWIDTH And .Showing = True Then
-                    isMouseDown = True
-                    clbBoxes.SelectedItem = .Colour.Name
-                    MouseOffset = e.Location - New Point(.Shape.posX, .Shape.posY)
-                End If
-            End With
+            For i = 0 To colours.Values.Count - 1
+                With Boxes(i)
+                    If e.X > .Shape.posX And e.X < .Shape.posX + SHAPEWIDTH And e.Y > .Shape.posY And e.Y < .Shape.posY + SHAPEWIDTH And .Showing = True Then
+                        isMouseDown = True
+                        clbBoxes.SelectedItem = .Colour.Name
+                        MouseOffset = e.Location - New Point(.Shape.posX, .Shape.posY)
+                    End If
+                End With
+            Next
         End If
     End Sub
 
@@ -118,7 +122,7 @@
         End If
     End Sub
 
-    Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
+    Private Sub PicDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If isMouseDown Then
             With Boxes(currentBox)
                 If .Shape.posX + SHAPEWIDTH / 2 > (BOXWIDTH / 2 - 500) And .Shape.posX + SHAPEWIDTH / 2 < (BOXWIDTH / 2 + 500) And e.Y > (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y < (BOXHEIGHT / 2 + Shape.WIDTH) Then
@@ -208,76 +212,40 @@
             End If
         End If
     End Sub
+
+    Private Sub cmdAddBox_Click(sender As Object, e As EventArgs) Handles cmdAddBox.Click
+        Dim newColourIn As New ColorDialog
+        Dim newColour As Color
+        If newColourIn.ShowDialog = DialogResult.OK Then
+            newColour = newColourIn.Color
+            Dim listCount As Int32 = colours.Values.Count
+            colours.Add(newColour, listCount)
+            Boxes.Add(New BoxClass(colours.Keys(listCount), New Square With {.posX = SHAPEWIDTH * listCount}, 1, False, False, 0))
+            clbBoxes.Items.Add(colours.Keys(listCount).Name)
+        End If
+    End Sub
 End Class
 
 Class BoxClass
-    Private _colour As Color
-    Private _shape As Square
-    Private _mass As Single
-    Private _showing As Boolean
-    Private _onLine As Boolean
-    Private _distanceFromTurning As Single
 
     Public Property Colour As Color
-        Get
-            Return _colour
-        End Get
-        Set(value As Color)
-            _colour = value
-        End Set
-    End Property
 
     Public Property Shape As Square
-        Get
-            Return _shape
-        End Get
-        Set(value As Square)
-            _shape = value
-        End Set
-    End Property
 
     Public Property Mass As Single
-        Get
-            Return _mass
-        End Get
-        Set(value As Single)
-            _mass = value
-        End Set
-    End Property
 
     Public Property Showing As Boolean
-        Get
-            Return _showing
-        End Get
-        Set(value As Boolean)
-            _showing = value
-        End Set
-    End Property
 
     Public Property OnLine As Boolean
-        Get
-            Return _onLine
-        End Get
-        Set(value As Boolean)
-            _onLine = value
-        End Set
-    End Property
 
     Public Property DistanceFromTurning As Single
-        Get
-            Return _distanceFromTurning
-        End Get
-        Set(value As Single)
-            _distanceFromTurning = value
-        End Set
-    End Property
 
     Public Sub New(ByVal colourIn As Color, ByVal shapeIn As Square, ByVal massIn As Single, ByVal showingIn As Boolean, ByVal onLineIn As Boolean, ByVal distanceFromTurningIn As Single)
-        _colour = colourIn
-        _shape = shapeIn
-        _mass = massIn
-        _showing = showingIn
-        _onLine = onLineIn
-        _distanceFromTurning = distanceFromTurningIn
+        Colour = colourIn
+        Shape = shapeIn
+        Mass = massIn
+        Showing = showingIn
+        OnLine = onLineIn
+        DistanceFromTurning = distanceFromTurningIn
     End Sub
 End Class

@@ -39,73 +39,73 @@
         End If
     End Function
 #Region "SUVAT Solve"
-    Public Shared Function Displacement(ByVal u As Double?, ByVal v As Double?, ByVal a As Double?, ByVal t As Double?) As Double?
-        If u = Single.NaN Then
+    Public Shared Function Displacement(ByVal u As Single?, ByVal v As Single?, ByVal a As Single?, ByVal t As Single?) As Single?
+        If Single.IsNaN(u) Then
             Return v * t + 0.5 * a * t ^ 2
-        ElseIf v = Single.NaN Then
+        ElseIf Single.IsNaN(v) Then
             Return u * t - 0.5 * a * t ^ 2
-        ElseIf a = Single.NaN Then
+        ElseIf Single.IsNaN(a) Then
             Return ((u + v) / 2) * t
-        ElseIf t = Single.NaN Then
+        ElseIf Single.IsNaN(t) Then
             Return (v ^ 2 - u ^ 2) / 2 * a
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
 
-    Public Shared Function InitalVelocity(ByVal s As Double?, ByVal v As Double?, ByVal a As Double?, ByVal t As Double?) As Double?
-        If s = Single.NaN Then
+    Public Shared Function InitalVelocity(ByVal s As Single?, ByVal v As Single?, ByVal a As Single?, ByVal t As Single?) As Single?
+        If Single.IsNaN(s) Then
             Return v - a * t
-        ElseIf v = Single.NaN Then
+        ElseIf Single.IsNaN(v) Then
             Return (s - (0.5 * a * t ^ 2)) / t
-        ElseIf a = Single.NaN Then
+        ElseIf Single.IsNaN(a) Then
             Return (2 * s / t) - v
-        ElseIf t = Single.NaN Then
+        ElseIf Single.IsNaN(t) Then
             Return Math.Sqrt(v ^ 2 - (2 * a * s))
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
 
-    Public Shared Function FinalVelocity(ByVal s As Double?, ByVal u As Double?, ByVal a As Double?, ByVal t As Double?) As Double?
-        If s = Single.NaN Then
+    Public Shared Function FinalVelocity(ByVal s As Single?, ByVal u As Single?, ByVal a As Single?, ByVal t As Single?) As Single?
+        If Single.IsNaN(s) Then
             Return u * t + 0.5 * a * t ^ 2
-        ElseIf u = Single.NaN Then
+        ElseIf Single.IsNaN(u) Then
             Return (s + (0.5 * a * t ^ 2)) / t
-        ElseIf a = Single.NaN Then
+        ElseIf Single.IsNaN(a) Then
             Return (2 * s / t) - u
-        ElseIf t = Single.NaN Then
+        ElseIf Single.IsNaN(t) Then
             Return Math.Sqrt(u ^ 2 + 2 * a * s)
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
 
-    Public Shared Function Acceleration(ByVal s As Double?, ByVal u As Double?, ByVal v As Double?, ByVal t As Double?) As Double?
-        If s = Single.NaN Then
+    Public Shared Function Acceleration(ByVal s As Single?, ByVal u As Single?, ByVal v As Single?, ByVal t As Single?) As Single?
+        If Single.IsNaN(s) Then
             Return (v - u) / t
-        ElseIf u = Single.NaN Then
+        ElseIf Single.IsNaN(u) Then
             Return (-2 * (s - v * t)) / t ^ 2
-        ElseIf v = Single.NaN Then
+        ElseIf Single.IsNaN(v) Then
             Return (2 * (s - u * t)) / t ^ 2
-        ElseIf t = Single.NaN Then
+        ElseIf Single.IsNaN(t) Then
             Return (v ^ 2 - u ^ 2) / 2 * s
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
 
-    Public Shared Function Time(ByVal s As Double?, ByVal u As Double?, ByVal v As Double?, ByVal a As Double?) As Double?
-        If s = Single.NaN Then
+    Public Shared Function Time(ByVal s As Single?, ByVal u As Single?, ByVal v As Single?, ByVal a As Single?) As Single?
+        If Single.IsNaN(s) Then
             Return (v - u) / a
-        ElseIf u = Single.NaN Then
+        ElseIf Single.IsNaN(u) Then
             Return Maths.QuadraticSolve(0.5 * a, -v, s)
-        ElseIf v = Single.NaN Then
+        ElseIf Single.IsNaN(v) Then
             Return Maths.QuadraticSolve(0.5 * a, u, -s)
-        ElseIf a = Single.NaN Then
+        ElseIf Single.IsNaN(a) Then
             Return (2 * s) / (u + v)
         Else
-            Return vbNull
+            Return Single.NaN
         End If
     End Function
 #End Region

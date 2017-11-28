@@ -23,6 +23,7 @@ Partial Class frmVelocityInput
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVelocityInput))
         Me.picDisplay = New System.Windows.Forms.PictureBox()
         Me.grbInputSelect = New System.Windows.Forms.GroupBox()
         Me.cmdClose = New System.Windows.Forms.Button()
@@ -198,8 +199,10 @@ Partial Class frmVelocityInput
         Me.Controls.Add(Me.grbInputSelect)
         Me.Controls.Add(Me.picDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmVelocityInput"
         Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Velocity Input"
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbInputSelect.ResumeLayout(False)

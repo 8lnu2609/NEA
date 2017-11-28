@@ -23,6 +23,7 @@ Partial Class frmProjectile
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProjectile))
         Me.picDisplay = New System.Windows.Forms.PictureBox()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.grpData = New System.Windows.Forms.GroupBox()
@@ -311,12 +312,14 @@ Partial Class frmProjectile
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmProjectile"
         Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Projectile Motion"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()

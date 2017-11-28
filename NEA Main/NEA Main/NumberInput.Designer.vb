@@ -22,6 +22,7 @@ Partial Class NumberInput
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NumberInput))
         Me.updNumber = New System.Windows.Forms.NumericUpDown()
         Me.cmdEnter = New System.Windows.Forms.Button()
         Me.lblPrompt = New System.Windows.Forms.Label()
@@ -66,7 +67,9 @@ Partial Class NumberInput
         Me.Controls.Add(Me.cmdEnter)
         Me.Controls.Add(Me.updNumber)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "NumberInput"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         CType(Me.updNumber, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

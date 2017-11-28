@@ -23,10 +23,12 @@ Partial Class frmTurningPoints
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTurningPoints))
         Me.picDisplay = New System.Windows.Forms.PictureBox()
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpBoxData = New System.Windows.Forms.GroupBox()
+        Me.cmdAddBox = New System.Windows.Forms.Button()
         Me.updDistance = New System.Windows.Forms.NumericUpDown()
         Me.lblDistanceFromTuring = New System.Windows.Forms.Label()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
@@ -75,7 +77,8 @@ Partial Class frmTurningPoints
         '
         'grpBoxData
         '
-        Me.grpBoxData.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBoxData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpBoxData.Controls.Add(Me.cmdAddBox)
         Me.grpBoxData.Controls.Add(Me.updDistance)
         Me.grpBoxData.Controls.Add(Me.lblDistanceFromTuring)
         Me.grpBoxData.Controls.Add(Me.updMass)
@@ -87,6 +90,15 @@ Partial Class frmTurningPoints
         Me.grpBoxData.TabIndex = 18
         Me.grpBoxData.TabStop = False
         Me.grpBoxData.Text = "Boxes"
+        '
+        'cmdAddBox
+        '
+        Me.cmdAddBox.Location = New System.Drawing.Point(129, 19)
+        Me.cmdAddBox.Name = "cmdAddBox"
+        Me.cmdAddBox.Size = New System.Drawing.Size(69, 36)
+        Me.cmdAddBox.TabIndex = 24
+        Me.cmdAddBox.Text = "Add box"
+        Me.cmdAddBox.UseVisualStyleBackColor = True
         '
         'updDistance
         '
@@ -139,7 +151,7 @@ Partial Class frmTurningPoints
         '
         'updLength
         '
-        Me.updLength.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.updLength.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.updLength.Location = New System.Drawing.Point(1258, 220)
         Me.updLength.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.updLength.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
@@ -150,7 +162,7 @@ Partial Class frmTurningPoints
         '
         'lblSeeSawLength
         '
-        Me.lblSeeSawLength.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.lblSeeSawLength.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSeeSawLength.AutoSize = True
         Me.lblSeeSawLength.Location = New System.Drawing.Point(1141, 222)
         Me.lblSeeSawLength.Name = "lblSeeSawLength"
@@ -178,7 +190,7 @@ Partial Class frmTurningPoints
         '
         'grpBalance
         '
-        Me.grpBalance.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.grpBalance.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpBalance.Controls.Add(Me.chbBalance)
         Me.grpBalance.Controls.Add(Me.cmdBalanceMass)
         Me.grpBalance.Controls.Add(Me.cmdBalanceDistance)
@@ -213,12 +225,14 @@ Partial Class frmTurningPoints
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.picDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmTurningPoints"
         Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Turning Points"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
@@ -249,4 +263,5 @@ Partial Class frmTurningPoints
     Friend WithEvents cmdBalanceDistance As Button
     Friend WithEvents grpBalance As GroupBox
     Friend WithEvents chbBalance As CheckBox
+    Friend WithEvents cmdAddBox As Button
 End Class
