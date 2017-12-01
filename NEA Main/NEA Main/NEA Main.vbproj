@@ -95,6 +95,12 @@
     <Compile Include="frmFreefall.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmFreefallCal.Designer.vb">
+      <DependentUpon>frmFreefallCal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmFreefallCal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMenu.Designer.vb">
       <DependentUpon>frmMenu.vb</DependentUpon>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmFreefall.resx">
       <DependentUpon>frmFreefall.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFreefallCal.resx">
+      <DependentUpon>frmFreefallCal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.vb</DependentUpon>
