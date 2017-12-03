@@ -51,13 +51,13 @@
     Sub DrawSeeSaw(ByVal e As PaintEventArgs)
         Dim baseTriangle As New Triangle With {
             .up = True,
-            .posY = BOXHEIGHT / 2 + Shape.WIDTH,
+            .posY = 4 + BOXHEIGHT / 2 + Shape.WIDTH,
             .posX = BOXWIDTH / 2 - 50
         }
         Dim baseLine As New Line With {
             .posX = BOXWIDTH / 2 - 500,
             .posXe = .posX + 1000,
-            .posY = baseTriangle.posY,
+            .posY = BOXHEIGHT / 2 + Shape.WIDTH,
             .posYe = .posY
         }
         Dim myPen As New Pen(Color.Gray, 3)

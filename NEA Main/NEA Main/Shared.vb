@@ -1,9 +1,6 @@
 ﻿Module SharedVariables
     Public xVelocity As Single = 50
-    Public yVelocity As Single = 50
-
-    Public Const BOXWIDTH As Int32 = 1686
-    Public Const BOXHEIGHT As Int32 = 1024
+    Public yVelocity As Single = 5
 
     Public AccelerationDictionary As New Dictionary(Of String, Single) From {
     {"Sun", 274.13},

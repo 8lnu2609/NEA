@@ -1,16 +1,7 @@
 ﻿Public Class frmForcesFlat
-    Dim BaseLine As New Line With
-    {
-        .posY = BOXHEIGHT / 2 + Shape.LINEWIDTH,
-        .posYe = .posY,
-        .posX = 0,
-        .posXe = BOXWIDTH
-    }
-    Dim Particle As New Square With
-        {
-        .posX = 0,
-        .posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2
-        }
+    Dim BOXWIDTH, BOXHEIGHT As Int32
+    Dim Particle As New Square
+    Dim BaseLine As New Line
     Dim force As Single
     Dim mass As Single
     Dim coeFriction As Single
@@ -25,9 +16,18 @@
     Public Sub New()
         InitializeComponent()
         PopulateAccelerationCbo(cboAcceleration)
+        BOXWIDTH = picDisplay.Width
+        BOXHEIGHT = picDisplay.Height
+        Particle.posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
+        With BaseLine
+            .posX = 0
+            .posXe = BOXWIDTH
+            .posY = BOXHEIGHT / 2 + Shape.LINEWIDTH
+            .posYe = .posY
+        End With
         BaseLine.Draw(e, Shape.LINEWIDTH * scalar)
         Particle.Draw(e, Shape.WIDTH * scalar)
     End Sub

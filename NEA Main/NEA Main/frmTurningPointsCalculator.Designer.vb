@@ -42,6 +42,10 @@ Partial Class frmTurningPointsCalculator
         Me.cboGravity.Size = New System.Drawing.Size(121, 21)
         Me.cboGravity.TabIndex = 0
         '
+        'ToolTips
+        '
+        Me.ToolTips.AutomaticDelay = 0
+        '
         'lstObjects
         '
         Me.lstObjects.FormattingEnabled = True

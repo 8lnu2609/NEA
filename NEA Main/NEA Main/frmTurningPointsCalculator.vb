@@ -27,10 +27,11 @@
         If massIn.ShowDialog("Enter the mass of the new object") = DialogResult.OK And distanceIn.ShowDialog("Enter the distance from the turning point of the new object") = DialogResult.OK Then
             mass = massIn.Result
             distance = distanceIn.Result
+            objectList.Add(New KeyValuePair(Of Integer, Integer)(mass, distance))
+            RefreshListBox()
         End If
 
-        objectList.Add(New KeyValuePair(Of Integer, Integer)(mass, distance))
-        RefreshListBox()
+
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
