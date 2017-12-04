@@ -38,9 +38,10 @@
     End Sub
 
     Sub DrawBalanceBox(ByVal e As PaintEventArgs)
-        Dim myPen As New Pen(Color.Black)
-        myPen.Width = 2
-        myPen.Alignment = Drawing2D.PenAlignment.Inset
+        Dim myPen As New Pen(Color.Black) With {
+            .Width = 2,
+            .Alignment = Drawing2D.PenAlignment.Inset
+        }
         Dim posX As Single = BalanceBoxDistance / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
         Dim posY As Single = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
         e.Graphics.FillRectangle(Brushes.Chocolate, posX, posY, SHAPEWIDTH, SHAPEWIDTH)
@@ -60,8 +61,9 @@
             .posY = BOXHEIGHT / 2 + Shape.WIDTH,
             .posYe = .posY
         }
-        Dim myPen As New Pen(Color.Gray, 3)
-        myPen.DashStyle = Drawing2D.DashStyle.Dash
+        Dim myPen As New Pen(Color.Gray, 3) With {
+            .DashStyle = Drawing2D.DashStyle.Dash
+        }
         e.Graphics.DrawLine(myPen, baseLine.posX + 1, baseLine.posY, baseLine.posX + 1, baseLine.posY + 200)
         e.Graphics.DrawLine(myPen, baseLine.posXe - 2, baseLine.posY, baseLine.posXe - 2, baseLine.posY + 200)
         myPen.CustomEndCap = New Drawing2D.AdjustableArrowCap(5, 5)
