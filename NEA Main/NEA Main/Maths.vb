@@ -63,7 +63,7 @@
         ElseIf Single.IsNaN(t) Then
             Return Math.Sqrt(v ^ 2 - (2 * a * s))
         Else
-            Return Single.NaN
+            Return Math.Sqrt(v ^ 2 - (2 * a * s))
         End If
     End Function
 
@@ -77,7 +77,7 @@
         ElseIf Single.IsNaN(t) Then
             Return Math.Sqrt(u ^ 2 + 2 * a * s)
         Else
-            Return Single.NaN
+            Return Math.Sqrt(u ^ 2 + 2 * a * s)
         End If
     End Function
 
@@ -91,7 +91,7 @@
         ElseIf Single.IsNaN(t) Then
             Return (v ^ 2 - u ^ 2) / 2 * s
         Else
-            Return Single.NaN
+            Return (v ^ 2 - u ^ 2) / 2 * s
         End If
     End Function
 
@@ -99,13 +99,13 @@
         If Single.IsNaN(s) Then
             Return (v - u) / a
         ElseIf Single.IsNaN(u) Then
-            Return Maths.QuadraticSolve(0.5 * a, -v, s)
+            Return QuadraticSolve(0.5 * a, -v, s)
         ElseIf Single.IsNaN(v) Then
-            Return Maths.QuadraticSolve(0.5 * a, u, -s)
+            Return QuadraticSolve(0.5 * a, u, -s)
         ElseIf Single.IsNaN(a) Then
             Return (2 * s) / (u + v)
         Else
-            Return Single.NaN
+            Return (2 * s) / (u + v)
         End If
     End Function
 #End Region

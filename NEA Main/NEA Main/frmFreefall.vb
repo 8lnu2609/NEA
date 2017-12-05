@@ -66,7 +66,6 @@
 
     Private Sub DrawTimer_Tick(sender As Object, e As EventArgs) Handles DrawTimer.Tick
         picBoxDisplay.Refresh()
-        UpdateValues()
     End Sub
 
     Private Sub trbTime_Scroll(sender As Object, e As EventArgs) Handles trbTime.Scroll
@@ -105,8 +104,10 @@
 
     Private Sub DropTimer_Tick(sender As Object, e As EventArgs) Handles DropTimer.Tick
         If ballHeight > 0 Then
-            ball.posY = 0
+            ballHeight = dropHeight - Maths.Displacement(0, velocity, Single.NaN, (Now - timeStart).TotalSeconds)
+            Label7.Text = velocity
         Else
+            ballHeight = 0
             DropTimer.Stop()
         End If
         UpdateValues()
@@ -119,10 +120,11 @@
         fluidDensity = updFluidDensity.Value
         area = updArea.Value
         dragCOE = updDragCOE.Value
-        resultantForce = mass * accelerationGravity - (0.5 * fluidDensity * velocity ^ 2 * dragCOE * area)
-        resultantForce = mass * accelerationGravity
-        velocity = Maths.FinalVelocity(Single.NaN, 0, resultantForce / mass, (Now - timeStart).TotalSeconds)
-        trbTime.Maximum = Maths.Time(dropHeight, 0, Single.NaN, (resultantForce / mass)) * 100
+
+        velocity = Math.Sqrt((mass * accelerationGravity) / (dragCOE * fluidDensity * area)) * (Now - timeStart).TotalSeconds
+
+
+        'trbTime.Maximum = Maths.Time(dropHeight, 0, Single.NaN, (resultantForce / mass)) * 100
     End Sub
 
 End Class
