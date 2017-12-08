@@ -32,4 +32,19 @@
         Dim Turning As New frmTurningPoints
         Turning.Show()
     End Sub
+
+    Private Sub cmdFreefallSim_Click(sender As Object, e As EventArgs) Handles cmdFreefallSim.Click
+        Dim Freefall As New frmFreefall
+        Freefall.Show()
+    End Sub
+
+    Private Sub cmdFreefallCal_Click(sender As Object, e As EventArgs) Handles cmdFreefallCal.Click
+        Dim Cal As New frmFreefallCal
+        Cal.Show()
+    End Sub
+
+    Private Sub cmdCollisionSim_Click(sender As Object, e As EventArgs) Handles cmdCollisionSim.Click
+        Dim Collision As New frmCollisions
+        Collision.Show()
+    End Sub
 End Class

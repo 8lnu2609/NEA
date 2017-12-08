@@ -26,7 +26,8 @@ Partial Class frmFreefall
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFreefall))
         Me.picBoxDisplay = New System.Windows.Forms.PictureBox()
         Me.grpData = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.updResistance = New System.Windows.Forms.NumericUpDown()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.pnlTimeSelect = New System.Windows.Forms.Panel()
@@ -42,15 +43,13 @@ Partial Class frmFreefall
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.DrawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.DropTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.updResistance = New System.Windows.Forms.NumericUpDown()
         CType(Me.picBoxDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picBoxDisplay
@@ -71,7 +70,6 @@ Partial Class frmFreefall
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpData.Controls.Add(Me.updResistance)
         Me.grpData.Controls.Add(Me.Label1)
-        Me.grpData.Controls.Add(Me.Label7)
         Me.grpData.Controls.Add(Me.updMass)
         Me.grpData.Controls.Add(Me.Label6)
         Me.grpData.Controls.Add(Me.pnlTimeSelect)
@@ -87,14 +85,25 @@ Partial Class frmFreefall
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
         '
-        'Label7
+        'updResistance
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 371)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 13)
-        Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Label7"
+        Me.updResistance.DecimalPlaces = 3
+        Me.updResistance.Location = New System.Drawing.Point(83, 133)
+        Me.updResistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updResistance.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.updResistance.Name = "updResistance"
+        Me.updResistance.Size = New System.Drawing.Size(111, 20)
+        Me.updResistance.TabIndex = 32
+        Me.updResistance.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 127)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(77, 26)
+        Me.Label1.TabIndex = 31
+        Me.Label1.Text = "Average" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "resistive forces"
         '
         'updMass
         '
@@ -230,35 +239,16 @@ Partial Class frmFreefall
         '
         Me.DropTimer.Interval = 1
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(7, 127)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(77, 26)
-        Me.Label1.TabIndex = 31
-        Me.Label1.Text = "Average" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "resistive forces"
-        '
-        'updResistance
-        '
-        Me.updResistance.DecimalPlaces = 3
-        Me.updResistance.Location = New System.Drawing.Point(83, 133)
-        Me.updResistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updResistance.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.updResistance.Name = "updResistance"
-        Me.updResistance.Size = New System.Drawing.Size(111, 20)
-        Me.updResistance.TabIndex = 32
-        Me.updResistance.Value = New Decimal(New Integer() {10, 0, 0, 0})
-        '
         'frmFreefall
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(1362, 742)
+        Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picBoxDisplay)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -270,12 +260,12 @@ Partial Class frmFreefall
         CType(Me.picBoxDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTimeSelect.ResumeLayout(False)
         Me.pnlTimeSelect.PerformLayout()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -297,7 +287,6 @@ Partial Class frmFreefall
     Friend WithEvents updMass As NumericUpDown
     Friend WithEvents Label6 As Label
     Friend WithEvents DropTimer As Timer
-    Friend WithEvents Label7 As Label
     Friend WithEvents updResistance As NumericUpDown
     Friend WithEvents Label1 As Label
 End Class

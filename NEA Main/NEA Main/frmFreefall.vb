@@ -20,11 +20,8 @@
         BOXHEIGHT = picBoxDisplay.Height
         ball.posX = BOXWIDTH / 2 - 50
         ball.posY = SHAPEWIDTH
-        For Each control As Control In grpData.Controls
-            If control.GetType = GetType(NumericUpDown) Then
-                Dim upd As NumericUpDown = DirectCast(control, NumericUpDown)
-                AddHandler upd.ValueChanged, AddressOf UpdateValues
-            End If
+        For Each upd As NumericUpDown In grpData.Controls
+            AddHandler upd.ValueChanged, AddressOf UpdateValues
         Next
 
     End Sub
@@ -50,7 +47,7 @@
     Private Sub cboGravity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboGravity.SelectedIndexChanged
         accelerationGravity = GetGravityAcceleration(cboGravity)
         ToolTips.SetToolTip(cboGravity, accelerationGravity & "ms^-2")
-
+        updResistance.Maximum = mass * accelerationGravity
     End Sub
 
     Private Sub frmFreefall_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -104,10 +101,9 @@
     End Sub
 
     Private Sub DropTimer_Tick(sender As Object, e As EventArgs) Handles DropTimer.Tick
+
         If ballHeight > 0 Then
             ballHeight = dropHeight - (velocity * (Now - timeStart).TotalSeconds)
-
-            Label7.Text = ""
         Else
             ballHeight = 0
             DropTimer.Stop()
@@ -116,13 +112,15 @@
 
     End Sub
 
-    Dim terminalVelocity As Single
+    Private Sub updMass_ValueChanged(sender As Object, e As EventArgs) Handles updMass.ValueChanged
+        updResistance.Maximum = mass * accelerationGravity
+
+    End Sub
 
     Sub UpdateValues()
         dropHeight = updHeight.Value
         mass = updMass.Value
         resistance = updResistance.Value
-
         If mass * accelerationGravity > resistance Then
             resultantForce = mass * accelerationGravity - resistance
         Else
@@ -130,9 +128,12 @@
         End If
         velocity = ((resultantForce) / mass) * (Now - timeStart).TotalSeconds
 
+        Try
+            trbTime.Maximum = Maths.Time(dropHeight, 0, Single.NaN, (resultantForce / mass)) * 100
+        Catch ex As Exception
 
+        End Try
 
-        'trbTime.Maximum = Maths.Time(dropHeight, 0, Single.NaN, (resultantForce / mass)) * 100
     End Sub
 
 End Class

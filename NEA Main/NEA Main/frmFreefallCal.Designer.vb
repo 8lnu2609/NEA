@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmFreefallCal
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmFreefallCal
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFreefallCal))
@@ -31,13 +31,12 @@ Partial Class frmFreefallCal
         Me.updHeight = New System.Windows.Forms.NumericUpDown()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.updVelocity = New System.Windows.Forms.NumericUpDown()
+        Me.updResistance = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.cboDragCOE = New System.Windows.Forms.ComboBox()
+        Me.lblTime = New System.Windows.Forms.Label()
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updVelocity, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdClose
@@ -96,38 +95,30 @@ Partial Class frmFreefallCal
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Mass (kg):"
         '
-        'updVelocity
+        'updResistance
         '
-        Me.updVelocity.Location = New System.Drawing.Point(117, 99)
-        Me.updVelocity.Name = "updVelocity"
-        Me.updVelocity.Size = New System.Drawing.Size(120, 20)
-        Me.updVelocity.TabIndex = 9
+        Me.updResistance.Location = New System.Drawing.Point(117, 68)
+        Me.updResistance.Name = "updResistance"
+        Me.updResistance.Size = New System.Drawing.Size(120, 20)
+        Me.updResistance.TabIndex = 6
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(10, 101)
+        Me.Label3.Location = New System.Drawing.Point(12, 66)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(84, 13)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "Velocity (ms^-1):"
+        Me.Label3.Size = New System.Drawing.Size(91, 26)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Average resistive " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "forces (N):"
         '
-        'Label4
+        'lblTime
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(11, 66)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(55, 26)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Coefficent" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "of drag:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        '
-        'cboDragCOE
-        '
-        Me.cboDragCOE.FormattingEnabled = True
-        Me.cboDragCOE.Location = New System.Drawing.Point(116, 69)
-        Me.cboDragCOE.Name = "cboDragCOE"
-        Me.cboDragCOE.Size = New System.Drawing.Size(121, 21)
-        Me.cboDragCOE.TabIndex = 10
+        Me.lblTime.AutoSize = True
+        Me.lblTime.Location = New System.Drawing.Point(11, 103)
+        Me.lblTime.Name = "lblTime"
+        Me.lblTime.Size = New System.Drawing.Size(80, 13)
+        Me.lblTime.TabIndex = 8
+        Me.lblTime.Text = "Time taken (s): "
         '
         'frmFreefallCal
         '
@@ -136,10 +127,9 @@ Partial Class frmFreefallCal
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(408, 177)
         Me.ControlBox = False
-        Me.Controls.Add(Me.cboDragCOE)
-        Me.Controls.Add(Me.updVelocity)
+        Me.Controls.Add(Me.lblTime)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.updResistance)
         Me.Controls.Add(Me.updMass)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.updHeight)
@@ -154,7 +144,7 @@ Partial Class frmFreefallCal
         Me.Text = "Calculator"
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updVelocity, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -167,8 +157,7 @@ Partial Class frmFreefallCal
     Friend WithEvents updHeight As NumericUpDown
     Friend WithEvents updMass As NumericUpDown
     Friend WithEvents Label2 As Label
-    Friend WithEvents updVelocity As NumericUpDown
+    Friend WithEvents updResistance As NumericUpDown
     Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents cboDragCOE As ComboBox
+    Friend WithEvents lblTime As Label
 End Class

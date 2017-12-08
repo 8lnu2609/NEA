@@ -31,6 +31,10 @@ Partial Class frmMenu
         Me.cmdForceSim = New System.Windows.Forms.Button()
         Me.cmdTurningCal = New System.Windows.Forms.Button()
         Me.cmdTurningSim = New System.Windows.Forms.Button()
+        Me.cmdFreefallSim = New System.Windows.Forms.Button()
+        Me.cmdFreefallCal = New System.Windows.Forms.Button()
+        Me.cmdCollisionSim = New System.Windows.Forms.Button()
+        Me.cmdCollisionCal = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -103,7 +107,7 @@ Partial Class frmMenu
         Me.cmdTurningCal.Location = New System.Drawing.Point(174, 143)
         Me.cmdTurningCal.Name = "cmdTurningCal"
         Me.cmdTurningCal.Size = New System.Drawing.Size(75, 50)
-        Me.cmdTurningCal.TabIndex = 22
+        Me.cmdTurningCal.TabIndex = 6
         Me.cmdTurningCal.Text = "Turning Points" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
         Me.cmdTurningCal.UseVisualStyleBackColor = True
         '
@@ -113,9 +117,49 @@ Partial Class frmMenu
         Me.cmdTurningSim.Location = New System.Drawing.Point(174, 87)
         Me.cmdTurningSim.Name = "cmdTurningSim"
         Me.cmdTurningSim.Size = New System.Drawing.Size(75, 50)
-        Me.cmdTurningSim.TabIndex = 21
+        Me.cmdTurningSim.TabIndex = 5
         Me.cmdTurningSim.Text = "Turning Points" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
         Me.cmdTurningSim.UseVisualStyleBackColor = True
+        '
+        'cmdFreefallSim
+        '
+        Me.cmdFreefallSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdFreefallSim.Location = New System.Drawing.Point(255, 87)
+        Me.cmdFreefallSim.Name = "cmdFreefallSim"
+        Me.cmdFreefallSim.Size = New System.Drawing.Size(75, 50)
+        Me.cmdFreefallSim.TabIndex = 7
+        Me.cmdFreefallSim.Text = "Freefall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdFreefallSim.UseVisualStyleBackColor = True
+        '
+        'cmdFreefallCal
+        '
+        Me.cmdFreefallCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdFreefallCal.Location = New System.Drawing.Point(255, 143)
+        Me.cmdFreefallCal.Name = "cmdFreefallCal"
+        Me.cmdFreefallCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdFreefallCal.TabIndex = 8
+        Me.cmdFreefallCal.Text = "Freefall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdFreefallCal.UseVisualStyleBackColor = True
+        '
+        'cmdCollisionSim
+        '
+        Me.cmdCollisionSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCollisionSim.Location = New System.Drawing.Point(336, 87)
+        Me.cmdCollisionSim.Name = "cmdCollisionSim"
+        Me.cmdCollisionSim.Size = New System.Drawing.Size(75, 50)
+        Me.cmdCollisionSim.TabIndex = 9
+        Me.cmdCollisionSim.Text = "Collisions" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdCollisionSim.UseVisualStyleBackColor = True
+        '
+        'cmdCollisionCal
+        '
+        Me.cmdCollisionCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdCollisionCal.Location = New System.Drawing.Point(336, 143)
+        Me.cmdCollisionCal.Name = "cmdCollisionCal"
+        Me.cmdCollisionCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdCollisionCal.TabIndex = 10
+        Me.cmdCollisionCal.Text = "Collisions" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdCollisionCal.UseVisualStyleBackColor = True
         '
         'frmMenu
         '
@@ -125,7 +169,11 @@ Partial Class frmMenu
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(484, 362)
         Me.ControlBox = False
+        Me.Controls.Add(Me.cmdCollisionCal)
+        Me.Controls.Add(Me.cmdFreefallCal)
         Me.Controls.Add(Me.cmdTurningCal)
+        Me.Controls.Add(Me.cmdCollisionSim)
+        Me.Controls.Add(Me.cmdFreefallSim)
         Me.Controls.Add(Me.cmdTurningSim)
         Me.Controls.Add(Me.cmdForceCal)
         Me.Controls.Add(Me.cmdForceSim)
@@ -153,4 +201,8 @@ Partial Class frmMenu
     Friend WithEvents cmdForceSim As Button
     Friend WithEvents cmdTurningCal As Button
     Friend WithEvents cmdTurningSim As Button
+    Friend WithEvents cmdFreefallSim As Button
+    Friend WithEvents cmdFreefallCal As Button
+    Friend WithEvents cmdCollisionSim As Button
+    Friend WithEvents cmdCollisionCal As Button
 End Class

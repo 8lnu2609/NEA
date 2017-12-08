@@ -1,22 +1,19 @@
 ﻿Public Class frmFreefallCal
-    Dim DragCOEDictionary As New Dictionary(Of String, Single) From {
-        {"Sphere", 0.47},
-        {"Half-sphere", 0.42},
-        {"Cone", 0.5},
-        {"Cube", 1.05},
-        {"Angled cube", 0.8},
-        {"Long cylinder", 0.82},
-        {"Short cylinder", 1.15},
-        {"Stream lined", 0.04}
-    }
-
 
     Public Sub New()
         InitializeComponent()
         PopulateAccelerationCbo(cboGravity)
-        For Each pair As KeyValuePair(Of String, Single) In DragCOEDictionary
-            cboDragCOE.Items.Add(pair.Value)
+        For Each upd As NumericUpDown In Controls
+            If upd.GetType = GetType(NumericUpDown) Then
+                AddHandler upd.ValueChanged, AddressOf Calculate
+            End If
         Next
+
+
+    End Sub
+
+    Sub Calculate()
+        lblTime.Text = String.Format("Time taken (s): {0}", Maths.Time(updHeight.Value, 0, Single.NaN, GetGravityAcceleration(cboGravity)))
     End Sub
 
 
@@ -24,11 +21,8 @@
         ToolTips.SetToolTip(cboGravity, AccelerationDictionary.Item(cboGravity.SelectedItem))
     End Sub
 
-    Private Sub cboDragCOE_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboDragCOE.SelectedIndexChanged
-
-    End Sub
-
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
     End Sub
+
 End Class

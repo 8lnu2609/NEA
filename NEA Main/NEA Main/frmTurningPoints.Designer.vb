@@ -218,13 +218,14 @@ Partial Class frmTurningPoints
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
         Me.ClientSize = New System.Drawing.Size(1354, 732)
+        Me.ControlBox = False
         Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
         Me.Controls.Add(Me.updLength)
         Me.Controls.Add(Me.grpBoxData)
         Me.Controls.Add(Me.cmdClose)
         Me.Controls.Add(Me.picDisplay)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
