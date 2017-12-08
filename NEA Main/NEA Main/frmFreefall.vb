@@ -5,16 +5,14 @@
         .posX = 0,
         .posY = 0
     }
-    Dim dropHeight As Single = 10
-    Dim mass As Single = 10
-    Dim fluidDensity As Single = 1.25
-    Dim area As Single = 10
-    Dim dragCOE As Single = 1
-    Dim resultantForce As Single
-    Dim accelerationGravity As Single
-    Dim velocity As Single
+    Dim dropHeight As Double = 10
+    Dim mass As Double = 10
+    Dim resultantForce As Double
+    Dim resistance As Double
+    Dim accelerationGravity As Double
+    Dim velocity As Double
     Dim timeStart As DateTime
-    Dim ballHeight As Single
+    Dim ballHeight As Double
 
     Public Sub New()
         InitializeComponent()
@@ -76,6 +74,9 @@
     End Sub
 
     Private Sub optRealTime_CheckedChanged(sender As Object, e As EventArgs) Handles optRealTime.CheckedChanged
+        DropTimer.Stop()
+        UpdateValues()
+
         If optRealTime.Checked Then
             ball.posX = BOXWIDTH / 2 - 50
             trbTime.Hide()
@@ -104,8 +105,9 @@
 
     Private Sub DropTimer_Tick(sender As Object, e As EventArgs) Handles DropTimer.Tick
         If ballHeight > 0 Then
-            ballHeight = dropHeight - Maths.Displacement(0, velocity, Single.NaN, (Now - timeStart).TotalSeconds)
-            Label7.Text = velocity
+            ballHeight = dropHeight - (velocity * (Now - timeStart).TotalSeconds)
+
+            Label7.Text = ""
         Else
             ballHeight = 0
             DropTimer.Stop()
@@ -114,14 +116,20 @@
 
     End Sub
 
+    Dim terminalVelocity As Single
+
     Sub UpdateValues()
         dropHeight = updHeight.Value
         mass = updMass.Value
-        fluidDensity = updFluidDensity.Value
-        area = updArea.Value
-        dragCOE = updDragCOE.Value
+        resistance = updResistance.Value
 
-        velocity = Math.Sqrt((mass * accelerationGravity) / (dragCOE * fluidDensity * area)) * (Now - timeStart).TotalSeconds
+        If mass * accelerationGravity > resistance Then
+            resultantForce = mass * accelerationGravity - resistance
+        Else
+            resultantForce = 0
+        End If
+        velocity = ((resultantForce) / mass) * (Now - timeStart).TotalSeconds
+
 
 
         'trbTime.Maximum = Maths.Time(dropHeight, 0, Single.NaN, (resultantForce / mass)) * 100

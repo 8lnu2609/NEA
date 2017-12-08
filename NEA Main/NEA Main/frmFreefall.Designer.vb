@@ -26,14 +26,9 @@ Partial Class frmFreefall
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFreefall))
         Me.picBoxDisplay = New System.Windows.Forms.PictureBox()
         Me.grpData = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.updDragCOE = New System.Windows.Forms.NumericUpDown()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.updArea = New System.Windows.Forms.NumericUpDown()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.updFluidDensity = New System.Windows.Forms.NumericUpDown()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.pnlTimeSelect = New System.Windows.Forms.Panel()
         Me.cmdStart = New System.Windows.Forms.Button()
         Me.trbTime = New System.Windows.Forms.TrackBar()
@@ -47,16 +42,15 @@ Partial Class frmFreefall
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.DrawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.DropTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.updResistance = New System.Windows.Forms.NumericUpDown()
         CType(Me.picBoxDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updDragCOE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updArea, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.updFluidDensity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlTimeSelect.SuspendLayout()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picBoxDisplay
@@ -75,15 +69,11 @@ Partial Class frmFreefall
         '
         Me.grpData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpData.Controls.Add(Me.updResistance)
+        Me.grpData.Controls.Add(Me.Label1)
         Me.grpData.Controls.Add(Me.Label7)
         Me.grpData.Controls.Add(Me.updMass)
         Me.grpData.Controls.Add(Me.Label6)
-        Me.grpData.Controls.Add(Me.updDragCOE)
-        Me.grpData.Controls.Add(Me.Label5)
-        Me.grpData.Controls.Add(Me.updArea)
-        Me.grpData.Controls.Add(Me.Label1)
-        Me.grpData.Controls.Add(Me.updFluidDensity)
-        Me.grpData.Controls.Add(Me.Label4)
         Me.grpData.Controls.Add(Me.pnlTimeSelect)
         Me.grpData.Controls.Add(Me.updHeight)
         Me.grpData.Controls.Add(Me.Label3)
@@ -96,6 +86,15 @@ Partial Class frmFreefall
         Me.grpData.TabIndex = 1
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(12, 371)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(39, 13)
+        Me.Label7.TabIndex = 2
+        Me.Label7.Text = "Label7"
         '
         'updMass
         '
@@ -116,66 +115,6 @@ Partial Class frmFreefall
         Me.Label6.Size = New System.Drawing.Size(32, 13)
         Me.Label6.TabIndex = 29
         Me.Label6.Text = "Mass"
-        '
-        'updDragCOE
-        '
-        Me.updDragCOE.DecimalPlaces = 3
-        Me.updDragCOE.Location = New System.Drawing.Point(83, 205)
-        Me.updDragCOE.Maximum = New Decimal(New Integer() {50, 0, 0, 0})
-        Me.updDragCOE.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.updDragCOE.Name = "updDragCOE"
-        Me.updDragCOE.Size = New System.Drawing.Size(111, 20)
-        Me.updDragCOE.TabIndex = 28
-        Me.updDragCOE.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(7, 202)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(55, 26)
-        Me.Label5.TabIndex = 27
-        Me.Label5.Text = "Coefficent" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "of drag"
-        '
-        'updArea
-        '
-        Me.updArea.DecimalPlaces = 3
-        Me.updArea.Location = New System.Drawing.Point(83, 170)
-        Me.updArea.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updArea.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.updArea.Name = "updArea"
-        Me.updArea.Size = New System.Drawing.Size(111, 20)
-        Me.updArea.TabIndex = 26
-        Me.updArea.Value = New Decimal(New Integer() {10, 0, 0, 0})
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 172)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(29, 13)
-        Me.Label1.TabIndex = 25
-        Me.Label1.Text = "Area"
-        '
-        'updFluidDensity
-        '
-        Me.updFluidDensity.DecimalPlaces = 3
-        Me.updFluidDensity.Location = New System.Drawing.Point(83, 135)
-        Me.updFluidDensity.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updFluidDensity.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
-        Me.updFluidDensity.Name = "updFluidDensity"
-        Me.updFluidDensity.Size = New System.Drawing.Size(111, 20)
-        Me.updFluidDensity.TabIndex = 24
-        Me.updFluidDensity.Value = New Decimal(New Integer() {125, 0, 0, 131072})
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 137)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 13)
-        Me.Label4.TabIndex = 23
-        Me.Label4.Text = "Fluid density"
         '
         'pnlTimeSelect
         '
@@ -291,14 +230,25 @@ Partial Class frmFreefall
         '
         Me.DropTimer.Interval = 1
         '
-        'Label7
+        'Label1
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 371)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(39, 13)
-        Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Label7"
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 127)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(77, 26)
+        Me.Label1.TabIndex = 31
+        Me.Label1.Text = "Average" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "resistive forces"
+        '
+        'updResistance
+        '
+        Me.updResistance.DecimalPlaces = 3
+        Me.updResistance.Location = New System.Drawing.Point(83, 133)
+        Me.updResistance.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.updResistance.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
+        Me.updResistance.Name = "updResistance"
+        Me.updResistance.Size = New System.Drawing.Size(111, 20)
+        Me.updResistance.TabIndex = 32
+        Me.updResistance.Value = New Decimal(New Integer() {10, 0, 0, 0})
         '
         'frmFreefall
         '
@@ -321,13 +271,11 @@ Partial Class frmFreefall
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updDragCOE, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updArea, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.updFluidDensity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTimeSelect.ResumeLayout(False)
         Me.pnlTimeSelect.PerformLayout()
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.updResistance, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -346,14 +294,10 @@ Partial Class frmFreefall
     Friend WithEvents optStepByStep As RadioButton
     Friend WithEvents optRealTime As RadioButton
     Friend WithEvents cmdStart As Button
-    Friend WithEvents updFluidDensity As NumericUpDown
-    Friend WithEvents Label4 As Label
-    Friend WithEvents updArea As NumericUpDown
-    Friend WithEvents Label1 As Label
-    Friend WithEvents updDragCOE As NumericUpDown
-    Friend WithEvents Label5 As Label
     Friend WithEvents updMass As NumericUpDown
     Friend WithEvents Label6 As Label
     Friend WithEvents DropTimer As Timer
     Friend WithEvents Label7 As Label
+    Friend WithEvents updResistance As NumericUpDown
+    Friend WithEvents Label1 As Label
 End Class
