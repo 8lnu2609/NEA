@@ -3,8 +3,9 @@
     Public Sub New()
         InitializeComponent()
         PopulateAccelerationCbo(cboGravity)
-        For Each upd As NumericUpDown In Controls
-            If upd.GetType = GetType(NumericUpDown) Then
+        For Each control As Control In Controls
+            If control.GetType = GetType(NumericUpDown) Then
+                Dim upd As NumericUpDown = DirectCast(control, NumericUpDown)
                 AddHandler upd.ValueChanged, AddressOf Calculate
             End If
         Next

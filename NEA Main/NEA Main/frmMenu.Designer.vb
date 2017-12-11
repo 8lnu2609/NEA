@@ -47,8 +47,8 @@ Partial Class frmMenu
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(453, 75)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Hello and wlecome to the 'physics' simulator" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Select what area of mechanics you w" &
-    "ould like " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to simulate or calculate"
+        Me.Label1.Text = "Hello and welcome to the 'physics' simulator." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Select what area of mechanics you " &
+    "would like " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to simulate or calculate." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'cmdProjectileSim

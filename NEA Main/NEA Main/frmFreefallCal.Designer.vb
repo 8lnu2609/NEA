@@ -141,6 +141,7 @@ Partial Class frmFreefallCal
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmFreefallCal"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Calculator"
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).EndInit()

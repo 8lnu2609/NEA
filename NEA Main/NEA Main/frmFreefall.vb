@@ -20,8 +20,12 @@
         BOXHEIGHT = picBoxDisplay.Height
         ball.posX = BOXWIDTH / 2 - 50
         ball.posY = SHAPEWIDTH
-        For Each upd As NumericUpDown In grpData.Controls
-            AddHandler upd.ValueChanged, AddressOf UpdateValues
+        For Each control As Control In grpData.Controls
+            If control.GetType = GetType(NumericUpDown) Then
+                Dim upd As NumericUpDown = DirectCast(control, NumericUpDown)
+                AddHandler upd.ValueChanged, AddressOf UpdateValues
+
+            End If
         Next
 
     End Sub

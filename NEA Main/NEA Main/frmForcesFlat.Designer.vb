@@ -368,7 +368,7 @@ Partial Class frmForcesFlat
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1372, 695)
+        Me.ClientSize = New System.Drawing.Size(1368, 691)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
@@ -380,9 +380,8 @@ Partial Class frmForcesFlat
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmForcesFlat"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Forces"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.trbTime, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlTimeSelect.ResumeLayout(False)
         Me.pnlTimeSelect.PerformLayout()

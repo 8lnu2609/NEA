@@ -202,7 +202,7 @@ Partial Class frmVelocityInput
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmVelocityInput"
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Velocity Input"
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grbInputSelect.ResumeLayout(False)

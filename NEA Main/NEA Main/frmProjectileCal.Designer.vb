@@ -254,7 +254,7 @@ Partial Class frmProjectileCal
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProjectileCal"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Calculator"
         Me.grbComponentsY.ResumeLayout(False)
         Me.grbComponentsY.PerformLayout()

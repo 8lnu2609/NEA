@@ -82,7 +82,7 @@ Partial Class frmForcesCal
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmForcesCal"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Calculator"
         Me.ResumeLayout(False)
         Me.PerformLayout()

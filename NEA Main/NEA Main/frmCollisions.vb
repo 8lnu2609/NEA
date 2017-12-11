@@ -4,6 +4,7 @@
     Dim BOXHEIGHT, BOXWIDTH As Int16
     Const SHAPEWIDTH As Int32 = 40
     Dim COEofRestitution As Single = 1
+    Dim playing As Boolean = False
     Dim MaterialDictionary As New Dictionary(Of String, Single) From {
         {"Brass", 0.3},
         {"Bronze", 0.52},
@@ -18,7 +19,7 @@
         {"Rubber", 0.75},
         {"Steel", 0.9}
     }
-
+    Dim timeStart As Date
 
     Public Sub New()
         InitializeComponent()
@@ -26,24 +27,26 @@
         BOXWIDTH = picDisplay.Width
         setHandlers()
         leftParticle.Shape.posY = BOXHEIGHT / 2
+        leftParticle.Shape.posX = SHAPEWIDTH
         rightParticle.Shape.posY = BOXHEIGHT / 2
+        rightParticle.Shape.posX = BOXWIDTH - 2 * SHAPEWIDTH
+        UpdateValues()
     End Sub
 
     Sub setHandlers()
         For Each group As Control In grpData.Controls
             If group.GetType = GetType(GroupBox) Then
                 For Each control As Control In group.Controls
-                    AddHandler control.Leave, AddressOf UpdateValues
-                    If control.GetType = GetType(ComboBox) Then
-                        Dim combo As ComboBox = DirectCast(control, ComboBox)
-                        For Each pair As KeyValuePair(Of String, Single) In MaterialDictionary
-                            combo.Items.Add(pair.Key)
-                            combo.SelectedIndex = 0
-                            AddHandler combo.SelectedIndexChanged, AddressOf SetToolTipCOE
-                        Next
+                    If control.GetType = GetType(NumericUpDown) Then
+                        AddHandler DirectCast(control, NumericUpDown).ValueChanged, AddressOf UpdateValues
                     End If
+
                 Next
             End If
+        Next
+        For Each pair As KeyValuePair(Of String, Single) In MaterialDictionary
+            cboMaterial.Items.Add(pair.Key)
+            cboMaterial.SelectedIndex = 0
         Next
     End Sub
 
@@ -60,19 +63,52 @@
         rightParticle.Shape.Draw(e, SHAPEWIDTH)
     End Sub
 
-    Sub SetToolTipCOE(sender As ComboBox, e As EventArgs)
+    Sub SetToolTipCOE(sender As ComboBox, e As EventArgs) Handles cboMaterial.SelectedIndexChanged
         ToolTips.SetToolTip(sender, MaterialDictionary.Item(sender.SelectedItem))
     End Sub
 
-    Sub UpdateValues()
+    Sub cmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
+        If playing = False Then
+            tmrCalculations.Start()
+            cmdStart.Text = "Stop"
+            timeStart = Now
+        Else
+            tmrCalculations.Stop()
+            cmdStart.Text = "Start"
+        End If
+        playing = Not playing
+    End Sub
 
+    Private Sub tmrCalculations_Tick(sender As Object, e As EventArgs) Handles tmrCalculations.Tick
+        If leftParticle.Shape.posX + SHAPEWIDTH < rightParticle.Shape.posX Then
+            leftParticle.Shape.posX = SHAPEWIDTH + Maths.Displacement(leftParticle.Velocity, leftParticle.Velocity, Single.NaN, (Now - timeStart).TotalSeconds)
+            rightParticle.Shape.posX = BOXWIDTH - (2 * SHAPEWIDTH) - Maths.Displacement(rightParticle.Velocity, rightParticle.Velocity, Single.NaN, (Now - timeStart).TotalSeconds)
+        End If
+    End Sub
+
+    Sub UpdateValues()
+        tmrCalculations.Stop()
+        playing = False
+        cmdStart.Text = "Start"
+        leftParticle.Velocity = updVelocityLeft.Value
+        leftParticle.Mass = updMassLeft.Value
+        rightParticle.Velocity = updVelocityRight.Value
+        rightParticle.Mass = updMassRight.Value
     End Sub
 
 End Class
 
 Class Particle
+    Private _Velocity As Single
     Public Property Velocity As Single
+        Get
+            Return _Velocity * 100
+        End Get
+        Set(value As Single)
+            _Velocity = value
+        End Set
+    End Property
     Public Property Mass As Single
-    Public Property Shape As Square
+    Public Property Shape As New Square
 
 End Class

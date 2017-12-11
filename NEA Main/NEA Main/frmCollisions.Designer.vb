@@ -28,19 +28,21 @@ Partial Class frmCollisions
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpData = New System.Windows.Forms.GroupBox()
+        Me.cmdStart = New System.Windows.Forms.Button()
+        Me.cboMaterial = New System.Windows.Forms.ComboBox()
         Me.grpRight = New System.Windows.Forms.GroupBox()
         Me.updVelocityRight = New System.Windows.Forms.NumericUpDown()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.updMassRight = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.grpLeft = New System.Windows.Forms.GroupBox()
-        Me.cboMaterialLeft = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.grpLeft = New System.Windows.Forms.GroupBox()
         Me.updVelocityLeft = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.updMassLeft = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
+        Me.tmrCalculations = New System.Windows.Forms.Timer(Me.components)
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         Me.grpRight.SuspendLayout()
@@ -65,6 +67,7 @@ Partial Class frmCollisions
         '
         'tmrDraw
         '
+        Me.tmrDraw.Enabled = True
         Me.tmrDraw.Interval = 1
         '
         'cmdClose
@@ -82,7 +85,8 @@ Partial Class frmCollisions
         '
         Me.grpData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grpData.Controls.Add(Me.cboMaterialLeft)
+        Me.grpData.Controls.Add(Me.cmdStart)
+        Me.grpData.Controls.Add(Me.cboMaterial)
         Me.grpData.Controls.Add(Me.grpRight)
         Me.grpData.Controls.Add(Me.Label5)
         Me.grpData.Controls.Add(Me.grpLeft)
@@ -93,6 +97,25 @@ Partial Class frmCollisions
         Me.grpData.TabIndex = 29
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
+        '
+        'cmdStart
+        '
+        Me.cmdStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdStart.Location = New System.Drawing.Point(119, 653)
+        Me.cmdStart.Name = "cmdStart"
+        Me.cmdStart.Size = New System.Drawing.Size(75, 23)
+        Me.cmdStart.TabIndex = 30
+        Me.cmdStart.Text = "Start"
+        Me.cmdStart.UseVisualStyleBackColor = True
+        '
+        'cboMaterial
+        '
+        Me.cboMaterial.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboMaterial.FormattingEnabled = True
+        Me.cboMaterial.Location = New System.Drawing.Point(68, 24)
+        Me.cboMaterial.Name = "cboMaterial"
+        Me.cboMaterial.Size = New System.Drawing.Size(114, 21)
+        Me.cboMaterial.TabIndex = 5
         '
         'grpRight
         '
@@ -147,6 +170,15 @@ Partial Class frmCollisions
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Mass" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "(kg):"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 27)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(47, 13)
+        Me.Label5.TabIndex = 4
+        Me.Label5.Text = "Material:"
+        '
         'grpLeft
         '
         Me.grpLeft.Controls.Add(Me.updVelocityLeft)
@@ -159,24 +191,6 @@ Partial Class frmCollisions
         Me.grpLeft.TabIndex = 31
         Me.grpLeft.TabStop = False
         Me.grpLeft.Text = "Left"
-        '
-        'cboMaterialLeft
-        '
-        Me.cboMaterialLeft.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboMaterialLeft.FormattingEnabled = True
-        Me.cboMaterialLeft.Location = New System.Drawing.Point(68, 24)
-        Me.cboMaterialLeft.Name = "cboMaterialLeft"
-        Me.cboMaterialLeft.Size = New System.Drawing.Size(114, 21)
-        Me.cboMaterialLeft.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 27)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(47, 13)
-        Me.Label5.TabIndex = 4
-        Me.Label5.Text = "Material:"
         '
         'updVelocityLeft
         '
@@ -222,6 +236,10 @@ Partial Class frmCollisions
         '
         Me.ToolTips.AutomaticDelay = 0
         '
+        'tmrCalculations
+        '
+        Me.tmrCalculations.Interval = 1
+        '
         'frmCollisions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -231,14 +249,13 @@ Partial Class frmCollisions
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmCollisions"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Collisions"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()
@@ -269,6 +286,8 @@ Partial Class frmCollisions
     Friend WithEvents updVelocityLeft As NumericUpDown
     Friend WithEvents Label2 As Label
     Friend WithEvents updMassLeft As NumericUpDown
-    Friend WithEvents cboMaterialLeft As ComboBox
+    Friend WithEvents cboMaterial As ComboBox
     Friend WithEvents Label5 As Label
+    Friend WithEvents cmdStart As Button
+    Friend WithEvents tmrCalculations As Timer
 End Class

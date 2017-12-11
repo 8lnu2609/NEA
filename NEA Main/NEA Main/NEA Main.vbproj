@@ -131,10 +131,10 @@
     <Compile Include="frmTurningPoints.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTurningPointsCalculator.Designer.vb">
-      <DependentUpon>frmTurningPointsCalculator.vb</DependentUpon>
+    <Compile Include="frmTurningPointsCal.Designer.vb">
+      <DependentUpon>frmTurningPointsCal.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTurningPointsCalculator.vb">
+    <Compile Include="frmTurningPointsCal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -196,8 +196,8 @@
     <EmbeddedResource Include="frmTurningPoints.resx">
       <DependentUpon>frmTurningPoints.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTurningPointsCalculator.resx">
-      <DependentUpon>frmTurningPointsCalculator.vb</DependentUpon>
+    <EmbeddedResource Include="frmTurningPointsCal.resx">
+      <DependentUpon>frmTurningPointsCal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -64,7 +64,7 @@ Partial Class frmProjectile
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 12)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(752, 599)
+        Me.picDisplay.Size = New System.Drawing.Size(1106, 693)
         Me.picDisplay.TabIndex = 0
         Me.picDisplay.TabStop = False
         '
@@ -95,9 +95,9 @@ Partial Class frmProjectile
         Me.grpData.Controls.Add(Me.Label2)
         Me.grpData.Controls.Add(Me.Label1)
         Me.grpData.Controls.Add(Me.txtVelocityX_Out)
-        Me.grpData.Location = New System.Drawing.Point(769, 12)
+        Me.grpData.Location = New System.Drawing.Point(1123, 12)
         Me.grpData.Name = "grpData"
-        Me.grpData.Size = New System.Drawing.Size(205, 596)
+        Me.grpData.Size = New System.Drawing.Size(205, 693)
         Me.grpData.TabIndex = 14
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
@@ -124,7 +124,7 @@ Partial Class frmProjectile
         '
         Me.lblZoomLevel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.lblZoomLevel.AutoSize = True
-        Me.lblZoomLevel.Location = New System.Drawing.Point(6, 470)
+        Me.lblZoomLevel.Location = New System.Drawing.Point(6, 567)
         Me.lblZoomLevel.Name = "lblZoomLevel"
         Me.lblZoomLevel.Size = New System.Drawing.Size(51, 13)
         Me.lblZoomLevel.TabIndex = 29
@@ -133,7 +133,7 @@ Partial Class frmProjectile
         'trbZoom
         '
         Me.trbZoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.trbZoom.Location = New System.Drawing.Point(6, 486)
+        Me.trbZoom.Location = New System.Drawing.Point(6, 583)
         Me.trbZoom.Minimum = -8
         Me.trbZoom.Name = "trbZoom"
         Me.trbZoom.Orientation = System.Windows.Forms.Orientation.Vertical
@@ -249,7 +249,7 @@ Partial Class frmProjectile
         'cmdStart
         '
         Me.cmdStart.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cmdStart.Location = New System.Drawing.Point(123, 538)
+        Me.cmdStart.Location = New System.Drawing.Point(123, 635)
         Me.cmdStart.Name = "cmdStart"
         Me.cmdStart.Size = New System.Drawing.Size(75, 23)
         Me.cmdStart.TabIndex = 16
@@ -260,7 +260,7 @@ Partial Class frmProjectile
         '
         Me.cmdClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(124, 567)
+        Me.cmdClose.Location = New System.Drawing.Point(124, 664)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 15
@@ -309,7 +309,7 @@ Partial Class frmProjectile
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(986, 620)
+        Me.ClientSize = New System.Drawing.Size(1328, 711)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
@@ -321,9 +321,8 @@ Partial Class frmProjectile
         Me.MinimumSize = New System.Drawing.Size(16, 65)
         Me.Name = "frmProjectile"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Projectile Motion"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()

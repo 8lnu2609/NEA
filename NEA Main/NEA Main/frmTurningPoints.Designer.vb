@@ -217,7 +217,7 @@ Partial Class frmTurningPoints
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1354, 732)
+        Me.ClientSize = New System.Drawing.Size(1350, 728)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
@@ -233,9 +233,8 @@ Partial Class frmTurningPoints
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmTurningPoints"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Turning Points"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpBoxData.ResumeLayout(False)
         Me.grpBoxData.PerformLayout()
