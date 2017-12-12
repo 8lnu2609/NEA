@@ -32,7 +32,6 @@ Public Class Square : Inherits Shape
         Dim myBrush As New SolidBrush(colour)
         myPen.Color = Color.Black
         myPen.Width = 2
-        myPen.Alignment = Drawing2D.PenAlignment.Inset
         e.Graphics.FillRectangle(myBrush, posX, posY, length, length)
         e.Graphics.DrawRectangle(myPen, posX, posY, length, length)
     End Sub

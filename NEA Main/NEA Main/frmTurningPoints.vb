@@ -215,17 +215,6 @@
         End If
     End Sub
 
-    Private Sub cmdAddBox_Click(sender As Object, e As EventArgs) Handles cmdAddBox.Click
-        Dim newColourIn As New ColorDialog
-        Dim newColour As Color
-        If newColourIn.ShowDialog = DialogResult.OK Then
-            newColour = newColourIn.Color
-            Dim listCount As Int32 = colours.Values.Count
-            colours.Add(newColour, listCount)
-            Boxes.Add(New BoxClass(colours.Keys(listCount), New Square With {.posX = SHAPEWIDTH * listCount}, 1, False, False, 0))
-            clbBoxes.Items.Add(colours.Keys(listCount).Name)
-        End If
-    End Sub
 End Class
 
 Class BoxClass

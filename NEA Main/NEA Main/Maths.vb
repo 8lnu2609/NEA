@@ -38,6 +38,24 @@
             End If
         End If
     End Function
+    ''' <summary>
+    ''' Solves simultaneous equation ax+by=m, cx+dy=n
+    ''' x = (0), y = (1)
+    ''' </summary>
+    ''' <param name="a">x coefficient</param>
+    ''' <param name="b">y coefficient</param>
+    ''' <param name="m">RHS first line</param>
+    ''' <param name="c">x coefficient</param>
+    ''' <param name="d">y coefficient</param>
+    ''' <param name="n">RHS second Line</param>
+    ''' <returns></returns>
+    Public Shared Function SimultaneousSolve(a As Single, b As Single, m As Single, c As Single, d As Single, n As Single) As Single()
+        Dim answer(1) As Single
+        answer(0) = (b * n - d * m) / (b * c - a * d)
+        answer(1) = (a * n - c * m) / (a * d - b * c)
+        Return answer
+    End Function
+
 #Region "SUVAT Solve"
     Public Shared Function Displacement(ByVal u As Single?, ByVal v As Single?, ByVal a As Single?, ByVal t As Single?) As Single?
         If Single.IsNaN(u) Then

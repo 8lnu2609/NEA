@@ -28,7 +28,6 @@ Partial Class frmTurningPoints
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpBoxData = New System.Windows.Forms.GroupBox()
-        Me.cmdAddBox = New System.Windows.Forms.Button()
         Me.updDistance = New System.Windows.Forms.NumericUpDown()
         Me.lblDistanceFromTuring = New System.Windows.Forms.Label()
         Me.updMass = New System.Windows.Forms.NumericUpDown()
@@ -78,7 +77,6 @@ Partial Class frmTurningPoints
         'grpBoxData
         '
         Me.grpBoxData.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.grpBoxData.Controls.Add(Me.cmdAddBox)
         Me.grpBoxData.Controls.Add(Me.updDistance)
         Me.grpBoxData.Controls.Add(Me.lblDistanceFromTuring)
         Me.grpBoxData.Controls.Add(Me.updMass)
@@ -90,15 +88,6 @@ Partial Class frmTurningPoints
         Me.grpBoxData.TabIndex = 18
         Me.grpBoxData.TabStop = False
         Me.grpBoxData.Text = "Boxes"
-        '
-        'cmdAddBox
-        '
-        Me.cmdAddBox.Location = New System.Drawing.Point(129, 19)
-        Me.cmdAddBox.Name = "cmdAddBox"
-        Me.cmdAddBox.Size = New System.Drawing.Size(69, 36)
-        Me.cmdAddBox.TabIndex = 24
-        Me.cmdAddBox.Text = "Add box"
-        Me.cmdAddBox.UseVisualStyleBackColor = True
         '
         'updDistance
         '
@@ -217,7 +206,7 @@ Partial Class frmTurningPoints
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1350, 728)
+        Me.ClientSize = New System.Drawing.Size(1346, 724)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
@@ -263,5 +252,4 @@ Partial Class frmTurningPoints
     Friend WithEvents cmdBalanceDistance As Button
     Friend WithEvents grpBalance As GroupBox
     Friend WithEvents chbBalance As CheckBox
-    Friend WithEvents cmdAddBox As Button
 End Class

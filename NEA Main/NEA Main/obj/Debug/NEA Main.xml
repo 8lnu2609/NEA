@@ -45,5 +45,18 @@ NEA Main
  <param name="c"></param>
  <returns></returns>
 </member>
+<member name="M:NEA_Main.Maths.SimultaneousSolve(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+ <summary>
+ Solves simultaneous equation ax+by=m, cx+dy=n
+ x = (0), y = (1)
+ </summary>
+ <param name="a">x coefficient</param>
+ <param name="b">y coefficient</param>
+ <param name="m">RHS first line</param>
+ <param name="c">x coefficient</param>
+ <param name="d">y coefficient</param>
+ <param name="n">RHS second Line</param>
+ <returns></returns>
+</member>
 </members>
 </doc>

@@ -28,6 +28,8 @@ Partial Class frmCollisions
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpData = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.updRestitution = New System.Windows.Forms.NumericUpDown()
         Me.cmdStart = New System.Windows.Forms.Button()
         Me.cboMaterial = New System.Windows.Forms.ComboBox()
         Me.grpRight = New System.Windows.Forms.GroupBox()
@@ -45,6 +47,7 @@ Partial Class frmCollisions
         Me.tmrCalculations = New System.Windows.Forms.Timer(Me.components)
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
+        CType(Me.updRestitution, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpRight.SuspendLayout()
         CType(Me.updVelocityRight, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMassRight, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -85,6 +88,8 @@ Partial Class frmCollisions
         '
         Me.grpData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpData.Controls.Add(Me.Label6)
+        Me.grpData.Controls.Add(Me.updRestitution)
         Me.grpData.Controls.Add(Me.cmdStart)
         Me.grpData.Controls.Add(Me.cboMaterial)
         Me.grpData.Controls.Add(Me.grpRight)
@@ -97,6 +102,27 @@ Partial Class frmCollisions
         Me.grpData.TabIndex = 29
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 53)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(67, 26)
+        Me.Label6.TabIndex = 33
+        Me.Label6.Text = "Coefficent of" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "restitution: "
+        '
+        'updRestitution
+        '
+        Me.updRestitution.DecimalPlaces = 4
+        Me.updRestitution.Enabled = False
+        Me.updRestitution.Increment = New Decimal(New Integer() {1, 0, 0, 131072})
+        Me.updRestitution.Location = New System.Drawing.Point(100, 59)
+        Me.updRestitution.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.updRestitution.Name = "updRestitution"
+        Me.updRestitution.Size = New System.Drawing.Size(82, 20)
+        Me.updRestitution.TabIndex = 30
+        Me.updRestitution.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'cmdStart
         '
@@ -135,7 +161,6 @@ Partial Class frmCollisions
         Me.updVelocityRight.DecimalPlaces = 3
         Me.updVelocityRight.Location = New System.Drawing.Point(68, 51)
         Me.updVelocityRight.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updVelocityRight.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.updVelocityRight.Name = "updVelocityRight"
         Me.updVelocityRight.Size = New System.Drawing.Size(114, 20)
         Me.updVelocityRight.TabIndex = 3
@@ -197,7 +222,6 @@ Partial Class frmCollisions
         Me.updVelocityLeft.DecimalPlaces = 3
         Me.updVelocityLeft.Location = New System.Drawing.Point(68, 51)
         Me.updVelocityLeft.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.updVelocityLeft.Minimum = New Decimal(New Integer() {1, 0, 0, 196608})
         Me.updVelocityLeft.Name = "updVelocityLeft"
         Me.updVelocityLeft.Size = New System.Drawing.Size(114, 20)
         Me.updVelocityLeft.TabIndex = 3
@@ -259,6 +283,7 @@ Partial Class frmCollisions
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()
+        CType(Me.updRestitution, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpRight.ResumeLayout(False)
         Me.grpRight.PerformLayout()
         CType(Me.updVelocityRight, System.ComponentModel.ISupportInitialize).EndInit()
@@ -290,4 +315,6 @@ Partial Class frmCollisions
     Friend WithEvents Label5 As Label
     Friend WithEvents cmdStart As Button
     Friend WithEvents tmrCalculations As Timer
+    Friend WithEvents Label6 As Label
+    Friend WithEvents updRestitution As NumericUpDown
 End Class
