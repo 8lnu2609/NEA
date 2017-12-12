@@ -203,7 +203,6 @@ Partial Class frmProjectileCal
         '
         Me.txtTimeX_In.Location = New System.Drawing.Point(6, 123)
         Me.txtTimeX_In.Name = "txtTimeX_In"
-        Me.txtTimeX_In.ReadOnly = True
         Me.txtTimeX_In.Size = New System.Drawing.Size(100, 20)
         Me.txtTimeX_In.TabIndex = 10
         Me.txtTimeX_In.Tag = "Time"

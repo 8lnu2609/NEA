@@ -1,4 +1,4 @@
-﻿Public Class frmFreefall
+﻿Public Class frmFreefallSim
     Const SHAPEWIDTH As Int16 = 50
     Dim BOXWIDTH, BOXHEIGHT As Int32
     Dim ball As New Circle With {
@@ -16,10 +16,7 @@
 
     Public Sub New()
         InitializeComponent()
-        BOXWIDTH = picBoxDisplay.Width
-        BOXHEIGHT = picBoxDisplay.Height
-        ball.posX = BOXWIDTH / 2 - 50
-        ball.posY = SHAPEWIDTH
+
         For Each control As Control In grpData.Controls
             If control.GetType = GetType(NumericUpDown) Then
                 Dim upd As NumericUpDown = DirectCast(control, NumericUpDown)
@@ -30,14 +27,22 @@
 
     End Sub
 
-    Private Sub picBoxMain_Paint(sender As Object, e As PaintEventArgs) Handles picBoxDisplay.Paint
+    Public Overloads Sub ShowDialog()
+        MyBase.Show()
+        BOXWIDTH = picDisplay.Width
+        BOXHEIGHT = picDisplay.Height
+        ball.posX = BOXWIDTH / 2 - 50
+        ball.posY = SHAPEWIDTH
+    End Sub
+
+    Private Sub picBoxMain_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         DrawCliff(e)
         ball.posY = (dropHeight - ballHeight) * ((BOXHEIGHT - (2 * SHAPEWIDTH)) / dropHeight) + SHAPEWIDTH
         ball.Draw(e, SHAPEWIDTH)
     End Sub
 
     Sub DrawCliff(e As PaintEventArgs)
-        BOXHEIGHT = picBoxDisplay.Height
+        BOXHEIGHT = picDisplay.Height
         e.Graphics.DrawRectangle(Pens.Black, 0, SHAPEWIDTH * 2, CInt(BOXWIDTH / 2), BOXHEIGHT - SHAPEWIDTH * 2 - 1)
         Dim myPen As New Pen(Color.Black, 3) With {
             .CustomEndCap = New Drawing2D.AdjustableArrowCap(5, 5),
@@ -64,7 +69,7 @@
     End Sub
 
     Private Sub DrawTimer_Tick(sender As Object, e As EventArgs) Handles DrawTimer.Tick
-        picBoxDisplay.Refresh()
+        picDisplay.Refresh()
     End Sub
 
     Private Sub trbTime_Scroll(sender As Object, e As EventArgs) Handles trbTime.Scroll

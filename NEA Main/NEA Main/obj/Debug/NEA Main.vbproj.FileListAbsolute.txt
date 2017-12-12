@@ -97,3 +97,25 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreef
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreefallCal.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmCollisions.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe.config
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.pdb
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.xml
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMomentumSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesFlatSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreefallSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreefallCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMenu.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMomentumCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.NumberInput.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmProjectileCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.Resources.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmProjectileSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmVelocityInput.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbproj.GenerateResource.Cache
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.exe
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.xml
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.pdb

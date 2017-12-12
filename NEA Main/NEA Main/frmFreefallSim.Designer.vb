@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmFreefall
+Partial Class frmFreefallSim
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,8 +23,8 @@ Partial Class frmFreefall
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFreefall))
-        Me.picBoxDisplay = New System.Windows.Forms.PictureBox()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFreefallSim))
+        Me.picDisplay = New System.Windows.Forms.PictureBox()
         Me.grpData = New System.Windows.Forms.GroupBox()
         Me.updResistance = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,7 +43,7 @@ Partial Class frmFreefall
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.DrawTimer = New System.Windows.Forms.Timer(Me.components)
         Me.DropTimer = New System.Windows.Forms.Timer(Me.components)
-        CType(Me.picBoxDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         CType(Me.updResistance, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.updMass, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,17 +52,17 @@ Partial Class frmFreefall
         CType(Me.updHeight, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'picBoxDisplay
+        'picDisplay
         '
-        Me.picBoxDisplay.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.picDisplay.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.picBoxDisplay.BackColor = System.Drawing.Color.White
-        Me.picBoxDisplay.Location = New System.Drawing.Point(12, 12)
-        Me.picBoxDisplay.Name = "picBoxDisplay"
-        Me.picBoxDisplay.Size = New System.Drawing.Size(1132, 718)
-        Me.picBoxDisplay.TabIndex = 0
-        Me.picBoxDisplay.TabStop = False
+        Me.picDisplay.BackColor = System.Drawing.Color.White
+        Me.picDisplay.Location = New System.Drawing.Point(12, 12)
+        Me.picDisplay.Name = "picDisplay"
+        Me.picDisplay.Size = New System.Drawing.Size(1132, 718)
+        Me.picDisplay.TabIndex = 0
+        Me.picDisplay.TabStop = False
         '
         'grpData
         '
@@ -244,10 +244,10 @@ Partial Class frmFreefall
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1358, 738)
+        Me.ClientSize = New System.Drawing.Size(1354, 734)
         Me.ControlBox = False
+        Me.Controls.Add(Me.picDisplay)
         Me.Controls.Add(Me.grpData)
-        Me.Controls.Add(Me.picBoxDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -256,7 +256,7 @@ Partial Class frmFreefall
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Free fall"
-        CType(Me.picBoxDisplay, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpData.ResumeLayout(False)
         Me.grpData.PerformLayout()
         CType(Me.updResistance, System.ComponentModel.ISupportInitialize).EndInit()
@@ -269,7 +269,7 @@ Partial Class frmFreefall
 
     End Sub
 
-    Friend WithEvents picBoxDisplay As PictureBox
+    Friend WithEvents picDisplay As PictureBox
     Friend WithEvents grpData As GroupBox
     Friend WithEvents ToolTips As ToolTip
     Friend WithEvents cmdClose As Button

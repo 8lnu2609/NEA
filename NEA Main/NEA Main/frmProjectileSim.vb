@@ -1,4 +1,4 @@
-﻿Public Class frmProjectile
+﻿Public Class frmProjectileSim
     Dim BOXWIDTH As Int32
     Dim BOXHEIGHT As Int32
     Dim StartTime As Date
@@ -13,6 +13,10 @@
 
     Public Sub New()
         InitializeComponent()
+    End Sub
+
+    Public Overloads Sub ShowDialog()
+        MyBase.Show()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
         Projectile = New Circle With {
@@ -20,7 +24,6 @@
             .posY = BOXHEIGHT - (Shape.WIDTH)
             }
     End Sub
-
 
     Private Sub PhysicsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateAccelerationCbo(cboAcceleration)

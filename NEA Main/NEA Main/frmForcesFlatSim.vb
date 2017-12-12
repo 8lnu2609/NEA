@@ -1,4 +1,4 @@
-﻿Public Class frmForcesFlat
+﻿Public Class frmForcesFlatSim
     Dim BOXWIDTH, BOXHEIGHT As Int32
     Dim Particle As New Square
     Dim BaseLine As New Line
@@ -16,6 +16,11 @@
     Public Sub New()
         InitializeComponent()
         PopulateAccelerationCbo(cboAcceleration)
+
+    End Sub
+
+    Public Overloads Sub ShowDialog()
+        MyBase.Show()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
         Particle.posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2

@@ -77,10 +77,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCollisions.Designer.vb">
-      <DependentUpon>frmCollisions.vb</DependentUpon>
+    <Compile Include="frmConnectedParticlesSim.Designer.vb">
+      <DependentUpon>frmConnectedParticlesSim.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmCollisions.vb">
+    <Compile Include="frmConnectedParticlesSim.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectedParticlesCal.Designer.vb">
+      <DependentUpon>frmConnectedParticlesCal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnectedParticlesCal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMomentumSim.Designer.vb">
+      <DependentUpon>frmMomentumSim.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMomentumSim.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmForcesCal.Designer.vb">
@@ -89,16 +101,16 @@
     <Compile Include="frmForcesCal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmForcesFlat.Designer.vb">
-      <DependentUpon>frmForcesFlat.vb</DependentUpon>
+    <Compile Include="frmForcesFlatSim.Designer.vb">
+      <DependentUpon>frmForcesFlatSim.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmForcesFlat.vb">
+    <Compile Include="frmForcesFlatSim.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmFreefall.Designer.vb">
-      <DependentUpon>frmFreefall.vb</DependentUpon>
+    <Compile Include="frmFreefallSim.Designer.vb">
+      <DependentUpon>frmFreefallSim.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmFreefall.vb">
+    <Compile Include="frmFreefallSim.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmFreefallCal.Designer.vb">
@@ -113,6 +125,12 @@
     <Compile Include="frmMenu.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMomentumCal.Designer.vb">
+      <DependentUpon>frmMomentumCal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMomentumCal.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="NumberInput.Designer.vb">
       <DependentUpon>NumberInput.vb</DependentUpon>
     </Compile>
@@ -125,10 +143,10 @@
     <Compile Include="frmProjectileCal.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTurningPoints.Designer.vb">
-      <DependentUpon>frmTurningPoints.vb</DependentUpon>
+    <Compile Include="frmTurningPointsSim.Designer.vb">
+      <DependentUpon>frmTurningPointsSim.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmTurningPoints.vb">
+    <Compile Include="frmTurningPointsSim.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTurningPointsCal.Designer.vb">
@@ -152,10 +170,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="frmProjectile.Designer.vb">
-      <DependentUpon>frmProjectile.vb</DependentUpon>
+    <Compile Include="frmProjectileSim.Designer.vb">
+      <DependentUpon>frmProjectileSim.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmProjectile.vb">
+    <Compile Include="frmProjectileSim.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ShapeClasses.vb" />
@@ -169,17 +187,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmCollisions.resx">
-      <DependentUpon>frmCollisions.vb</DependentUpon>
+    <EmbeddedResource Include="frmMomentumSim.resx">
+      <DependentUpon>frmMomentumSim.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmForcesCal.resx">
       <DependentUpon>frmForcesCal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmForcesFlat.resx">
-      <DependentUpon>frmForcesFlat.vb</DependentUpon>
+    <EmbeddedResource Include="frmForcesFlatSim.resx">
+      <DependentUpon>frmForcesFlatSim.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmFreefall.resx">
-      <DependentUpon>frmFreefall.vb</DependentUpon>
+    <EmbeddedResource Include="frmFreefallSim.resx">
+      <DependentUpon>frmFreefallSim.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmFreefallCal.resx">
       <DependentUpon>frmFreefallCal.vb</DependentUpon>
@@ -187,14 +205,17 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMomentumCal.resx">
+      <DependentUpon>frmMomentumCal.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NumberInput.resx">
       <DependentUpon>NumberInput.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectileCal.resx">
       <DependentUpon>frmProjectileCal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTurningPoints.resx">
-      <DependentUpon>frmTurningPoints.vb</DependentUpon>
+    <EmbeddedResource Include="frmTurningPointsSim.resx">
+      <DependentUpon>frmTurningPointsSim.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTurningPointsCal.resx">
       <DependentUpon>frmTurningPointsCal.vb</DependentUpon>
@@ -205,8 +226,8 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProjectile.resx">
-      <DependentUpon>frmProjectile.vb</DependentUpon>
+    <EmbeddedResource Include="frmProjectileSim.resx">
+      <DependentUpon>frmProjectileSim.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVelocityInput.resx">
       <DependentUpon>frmVelocityInput.vb</DependentUpon>

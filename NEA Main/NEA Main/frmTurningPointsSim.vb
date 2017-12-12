@@ -1,4 +1,4 @@
-﻿Public Class frmTurningPoints
+﻿Public Class frmTurningPointsSim
     Dim BOXWIDTH As Int32
     Dim BOXHEIGHT As Int32
     Const LINEWIDTH As Single = 10
@@ -13,14 +13,18 @@
 
     Public Sub New()
         InitializeComponent()
-        BOXWIDTH = picDisplay.Width
-        BOXHEIGHT = picDisplay.Height
         tmrDraw.Start()
         For i = 0 To 4
             Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.posX = SHAPEWIDTH * i}, 1, False, False, 0))
             clbBoxes.Items.Add(colours.Keys(i).Name)
         Next
         clbBoxes.SelectedIndex = 0
+    End Sub
+
+    Public Overloads Sub ShowDialog()
+        MyBase.Show()
+        BOXWIDTH = picDisplay.Width
+        BOXHEIGHT = picDisplay.Height
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint

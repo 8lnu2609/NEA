@@ -82,7 +82,7 @@
                     txtAccelerationX_In.Text = Maths.Acceleration(xComp.s, xComp.u, xComp.v, xComp.t)
                 End If
                 If Single.IsNaN(xComp.t) Then
-                    txtTimeY_In.Text = Maths.Time(xComp.s, xComp.u, xComp.v, xComp.a)
+                    txtTimeX_In.Text = Maths.Time(xComp.s, xComp.u, xComp.v, xComp.a)
                 End If
             Catch
                 MessageBox.Show("That calculation was not possible")

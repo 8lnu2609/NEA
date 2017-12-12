@@ -33,19 +33,20 @@ Partial Class frmMenu
         Me.cmdTurningSim = New System.Windows.Forms.Button()
         Me.cmdFreefallSim = New System.Windows.Forms.Button()
         Me.cmdFreefallCal = New System.Windows.Forms.Button()
-        Me.cmdCollisionSim = New System.Windows.Forms.Button()
-        Me.cmdCollisionCal = New System.Windows.Forms.Button()
+        Me.cmdMomentumSim = New System.Windows.Forms.Button()
+        Me.cmdMomentumCal = New System.Windows.Forms.Button()
+        Me.cmdConnectedCal = New System.Windows.Forms.Button()
+        Me.cmdConnected = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(19, 9)
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(453, 75)
+        Me.Label1.Size = New System.Drawing.Size(480, 75)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Hello and welcome to the 'physics' simulator." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Select what area of mechanics you " &
     "would like " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "to simulate or calculate." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
@@ -141,25 +142,45 @@ Partial Class frmMenu
         Me.cmdFreefallCal.Text = "Freefall" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
         Me.cmdFreefallCal.UseVisualStyleBackColor = True
         '
-        'cmdCollisionSim
+        'cmdMomentumSim
         '
-        Me.cmdCollisionSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCollisionSim.Location = New System.Drawing.Point(336, 87)
-        Me.cmdCollisionSim.Name = "cmdCollisionSim"
-        Me.cmdCollisionSim.Size = New System.Drawing.Size(75, 50)
-        Me.cmdCollisionSim.TabIndex = 9
-        Me.cmdCollisionSim.Text = "Collisions" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
-        Me.cmdCollisionSim.UseVisualStyleBackColor = True
+        Me.cmdMomentumSim.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdMomentumSim.Location = New System.Drawing.Point(336, 87)
+        Me.cmdMomentumSim.Name = "cmdMomentumSim"
+        Me.cmdMomentumSim.Size = New System.Drawing.Size(75, 50)
+        Me.cmdMomentumSim.TabIndex = 9
+        Me.cmdMomentumSim.Text = "Momentum" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdMomentumSim.UseVisualStyleBackColor = True
         '
-        'cmdCollisionCal
+        'cmdMomentumCal
         '
-        Me.cmdCollisionCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdCollisionCal.Location = New System.Drawing.Point(336, 143)
-        Me.cmdCollisionCal.Name = "cmdCollisionCal"
-        Me.cmdCollisionCal.Size = New System.Drawing.Size(75, 50)
-        Me.cmdCollisionCal.TabIndex = 10
-        Me.cmdCollisionCal.Text = "Collisions" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
-        Me.cmdCollisionCal.UseVisualStyleBackColor = True
+        Me.cmdMomentumCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdMomentumCal.Location = New System.Drawing.Point(336, 143)
+        Me.cmdMomentumCal.Name = "cmdMomentumCal"
+        Me.cmdMomentumCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdMomentumCal.TabIndex = 10
+        Me.cmdMomentumCal.Text = "Momentum" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdMomentumCal.UseVisualStyleBackColor = True
+        '
+        'cmdConnectedCal
+        '
+        Me.cmdConnectedCal.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdConnectedCal.Location = New System.Drawing.Point(417, 143)
+        Me.cmdConnectedCal.Name = "cmdConnectedCal"
+        Me.cmdConnectedCal.Size = New System.Drawing.Size(75, 50)
+        Me.cmdConnectedCal.TabIndex = 22
+        Me.cmdConnectedCal.Text = "Connected" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Particles" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
+        Me.cmdConnectedCal.UseVisualStyleBackColor = True
+        '
+        'cmdConnected
+        '
+        Me.cmdConnected.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.cmdConnected.Location = New System.Drawing.Point(417, 87)
+        Me.cmdConnected.Name = "cmdConnected"
+        Me.cmdConnected.Size = New System.Drawing.Size(75, 50)
+        Me.cmdConnected.TabIndex = 21
+        Me.cmdConnected.Text = "Connected" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Particles" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
+        Me.cmdConnected.UseVisualStyleBackColor = True
         '
         'frmMenu
         '
@@ -167,12 +188,14 @@ Partial Class frmMenu
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(484, 362)
+        Me.ClientSize = New System.Drawing.Size(504, 362)
         Me.ControlBox = False
-        Me.Controls.Add(Me.cmdCollisionCal)
+        Me.Controls.Add(Me.cmdConnectedCal)
+        Me.Controls.Add(Me.cmdConnected)
+        Me.Controls.Add(Me.cmdMomentumCal)
         Me.Controls.Add(Me.cmdFreefallCal)
         Me.Controls.Add(Me.cmdTurningCal)
-        Me.Controls.Add(Me.cmdCollisionSim)
+        Me.Controls.Add(Me.cmdMomentumSim)
         Me.Controls.Add(Me.cmdFreefallSim)
         Me.Controls.Add(Me.cmdTurningSim)
         Me.Controls.Add(Me.cmdForceCal)
@@ -189,7 +212,6 @@ Partial Class frmMenu
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Menu"
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -203,6 +225,8 @@ Partial Class frmMenu
     Friend WithEvents cmdTurningSim As Button
     Friend WithEvents cmdFreefallSim As Button
     Friend WithEvents cmdFreefallCal As Button
-    Friend WithEvents cmdCollisionSim As Button
-    Friend WithEvents cmdCollisionCal As Button
+    Friend WithEvents cmdMomentumSim As Button
+    Friend WithEvents cmdMomentumCal As Button
+    Friend WithEvents cmdConnectedCal As Button
+    Friend WithEvents cmdConnected As Button
 End Class
