@@ -55,7 +55,7 @@
 
     Private Sub cboGravity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboGravity.SelectedIndexChanged
         accelerationGravity = GetGravityAcceleration(cboGravity)
-        ToolTips.SetToolTip(cboGravity, accelerationGravity & "ms^-2")
+        ToolTips.SetToolTip(cboGravity, accelerationGravity & "m/s²")
         updResistance.Maximum = mass * accelerationGravity
     End Sub
 

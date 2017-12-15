@@ -107,7 +107,7 @@ Partial Class frmProjectileCal
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(115, 13)
         Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Acceleration, a (ms^-2)"
+        Me.Label3.Text = "Acceleration, a (m/s²)"
         '
         'txtFinalVelocityY_In
         '

@@ -108,14 +108,14 @@
                 rightParticle.Velocity = returns(1)
                 lblOutput.Show()
                 lblOutput.Text = String.Format("The left particle's inital
-velocity was: {0}ms^-2
+velocity was: {0}m/s²
 The right particle's inital
-velocity was: {1}ms^-2
+velocity was: {1}m/s²
 
 The left particle's velocity
-is now: {2}ms^-2
+is now: {2}m/s²
 The right particle's velocity
-is now: {3}ms^-2
+is now: {3}m/s²
 ", Math.Round(Math.Abs(updVelocityLeft.Value), 3), Math.Round(Math.Abs(updVelocityRight.Value), 3),
     Math.Round(Math.Abs(leftParticle.Velocity), 3), Math.Round(Math.Abs(rightParticle.Velocity), 3))
             End If

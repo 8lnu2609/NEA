@@ -96,7 +96,7 @@
     End Sub
 
     Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
-        ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "ms^-2")
+        ToolTips.SetToolTip(cboAcceleration, AccelerationDictionary.Item(cboAcceleration.SelectedItem()) & "m/s²")
         updateValues()
     End Sub
 
@@ -155,7 +155,7 @@
             lblTotalFriction.Text = String.Format("Friction: {0}N", Math.Round(coeFriction * weight, 3))
         End If
         acceleration = GetResultant() / mass
-        lblAcceleration.Text = String.Format("Accleration: {0}ms^-2", Math.Round(acceleration, 3))
+        lblAcceleration.Text = String.Format("Accleration: {0}m/s²", Math.Round(acceleration, 3))
     End Sub
 
 

@@ -120,5 +120,4 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreef
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMomentumCal.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsSim.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmProjectileSim.resources
-C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesSim.resources
