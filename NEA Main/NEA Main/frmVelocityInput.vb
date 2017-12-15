@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing.Drawing2D
 Public Class frmVelocityInput
     Dim MouseIsDown As Boolean = False
+    Dim mousePoint As PointF
     Public xVelocity As Single = 100
     Public yVelocity As Single = 100
     Public IsShowing As Boolean
@@ -105,6 +106,7 @@ Public Class frmVelocityInput
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
+
         If optComponents.Checked Then
             XLine.posXe = 20 + xVelocity * 3
             YLine.posYe = 300 - yVelocity * 3
@@ -113,9 +115,9 @@ Public Class frmVelocityInput
             LabelText.Draw(e, yVelocity & "m/s", 10, 30, 300 - yVelocity)
         ElseIf optSpeed.Checked Then
             XLine.posXe = 50
+
             LabelText.Draw(e, updSpeed_In.Value & "m/s", 10, 20 + xVelocity, 300 - yVelocity)
             LabelText.Draw(e, updAngle_In.Value & "°", 10, 25, 300)
-
             angleArc.Draw(e)
         End If
 
@@ -145,7 +147,8 @@ Public Class frmVelocityInput
         Close()
     End Sub
 
-    Private Sub frmVelocityInput_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Overloads Sub Show()
+        MyBase.Show()
         IsShowing = True
     End Sub
 

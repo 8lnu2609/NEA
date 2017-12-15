@@ -187,6 +187,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmConnectedParticlesCal.resx">
+      <DependentUpon>frmConnectedParticlesCal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnectedParticlesSim.resx">
+      <DependentUpon>frmConnectedParticlesSim.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMomentumSim.resx">
       <DependentUpon>frmMomentumSim.vb</DependentUpon>
     </EmbeddedResource>
