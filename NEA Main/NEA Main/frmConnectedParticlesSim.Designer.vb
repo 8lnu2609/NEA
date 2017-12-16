@@ -111,7 +111,7 @@ Partial Class frmConnectedParticlesSim
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(9, 56)
+        Me.Label5.Location = New System.Drawing.Point(6, 56)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(69, 26)
         Me.Label5.TabIndex = 25
@@ -160,7 +160,7 @@ Partial Class frmConnectedParticlesSim
         'updAngle
         '
         Me.updAngle.DecimalPlaces = 3
-        Me.updAngle.Location = New System.Drawing.Point(92, 99)
+        Me.updAngle.Location = New System.Drawing.Point(92, 98)
         Me.updAngle.Maximum = New Decimal(New Integer() {90, 0, 0, 0})
         Me.updAngle.Name = "updAngle"
         Me.updAngle.Size = New System.Drawing.Size(116, 20)
@@ -170,7 +170,7 @@ Partial Class frmConnectedParticlesSim
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 101)
+        Me.Label2.Location = New System.Drawing.Point(6, 100)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(50, 13)
         Me.Label2.TabIndex = 19

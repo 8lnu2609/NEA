@@ -56,15 +56,28 @@
     End Sub
 
     Private Sub cmdMomentumSim_Click(sender As Object, e As EventArgs) Handles cmdMomentumSim.Click
-        Dim Collision As New frmMomentumSim With {
+        Dim Momentum As New frmMomentumSim With {
             .Width = Screen.PrimaryScreen.Bounds.Width - 100,
             .Height = Screen.PrimaryScreen.Bounds.Height - 100
         }
-        Collision.ShowDialog()
+        Momentum.ShowDialog()
     End Sub
 
     Private Sub cmdMomentumCal_Click(sender As Object, e As EventArgs) Handles cmdMomentumCal.Click
         Dim Cal As New frmMomentumCal
+        Cal.Show()
+    End Sub
+
+    Private Sub cmdConnected_Click(sender As Object, e As EventArgs) Handles cmdConnected.Click
+        Dim ConnectedParticles As New frmConnectedParticlesSim With {
+            .Width = Screen.PrimaryScreen.Bounds.Width - 100,
+            .Height = Screen.PrimaryScreen.Bounds.Height - 100
+        }
+        ConnectedParticles.ShowDialog()
+    End Sub
+
+    Private Sub cmdConnectedCal_Click(sender As Object, e As EventArgs) Handles cmdConnectedCal.Click
+        Dim Cal As New frmConnectedParticlesCal
         Cal.Show()
     End Sub
 End Class

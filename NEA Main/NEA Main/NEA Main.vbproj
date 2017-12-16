@@ -155,6 +155,11 @@
     <Compile Include="frmMomentumCal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="NumberInput.Designer.vb">
       <DependentUpon>NumberInput.vb</DependentUpon>
     </Compile>
@@ -183,11 +188,6 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
-    </Compile>
-    <Compile Include="My Project\Resources.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -252,9 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectileSim.resx">
       <DependentUpon>frmProjectileSim.vb</DependentUpon>
@@ -278,6 +278,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AtomIcon.ico" />
+    <None Include="My Project\rightArrow.png" />
+    <None Include="My Project\leftArrow.png" />
     <None Include="My Project\cannon.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +293,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

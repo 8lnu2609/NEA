@@ -22,11 +22,6 @@ NEA Main
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="P:NEA_Main.My.Resources.Resources.cannon">
-<summary>
-  Looks up a localized resource of type System.Drawing.Bitmap.
-</summary>
-</member>
 <member name="M:NEA_Main.Maths.Pythag(System.Single,System.Single)">
  <summary>
  Find hypotenuse given both sides

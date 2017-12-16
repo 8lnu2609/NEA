@@ -120,7 +120,7 @@ Partial Class frmVelocityInput
         Me.updVelocityX_In.Name = "updVelocityX_In"
         Me.updVelocityX_In.Size = New System.Drawing.Size(83, 20)
         Me.updVelocityX_In.TabIndex = 10
-        Me.updVelocityX_In.Value = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.updVelocityX_In.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'updVelocityY_In
         '
@@ -130,7 +130,7 @@ Partial Class frmVelocityInput
         Me.updVelocityY_In.Name = "updVelocityY_In"
         Me.updVelocityY_In.Size = New System.Drawing.Size(83, 20)
         Me.updVelocityY_In.TabIndex = 9
-        Me.updVelocityY_In.Value = New Decimal(New Integer() {50, 0, 0, 0})
+        Me.updVelocityY_In.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'Label3
         '

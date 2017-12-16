@@ -34,8 +34,8 @@
         Next
     End Sub
 
-    Public Overloads Sub Show()
-        MyBase.Show()
+    Public Overloads Sub ShowDialog()
+        MyBase.ShowDialog()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
 

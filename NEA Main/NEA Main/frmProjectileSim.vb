@@ -23,6 +23,7 @@
             .posX = 0,
             .posY = BOXHEIGHT - (Shape.WIDTH)
             }
+        VelocityInput.ShowDialog()
     End Sub
 
     Private Sub PhysicsForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -30,7 +31,6 @@
         Range = BOXWIDTH
         VelocityInput.ShowDialog()
         UpdateValues()
-        'MessageBox.Show(Size.ToString)
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
@@ -145,9 +145,9 @@
         Range = xVelocity * TotalTime
         MaxHeight = (-yVelocity) / (2 * -GetGravityAcceleration(cboAcceleration))
         trbTime.Maximum = TotalTime * 100
-        lblTotalTime.Text = "Total time of flight: " & TotalTime & "s"
-        lblRange.Text = "Range: " & Range & "m"
-        lblMaxHeightDisplay.Text = "Max height: " & MaxHeight & "m"
+        lblTotalTime.Text = "Total time of flight: " & Math.Round(TotalTime, 3) & "s"
+        lblRange.Text = "Range: " & Math.Round(Range, 3) & "m"
+        lblMaxHeightDisplay.Text = "Max height: " & Math.Round(MaxHeight, 3) & "m"
         tmrCalculation.Stop()
         Projectile.posX = 0
         Projectile.posY = BOXHEIGHT - Shape.WIDTH

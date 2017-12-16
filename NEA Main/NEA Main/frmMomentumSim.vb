@@ -15,7 +15,7 @@
     End Sub
 
     Public Overloads Sub ShowDialog()
-        MyBase.Show()
+        MyBase.ShowDialog()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
         leftParticle.posY = BOXHEIGHT / 2

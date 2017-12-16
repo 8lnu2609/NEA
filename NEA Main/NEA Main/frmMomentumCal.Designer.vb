@@ -42,16 +42,22 @@ Partial Class frmMomentumCal
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtVelocityLeftFinal = New System.Windows.Forms.TextBox()
         Me.txtVelocityRightFinal = New System.Windows.Forms.TextBox()
+        Me.cmdRightInitalDirection = New System.Windows.Forms.Button()
+        Me.cmdLeftInitalDirection = New System.Windows.Forms.Button()
+        Me.picLeftFinalDirection = New System.Windows.Forms.PictureBox()
+        Me.picRightFinalDirection = New System.Windows.Forms.PictureBox()
         Me.grpLeft.SuspendLayout()
         Me.grpRight.SuspendLayout()
         CType(Me.updRestitution, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picLeftFinalDirection, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picRightFinalDirection, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdClose
         '
         Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(272, 162)
+        Me.cmdClose.Location = New System.Drawing.Point(272, 223)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 7
@@ -62,7 +68,7 @@ Partial Class frmMomentumCal
         '
         Me.grpLeft.Controls.Add(Me.txtVelocityLeftInital)
         Me.grpLeft.Controls.Add(Me.txtMassLeft)
-        Me.grpLeft.Location = New System.Drawing.Point(90, 47)
+        Me.grpLeft.Location = New System.Drawing.Point(90, 81)
         Me.grpLeft.Name = "grpLeft"
         Me.grpLeft.Size = New System.Drawing.Size(112, 73)
         Me.grpLeft.TabIndex = 1
@@ -89,7 +95,7 @@ Partial Class frmMomentumCal
         '
         Me.grpRight.Controls.Add(Me.txtVelocityRightInital)
         Me.grpRight.Controls.Add(Me.txtMassRight)
-        Me.grpRight.Location = New System.Drawing.Point(237, 47)
+        Me.grpRight.Location = New System.Drawing.Point(237, 81)
         Me.grpRight.Name = "grpRight"
         Me.grpRight.Size = New System.Drawing.Size(112, 73)
         Me.grpRight.TabIndex = 2
@@ -158,7 +164,7 @@ Partial Class frmMomentumCal
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 69)
+        Me.Label1.Location = New System.Drawing.Point(12, 103)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(35, 13)
         Me.Label1.TabIndex = 38
@@ -167,7 +173,7 @@ Partial Class frmMomentumCal
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 95)
+        Me.Label2.Location = New System.Drawing.Point(12, 129)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(72, 13)
         Me.Label2.TabIndex = 39
@@ -176,7 +182,7 @@ Partial Class frmMomentumCal
         'cmdCalculate
         '
         Me.cmdCalculate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdCalculate.Location = New System.Drawing.Point(191, 162)
+        Me.cmdCalculate.Location = New System.Drawing.Point(191, 223)
         Me.cmdCalculate.Name = "cmdCalculate"
         Me.cmdCalculate.Size = New System.Drawing.Size(75, 23)
         Me.cmdCalculate.TabIndex = 6
@@ -186,7 +192,7 @@ Partial Class frmMomentumCal
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 129)
+        Me.Label3.Location = New System.Drawing.Point(12, 163)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 13)
         Me.Label3.TabIndex = 40
@@ -195,7 +201,7 @@ Partial Class frmMomentumCal
         'txtVelocityLeftFinal
         '
         Me.txtVelocityLeftFinal.Enabled = False
-        Me.txtVelocityLeftFinal.Location = New System.Drawing.Point(96, 126)
+        Me.txtVelocityLeftFinal.Location = New System.Drawing.Point(96, 160)
         Me.txtVelocityLeftFinal.Name = "txtVelocityLeftFinal"
         Me.txtVelocityLeftFinal.ReadOnly = True
         Me.txtVelocityLeftFinal.Size = New System.Drawing.Size(100, 20)
@@ -205,12 +211,49 @@ Partial Class frmMomentumCal
         'txtVelocityRightFinal
         '
         Me.txtVelocityRightFinal.Enabled = False
-        Me.txtVelocityRightFinal.Location = New System.Drawing.Point(243, 126)
+        Me.txtVelocityRightFinal.Location = New System.Drawing.Point(243, 160)
         Me.txtVelocityRightFinal.Name = "txtVelocityRightFinal"
         Me.txtVelocityRightFinal.ReadOnly = True
         Me.txtVelocityRightFinal.Size = New System.Drawing.Size(100, 20)
         Me.txtVelocityRightFinal.TabIndex = 6
         Me.txtVelocityRightFinal.Tag = "Right Final Velocity"
+        '
+        'cmdRightInitalDirection
+        '
+        Me.cmdRightInitalDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdRightInitalDirection.Location = New System.Drawing.Point(243, 52)
+        Me.cmdRightInitalDirection.Name = "cmdRightInitalDirection"
+        Me.cmdRightInitalDirection.Size = New System.Drawing.Size(100, 23)
+        Me.cmdRightInitalDirection.TabIndex = 42
+        Me.cmdRightInitalDirection.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.cmdRightInitalDirection.UseVisualStyleBackColor = True
+        '
+        'cmdLeftInitalDirection
+        '
+        Me.cmdLeftInitalDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmdLeftInitalDirection.Location = New System.Drawing.Point(96, 52)
+        Me.cmdLeftInitalDirection.Name = "cmdLeftInitalDirection"
+        Me.cmdLeftInitalDirection.Size = New System.Drawing.Size(100, 23)
+        Me.cmdLeftInitalDirection.TabIndex = 41
+        Me.cmdLeftInitalDirection.UseVisualStyleBackColor = True
+        '
+        'picLeftFinalDirection
+        '
+        Me.picLeftFinalDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picLeftFinalDirection.Location = New System.Drawing.Point(96, 186)
+        Me.picLeftFinalDirection.Name = "picLeftFinalDirection"
+        Me.picLeftFinalDirection.Size = New System.Drawing.Size(100, 23)
+        Me.picLeftFinalDirection.TabIndex = 43
+        Me.picLeftFinalDirection.TabStop = False
+        '
+        'picRightFinalDirection
+        '
+        Me.picRightFinalDirection.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.picRightFinalDirection.Location = New System.Drawing.Point(243, 186)
+        Me.picRightFinalDirection.Name = "picRightFinalDirection"
+        Me.picRightFinalDirection.Size = New System.Drawing.Size(100, 23)
+        Me.picRightFinalDirection.TabIndex = 44
+        Me.picRightFinalDirection.TabStop = False
         '
         'frmMomentumCal
         '
@@ -218,8 +261,12 @@ Partial Class frmMomentumCal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(359, 197)
+        Me.ClientSize = New System.Drawing.Size(359, 258)
         Me.ControlBox = False
+        Me.Controls.Add(Me.picRightFinalDirection)
+        Me.Controls.Add(Me.picLeftFinalDirection)
+        Me.Controls.Add(Me.cmdRightInitalDirection)
+        Me.Controls.Add(Me.cmdLeftInitalDirection)
         Me.Controls.Add(Me.txtVelocityRightFinal)
         Me.Controls.Add(Me.txtVelocityLeftFinal)
         Me.Controls.Add(Me.Label3)
@@ -243,6 +290,8 @@ Partial Class frmMomentumCal
         Me.grpRight.ResumeLayout(False)
         Me.grpRight.PerformLayout()
         CType(Me.updRestitution, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picLeftFinalDirection, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picRightFinalDirection, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -266,4 +315,8 @@ Partial Class frmMomentumCal
     Friend WithEvents txtVelocityLeftFinal As TextBox
     Friend WithEvents txtVelocityRightFinal As TextBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents cmdLeftInitalDirection As Button
+    Friend WithEvents cmdRightInitalDirection As Button
+    Friend WithEvents picLeftFinalDirection As PictureBox
+    Friend WithEvents picRightFinalDirection As PictureBox
 End Class

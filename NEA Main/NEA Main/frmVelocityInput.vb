@@ -26,7 +26,6 @@ Public Class frmVelocityInput
     Public Overloads Sub ShowDialog()
         IsShowing = True
         MyBase.ShowDialog()
-
     End Sub
 
     Public Sub addHandle()
@@ -45,9 +44,9 @@ Public Class frmVelocityInput
             updSpeed_In.Value = speed
             updVelocityX_In.Value = xVelocity
             updVelocityY_In.Value = yVelocity
-            If e.X > 340 - e.Y And e.Button = MouseButtons.Left Then
+            If e.X > 340 - e.Y And e.Button = MouseButtons.Left And optComponents.Checked Then
                 xVelocity = e.X - 20
-            ElseIf e.Button = MouseButtons.Left Then
+            ElseIf e.Button = MouseButtons.Left And optComponents.Checked Then
                 yVelocity = 320 - e.Y
             End If
         Else
@@ -101,7 +100,6 @@ Public Class frmVelocityInput
         Else
             updSpeed_In.Enabled = False
             updAngle_In.Enabled = False
-
         End If
     End Sub
 
@@ -118,8 +116,6 @@ Public Class frmVelocityInput
                 If MouseIsDown Then
                     angle = Maths.RadToDeg(Math.Atan((320 - mousePoint.Y) / (mousePoint.X - 20)))
                     speed = Math.Sqrt((mousePoint.X - 20) ^ 2 + (320 - mousePoint.Y) ^ 2)
-                    xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
-                    yVelocity = speed * Math.Cos(Maths.DegToRad(angle))
                 End If
                 .DrawLine(New Pen(Color.Black, 3), 20, 320, 200, 320)
                 .DrawLine(myPen, 20, 320, CInt(20 + speed * Math.Cos(Maths.DegToRad(angle))), CInt(320 - speed * Math.Sin(Maths.DegToRad(angle))))
@@ -132,10 +128,24 @@ Public Class frmVelocityInput
     End Sub
 
     Sub UpdateValues()
-        xVelocity = updVelocityX_In.Value
-        yVelocity = updVelocityY_In.Value
-        angle = updAngle_In.Value
-        speed = updSpeed_In.Value
+        If optComponents.Checked Then
+            xVelocity = updVelocityX_In.Value
+            yVelocity = updVelocityY_In.Value
+            angle = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
+            speed = Math.Sqrt(xVelocity ^ 2 + yVelocity ^ 2)
+
+        Else
+            angle = updAngle_In.Value
+            speed = updSpeed_In.Value
+            xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
+            yVelocity = speed * Math.Sin(Maths.DegToRad(angle))
+
+        End If
+        updVelocityX_In.Value = xVelocity
+        updVelocityY_In.Value = yVelocity
+        updAngle_In.Value = angle
+        updSpeed_In.Value = speed
+
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
