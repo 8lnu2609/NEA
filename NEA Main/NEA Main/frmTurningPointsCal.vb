@@ -43,6 +43,9 @@
             objectList.RemoveAt(lstObjects.SelectedIndex)
             RefreshListBox()
         End If
+        If lstObjects.Items.Count() = 0 Then
+            cboGravity.Enabled = True
+        End If
     End Sub
 
     Private Sub lstObjects_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstObjects.SelectedIndexChanged

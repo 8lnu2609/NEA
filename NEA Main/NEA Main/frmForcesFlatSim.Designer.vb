@@ -227,7 +227,7 @@ Partial Class frmForcesFlatSim
         Me.lblAcceleration.AutoSize = True
         Me.lblAcceleration.Location = New System.Drawing.Point(7, 150)
         Me.lblAcceleration.Name = "lblAcceleration"
-        Me.lblAcceleration.Size = New System.Drawing.Size(100, 13)
+        Me.lblAcceleration.Size = New System.Drawing.Size(93, 13)
         Me.lblAcceleration.TabIndex = 36
         Me.lblAcceleration.Text = "Accleration: 0m/s²"
         '
@@ -290,6 +290,7 @@ Partial Class frmForcesFlatSim
         'updFrictionCOE
         '
         Me.updFrictionCOE.DecimalPlaces = 3
+        Me.updFrictionCOE.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
         Me.updFrictionCOE.Location = New System.Drawing.Point(133, 48)
         Me.updFrictionCOE.Name = "updFrictionCOE"
         Me.updFrictionCOE.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -363,12 +364,12 @@ Partial Class frmForcesFlatSim
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
-        'frmForcesFlat
+        'frmForcesFlatSim
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1362, 687)
+        Me.ClientSize = New System.Drawing.Size(1358, 683)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
@@ -378,7 +379,7 @@ Partial Class frmForcesFlatSim
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
-        Me.Name = "frmForcesFlat"
+        Me.Name = "frmForcesFlatSim"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Forces"

@@ -84,7 +84,7 @@
         Next
     End Sub
 
-    Function GetYPosition(x As Int32, Acceleration As Double) As Double
+    Function GetYPosition(x As Single, Acceleration As Double) As Double
         If xVelocity <> 0 Then
             Return yVelocity * (x / xVelocity) + 0.5 * -Acceleration * (x / xVelocity) ^ 2
         Else

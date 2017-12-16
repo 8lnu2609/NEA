@@ -91,8 +91,8 @@
 
         BaseLine.posY = BOXHEIGHT / 2 + Shape.LINEWIDTH * scalar
         BaseLine.posYe = BaseLine.posY
-        Particle.posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2 * scalar
-
+        'Particle.posY = BOXHEIGHT / 2 - ((Line.LINEWIDTH / 2) + (Shape.WIDTH / 2)) * scalar
+        Particle.posY = BOXHEIGHT / 2 - (Line.WIDTH / 2) * scalar - (Shape.WIDTH) * (scalar - 1)
     End Sub
 
     Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged

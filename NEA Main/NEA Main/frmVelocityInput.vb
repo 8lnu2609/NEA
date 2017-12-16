@@ -116,7 +116,11 @@ Public Class frmVelocityInput
                 If MouseIsDown Then
                     angle = Maths.RadToDeg(Math.Atan((320 - mousePoint.Y) / (mousePoint.X - 20)))
                     speed = Math.Sqrt((mousePoint.X - 20) ^ 2 + (320 - mousePoint.Y) ^ 2)
+                    xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
+                    yVelocity = speed * Math.Sin(Maths.DegToRad(angle))
+
                 End If
+                .DrawLine(New Pen(Color.Gray, 3) With {.DashStyle = DashStyle.Dash}, 20, 320, CInt(20 + 50 * Math.Cos(Maths.DegToRad(angle))), CInt(320 - 50 * Math.Sin(Maths.DegToRad(angle))))
                 .DrawLine(New Pen(Color.Black, 3), 20, 320, 200, 320)
                 .DrawLine(myPen, 20, 320, CInt(20 + speed * Math.Cos(Maths.DegToRad(angle))), CInt(320 - speed * Math.Sin(Maths.DegToRad(angle))))
                 .DrawArc(Pens.Black, 20 - 50, 320 - 50, 100, 100, 0, -angle)
@@ -131,15 +135,10 @@ Public Class frmVelocityInput
         If optComponents.Checked Then
             xVelocity = updVelocityX_In.Value
             yVelocity = updVelocityY_In.Value
-            angle = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
-            speed = Math.Sqrt(xVelocity ^ 2 + yVelocity ^ 2)
 
         Else
             angle = updAngle_In.Value
             speed = updSpeed_In.Value
-            xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
-            yVelocity = speed * Math.Sin(Maths.DegToRad(angle))
-
         End If
         updVelocityX_In.Value = xVelocity
         updVelocityY_In.Value = yVelocity

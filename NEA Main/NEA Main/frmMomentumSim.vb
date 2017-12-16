@@ -7,6 +7,8 @@
     Dim playing As Boolean = False
     Dim timeStart As Date
     Dim velocityScalar As Single
+    Dim collision As Boolean = False
+    Dim collisionPoint As Single
 
     Public Sub New()
         InitializeComponent()
@@ -15,7 +17,7 @@
     End Sub
 
     Public Overloads Sub ShowDialog()
-        MyBase.ShowDialog()
+
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
         leftParticle.posY = BOXHEIGHT / 2
@@ -23,6 +25,7 @@
         rightParticle.posY = BOXHEIGHT / 2
         rightParticle.posX = BOXWIDTH - SHAPEWIDTH
         UpdateValues()
+        MyBase.ShowDialog()
     End Sub
 
     Sub setHandlers()
@@ -88,9 +91,6 @@
         rightParticle.posX = BOXWIDTH - 2 * SHAPEWIDTH
         playing = Not playing
     End Sub
-
-    Dim collision As Boolean = False
-    Dim collisionPoint As Single
 
     Private Sub tmrCalculations_Tick(sender As Object, e As EventArgs) Handles tmrCalculations.Tick
         If collision = False Then
