@@ -40,12 +40,73 @@ Public Class Square : Inherits Shape
 
 End Class
 
+Public Class RotateBox
+    Private _posX As Single
+    Private _posY As Single
+    Public Property Location As PointF
+        Get
+            Return New Point(_posX, _posY)
+        End Get
+        Set(value As PointF)
+            _posX = value.X
+            _posY = value.Y
+            setPoints()
+        End Set
+    End Property
+    Public Property angle As Single = 0
+    Private BoxPoints(4) As PointF
+    Public Property Points(Index As Integer) As PointF
+        Get
+            Return BoxPoints(Index)
+        End Get
+        Set(value As PointF)
+            BoxPoints(Index) = value
+        End Set
+    End Property
+    Private width As Integer
+    Private height As Integer
+
+    Public Sub New(x As Single, y As Single, widthIN As Integer, heightIN As Integer)
+        _posX = x
+        _posY = y
+        width = widthIN
+        setPoints()
+    End Sub
+
+    Public Sub New(location As PointF, widthIN As Integer, heightIN As Integer)
+        _posX = location.X
+        _posY = location.Y
+        width = widthIN
+        setPoints()
+    End Sub
+
+    Public Sub New(widthIN As Integer, heightIN As Integer)
+        width = widthIN
+        height = heightIN
+        _posX = 0
+        _posY = 0
+    End Sub
+
+    Private Sub setPoints()
+        BoxPoints(0) = New PointF(_posX, _posY)
+        BoxPoints(1) = New PointF(width * Math.Cos((angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - width * Math.Sin((angle) * Math.PI / 180))
+        BoxPoints(2) = New PointF(height * Math.Cos((90 + angle) * Math.PI / 180) + BoxPoints(1).X, BoxPoints(1).Y - height * Math.Sin((90 + angle) * Math.PI / 180))
+        BoxPoints(3) = New PointF(height * Math.Cos((90 + angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - height / 2 * Math.Sin((90 + angle) * Math.PI / 180))
+        BoxPoints(4) = BoxPoints(0)
+    End Sub
+
+    Public Sub draw(e As PaintEventArgs)
+        setPoints()
+        e.Graphics.DrawLines(Pens.Black, BoxPoints)
+    End Sub
+
+End Class
+
 Public Class Line : Inherits Shape
 
     Public Property posXe As Single
 
     Public Property posYe As Single
-
 
     Public Overrides Sub Draw(e As PaintEventArgs)
         myPen.Color = Color.Black

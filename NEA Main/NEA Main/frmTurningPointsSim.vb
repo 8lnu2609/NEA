@@ -15,7 +15,7 @@
         InitializeComponent()
         tmrDraw.Start()
         For i = 0 To 4
-            Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.posX = SHAPEWIDTH * i}, 1, False, False, 0))
+            Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.posX = 1, .posY = 1}, 1, False, False, 0))
             clbBoxes.Items.Add(colours.Keys(i).Name)
         Next
         clbBoxes.SelectedIndex = 0
@@ -85,6 +85,8 @@
                 .Showing = True
             Else
                 .Showing = False
+                .Shape.posX = 1
+                .Shape.posY = 1
             End If
 
             If .OnLine Then
@@ -131,7 +133,7 @@
     Private Sub PicDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If isMouseDown Then
             With Boxes(currentBox)
-                If .Shape.posX + SHAPEWIDTH / 2 > (BOXWIDTH / 2 - 500) And .Shape.posX + SHAPEWIDTH / 2 < (BOXWIDTH / 2 + 500) And e.Y > (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y < (BOXHEIGHT / 2 + Shape.WIDTH) Then
+                If .Shape.posX + SHAPEWIDTH / 2 >= (BOXWIDTH / 2 - 500) And .Shape.posX + SHAPEWIDTH / 2 <= (BOXWIDTH / 2 + 500) And e.Y >= (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y <= (BOXHEIGHT / 2 + Shape.WIDTH) Then
                     .Shape.posY = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
                     .OnLine = True
                     .DistanceFromTurning = ((.Shape.posX + Shape.WIDTH) - (BOXWIDTH / 2)) / 500 * LineLength
@@ -186,14 +188,10 @@
         End If
     End Sub
 
-    ''' <summary>
-    ''' Calculate the clockwise moment of the boxes about a point and returns either the mass or distance a box is away
-    ''' from the turning point
-    ''' </summary>
     Function CalculateMoment(ByVal unknownIn As Single) As Single
         Dim moment As Single = 0
         For Each box As BoxClass In Boxes
-            If box.OnLine Then
+            If box.OnLine And box.Showing Then
                 moment += (box.Mass) * box.DistanceFromTurning
             End If
         Next

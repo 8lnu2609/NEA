@@ -48,15 +48,20 @@ Partial Class frmVelocityInput
         '
         'picDisplay
         '
+        Me.picDisplay.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 12)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(320, 320)
+        Me.picDisplay.Size = New System.Drawing.Size(350, 340)
         Me.picDisplay.TabIndex = 0
         Me.picDisplay.TabStop = False
         '
         'grbInputSelect
         '
+        Me.grbInputSelect.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grbInputSelect.Controls.Add(Me.cmdClose)
         Me.grbInputSelect.Controls.Add(Me.updAngle_In)
         Me.grbInputSelect.Controls.Add(Me.updSpeed_In)
@@ -68,10 +73,9 @@ Partial Class frmVelocityInput
         Me.grbInputSelect.Controls.Add(Me.Label1)
         Me.grbInputSelect.Controls.Add(Me.optSpeed)
         Me.grbInputSelect.Controls.Add(Me.optComponents)
-        Me.grbInputSelect.Dock = System.Windows.Forms.DockStyle.Right
-        Me.grbInputSelect.Location = New System.Drawing.Point(338, 0)
+        Me.grbInputSelect.Location = New System.Drawing.Point(368, 0)
         Me.grbInputSelect.Name = "grbInputSelect"
-        Me.grbInputSelect.Size = New System.Drawing.Size(212, 344)
+        Me.grbInputSelect.Size = New System.Drawing.Size(210, 352)
         Me.grbInputSelect.TabIndex = 1
         Me.grbInputSelect.TabStop = False
         Me.grbInputSelect.Text = "Input"
@@ -79,7 +83,7 @@ Partial Class frmVelocityInput
         'cmdClose
         '
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(131, 315)
+        Me.cmdClose.Location = New System.Drawing.Point(131, 303)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 2
@@ -102,7 +106,7 @@ Partial Class frmVelocityInput
         Me.updSpeed_In.DecimalPlaces = 3
         Me.updSpeed_In.Enabled = False
         Me.updSpeed_In.Location = New System.Drawing.Point(123, 155)
-        Me.updSpeed_In.Maximum = New Decimal(New Integer() {141421356, 0, 0, 393216})
+        Me.updSpeed_In.Maximum = New Decimal(New Integer() {450, 0, 0, 0})
         Me.updSpeed_In.Name = "updSpeed_In"
         Me.updSpeed_In.Size = New System.Drawing.Size(83, 20)
         Me.updSpeed_In.TabIndex = 11
@@ -112,6 +116,7 @@ Partial Class frmVelocityInput
         '
         Me.updVelocityX_In.DecimalPlaces = 3
         Me.updVelocityX_In.Location = New System.Drawing.Point(123, 126)
+        Me.updVelocityX_In.Maximum = New Decimal(New Integer() {450, 0, 0, 0})
         Me.updVelocityX_In.Name = "updVelocityX_In"
         Me.updVelocityX_In.Size = New System.Drawing.Size(83, 20)
         Me.updVelocityX_In.TabIndex = 10
@@ -121,6 +126,7 @@ Partial Class frmVelocityInput
         '
         Me.updVelocityY_In.DecimalPlaces = 3
         Me.updVelocityY_In.Location = New System.Drawing.Point(123, 95)
+        Me.updVelocityY_In.Maximum = New Decimal(New Integer() {450, 0, 0, 0})
         Me.updVelocityY_In.Name = "updVelocityY_In"
         Me.updVelocityY_In.Size = New System.Drawing.Size(83, 20)
         Me.updVelocityY_In.TabIndex = 9
@@ -194,7 +200,7 @@ Partial Class frmVelocityInput
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(550, 344)
+        Me.ClientSize = New System.Drawing.Size(580, 364)
         Me.ControlBox = False
         Me.Controls.Add(Me.grbInputSelect)
         Me.Controls.Add(Me.picDisplay)

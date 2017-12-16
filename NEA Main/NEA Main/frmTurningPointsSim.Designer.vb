@@ -55,7 +55,7 @@ Partial Class frmTurningPointsSim
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 9)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1120, 711)
+        Me.picDisplay.Size = New System.Drawing.Size(1120, 621)
         Me.picDisplay.TabIndex = 1
         Me.picDisplay.TabStop = False
         '
@@ -67,7 +67,7 @@ Partial Class frmTurningPointsSim
         '
         Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(1267, 697)
+        Me.cmdClose.Location = New System.Drawing.Point(1251, 607)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 16
@@ -201,12 +201,12 @@ Partial Class frmTurningPointsSim
         Me.chbBalance.UseVisualStyleBackColor = True
         Me.chbBalance.Visible = False
         '
-        'frmTurningPoints
+        'frmTurningPointsSim
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1346, 724)
+        Me.ClientSize = New System.Drawing.Size(1338, 652)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpBalance)
         Me.Controls.Add(Me.lblSeeSawLength)
@@ -220,7 +220,7 @@ Partial Class frmTurningPointsSim
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
-        Me.Name = "frmTurningPoints"
+        Me.Name = "frmTurningPointsSim"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Turning Points"

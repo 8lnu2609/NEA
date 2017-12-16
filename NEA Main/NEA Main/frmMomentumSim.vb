@@ -32,7 +32,6 @@
                     If control.GetType = GetType(NumericUpDown) Then
                         AddHandler DirectCast(control, NumericUpDown).ValueChanged, AddressOf UpdateValues
                     End If
-
                 Next
             End If
         Next
@@ -122,7 +121,7 @@ is now: {3}m/s²
 
         Else
             If leftParticle.posX > SHAPEWIDTH And rightParticle.posX < BOXWIDTH - SHAPEWIDTH Then
-                leftParticle.posX = collisionPoint - (SHAPEWIDTH / 2) + Maths.Displacement(leftParticle.Velocity * velocityScalar, leftParticle.Velocity * velocityScalar, Single.NaN, (Now - timeStart).TotalSeconds)
+                leftParticle.posX = collisionPoint - SHAPEWIDTH + Maths.Displacement(leftParticle.Velocity * velocityScalar, leftParticle.Velocity * velocityScalar, Single.NaN, (Now - timeStart).TotalSeconds)
                 rightParticle.posX = collisionPoint + Maths.Displacement(rightParticle.Velocity * velocityScalar, rightParticle.Velocity * velocityScalar, Single.NaN, (Now - timeStart).TotalSeconds)
             Else
                 tmrCalculations.Stop()

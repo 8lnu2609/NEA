@@ -23,8 +23,10 @@ Partial Class frmConnectedParticlesSim
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmConnectedParticlesSim))
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.grpData = New System.Windows.Forms.GroupBox()
+        Me.cmdStart = New System.Windows.Forms.Button()
         Me.lblOutput = New System.Windows.Forms.Label()
         Me.updCOE = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -60,6 +62,7 @@ Partial Class frmConnectedParticlesSim
         Me.grpData.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpData.BackColor = System.Drawing.SystemColors.Control
+        Me.grpData.Controls.Add(Me.cmdStart)
         Me.grpData.Controls.Add(Me.lblOutput)
         Me.grpData.Controls.Add(Me.updCOE)
         Me.grpData.Controls.Add(Me.Label5)
@@ -72,19 +75,28 @@ Partial Class frmConnectedParticlesSim
         Me.grpData.Controls.Add(Me.Label1)
         Me.grpData.Controls.Add(Me.cboGravity)
         Me.grpData.Controls.Add(Me.cmdClose)
-        Me.grpData.Location = New System.Drawing.Point(1205, 7)
+        Me.grpData.Location = New System.Drawing.Point(1139, 7)
         Me.grpData.Name = "grpData"
-        Me.grpData.Size = New System.Drawing.Size(211, 708)
+        Me.grpData.Size = New System.Drawing.Size(219, 692)
         Me.grpData.TabIndex = 16
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
         '
+        'cmdStart
+        '
+        Me.cmdStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cmdStart.Location = New System.Drawing.Point(50, 663)
+        Me.cmdStart.Name = "cmdStart"
+        Me.cmdStart.Size = New System.Drawing.Size(75, 23)
+        Me.cmdStart.TabIndex = 27
+        Me.cmdStart.Text = "Start"
+        Me.cmdStart.UseVisualStyleBackColor = True
+        '
         'lblOutput
         '
-        Me.lblOutput.AutoSize = True
         Me.lblOutput.Location = New System.Drawing.Point(6, 232)
         Me.lblOutput.Name = "lblOutput"
-        Me.lblOutput.Size = New System.Drawing.Size(0, 13)
+        Me.lblOutput.Size = New System.Drawing.Size(196, 220)
         Me.lblOutput.TabIndex = 17
         '
         'updCOE
@@ -186,7 +198,7 @@ Partial Class frmConnectedParticlesSim
         '
         Me.cmdClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(127, 679)
+        Me.cmdClose.Location = New System.Drawing.Point(131, 663)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 15
@@ -200,7 +212,7 @@ Partial Class frmConnectedParticlesSim
         '
         'tmrCalculation
         '
-        Me.tmrCalculation.Enabled = True
+        Me.tmrCalculation.Interval = 10
         '
         'picDisplay
         '
@@ -210,7 +222,7 @@ Partial Class frmConnectedParticlesSim
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(4, 7)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1195, 708)
+        Me.picDisplay.Size = New System.Drawing.Size(1129, 692)
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
@@ -219,17 +231,17 @@ Partial Class frmConnectedParticlesSim
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1416, 715)
+        Me.ClientSize = New System.Drawing.Size(1354, 695)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(16, 658)
         Me.Name = "frmConnectedParticlesSim"
-        Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Connected Particles Simulator"
         Me.grpData.ResumeLayout(False)
@@ -260,4 +272,5 @@ Partial Class frmConnectedParticlesSim
     Friend WithEvents updCOE As NumericUpDown
     Friend WithEvents Label5 As Label
     Friend WithEvents lblOutput As Label
+    Friend WithEvents cmdStart As Button
 End Class

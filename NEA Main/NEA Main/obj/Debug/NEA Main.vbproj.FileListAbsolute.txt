@@ -121,3 +121,7 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmMomen
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsSim.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmProjectileSim.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesCal.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesSim.resources
+C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.SplashScreen1.resources

@@ -5,79 +5,79 @@ Public Class frmVelocityInput
     Public xVelocity As Single = 100
     Public yVelocity As Single = 100
     Public IsShowing As Boolean
+    Public angle As Single = 45
+    Public speed As Single = 50
 
-    Dim XLine As Line = New Line With {
-        .posX = 20,
-        .posY = 300,
-        .posXe = 120,
-        .posYe = 300
-    }
+    Dim myPen As New Pen(Color.Black, 3) With {
+        .CustomEndCap = New AdjustableArrowCap(5, 5)
+        }
 
-    Dim YLine As Line = New Line With {
-        .posX = 20,
-        .posY = 300,
-        .posXe = 20,
-        .posYe = 200
-    }
-
-    Dim angleArc As Arc = New Arc With {
-        .posX = -5,
-        .posY = 275
-    }
 
     Public Sub New()
         InitializeComponent()
-        Using bigArrowCap As New AdjustableArrowCap(5, 5)
-            XLine.myPen.CustomEndCap = bigArrowCap
-            YLine.myPen.CustomEndCap = bigArrowCap
-        End Using
+        addHandle()
+    End Sub
+
+    Public Overloads Sub Show()
+        MyBase.Show()
+        IsShowing = True
+    End Sub
+
+    Public Overloads Sub ShowDialog()
+        IsShowing = True
+        MyBase.ShowDialog()
+
+    End Sub
+
+    Public Sub addHandle()
+        For Each control As Control In grbInputSelect.Controls
+            If control.GetType = GetType(NumericUpDown) Then
+                AddHandler DirectCast(control, NumericUpDown).ValueChanged, AddressOf UpdateValues
+            End If
+        Next
     End Sub
 
     Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
-        If MouseIsDown Then
-            If optComponents.Checked Then
-                If 320 - e.Y > e.X And e.Y > 20 And e.Y < 320 Then
-                    updVelocityY_In.Value = Int((320 - e.Y) / 3)
-
-                ElseIf e.X > 320 - e.Y And e.X > 20 And e.X < 320 Then
-                    updVelocityX_In.Value = Int(((e.X - 20) / 3))
-                End If
-
-            Else
-                If e.X >= 20 And e.X <= 320 And e.Y >= 0 And e.Y <= 300 Then
-                    YLine.posYe = e.Y
-                    YLine.posXe = e.X
-                    updSpeed_In.Value = Maths.Pythag(Int((e.X - 20) / 3), Int((320 - e.Y) / 3))
-                    updAngle_In.Value = Maths.RadToDeg((Math.Atan(Int(((320 - e.Y) / 3) / ((e.X - 20) / 3)))))
-                    angleArc.angle = Maths.RadToDeg(Math.Atan((320 - e.Y) / e.X))
-                End If
+        If CheckMouse(e) Then
+            mousePoint = e.Location
+            Cursor = Cursors.Hand
+            updAngle_In.Value = angle
+            updSpeed_In.Value = speed
+            updVelocityX_In.Value = xVelocity
+            updVelocityY_In.Value = yVelocity
+            If e.X > 340 - e.Y And e.Button = MouseButtons.Left Then
+                xVelocity = e.X - 20
+            ElseIf e.Button = MouseButtons.Left Then
+                yVelocity = 320 - e.Y
             End If
+        Else
+        Cursor = Cursors.Default
         End If
+
     End Sub
 
     Private Sub picDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
-        MouseIsDown = True
-
+        If e.Button = MouseButtons.Left And CheckMouse(e) Then
+            MouseIsDown = True
+        End If
     End Sub
 
     Private Sub picDisplay_MouseUp(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseUp
-        MouseIsDown = False
+        If e.Button = MouseButtons.Left Then
+            MouseIsDown = False
+            Cursor = Cursors.Default
+        End If
     End Sub
 
-    Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
-        If optComponents.Checked Then
-            updSpeed_In.Maximum = Math.Round(Math.Sqrt(2 * 100 ^ 2), 4)
-            updSpeed_In.Value = Maths.Pythag(xVelocity, yVelocity)
-            If yVelocity = 0 Then
-                updAngle_In.Value = 0
-            Else
-                updAngle_In.Value = Maths.RadToDeg(Math.Atan(yVelocity / xVelocity))
-            End If
+    Function CheckMouse(e As MouseEventArgs) As Boolean
+        If e.X >= 20 And e.X <= 320 And e.Y >= 20 And e.Y <= 320 Then
+            Return True
         Else
-            updSpeed_In.Maximum = 146
-            updVelocityY_In.Value = yVelocity
-            updVelocityX_In.Value = xVelocity
+            Return False
         End If
+    End Function
+
+    Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
         SharedVariables.xVelocity = xVelocity
         SharedVariables.yVelocity = yVelocity
         picDisplay.Refresh()
@@ -106,50 +106,40 @@ Public Class frmVelocityInput
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
+        With e.Graphics
+            If optComponents.Checked Then
+                .DrawLine(myPen, 20, 320, CInt(20 + xVelocity), 320)
+                .DrawLine(myPen, 20, 320, 20, 320 - yVelocity)
+                LabelText.Draw(e, xVelocity & "m/s", 10, xVelocity + 10, 320)
+                LabelText.Draw(e, yVelocity & "m/s", 10, 30, 300 - yVelocity)
+                angle = Maths.RadToDeg(Math.Atan2(yVelocity, xVelocity))
+                speed = Math.Sqrt(xVelocity ^ 2 + yVelocity ^ 2)
+            ElseIf optSpeed.Checked Then
+                If MouseIsDown Then
+                    angle = Maths.RadToDeg(Math.Atan((320 - mousePoint.Y) / (mousePoint.X - 20)))
+                    speed = Math.Sqrt((mousePoint.X - 20) ^ 2 + (320 - mousePoint.Y) ^ 2)
+                    xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
+                    yVelocity = speed * Math.Cos(Maths.DegToRad(angle))
+                End If
+                .DrawLine(New Pen(Color.Black, 3), 20, 320, 200, 320)
+                .DrawLine(myPen, 20, 320, CInt(20 + speed * Math.Cos(Maths.DegToRad(angle))), CInt(320 - speed * Math.Sin(Maths.DegToRad(angle))))
+                .DrawArc(Pens.Black, 20 - 50, 320 - 50, 100, 100, 0, -angle)
+                LabelText.Draw(e, Math.Round(angle, 3) & "°", 10, 20, 320)
+                LabelText.Draw(e, Math.Round(speed, 3) & "m/s", 10, CInt(20 + speed * Math.Cos(Maths.DegToRad(angle))), CInt(320 - speed * Math.Sin(Maths.DegToRad(angle))))
+            End If
+        End With
 
-        If optComponents.Checked Then
-            XLine.posXe = 20 + xVelocity * 3
-            YLine.posYe = 300 - yVelocity * 3
-            YLine.posXe = 20
-            LabelText.Draw(e, xVelocity & "m/s", 10, 30 + xVelocity, 300)
-            LabelText.Draw(e, yVelocity & "m/s", 10, 30, 300 - yVelocity)
-        ElseIf optSpeed.Checked Then
-            XLine.posXe = 50
-
-            LabelText.Draw(e, updSpeed_In.Value & "m/s", 10, 20 + xVelocity, 300 - yVelocity)
-            LabelText.Draw(e, updAngle_In.Value & "°", 10, 25, 300)
-            angleArc.Draw(e)
-        End If
-
-        XLine.Draw(e, 2)
-        YLine.Draw(e, 2)
     End Sub
 
-    Private Sub updVelocityY_In_ValueChanged(sender As Object, e As EventArgs) Handles updVelocityY_In.ValueChanged
-        yVelocity = updVelocityY_In.Value
-    End Sub
-
-    Private Sub updVelocityX_In_ValueChanged(sender As Object, e As EventArgs) Handles updVelocityX_In.ValueChanged
+    Sub UpdateValues()
         xVelocity = updVelocityX_In.Value
-    End Sub
-
-    Private Sub updAngle_In_Leave(sender As Object, e As EventArgs) Handles updAngle_In.Leave
-        xVelocity = updSpeed_In.Value * Math.Cos(updAngle_In.Value * Math.PI / 180)
-        yVelocity = updSpeed_In.Value * Math.Sin(updAngle_In.Value * Math.PI / 180)
-    End Sub
-
-    Private Sub updSpeed_In_Leave(sender As Object, e As EventArgs) Handles updSpeed_In.Leave
-        xVelocity = updSpeed_In.Value * Math.Cos(updAngle_In.Value * Math.PI / 180)
-        yVelocity = updSpeed_In.Value * Math.Sin(updAngle_In.Value * Math.PI / 180)
+        yVelocity = updVelocityY_In.Value
+        angle = updAngle_In.Value
+        speed = updSpeed_In.Value
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
-    End Sub
-
-    Public Overloads Sub Show()
-        MyBase.Show()
-        IsShowing = True
     End Sub
 
     Private Sub frmVelocityInput_Closed(sender As Object, e As EventArgs) Handles Me.Closed

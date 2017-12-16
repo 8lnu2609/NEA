@@ -28,6 +28,7 @@ Partial Class frmMomentumSim
         Me.tmrDraw = New System.Windows.Forms.Timer(Me.components)
         Me.cmdClose = New System.Windows.Forms.Button()
         Me.grpData = New System.Windows.Forms.GroupBox()
+        Me.lblOutput = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.updRestitution = New System.Windows.Forms.NumericUpDown()
         Me.cmdStart = New System.Windows.Forms.Button()
@@ -45,7 +46,6 @@ Partial Class frmMomentumSim
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ToolTips = New System.Windows.Forms.ToolTip(Me.components)
         Me.tmrCalculations = New System.Windows.Forms.Timer(Me.components)
-        Me.lblOutput = New System.Windows.Forms.Label()
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpData.SuspendLayout()
         CType(Me.updRestitution, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,6 +104,17 @@ Partial Class frmMomentumSim
         Me.grpData.TabIndex = 29
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
+        '
+        'lblOutput
+        '
+        Me.lblOutput.AutoSize = True
+        Me.lblOutput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOutput.Location = New System.Drawing.Point(6, 289)
+        Me.lblOutput.Name = "lblOutput"
+        Me.lblOutput.Size = New System.Drawing.Size(166, 144)
+        Me.lblOutput.TabIndex = 30
+        Me.lblOutput.Text = resources.GetString("lblOutput.Text")
+        Me.lblOutput.Visible = False
         '
         'Label6
         '
@@ -266,19 +277,9 @@ Partial Class frmMomentumSim
         '
         Me.tmrCalculations.Interval = 1
         '
-        'lblOutput
+        'frmMomentumSim
         '
-        Me.lblOutput.AutoSize = True
-        Me.lblOutput.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOutput.Location = New System.Drawing.Point(6, 289)
-        Me.lblOutput.Name = "lblOutput"
-        Me.lblOutput.Size = New System.Drawing.Size(166, 144)
-        Me.lblOutput.TabIndex = 30
-        Me.lblOutput.Text = resources.GetString("lblOutput.Text")
-        Me.lblOutput.Visible = False
-        '
-        'frmCollisions
-        '
+        Me.AcceptButton = Me.cmdStart
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
@@ -290,7 +291,7 @@ Partial Class frmMomentumSim
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmCollisions"
+        Me.Name = "frmMomentumSim"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Collisions"
         CType(Me.picDisplay, System.ComponentModel.ISupportInitialize).EndInit()

@@ -22,11 +22,10 @@ NEA Main
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
-<member name="M:NEA_Main.frmTurningPointsSim.CalculateMoment(System.Single)">
- <summary>
- Calculate the clockwise moment of the boxes about a point and returns either the mass or distance a box is away
- from the turning point
- </summary>
+<member name="P:NEA_Main.My.Resources.Resources.cannon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member>
 <member name="M:NEA_Main.Maths.Pythag(System.Single,System.Single)">
  <summary>

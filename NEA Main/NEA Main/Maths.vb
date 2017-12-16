@@ -9,11 +9,11 @@
         Return Math.Sqrt(a ^ 2 + b ^ 2)
     End Function
 
-    Public Shared Function DegToRad(angle As Single) As Single
+    Public Shared Function DegToRad(angle As Single) As Double
         Return angle * Math.PI / 180
     End Function
 
-    Public Shared Function RadToDeg(angle As Single) As Single
+    Public Shared Function RadToDeg(angle As Single) As Double
         Return angle * 180 / Math.PI
     End Function
     ''' <summary>
