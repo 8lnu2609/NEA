@@ -142,7 +142,7 @@
         BOXHEIGHT = picDisplay.Height
         TotalTime = Maths.QuadraticSolve(-0.5 * GetGravityAcceleration(cboAcceleration), yVelocity, 0)
         Range = xVelocity * TotalTime
-        MaxHeight = (2 * yVelocity) / (2 * GetGravityAcceleration(cboAcceleration))
+        MaxHeight = (yVelocity) ^ 2 / (2 * GetGravityAcceleration(cboAcceleration))
         trbTime.Maximum = TotalTime * 100
         lblTotalTime.Text = "Total time of flight: " & Math.Round(TotalTime, 3) & "s"
         lblRange.Text = "Range: " & Math.Round(Range, 3) & "m"
