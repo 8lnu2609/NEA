@@ -2,8 +2,8 @@
     Const SHAPEWIDTH As Int16 = 50
     Dim BOXWIDTH, BOXHEIGHT As Int32
     Dim ball As New Circle With {
-        .posX = 0,
-        .posY = 0
+        .PosX = 0,
+        .PosY = 0
     }
     Dim dropHeight As Double = 10
     Dim mass As Double = 10
@@ -31,13 +31,13 @@
         MyBase.Show()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
-        ball.posX = BOXWIDTH / 2 - 50
-        ball.posY = SHAPEWIDTH
+        ball.PosX = BOXWIDTH / 2 - 50
+        ball.PosY = SHAPEWIDTH
     End Sub
 
     Private Sub picBoxMain_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         DrawCliff(e)
-        ball.posY = (dropHeight - ballHeight) * ((BOXHEIGHT - (2 * SHAPEWIDTH)) / dropHeight) + SHAPEWIDTH
+        ball.PosY = (dropHeight - ballHeight) * ((BOXHEIGHT - (2 * SHAPEWIDTH)) / dropHeight) + SHAPEWIDTH
         ball.Draw(e, SHAPEWIDTH)
     End Sub
 
@@ -84,11 +84,11 @@
         UpdateValues()
 
         If optRealTime.Checked Then
-            ball.posX = BOXWIDTH / 2 - 50
+            ball.PosX = BOXWIDTH / 2 - 50
             trbTime.Hide()
             cmdStart.Show()
         Else
-            ball.posX = BOXWIDTH / 2 + 50
+            ball.PosX = BOXWIDTH / 2 + 50
             trbTime.Show()
             cmdStart.Hide()
         End If
@@ -99,8 +99,8 @@
     End Sub
 
     Private Sub cmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
-        ball.posX = BOXWIDTH / 2 + 50
-        ball.posY = SHAPEWIDTH
+        ball.PosX = BOXWIDTH / 2 + 50
+        ball.PosY = SHAPEWIDTH
         ballHeight = dropHeight
         UpdateValues()
         timeStart = Now

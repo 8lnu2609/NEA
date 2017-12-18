@@ -85,7 +85,7 @@ Partial Class frmForcesFlatSim
         'cmdStartStop
         '
         Me.cmdStartStop.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.cmdStartStop.Location = New System.Drawing.Point(123, 613)
+        Me.cmdStartStop.Location = New System.Drawing.Point(123, 599)
         Me.cmdStartStop.Name = "cmdStartStop"
         Me.cmdStartStop.Size = New System.Drawing.Size(75, 23)
         Me.cmdStartStop.TabIndex = 16
@@ -96,7 +96,7 @@ Partial Class frmForcesFlatSim
         '
         Me.cmdClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(124, 642)
+        Me.cmdClose.Location = New System.Drawing.Point(124, 628)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 15
@@ -166,7 +166,7 @@ Partial Class frmForcesFlatSim
         '
         Me.lblZoomLevel.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.lblZoomLevel.AutoSize = True
-        Me.lblZoomLevel.Location = New System.Drawing.Point(6, 545)
+        Me.lblZoomLevel.Location = New System.Drawing.Point(6, 531)
         Me.lblZoomLevel.Name = "lblZoomLevel"
         Me.lblZoomLevel.Size = New System.Drawing.Size(51, 13)
         Me.lblZoomLevel.TabIndex = 29
@@ -175,7 +175,7 @@ Partial Class frmForcesFlatSim
         'trbZoom
         '
         Me.trbZoom.Anchor = System.Windows.Forms.AnchorStyles.Bottom
-        Me.trbZoom.Location = New System.Drawing.Point(6, 561)
+        Me.trbZoom.Location = New System.Drawing.Point(6, 547)
         Me.trbZoom.Minimum = -8
         Me.trbZoom.Name = "trbZoom"
         Me.trbZoom.Orientation = System.Windows.Forms.Orientation.Vertical
@@ -201,9 +201,9 @@ Partial Class frmForcesFlatSim
         Me.grpData.Controls.Add(Me.pnlTimeSelect)
         Me.grpData.Controls.Add(Me.cmdStartStop)
         Me.grpData.Controls.Add(Me.cmdClose)
-        Me.grpData.Location = New System.Drawing.Point(1153, 10)
+        Me.grpData.Location = New System.Drawing.Point(1137, 10)
         Me.grpData.Name = "grpData"
-        Me.grpData.Size = New System.Drawing.Size(205, 671)
+        Me.grpData.Size = New System.Drawing.Size(205, 657)
         Me.grpData.TabIndex = 16
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
@@ -360,7 +360,7 @@ Partial Class frmForcesFlatSim
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 10)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1136, 674)
+        Me.picDisplay.Size = New System.Drawing.Size(1119, 657)
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '
@@ -369,7 +369,7 @@ Partial Class frmForcesFlatSim
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1358, 683)
+        Me.ClientSize = New System.Drawing.Size(1354, 679)
         Me.ControlBox = False
         Me.Controls.Add(Me.grpData)
         Me.Controls.Add(Me.picDisplay)

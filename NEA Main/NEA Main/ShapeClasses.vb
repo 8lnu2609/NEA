@@ -3,17 +3,17 @@
     Public Const LINEWIDTH As Int32 = 20
     Public myPen As New Pen(Color.Black)
     Public MustOverride Sub Draw(e As PaintEventArgs)
-    Public Property posX As Single
-    Public Property posY As Single
+    Public Property PosX As Single
+    Public Property PosY As Single
 End Class
 
 Public Class Circle : Inherits Shape
     Public Overrides Sub Draw(e As PaintEventArgs)
-        e.Graphics.FillEllipse(Brushes.Black, posX, posY, WIDTH, WIDTH)
+        e.Graphics.FillEllipse(Brushes.Black, PosX, PosY, WIDTH, WIDTH)
     End Sub
 
     Public Overloads Sub Draw(e As PaintEventArgs, diameter As Int32)
-        e.Graphics.FillEllipse(Brushes.Black, posX, posY, diameter, diameter)
+        e.Graphics.FillEllipse(Brushes.Black, PosX, PosY, diameter, diameter)
     End Sub
 
 End Class
@@ -21,11 +21,11 @@ End Class
 Public Class Square : Inherits Shape
 
     Public Overrides Sub Draw(e As PaintEventArgs)
-        e.Graphics.DrawRectangle(Pens.Black, posX, posY, WIDTH, WIDTH)
+        e.Graphics.DrawRectangle(Pens.Black, PosX, PosY, WIDTH, WIDTH)
     End Sub
 
     Public Overloads Sub Draw(e As PaintEventArgs, length As Int32)
-        e.Graphics.DrawRectangle(Pens.Black, posX, posY, length, length)
+        e.Graphics.DrawRectangle(Pens.Black, PosX, PosY, length, length)
     End Sub
 
     Public Overloads Sub Draw(e As PaintEventArgs, length As Int32, colour As Color)
@@ -33,8 +33,8 @@ Public Class Square : Inherits Shape
         myPen.Color = Color.Black
         myPen.Width = 2
         myPen.Alignment = Drawing2D.PenAlignment.Left
-        e.Graphics.FillRectangle(myBrush, posX, posY, length, length)
-        e.Graphics.DrawRectangle(myPen, posX, posY, length, length)
+        e.Graphics.FillRectangle(myBrush, PosX, PosY, length, length)
+        e.Graphics.DrawRectangle(myPen, PosX, PosY, length, length)
     End Sub
 
 
@@ -50,10 +50,10 @@ Public Class RotateBox
         Set(value As PointF)
             _posX = value.X
             _posY = value.Y
-            setPoints()
+            SetPoints()
         End Set
     End Property
-    Public Property angle As Single = 0
+    Public Property Angle As Single = 0
     Private BoxPoints(4) As PointF
     Public Property Points(Index As Integer) As PointF
         Get
@@ -70,14 +70,14 @@ Public Class RotateBox
         _posX = x
         _posY = y
         width = widthIN
-        setPoints()
+        SetPoints()
     End Sub
 
     Public Sub New(location As PointF, widthIN As Integer, heightIN As Integer)
         _posX = location.X
         _posY = location.Y
         width = widthIN
-        setPoints()
+        SetPoints()
     End Sub
 
     Public Sub New(widthIN As Integer, heightIN As Integer)
@@ -87,16 +87,16 @@ Public Class RotateBox
         _posY = 0
     End Sub
 
-    Private Sub setPoints()
+    Private Sub SetPoints()
         BoxPoints(0) = New PointF(_posX, _posY)
-        BoxPoints(1) = New PointF(width * Math.Cos((angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - width * Math.Sin((angle) * Math.PI / 180))
-        BoxPoints(2) = New PointF(height * Math.Cos((90 + angle) * Math.PI / 180) + BoxPoints(1).X, BoxPoints(1).Y - height * Math.Sin((90 + angle) * Math.PI / 180))
-        BoxPoints(3) = New PointF(height * Math.Cos((90 + angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - height / 2 * Math.Sin((90 + angle) * Math.PI / 180))
+        BoxPoints(1) = New PointF(width * Math.Cos((Angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - width * Math.Sin((Angle) * Math.PI / 180))
+        BoxPoints(2) = New PointF(height * Math.Cos((90 + Angle) * Math.PI / 180) + BoxPoints(1).X, BoxPoints(1).Y - height * Math.Sin((90 + Angle) * Math.PI / 180))
+        BoxPoints(3) = New PointF(height * Math.Cos((90 + Angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - height / 2 * Math.Sin((90 + Angle) * Math.PI / 180))
         BoxPoints(4) = BoxPoints(0)
     End Sub
 
-    Public Sub draw(e As PaintEventArgs)
-        setPoints()
+    Public Sub Draw(e As PaintEventArgs)
+        SetPoints()
         e.Graphics.DrawLines(Pens.Black, BoxPoints)
     End Sub
 
@@ -104,19 +104,19 @@ End Class
 
 Public Class Line : Inherits Shape
 
-    Public Property posXe As Single
+    Public Property PosXe As Single
 
-    Public Property posYe As Single
+    Public Property PosYe As Single
 
     Public Overrides Sub Draw(e As PaintEventArgs)
         myPen.Color = Color.Black
         myPen.Width = LINEWIDTH
-        e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
+        e.Graphics.DrawLine(myPen, PosX, PosY, PosXe, PosYe)
     End Sub
 
     Public Overloads Sub Draw(e As PaintEventArgs, lineWidth As Int32)
         myPen.Width = lineWidth
-        e.Graphics.DrawLine(myPen, posX, posY, posXe, posYe)
+        e.Graphics.DrawLine(myPen, PosX, PosY, PosXe, PosYe)
     End Sub
 
 End Class
@@ -125,8 +125,8 @@ Public Class Triangle : Inherits Shape
     Public up As Boolean
 
     Public Overrides Sub Draw(e As PaintEventArgs)
-        Dim triangleUp() As Point = {New Point(posX + (WIDTH / 2), posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + WIDTH)}
-        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + WIDTH), New Point(posX + WIDTH, posY + (WIDTH / 2))}
+        Dim triangleUp() As Point = {New Point(PosX + (WIDTH / 2), PosY), New Point(PosX, PosY + WIDTH), New Point(PosX + WIDTH, PosY + WIDTH)}
+        Dim triangleRight() As Point = {New Point(PosX, PosY), New Point(PosX, PosY + WIDTH), New Point(PosX + WIDTH, PosY + (WIDTH / 2))}
         If up Then
             e.Graphics.FillPolygon(Brushes.Black, triangleUp)
         Else
@@ -136,8 +136,8 @@ Public Class Triangle : Inherits Shape
     End Sub
 
     Public Overloads Sub Draw(e As PaintEventArgs, Lenght As Int32)
-        Dim triangleUp() As Point = {New Point(posX + (Lenght / 2), posY), New Point(posX, posY + Lenght), New Point(posX + Lenght, posY + Lenght)}
-        Dim triangleRight() As Point = {New Point(posX, posY), New Point(posX, posY + Lenght), New Point(posX + Lenght, posY + (Lenght / 2))}
+        Dim triangleUp() As Point = {New Point(PosX + (Lenght / 2), PosY), New Point(PosX, PosY + Lenght), New Point(PosX + Lenght, PosY + Lenght)}
+        Dim triangleRight() As Point = {New Point(PosX, PosY), New Point(PosX, PosY + Lenght), New Point(PosX + Lenght, PosY + (Lenght / 2))}
         If up Then
             e.Graphics.FillPolygon(Brushes.Black, triangleUp)
         Else
@@ -162,7 +162,7 @@ End Class
 Public Class Arc : Inherits Shape
     Public angle As Single
     Public Overrides Sub Draw(e As PaintEventArgs)
-        e.Graphics.DrawArc(Pens.Black, posX, posY, 50, 50, 0, -angle)
+        e.Graphics.DrawArc(Pens.Black, PosX, PosY, 50, 50, 0, -angle)
     End Sub
 End Class
 

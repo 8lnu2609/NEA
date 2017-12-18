@@ -117,7 +117,9 @@ Partial Class frmForcesCal
         '
         'updForce
         '
+        Me.updForce.DecimalPlaces = 3
         Me.updForce.Location = New System.Drawing.Point(139, 68)
+        Me.updForce.Maximum = New Decimal(New Integer() {10000000, 0, 0, 0})
         Me.updForce.Name = "updForce"
         Me.updForce.Size = New System.Drawing.Size(120, 20)
         Me.updForce.TabIndex = 39

@@ -9,6 +9,7 @@
                 AddHandler DirectCast(control, NumericUpDown).ValueChanged, AddressOf Calculate
             End If
         Next
+        Calculate()
     End Sub
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click

@@ -160,10 +160,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="NumberInput.Designer.vb">
-      <DependentUpon>NumberInput.vb</DependentUpon>
+    <Compile Include="frmNumberInput.Designer.vb">
+      <DependentUpon>frmNumberInput.vb</DependentUpon>
     </Compile>
-    <Compile Include="NumberInput.vb">
+    <Compile Include="frmNumberInput.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmProjectileCal.Designer.vb">
@@ -238,8 +238,8 @@
     <EmbeddedResource Include="frmMomentumCal.resx">
       <DependentUpon>frmMomentumCal.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NumberInput.resx">
-      <DependentUpon>NumberInput.vb</DependentUpon>
+    <EmbeddedResource Include="frmNumberInput.resx">
+      <DependentUpon>frmNumberInput.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProjectileCal.resx">
       <DependentUpon>frmProjectileCal.vb</DependentUpon>

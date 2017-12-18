@@ -15,7 +15,7 @@
         InitializeComponent()
         tmrDraw.Start()
         For i = 0 To 4
-            Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.posX = 1, .posY = 1}, 1, False, False, 0))
+            Boxes.Add(New BoxClass(colours.Keys(i), New Square With {.PosX = 1, .PosY = 1}, 1, False, False, 0))
             clbBoxes.Items.Add(colours.Keys(i).Name)
         Next
         clbBoxes.SelectedIndex = 0
@@ -56,24 +56,24 @@
     Sub DrawSeeSaw(ByVal e As PaintEventArgs)
         Dim baseTriangle As New Triangle With {
             .up = True,
-            .posY = 4 + BOXHEIGHT / 2 + Shape.WIDTH,
-            .posX = BOXWIDTH / 2 - 50
+            .PosY = 4 + BOXHEIGHT / 2 + Shape.WIDTH,
+            .PosX = BOXWIDTH / 2 - 50
         }
         Dim baseLine As New Line With {
-            .posX = BOXWIDTH / 2 - 500,
-            .posXe = .posX + 1000,
-            .posY = BOXHEIGHT / 2 + Shape.WIDTH,
-            .posYe = .posY
+            .PosX = BOXWIDTH / 2 - 500,
+            .PosXe = .PosX + 1000,
+            .PosY = BOXHEIGHT / 2 + Shape.WIDTH,
+            .PosYe = .PosY
         }
         Dim myPen As New Pen(Color.Gray, 3) With {
             .DashStyle = Drawing2D.DashStyle.Dash
         }
-        e.Graphics.DrawLine(myPen, baseLine.posX + 1, baseLine.posY, baseLine.posX + 1, baseLine.posY + 200)
-        e.Graphics.DrawLine(myPen, baseLine.posXe - 2, baseLine.posY, baseLine.posXe - 2, baseLine.posY + 200)
+        e.Graphics.DrawLine(myPen, baseLine.PosX + 1, baseLine.PosY, baseLine.PosX + 1, baseLine.PosY + 200)
+        e.Graphics.DrawLine(myPen, baseLine.PosXe - 2, baseLine.PosY, baseLine.PosXe - 2, baseLine.PosY + 200)
         myPen.CustomEndCap = New Drawing2D.AdjustableArrowCap(5, 5)
         myPen.CustomStartCap = New Drawing2D.AdjustableArrowCap(5, 5)
-        e.Graphics.DrawLine(myPen, baseLine.posX, baseLine.posY + 200, baseLine.posXe, baseLine.posY + 200)
-        LabelText.Draw(e, LineLength & "m", 20, BOXWIDTH / 2, baseLine.posY + 210)
+        e.Graphics.DrawLine(myPen, baseLine.PosX, baseLine.PosY + 200, baseLine.PosXe, baseLine.PosY + 200)
+        LabelText.Draw(e, LineLength & "m", 20, BOXWIDTH / 2, baseLine.PosY + 210)
         baseTriangle.Draw(e, SHAPEWIDTH * 2.5)
         baseLine.Draw(e, LINEWIDTH)
 
@@ -85,8 +85,8 @@
                 .Showing = True
             Else
                 .Showing = False
-                .Shape.posX = 1
-                .Shape.posY = 1
+                .Shape.PosX = 1
+                .Shape.PosY = 1
             End If
 
             If .OnLine Then
@@ -114,10 +114,10 @@
         If e.Button = MouseButtons.Left Then
             For i = 0 To colours.Values.Count - 1
                 With Boxes(i)
-                    If e.X > .Shape.posX And e.X < .Shape.posX + SHAPEWIDTH And e.Y > .Shape.posY And e.Y < .Shape.posY + SHAPEWIDTH And .Showing = True Then
+                    If e.X > .Shape.PosX And e.X < .Shape.PosX + SHAPEWIDTH And e.Y > .Shape.PosY And e.Y < .Shape.PosY + SHAPEWIDTH And .Showing = True Then
                         isMouseDown = True
                         clbBoxes.SelectedItem = .Colour.Name
-                        MouseOffset = e.Location - New Point(.Shape.posX, .Shape.posY)
+                        MouseOffset = e.Location - New Point(.Shape.PosX, .Shape.PosY)
                     End If
                 End With
             Next
@@ -133,16 +133,16 @@
     Private Sub PicDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         If isMouseDown Then
             With Boxes(currentBox)
-                If .Shape.posX + SHAPEWIDTH / 2 >= (BOXWIDTH / 2 - 500) And .Shape.posX + SHAPEWIDTH / 2 <= (BOXWIDTH / 2 + 500) And e.Y >= (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y <= (BOXHEIGHT / 2 + Shape.WIDTH) Then
-                    .Shape.posY = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
+                If .Shape.PosX + SHAPEWIDTH / 2 >= (BOXWIDTH / 2 - 500) And .Shape.PosX + SHAPEWIDTH / 2 <= (BOXWIDTH / 2 + 500) And e.Y >= (BOXHEIGHT / 2) - (SHAPEWIDTH) And e.Y <= (BOXHEIGHT / 2 + Shape.WIDTH) Then
+                    .Shape.PosY = (BOXHEIGHT / 2) - (SHAPEWIDTH / 2) - (LINEWIDTH / 2)
                     .OnLine = True
-                    .DistanceFromTurning = ((.Shape.posX + Shape.WIDTH) - (BOXWIDTH / 2)) / 500 * LineLength
+                    .DistanceFromTurning = ((.Shape.PosX + Shape.WIDTH) - (BOXWIDTH / 2)) / 500 * LineLength
                     updDistance.Value = .DistanceFromTurning
                 Else
-                    .Shape.posY = e.Y - MouseOffset.Y
+                    .Shape.PosY = e.Y - MouseOffset.Y
                     .OnLine = False
                 End If
-                .Shape.posX = e.X - MouseOffset.X
+                .Shape.PosX = e.X - MouseOffset.X
                 chbBalance.Visible = False
                 chbBalance.Checked = False
             End With
@@ -162,26 +162,26 @@
         updDistance.Minimum = -updLength.Value
         For Each Box As BoxClass In Boxes
             If Box.OnLine Then
-                Box.Shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
+                Box.Shape.PosX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
             End If
         Next
     End Sub
 
     Private Sub updDistance_ValueChanged(sender As Object, e As EventArgs) Handles updDistance.ValueChanged
-        Boxes(currentBox).Shape.posX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
+        Boxes(currentBox).Shape.PosX = updDistance.Value / LineLength * 500 + (BOXWIDTH / 2) - Shape.WIDTH
     End Sub
 
     Private Sub cmdBalanceMass_Click(sender As Object, e As EventArgs) Handles cmdBalanceMass.Click
         Dim NewMass As Single = 0
-        Dim numberIn As New NumberInput
+        Dim numberIn As New frmNumberInput
         If numberIn.ShowDialog("Enter the mass of the known box") = DialogResult.OK Then
             NewMass = numberIn.Result
             BalanceBoxDistance = CalculateMoment(NewMass)
             If Math.Abs(BalanceBoxDistance) <= LineLength Then
-                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0}kg, it needs to be places {1}m from the turning point", NewMass, BalanceBoxDistance))
+                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0:#,0.0###}kg, it needs to be places {1:#,0.0###}m from the turning point", NewMass, BalanceBoxDistance))
                 chbBalance.Show()
             Else
-                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0}kg, it needs to be places {1}m from the turning point. This is a greater than the length of the see saw", NewMass, BalanceBoxDistance))
+                MessageBox.Show(String.Format("To balance the see saw with a box of mass {0:#,0.0###}kg, it needs to be places {1:#,0.0###}m from the turning point. This is a greater than the length of the see saw", NewMass, BalanceBoxDistance))
                 chbBalance.Hide()
                 chbBalance.Checked = False
             End If
@@ -200,17 +200,18 @@
 
     Private Sub cmdBalanceDistance_Click(sender As Object, e As EventArgs) Handles cmdBalanceDistance.Click
         Dim NewDistance As Single = 0
-        Dim numberIn As New NumberInput
-        numberIn.updNumber.Minimum = -1000
+        Dim numberIn As New frmNumberInput
+        numberIn.updNumber.Minimum = -LineLength
+        numberIn.updNumber.Maximum = LineLength
         If numberIn.ShowDialog("Enter the distance from the turning point of the known box") = DialogResult.OK Then
             NewDistance = numberIn.Result
             BalanceBoxDistance = NewDistance
             Dim NewMass As Single = CalculateMoment(NewDistance)
             If NewMass >= 0 Then
-                MessageBox.Show(String.Format("To balance the see saw with a box {0}m from the turning point, it needs to have a mass of {1}kg", NewDistance, NewMass))
+                MessageBox.Show(String.Format("To balance the see saw with a box {0:#,0.0###}m from the turning point, it needs to have a mass of {1:#,0.0###}kg", NewDistance, NewMass))
                 chbBalance.Show()
             Else
-                MessageBox.Show(String.Format("To balance the see saw with a box {0}m from the turning point, it needs to provide a {1}N force underneath to support it", NewDistance, Math.Abs(NewMass * 9.81)))
+                MessageBox.Show(String.Format("To balance the see saw with a box {0:#,0.0###}m from the turning point, it needs to provide a {1:#,0.0###}N force underneath to support it", NewDistance, Math.Abs(NewMass * 9.81)))
                 chbBalance.Hide()
                 chbBalance.Checked = False
             End If

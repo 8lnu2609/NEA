@@ -23,15 +23,15 @@
         MyBase.Show()
         BOXWIDTH = picDisplay.Width
         BOXHEIGHT = picDisplay.Height
-        Particle.posY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2
+        Particle.PosY = BOXHEIGHT / 2 - Shape.LINEWIDTH / 2
     End Sub
 
     Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         With BaseLine
-            .posX = 0
-            .posXe = BOXWIDTH
-            .posY = BOXHEIGHT / 2 + Shape.LINEWIDTH
-            .posYe = .posY
+            .PosX = 0
+            .PosXe = BOXWIDTH
+            .PosY = BOXHEIGHT / 2 + Shape.LINEWIDTH
+            .PosYe = .PosY
         End With
         BaseLine.Draw(e, Shape.LINEWIDTH * scalar)
         Particle.Draw(e, Shape.WIDTH * scalar)
@@ -89,10 +89,10 @@
             lblZoomLevel.Text = String.Format("Zoom: 1/{0}x", Math.Abs(trbZoom.Value) + 2)
         End If
 
-        BaseLine.posY = BOXHEIGHT / 2 + Shape.LINEWIDTH * scalar
-        BaseLine.posYe = BaseLine.posY
+        BaseLine.PosY = BOXHEIGHT / 2 + Shape.LINEWIDTH * scalar
+        BaseLine.PosYe = BaseLine.PosY
         'Particle.posY = BOXHEIGHT / 2 - ((Line.LINEWIDTH / 2) + (Shape.WIDTH / 2)) * scalar
-        Particle.posY = BOXHEIGHT / 2 - (Line.WIDTH / 2) * scalar - (Shape.WIDTH) * (scalar - 1)
+        Particle.PosY = BOXHEIGHT / 2 - (Line.WIDTH / 2) * scalar - (Shape.WIDTH) * (scalar - 1)
     End Sub
 
     Private Sub cboAcceleration_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAcceleration.SelectedIndexChanged
@@ -105,7 +105,7 @@
             tmrCalculation.Stop()
             cmdStartStop.Text = "Start"
         Else
-            Particle.posX = 0
+            Particle.PosX = 0
             tmrCalculation.Start()
             timeStart = Now
             cmdStartStop.Text = "Stop"
@@ -115,14 +115,14 @@
     Private Sub trbTime_Scroll(sender As Object, e As EventArgs) Handles trbTime.Scroll
         If optStepByStep.Checked Then
             ToolTips.SetToolTip(trbTime, "Time: " & trbTime.Value / 100)
-            Particle.posX = 0.5 * acceleration * (trbTime.Value / 100) ^ 2
+            Particle.PosX = 0.5 * acceleration * (trbTime.Value / 100) ^ 2
         End If
     End Sub
 
     Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
         Dim velocity As Single
         velocity = GetResultant() * (Now - timeStart).TotalSeconds
-        Particle.posX += velocity * scalar
+        Particle.PosX += velocity * scalar
 
     End Sub
 
@@ -143,7 +143,8 @@
     End Sub
 
     Public Sub updateValues()
-
+        tmrCalculation.Stop()
+        cmdStartStop.Text = "Start"
         coeFriction = updFrictionCOE.Value
         mass = updMass.Value
         weight = GetGravityAcceleration(cboAcceleration) * mass

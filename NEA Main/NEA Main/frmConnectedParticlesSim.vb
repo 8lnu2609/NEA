@@ -41,26 +41,26 @@
 
     End Sub
 
-    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+    Private Sub CmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
     End Sub
 
-    Private Sub tmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
+    Private Sub TmrDraw_Tick(sender As Object, e As EventArgs) Handles tmrDraw.Tick
         picDisplay.Refresh()
     End Sub
 
-    Private Sub cboGravity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboGravity.SelectedIndexChanged
+    Private Sub CboGravity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboGravity.SelectedIndexChanged
         ToolTips.SetToolTip(cboGravity, GetGravityAcceleration(cboGravity))
     End Sub
 
-    Private Sub picDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
+    Private Sub PicDisplay_Paint(sender As Object, e As PaintEventArgs) Handles picDisplay.Paint
         DrawObjects(e)
-        slopeObject.angle = angle
-        slopeObject.draw(e)
+        slopeObject.Angle = angle
+        slopeObject.Draw(e)
         freeObject.Draw(e, 50)
     End Sub
 
-    Function checkMouse(mPoint As Point) As Boolean
+    Function CheckMouse(mPoint As Point) As Boolean
         If mPoint.X >= dragPoint.X - 25 And mPoint.X <= dragPoint.X + 25 And mPoint.Y >= dragPoint.Y - 25 And mPoint.Y <= dragPoint.Y + 25 Then
             Return True
         Else
@@ -68,9 +68,9 @@
         End If
     End Function
 
-    Private Sub picDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
+    Private Sub PicDisplay_MouseMove(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseMove
         mousePoint = e.Location
-        If checkMouse(e.Location) Then
+        If CheckMouse(e.Location) Then
             Cursor = Cursors.Hand
             updateValues()
         Else
@@ -79,13 +79,13 @@
 
     End Sub
 
-    Private Sub picDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
-        If e.Button = MouseButtons.Left And checkMouse(e.Location) Then
+    Private Sub PicDisplay_MouseDown(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseDown
+        If e.Button = MouseButtons.Left And CheckMouse(e.Location) Then
             mouseIsDown = True
         End If
     End Sub
 
-    Private Sub picDisplay_MouseUp(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseUp
+    Private Sub PicDisplay_MouseUp(sender As Object, e As MouseEventArgs) Handles picDisplay.MouseUp
         If e.Button = MouseButtons.Left Then
             mouseIsDown = False
             angle = updAngle.Value
@@ -94,9 +94,10 @@
 
     Sub DrawObjects(e As PaintEventArgs)
         Dim pivotPoint As New PointF(50, BOXHEIGHT - 200)
-        Dim myPen As New Pen(Color.Black, 4)
-        myPen.EndCap = Drawing2D.LineCap.DiamondAnchor
-        myPen.StartCap = Drawing2D.LineCap.RoundAnchor
+        Dim myPen As New Pen(Color.Black, 4) With {
+            .EndCap = Drawing2D.LineCap.DiamondAnchor,
+            .StartCap = Drawing2D.LineCap.RoundAnchor
+        }
 
         If mouseIsDown Then
             If mousePoint.X >= pivotPoint.X And mousePoint.Y <= pivotPoint.Y Then
@@ -107,8 +108,8 @@
             End If
         End If
         If playing = False Then
-            freeObject.posY = dragPoint.Y + 150
-            freeObject.posX = dragPoint.X
+            freeObject.PosY = dragPoint.Y + 150
+            freeObject.PosX = dragPoint.X
             slopeObjectDistance = 150
         End If
         dragPoint = New PointF(400 * Math.Cos(Maths.DegToRad(angle)) + pivotPoint.X, pivotPoint.Y - 400 * Math.Sin(Maths.DegToRad(angle)))
@@ -119,22 +120,22 @@
             .DrawEllipse(Pens.Black, dragPoint.X - 25, dragPoint.Y - 25, 50, 50)
             .DrawLine(Pens.Black, (slopeObject.Points(1).X + slopeObject.Points(2).X) / 2, (slopeObject.Points(1).Y + slopeObject.Points(2).Y) / 2,
                       CInt(dragPoint.X + 25 * Math.Cos(Maths.DegToRad(90 + angle))), CInt(dragPoint.Y - 25 * Math.Sin(Maths.DegToRad(90 + angle))))
-            .DrawLine(Pens.Black, freeObject.posX + 25, freeObject.posY,
+            .DrawLine(Pens.Black, freeObject.PosX + 25, freeObject.PosY,
                       CInt(dragPoint.X + 25), CInt(dragPoint.Y))
 
             LabelText.Draw(e, String.Format("{0:#,0.###}°", Math.Round(angle, 3)), 12, pivotPoint.X, pivotPoint.Y)
             LabelText.Draw(e, String.Format("1: {0:#,0.000} kg", massSlope), 10, slopeObject.Location.X + 10, slopeObject.Location.Y + 10)
-            LabelText.Draw(e, String.Format("2: {0:#,0.000} kg", massFree), 10, freeObject.posX + 25, freeObject.posY + 60)
+            LabelText.Draw(e, String.Format("2: {0:#,0.000} kg", massFree), 10, freeObject.PosX + 25, freeObject.PosY + 60)
         End With
         slopeObject.Location = New PointF(slopeObjectDistance * Math.Cos(Maths.DegToRad(angle)) + pivotPoint.X, pivotPoint.Y - slopeObjectDistance * Math.Sin(Maths.DegToRad(angle)))
 
 
     End Sub
 
-    Private Sub tmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
+    Private Sub TmrCalculation_Tick(sender As Object, e As EventArgs) Handles tmrCalculation.Tick
         Output()
         If slopeObjectDistance > 25 And slopeObjectDistance < 275 Then
-            freeObject.posY = dragPoint.Y + 150 - Maths.Displacement(0, Single.NaN, acceleration, (Now - timeStart).TotalSeconds)
+            freeObject.PosY = dragPoint.Y + 150 - Maths.Displacement(0, Single.NaN, acceleration, (Now - timeStart).TotalSeconds)
             slopeObjectDistance = 150 - Maths.Displacement(0, Single.NaN, acceleration, (Now - timeStart).TotalSeconds)
         Else
         End If
@@ -170,11 +171,11 @@ the resultant force accelerates the box at {6:0.###}m/s²
 
     End Sub
 
-    Private Sub cmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
+    Private Sub CmdStart_Click(sender As Object, e As EventArgs) Handles cmdStart.Click
         toggleStart()
     End Sub
 
-    Sub toggleStart()
+    Sub ToggleStart()
         If playing = False Then
             tmrCalculation.Start()
             cmdStart.Text = "Stop"
@@ -187,9 +188,9 @@ the resultant force accelerates the box at {6:0.###}m/s²
         End If
     End Sub
 
-    Sub updateValues()
+    Sub UpdateValues()
         playing = True
-        toggleStart()
+        ToggleStart()
         accelerationDueToGravity = GetGravityAcceleration(cboGravity)
         massFree = updFreeMass.Value
         massSlope = updSlopeMass.Value

@@ -157,18 +157,18 @@ Class Particle
     Public Property Shape As New Square
     Public Property posX As Single
         Get
-            Return Shape.posX
+            Return Shape.PosX
         End Get
         Set(value As Single)
-            Shape.posX = value
+            Shape.PosX = value
         End Set
     End Property
     Public Property posY As Single
         Get
-            Return Shape.posY
+            Return Shape.PosY
         End Get
         Set(value As Single)
-            Shape.posY = value
+            Shape.PosY = value
         End Set
     End Property
 

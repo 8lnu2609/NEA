@@ -88,7 +88,6 @@ C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmForcesCal
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPoints.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.NumberInput.resources
 C:\Users\Luke\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsCalculator.resources
-C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.NumberInput.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmFreefallCal.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmTurningPointsCal.resources
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\bin\Debug\NEA Main.exe.config
@@ -124,3 +123,5 @@ C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConne
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesCal.resources
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesSim.resources
+C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmNumberInput.resources
+C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache

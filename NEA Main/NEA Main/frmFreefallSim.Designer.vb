@@ -60,7 +60,7 @@ Partial Class frmFreefallSim
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 12)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1132, 718)
+        Me.picDisplay.Size = New System.Drawing.Size(1120, 706)
         Me.picDisplay.TabIndex = 0
         Me.picDisplay.TabStop = False
         '
@@ -78,9 +78,9 @@ Partial Class frmFreefallSim
         Me.grpData.Controls.Add(Me.Label2)
         Me.grpData.Controls.Add(Me.cboGravity)
         Me.grpData.Controls.Add(Me.cmdClose)
-        Me.grpData.Location = New System.Drawing.Point(1150, 12)
+        Me.grpData.Location = New System.Drawing.Point(1138, 12)
         Me.grpData.Name = "grpData"
-        Me.grpData.Size = New System.Drawing.Size(200, 718)
+        Me.grpData.Size = New System.Drawing.Size(200, 706)
         Me.grpData.TabIndex = 1
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
@@ -219,7 +219,7 @@ Partial Class frmFreefallSim
         '
         Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(119, 689)
+        Me.cmdClose.Location = New System.Drawing.Point(119, 677)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 2
@@ -239,12 +239,12 @@ Partial Class frmFreefallSim
         '
         Me.DropTimer.Interval = 1
         '
-        'frmFreefall
+        'frmFreefallSim
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(1354, 734)
+        Me.ClientSize = New System.Drawing.Size(1350, 730)
         Me.ControlBox = False
         Me.Controls.Add(Me.picDisplay)
         Me.Controls.Add(Me.grpData)
@@ -252,7 +252,7 @@ Partial Class frmFreefallSim
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "frmFreefall"
+        Me.Name = "frmFreefallSim"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Free fall"

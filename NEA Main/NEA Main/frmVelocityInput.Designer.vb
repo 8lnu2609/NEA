@@ -54,7 +54,7 @@ Partial Class frmVelocityInput
         Me.picDisplay.BackColor = System.Drawing.Color.White
         Me.picDisplay.Location = New System.Drawing.Point(12, 12)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(350, 340)
+        Me.picDisplay.Size = New System.Drawing.Size(340, 340)
         Me.picDisplay.TabIndex = 0
         Me.picDisplay.TabStop = False
         '
@@ -73,17 +73,18 @@ Partial Class frmVelocityInput
         Me.grbInputSelect.Controls.Add(Me.Label1)
         Me.grbInputSelect.Controls.Add(Me.optSpeed)
         Me.grbInputSelect.Controls.Add(Me.optComponents)
-        Me.grbInputSelect.Location = New System.Drawing.Point(368, 0)
+        Me.grbInputSelect.Location = New System.Drawing.Point(358, 12)
         Me.grbInputSelect.Name = "grbInputSelect"
-        Me.grbInputSelect.Size = New System.Drawing.Size(210, 352)
+        Me.grbInputSelect.Size = New System.Drawing.Size(210, 340)
         Me.grbInputSelect.TabIndex = 1
         Me.grbInputSelect.TabStop = False
         Me.grbInputSelect.Text = "Input"
         '
         'cmdClose
         '
+        Me.cmdClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(131, 303)
+        Me.cmdClose.Location = New System.Drawing.Point(129, 311)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 2
@@ -200,7 +201,7 @@ Partial Class frmVelocityInput
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.cmdClose
-        Me.ClientSize = New System.Drawing.Size(580, 364)
+        Me.ClientSize = New System.Drawing.Size(584, 364)
         Me.ControlBox = False
         Me.Controls.Add(Me.grbInputSelect)
         Me.Controls.Add(Me.picDisplay)

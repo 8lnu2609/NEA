@@ -132,13 +132,15 @@ Public Class frmVelocityInput
     End Sub
 
     Sub UpdateValues()
-        If optComponents.Checked Then
+        If optComponents.Checked And Not MouseIsDown Then
             xVelocity = updVelocityX_In.Value
             yVelocity = updVelocityY_In.Value
 
-        Else
+        ElseIf Not MouseIsDown Then
             angle = updAngle_In.Value
             speed = updSpeed_In.Value
+            xVelocity = speed * Math.Cos(Maths.DegToRad(angle))
+            yVelocity = speed * Math.Sin(Maths.DegToRad(angle))
         End If
         updVelocityX_In.Value = xVelocity
         updVelocityY_In.Value = yVelocity

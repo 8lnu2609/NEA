@@ -20,7 +20,7 @@
 
     Private Sub cmdAdd_Click(sender As Object, e As EventArgs) Handles cmdAdd.Click
         cboGravity.Enabled = False
-        Dim massIn, distanceIn As New NumberInput
+        Dim massIn, distanceIn As New frmNumberInput
         distanceIn.updNumber.Minimum = -1000
         Dim mass, distance As Single
 

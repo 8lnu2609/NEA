@@ -75,9 +75,9 @@ Partial Class frmConnectedParticlesSim
         Me.grpData.Controls.Add(Me.Label1)
         Me.grpData.Controls.Add(Me.cboGravity)
         Me.grpData.Controls.Add(Me.cmdClose)
-        Me.grpData.Location = New System.Drawing.Point(1139, 7)
+        Me.grpData.Location = New System.Drawing.Point(1124, 12)
         Me.grpData.Name = "grpData"
-        Me.grpData.Size = New System.Drawing.Size(219, 692)
+        Me.grpData.Size = New System.Drawing.Size(218, 671)
         Me.grpData.TabIndex = 16
         Me.grpData.TabStop = False
         Me.grpData.Text = "Data"
@@ -85,7 +85,7 @@ Partial Class frmConnectedParticlesSim
         'cmdStart
         '
         Me.cmdStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cmdStart.Location = New System.Drawing.Point(50, 663)
+        Me.cmdStart.Location = New System.Drawing.Point(49, 642)
         Me.cmdStart.Name = "cmdStart"
         Me.cmdStart.Size = New System.Drawing.Size(75, 23)
         Me.cmdStart.TabIndex = 27
@@ -198,7 +198,7 @@ Partial Class frmConnectedParticlesSim
         '
         Me.cmdClose.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.cmdClose.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.cmdClose.Location = New System.Drawing.Point(131, 663)
+        Me.cmdClose.Location = New System.Drawing.Point(131, 642)
         Me.cmdClose.Name = "cmdClose"
         Me.cmdClose.Size = New System.Drawing.Size(75, 23)
         Me.cmdClose.TabIndex = 15
@@ -220,9 +220,9 @@ Partial Class frmConnectedParticlesSim
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.picDisplay.BackColor = System.Drawing.Color.White
-        Me.picDisplay.Location = New System.Drawing.Point(4, 7)
+        Me.picDisplay.Location = New System.Drawing.Point(12, 12)
         Me.picDisplay.Name = "picDisplay"
-        Me.picDisplay.Size = New System.Drawing.Size(1129, 692)
+        Me.picDisplay.Size = New System.Drawing.Size(1106, 671)
         Me.picDisplay.TabIndex = 15
         Me.picDisplay.TabStop = False
         '

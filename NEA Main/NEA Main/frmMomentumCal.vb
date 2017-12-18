@@ -1,4 +1,5 @@
-﻿Public Class frmMomentumCal
+﻿Imports System.ComponentModel
+Public Class frmMomentumCal
     Dim COEofRestitution As Single
     Dim leftMass, rightMass, leftVelocity, rightVelocity As Single
     Dim leftDirection As LeftRight = LeftRight.Left
@@ -27,7 +28,7 @@
 
     End Sub
 
-    Sub getImages()
+    Sub GetImages()
         Dim rBmp As New Bitmap(100, 23)
         Dim rgBmp As Graphics = Graphics.FromImage(rBmp)
         Using myPen As New Pen(Color.Black, 4)
@@ -36,8 +37,6 @@
             rightArrow = New Bitmap(rBmp)
             cmdLeftInitalDirection.BackgroundImage = rightArrow
         End Using
-        rBmp.Dispose()
-        rgBmp.Dispose()
 
         Dim lBmp As New Bitmap(100, 23)
         Dim lgBmp As Graphics = Graphics.FromImage(lBmp)
@@ -47,11 +46,9 @@
             leftArrow = New Bitmap(lBmp)
             cmdRightInitalDirection.BackgroundImage = leftArrow
         End Using
-        lBmp.Dispose()
-        lgBmp.Dispose()
     End Sub
 
-    Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
+    Private Sub CmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Close()
     End Sub
 
@@ -62,13 +59,13 @@
         End If
     End Sub
 
-    Private Sub cmdLeftInitalDirection_Click(sender As Object, e As EventArgs) Handles cmdLeftInitalDirection.Click
-        setPicture(leftDirection, cmdLeftInitalDirection.BackgroundImage)
+    Private Sub CmdLeftInitalDirection_Click(sender As Object, e As EventArgs) Handles cmdLeftInitalDirection.Click
+        SetPicture(leftDirection, cmdLeftInitalDirection.BackgroundImage)
         leftDirection = -1 * leftDirection
     End Sub
 
-    Private Sub cmdRightInitalDirection_Click(sender As Object, e As EventArgs) Handles cmdRightInitalDirection.Click
-        setPicture(rightDirection, cmdRightInitalDirection.BackgroundImage)
+    Private Sub CmdRightInitalDirection_Click(sender As Object, e As EventArgs) Handles cmdRightInitalDirection.Click
+        SetPicture(rightDirection, cmdRightInitalDirection.BackgroundImage)
         rightDirection = -1 * rightDirection
     End Sub
 
@@ -84,18 +81,18 @@
         End If
     End Sub
 
-    Private Sub cmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
+    Private Sub CmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
         If CheckInputs() Then
             Dim returns() As Single = Maths.SimultaneousSolve(leftMass, rightMass, (leftMass * leftVelocity * leftDirection + rightMass * rightVelocity * rightDirection),
                                                                   -1, 1, COEofRestitution * (leftVelocity * leftDirection - rightVelocity * rightDirection))
             txtVelocityLeftFinal.Text = Math.Abs(returns(0))
             txtVelocityRightFinal.Text = Math.Abs(returns(1))
-            setPicture(-returns(0), picLeftFinalDirection.BackgroundImage)
-            setPicture(-returns(1), picRightFinalDirection.BackgroundImage)
+            SetPicture(-returns(0), picLeftFinalDirection.BackgroundImage)
+            SetPicture(-returns(1), picRightFinalDirection.BackgroundImage)
         End If
     End Sub
 
-    Sub setPicture(value As Single, ByRef pic As Image)
+    Sub SetPicture(value As Single, ByRef pic As Image)
         If value = 0 Then
             pic = New Bitmap(1, 1)
         ElseIf value > 0 Then

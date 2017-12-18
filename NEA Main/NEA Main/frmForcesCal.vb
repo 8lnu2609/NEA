@@ -19,6 +19,7 @@
     Private Sub cboGravity_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboGravity.SelectedIndexChanged
         accelerationGravity = GetGravityAcceleration(cboGravity)
         ToolTips.SetToolTip(cboGravity, accelerationGravity & "m/s²")
+        calc()
     End Sub
 
     Sub calc()
@@ -42,4 +43,5 @@ and is accelerating at {2:#,0.0##}m/s²,", mass * accelerationGravity, friction,
     Private Sub cmdCalculate_Click(sender As Object, e As EventArgs) Handles cmdCalculate.Click
         calc()
     End Sub
+
 End Class
