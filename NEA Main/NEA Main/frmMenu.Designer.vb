@@ -168,7 +168,7 @@ Partial Class frmMenu
         Me.cmdConnectedCal.Location = New System.Drawing.Point(417, 143)
         Me.cmdConnectedCal.Name = "cmdConnectedCal"
         Me.cmdConnectedCal.Size = New System.Drawing.Size(75, 50)
-        Me.cmdConnectedCal.TabIndex = 22
+        Me.cmdConnectedCal.TabIndex = 12
         Me.cmdConnectedCal.Text = "Connected" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Particles" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Calculator"
         Me.cmdConnectedCal.UseVisualStyleBackColor = True
         '
@@ -178,7 +178,7 @@ Partial Class frmMenu
         Me.cmdConnected.Location = New System.Drawing.Point(417, 87)
         Me.cmdConnected.Name = "cmdConnected"
         Me.cmdConnected.Size = New System.Drawing.Size(75, 50)
-        Me.cmdConnected.TabIndex = 21
+        Me.cmdConnected.TabIndex = 11
         Me.cmdConnected.Text = "Connected" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Particles" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Simulator"
         Me.cmdConnected.UseVisualStyleBackColor = True
         '

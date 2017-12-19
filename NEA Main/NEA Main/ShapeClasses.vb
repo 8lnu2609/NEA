@@ -70,6 +70,7 @@ Public Class RotateBox
         _posX = x
         _posY = y
         width = widthIN
+        height = heightIN
         SetPoints()
     End Sub
 
@@ -77,6 +78,7 @@ Public Class RotateBox
         _posX = location.X
         _posY = location.Y
         width = widthIN
+        height = heightIN
         SetPoints()
     End Sub
 
@@ -91,7 +93,7 @@ Public Class RotateBox
         BoxPoints(0) = New PointF(_posX, _posY)
         BoxPoints(1) = New PointF(width * Math.Cos((Angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - width * Math.Sin((Angle) * Math.PI / 180))
         BoxPoints(2) = New PointF(height * Math.Cos((90 + Angle) * Math.PI / 180) + BoxPoints(1).X, BoxPoints(1).Y - height * Math.Sin((90 + Angle) * Math.PI / 180))
-        BoxPoints(3) = New PointF(height * Math.Cos((90 + Angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - height / 2 * Math.Sin((90 + Angle) * Math.PI / 180))
+        BoxPoints(3) = New PointF(height * Math.Cos((90 + Angle) * Math.PI / 180) + BoxPoints(0).X, BoxPoints(0).Y - height * Math.Sin((90 + Angle) * Math.PI / 180))
         BoxPoints(4) = BoxPoints(0)
     End Sub
 

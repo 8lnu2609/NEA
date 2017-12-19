@@ -123,5 +123,4 @@ C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojRe
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesCal.resources
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmConnectedParticlesSim.resources
 C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmNumberInput.resources
-C:\Users\8LNU2609\Source\Repos\NEA\NEA Main\NEA Main\obj\Debug\NEA Main.vbprojResolveAssemblyReference.cache
 C:\Users\Luke\Source\Repos\NEA\NEA\NEA Main\NEA Main\obj\Debug\NEA_Main.frmNumberInput.resources

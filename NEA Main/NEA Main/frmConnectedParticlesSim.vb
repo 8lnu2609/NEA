@@ -137,7 +137,6 @@
         If slopeObjectDistance > 25 And slopeObjectDistance < 275 Then
             freeObject.PosY = dragPoint.Y + 150 - Maths.Displacement(0, Single.NaN, acceleration, (Now - timeStart).TotalSeconds)
             slopeObjectDistance = 150 - Maths.Displacement(0, Single.NaN, acceleration, (Now - timeStart).TotalSeconds)
-        Else
         End If
     End Sub
 
